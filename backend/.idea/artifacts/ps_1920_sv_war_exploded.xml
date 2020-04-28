@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ps-1920-sv:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ps_1920_sv_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ps-1920-sv/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ps-1920-sv" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
