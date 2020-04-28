@@ -1,1 +1,0 @@
-application { config { baseName oauth2, authenticationType oauth2, buildTool maven, testFrameworks [protractor] }}
