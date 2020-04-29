@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "athlete")
@@ -29,5 +30,14 @@ public class Athlete implements Serializable{
     @OneToOne
     @JoinColumn(name = "profileId", referencedColumnName = "id")
     private Profile profile;
-
+/*
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "athlete"
+    )
+    private Set<Practice> practices;
+*/
 }
