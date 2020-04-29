@@ -1,15 +1,16 @@
+import { Profile } from './profile';
+import { StaffType } from './stafftype';
+
 export class Staff {
   constructor(
   private id?: number,
-  private height?: string,
-  private weight?: string,
-  private athleteNumber?: string,
-  private comment?: string
+  private staffnumber?: string,
+  private profile?: Profile,
+  private stafftype?: StaffType
   ) {
     this.id = id ? id : 0;
-    this.height = height ? height : '';
-    this.weight = weight ? weight : '';
-    this.athleteNumber = athleteNumber ? athleteNumber : '';
-    this.comment = comment ? comment : '';
+    this.staffnumber = staffnumber ? staffnumber : '';
+    this.profile = profile ? profile : new Profile();
+    this.stafftype = stafftype ? stafftype : new StaffType();
   }
 }
