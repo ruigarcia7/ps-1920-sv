@@ -5,28 +5,26 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "practice")
+@Table(name = "training_schedule")
 @Data
-public class Practice implements Serializable {
+public class TrainingSchedule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
+    private String comments;
+
+    @Column
+    private String link;
+
+    @Column
     private Date date;
 
-    @Column
-    private String local;
-
-    @Column
-    private String comment;
-
-    @ManyToMany(mappedBy = "practices")
+    @ManyToMany(mappedBy = "trainingSchedules")
     private List<Athlete> athletes;
 }

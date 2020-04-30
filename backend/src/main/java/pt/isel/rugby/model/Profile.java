@@ -1,14 +1,17 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "profile")
 @Data
+@JsonView
 public class Profile implements Serializable {
 
     @Id
@@ -32,4 +35,7 @@ public class Profile implements Serializable {
 
     @Column
     private String photo;
+
+    @ManyToMany
+    private List<Event> events;
 }

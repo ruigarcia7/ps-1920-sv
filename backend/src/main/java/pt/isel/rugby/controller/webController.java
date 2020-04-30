@@ -1,5 +1,8 @@
 package pt.isel.rugby.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +12,7 @@ import pt.isel.rugby.model.Staff;
 import pt.isel.rugby.repository.ProfileRepository;
 import pt.isel.rugby.repository.StaffRepository;
 
-@RestController
+@RestController()
 public class webController {
     @Autowired
     ProfileRepository repository;

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "stats")
@@ -37,8 +38,8 @@ public class Stats implements Serializable {
 
     @Column
     private Byte playingTime;
-    @Column
 
+    @Column
     private Byte tackleHits;
     @Column
     private Byte tackleMiss;
@@ -72,6 +73,9 @@ public class Stats implements Serializable {
     private Byte lineOutHits;
     @Column
     private Byte lineOutMiss;
+
+    @OneToMany(mappedBy = "stats")
+    private List<AthleteGameStats> athleteGameStats;
 
 
 
