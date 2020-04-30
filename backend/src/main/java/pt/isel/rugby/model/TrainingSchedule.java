@@ -17,7 +17,7 @@ public class TrainingSchedule implements Serializable {
     private Long id;
 
     @Column
-    private String comments;
+    private String description;
 
     @Column
     private String link;
