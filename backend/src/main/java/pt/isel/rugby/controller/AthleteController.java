@@ -1,11 +1,11 @@
 package pt.isel.rugby.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import pt.isel.rugby.model.Athlete;
-import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
-import pt.isel.rugby.repository.ProfileRepository;
 
 @RestController()
 @RequestMapping("/athlete")
@@ -21,9 +21,13 @@ public class AthleteController {
     public Iterable<Athlete> findAllAthletes(){
         System.out.println("here...");
         return athleteRepository.findAll();
+    @RequestMapping("/findAll")
+    public String findAllAthletes(){
+        System.out.println("findAllAthletes()");
+        return athleteRepository.findAll().toString();
     }
 
-    
+
     @PostMapping("/one")
     public Athlete postAthlete(@RequestBody Athlete athlete){
         System.out.println("post athlete...");
@@ -34,13 +38,32 @@ public class AthleteController {
         athlete.setProfile(saved);
         athleteRepository.save(athlete);
         return athlete;
+    @RequestMapping("/findById")
+    public String findAthleteById(){
+        System.out.println("findAthleteById");
+        return athleteRepository.findAll().iterator().next().toString();
     }
 
-    @PutMapping("update")
-    public Athlete updateAthlete(@RequestBody Athlete athlete){
-        System.out.println("update athlete...");
+    @PostMapping("/post")
+    public String postAthlete(){
+        System.out.println("postAthlete()");
+        Athlete athlete = new Athlete();
         athleteRepository.save(athlete);
-        return athlete;
+        return athleteRepository.findAll().toString();
     }
 
+    @PutMapping("/update")
+    public String putAthlete(){
+        System.out.println("updateAthlete()");
+        Athlete athlete = athleteRepository.findAll().iterator().next();
+        athlete.setAthleteNumber(athlete.getId().toString());
+        athleteRepository.save(athlete);
+        return athleteRepository.findAll().toString();
+    }
+
+    @DeleteMapping("/delete")
+    public String deleteAthlete(){
+        System.out.println("deleteAthlete()");
+        return athleteRepository.findAll().toString();
+    }
 }
