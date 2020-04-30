@@ -3,20 +3,23 @@ package pt.isel.rugby.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "practice")
+@Table(name = "event")
 @Data
-public class Practice implements Serializable {
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String description;
 
     @Column
     private Date date;
@@ -25,8 +28,6 @@ public class Practice implements Serializable {
     private String local;
 
     @Column
-    private String comment;
-
-    @ManyToMany(mappedBy = "practices")
-    private List<Athlete> athletes;
+    @OneToMany(mappedBy = "events")
+    private List<Profile> profiles;
 }
