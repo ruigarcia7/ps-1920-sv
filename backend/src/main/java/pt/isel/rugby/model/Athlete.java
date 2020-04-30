@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -43,4 +44,5 @@ public class Athlete implements Serializable{
 
     @OneToMany(mappedBy = "athlete")
     private List<AthleteGameStats> athleteGameStats;
+    
 }
