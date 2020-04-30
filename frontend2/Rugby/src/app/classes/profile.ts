@@ -1,3 +1,5 @@
+import {Event} from './event';
+
 export class Profile {
   constructor(
     private id?: number,
@@ -6,7 +8,8 @@ export class Profile {
     private address?: string,
     private mail?: string,
     private phone?: string,
-    private photo?: string
+    private photo?: string,
+    private events?: Event[]
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';
@@ -15,5 +18,6 @@ export class Profile {
     this.mail = mail ? mail : '';
     this.phone = phone ? phone : '';
     this.photo = photo ? photo : '';
+    this.events = events ? events : [];
   }
 }
