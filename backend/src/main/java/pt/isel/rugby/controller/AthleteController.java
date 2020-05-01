@@ -1,15 +1,26 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.AthleteBusiness;
 import pt.isel.rugby.model.Athlete;
+import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
+import pt.isel.rugby.repository.ProfileRepository;
 
 @RestController()
 @RequestMapping("/athlete")
 public class AthleteController {
+    // TODO: Find and implement a Logger
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
+
+
+    @Autowired
+    AthleteBusiness athleteBusiness;
 
     @Autowired
     AthleteRepository athleteRepository;
@@ -18,52 +29,33 @@ public class AthleteController {
     ProfileRepository profileRepository;
 
     @GetMapping("/all")
-    public Iterable<Athlete> findAllAthletes(){
-        System.out.println("here...");
-        return athleteRepository.findAll();
-    @RequestMapping("/findAll")
-    public String findAllAthletes(){
-        System.out.println("findAllAthletes()");
-        return athleteRepository.findAll().toString();
-    }
+    public Iterable<Athlete> findAllAthletes() {
+        logger.info("On method GET athlete/all");
+        return athleteBusiness.findAllAthletes();
 
-
-    @PostMapping("/one")
-    public Athlete postAthlete(@RequestBody Athlete athlete){
-        System.out.println("post athlete...");
-        Profile p = athlete.getProfile();
-        p.setId(null);
-        Profile saved = profileRepository.save(p);
-        athlete.setId(null);
-        athlete.setProfile(saved);
-        athleteRepository.save(athlete);
-        return athlete;
-    @RequestMapping("/findById")
-    public String findAthleteById(){
-        System.out.println("findAthleteById");
-        return athleteRepository.findAll().iterator().next().toString();
     }
 
     @PostMapping("/post")
-    public String postAthlete(){
-        System.out.println("postAthlete()");
-        Athlete athlete = new Athlete();
-        athleteRepository.save(athlete);
-        return athleteRepository.findAll().toString();
+    public Long postAthlete(@RequestBody Athlete athlete) {
+        logger.info("on method POST athlete/post");
+        return athleteBusiness.postAthlete(athlete);
+    }
+
+    @GetMapping("/findById/{id}")
+    public Athlete findAthleteById(@PathVariable Long id) {
+        logger.info("on method GET athlete/findById/{id} with id "+ id);
+        return athleteBusiness.findAthleteById(id);
     }
 
     @PutMapping("/update")
-    public String putAthlete(){
-        System.out.println("updateAthlete()");
-        Athlete athlete = athleteRepository.findAll().iterator().next();
-        athlete.setAthleteNumber(athlete.getId().toString());
-        athleteRepository.save(athlete);
-        return athleteRepository.findAll().toString();
+    public Long putAthlete(@RequestBody Athlete athlete) {
+        logger.info("on method PUT athlete/update with id "+ athlete.getId());
+        return athleteBusiness.updateAthlete(athlete);
     }
 
     @DeleteMapping("/delete")
-    public String deleteAthlete(){
-        System.out.println("deleteAthlete()");
-        return athleteRepository.findAll().toString();
+    public ResponseEntity<?> deleteAthlete(@RequestBody Athlete athlete) {
+        athleteBusiness.deleteAthlete(athlete);
+        return ResponseEntity.ok().build();
     }
 }
