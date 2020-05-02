@@ -10,6 +10,10 @@ import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
 import pt.isel.rugby.repository.StaffRepository;
 
+
+/**
+ * this controller should be used in development and deleted before final release
+ */
 @RestController()
 public class webController {
     @Autowired

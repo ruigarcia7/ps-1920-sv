@@ -1,48 +1,50 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.OpponentBusiness;
 import pt.isel.rugby.model.Opponent;
-import pt.isel.rugby.repository.OpponentRepository;
 
 @RestController()
 @RequestMapping("/opponent")
 public class OpponentController {
-    @Autowired
-    OpponentRepository opponentRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
-    @RequestMapping("/findAll")
-    public String findAllOpponents(){
-        System.out.println("findAllOpponents()");
-        return opponentRepository.findAll().toString();
+    @Autowired
+    OpponentBusiness opponentBusiness;
+
+    @GetMapping("/all")
+    public Iterable<Opponent> findAllOpponents(){
+        logger.info("On method GET opponent/all");
+        return opponentBusiness.findAll();
     }
 
-    @RequestMapping("/findById")
-    public String findOpponentById(){
-        System.out.println("findOpponentById()");
-        return opponentRepository.findAll().iterator().next().toString();
+    @RequestMapping("/findById/{id}")
+    public Opponent findOpponentById(@PathVariable Long id){
+        logger.info("On method GET opponent/findById/{id} with id "+ id);
+        return opponentBusiness.findOpponentById(id);
     }
 
     @PostMapping("/post")
-    public String postOpponent(){
-        System.out.println("postOpponent()");
-        Opponent opponent = new Opponent();
-        opponentRepository.save(opponent);
-        return opponentRepository.findAll().toString();
+    public Long postOpponent(@RequestBody Opponent opponent){
+        logger.info("On method POST opponent/post");
+        return opponentBusiness.postOpponent(opponent);
     }
 
     @PutMapping("/update")
-    public String putOpponent(){
-        System.out.println("updateOpponent()");
-        Opponent opponent = opponentRepository.findAll().iterator().next();
-        opponent.setName(opponent.getId().toString());
-        opponentRepository.save(opponent);
-        return opponentRepository.findAll().toString();
+    public Long putOpponent(@RequestBody Opponent opponent){
+        logger.info("On method PUT opponent/update");
+        return opponentBusiness.updateOpponent(opponent);
     }
 
     @DeleteMapping("/delete")
-    public String deleteOpponent(){
-        System.out.println("deleteOpponent()");
-        return opponentRepository.findAll().toString();
+    public ResponseEntity<?> deleteOpponent(@RequestBody Opponent opponent){
+        logger.info("On method DELETE opponent/delete");
+        opponentBusiness.deleteOpponent(opponent);
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,57 +1,52 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.isel.rugby.model.Profile;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.StaffBusiness;
 import pt.isel.rugby.model.Staff;
-import pt.isel.rugby.repository.ProfileRepository;
-import pt.isel.rugby.repository.StaffRepository;
 
 @RestController()
 @RequestMapping("/staff")
 public class StaffController {
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
     @Autowired
-    ProfileRepository profileRepository;
+    StaffBusiness staffBusiness;
 
-    @Autowired
-    StaffRepository staffRepository;
-
-    @RequestMapping("/findAll")
-    public String findAllStaff() {
-        System.out.println("findAllStaff()");
-        return staffRepository.findAll().toString();
+    @GetMapping("/findAll")
+    public Iterable<Staff> findAllStaff() {
+        logger.info("On method GET staff/all");
+        return staffBusiness.findAllStaff();
     }
 
-    @RequestMapping("/findById")
-    public String findStaffById() {
-        System.out.println("findStaffById()");
-        return staffRepository.findById(Long.valueOf(1)).get().toString();
+    @GetMapping("/findById/{id}")
+    public Staff findStaffById(@PathVariable Long id) {
+        logger.info("On method GET staff/findById with id "+ id);
+        return staffBusiness.findStaffById(id);
     }
 
     @PostMapping("/post")
-    public String postStaff() {
-        System.out.println("postStaff()");
-        Profile profile = profileRepository.findAll().iterator().next();
-        Staff staff = new Staff();
-        staff.setProfile(profile);
-        staffRepository.save(staff);
-        return staffRepository.findAll().toString();
+    public Long postStaff(@RequestBody Staff staff) {
+        logger.info("On method POST staff/post");
+        return staffBusiness.postStaff(staff);
     }
 
     @PutMapping("/update")
-    public String putStaff() {
-        System.out.println("updateStaff()");
-        Staff staff = staffRepository.findAll().iterator().next();
-        staff.setStaffNumber(staff.getId() + "");
-        staffRepository.save(staff);
-        return staffRepository.findAll().toString();
+    public Long putStaff(@RequestBody Staff staff) {
+        logger.info("On method PUT staff/update");
+        return staffBusiness.postStaff(staff);
     }
 
+    // TODO: verify how to delete elements
     @DeleteMapping("/delete")
-    public String deleteAthlete() {
-        System.out.println("deleteStaff()");
-        return staffRepository.findAll().toString();
+    public ResponseEntity<?> deleteAthlete(@RequestBody Staff staff) {
+        logger.info("On method DELETE staff/delete");
+        staffBusiness.deleteStaff(staff);
+        return ResponseEntity.ok().build();
     }
 }
 

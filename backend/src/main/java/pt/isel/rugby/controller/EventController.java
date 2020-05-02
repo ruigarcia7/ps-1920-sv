@@ -1,49 +1,50 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.EventBusiness;
 import pt.isel.rugby.model.Event;
-import pt.isel.rugby.model.Stats;
-import pt.isel.rugby.repository.EventRepository;
 
 @RestController()
 @RequestMapping("/event")
 public class EventController {
-    @Autowired
-    EventRepository eventRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
-    @RequestMapping("/findAll")
-    public String findAllEvents(){
-        System.out.println("findAllEvents()");
-        return eventRepository.findAll().toString();
+    @Autowired
+    EventBusiness eventBusiness;
+
+    @RequestMapping("event/all")
+    public Iterable<Event> findAllEvents(){
+        logger.info("On method GET event/all");
+        return eventBusiness.findAllEvents();
     }
 
-    @RequestMapping("/findById")
-    public String findEventById(){
-        System.out.println("findEventById()");
-        return eventRepository.findAll().iterator().next().toString();
+    @GetMapping("/findById/{id}")
+    public Event findEventById(@PathVariable Long id){
+        logger.info("On method GET event/findById/{id} with id: "+ id);
+        return eventBusiness.findEventById(id);
     }
 
     @PostMapping("/post")
-    public String postEvent(){
-        System.out.println("postEvent()");
-        Event event = new Event();
-        eventRepository.save(event);
-        return eventRepository.findAll().toString();
+    public Long postEvent(@RequestBody Event event){
+        logger.info("On method POST event/post");
+        return eventBusiness.postEvent(event);
     }
 
     @PutMapping("/update")
-    public String putEvent(){
-        System.out.println("updateEvent()");
-        Event event = eventRepository.findAll().iterator().next();
-        event.setName(event.getId().toString());
-        eventRepository.save(event);
-        return eventRepository.findAll().toString();
+    public Long putEvent(@RequestBody Event event){
+        logger.info("On method PUT event/update");
+        return eventBusiness.updateEvent(event);
     }
 
     @DeleteMapping("/delete")
-    public String deleteStats(){
-        System.out.println("deleteEvent()");
-        return eventRepository.findAll().toString();
+    public ResponseEntity<?> deleteStats(@RequestBody Event event){
+        logger.info("On method GET event/all");
+        eventBusiness.deleteEvent(event);
+        return ResponseEntity.ok().build();
     }
 }

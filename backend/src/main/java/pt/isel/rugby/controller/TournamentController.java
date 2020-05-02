@@ -1,48 +1,50 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.TournamentBusiness;
 import pt.isel.rugby.model.Tournament;
-import pt.isel.rugby.repository.TournamentRepository;
 
 @RestController()
 @RequestMapping("/tournament")
 public class TournamentController {
-    @Autowired
-    TournamentRepository tournamentRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
-    @RequestMapping("/findAll")
-    public String findAllTournaments(){
-        System.out.println("findAllTournaments()");
-        return tournamentRepository.findAll().toString();
+    @Autowired
+    TournamentBusiness tournamentBusiness;
+
+    @GetMapping("/all")
+    public Iterable<Tournament> findAllTournaments(){
+        logger.info("On method GET tournament/all");
+        return tournamentBusiness.findAllTournaments();
     }
 
-    @RequestMapping("/findById")
-    public String findTournamentById(){
-        System.out.println("findTournamentById()");
-        return tournamentRepository.findAll().iterator().next().toString();
+    @GetMapping("/findById/{id}")
+    public Tournament findTournamentById(@PathVariable Long id){
+        logger.info("On method GET tournament/findById/{id} with id " + id);
+        return tournamentBusiness.findTournamentById(id);
     }
 
     @PostMapping("/post")
-    public String postTournament(){
-        System.out.println("postTournament()");
-        Tournament tournament = new Tournament();
-        tournamentRepository.save(tournament);
-        return tournamentRepository.findAll().toString();
+    public Long postTournament(@RequestBody Tournament tournament){
+        logger.info("On method POST tournament/post");
+        return tournamentBusiness.postTournament(tournament);
     }
 
     @PutMapping("/update")
-    public String putTournament(){
-        System.out.println("updateTournament()");
-        Tournament tournament = tournamentRepository.findAll().iterator().next();
-        tournament.setClassification(tournament.getId().toString());
-        tournamentRepository.save(tournament);
-        return tournamentRepository.findAll().toString();
+    public Long putTournament(@RequestBody Tournament tournament){
+        logger.info("On method PUT tournament/update");
+        return tournamentBusiness.updateTournament(tournament);
     }
 
     @DeleteMapping("/delete")
-    public String deleteTournament(){
-        System.out.println("deleteTournament()");
-        return tournamentRepository.findAll().toString();
+    public ResponseEntity<?> deleteTournament(@RequestBody Tournament tournament){
+        logger.info("On method GET tournament/delete");
+        tournamentBusiness.deleteTournament(tournament);
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,55 +1,51 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.GameBusiness;
 import pt.isel.rugby.model.Game;
-import pt.isel.rugby.model.Opponent;
-import pt.isel.rugby.repository.GameRepository;
-import pt.isel.rugby.repository.OpponentRepository;
 
 @RestController()
 @RequestMapping("/game")
 public class GameController {
-    @Autowired
-    GameRepository gameRepository;
-    @Autowired
-    OpponentRepository opponentRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
-    @RequestMapping("/findAll")
-    public String findAllGames(){
-        System.out.println("findAllGames()");
-        return gameRepository.findAll().toString();
+    @Autowired
+    GameBusiness gameBusiness;
+
+    @GetMapping("/all")
+    public Iterable<Game> findAllGames(){
+        logger.info("On method GET game/all");
+        return gameBusiness.findAllGames();
     }
 
-    @RequestMapping("/findById")
-    public String findGameById(){
-        System.out.println("findGameById()");
-        return gameRepository.findAll().iterator().next().toString();
+    @GetMapping("/findById/{id}")
+    public Game findGameById(@PathVariable Long id){
+        logger.info("On method GET game/findById/{id} with id "+id);
+        return gameBusiness.findGameById(id);
     }
 
     @PostMapping("/post")
-    public String postGame(){
-        System.out.println("postGame()");
-        Opponent opponent = opponentRepository.findAll().iterator().next();
-        Game game = new Game();
-        game.setOpponent(opponent);
-        gameRepository.save(game);
-        return gameRepository.findAll().toString();
+    public Long postGame(@RequestBody Game game){
+        logger.info("On method POST athlete/post");
+        return gameBusiness.postGame(game);
     }
 
     @PutMapping("/update")
-    public String putGame(){
-        System.out.println("updateGame()");
-        Game game = gameRepository.findAll().iterator().next();
-        game.setComment(game.getId().toString());
-        gameRepository.save(game);
-        return gameRepository.findAll().toString();
+    public Long putGame(@RequestBody Game game){
+        logger.info("On method PUT athlete/update");
+        return gameBusiness.updateGame(game);
     }
 
     @DeleteMapping("/delete")
-    public String deleteGame(){
-        System.out.println("deleteGame()");
-        return gameRepository.findAll().toString();
+    public ResponseEntity<?> deleteGame(@RequestBody Game game){
+        logger.info("On method DELETE athlete/delete");;
+        gameBusiness.deleteGame(game);
+        return ResponseEntity.ok().build();
     }
 
 }

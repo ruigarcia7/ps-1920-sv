@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
 import pt.isel.rugby.model.Athlete;
-import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
 
@@ -24,16 +23,12 @@ public class AthleteBusiness {
 
 
     public Long postAthlete(Athlete athlete) {
-        Profile p = athlete.getProfile();
-        p.setId(null);
-        Profile saved = profileRepository.save(p);
-        athlete.setId(null);
-        athlete.setProfile(saved);
+        profileRepository.save(athlete.getProfile());
         return athleteRepository.save(athlete).getId();
     }
 
     public Athlete findAthleteById(Long id) {
-        return athleteRepository.findById(id).get();
+        return athleteRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Athlete", "Id", id));
     }
 
     public Long updateAthlete(Athlete athlete) {

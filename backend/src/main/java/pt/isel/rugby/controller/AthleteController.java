@@ -8,25 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.AthleteBusiness;
 import pt.isel.rugby.model.Athlete;
-import pt.isel.rugby.model.Profile;
-import pt.isel.rugby.repository.AthleteRepository;
-import pt.isel.rugby.repository.ProfileRepository;
 
 @RestController()
 @RequestMapping("/athlete")
 public class AthleteController {
-    // TODO: Find and implement a Logger
     private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
-
 
     @Autowired
     AthleteBusiness athleteBusiness;
-
-    @Autowired
-    AthleteRepository athleteRepository;
-
-    @Autowired
-    ProfileRepository profileRepository;
 
     @GetMapping("/all")
     public Iterable<Athlete> findAllAthletes() {
@@ -53,8 +42,10 @@ public class AthleteController {
         return athleteBusiness.updateAthlete(athlete);
     }
 
+    // TODO: replace/add deleteById/{id}
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteAthlete(@RequestBody Athlete athlete) {
+        logger.info("On method DELETE athlete/delete");
         athleteBusiness.deleteAthlete(athlete);
         return ResponseEntity.ok().build();
     }

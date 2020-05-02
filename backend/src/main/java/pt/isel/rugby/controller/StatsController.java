@@ -1,48 +1,50 @@
 package pt.isel.rugby.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pt.isel.rugby.model.Stats;
-import pt.isel.rugby.repository.StatsRepository;
+import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.StaffBusiness;
+import pt.isel.rugby.model.Staff;
 
 @RestController()
 @RequestMapping("/stats")
 public class StatsController {
-    @Autowired
-    StatsRepository statsRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 
-    @RequestMapping("/findAll")
-    public String findAllStats(){
-        System.out.println("findAllStats()");
-        return statsRepository.findAll().toString();
+    @Autowired
+    StaffBusiness staffBusiness;
+
+    @RequestMapping("/all")
+    public Iterable<Staff> findAllStats(){
+        logger.info("On method GET staff/all");
+        return staffBusiness.findAllStaff();
     }
 
-    @RequestMapping("/findById")
-    public String findStatsById(){
-        System.out.println("findStatsById()");
-        return statsRepository.findAll().iterator().next().toString();
+    @RequestMapping("/findById/{id}")
+    public Staff findStatsById(@PathVariable Long id){
+        logger.info("On method GET staff/findById/{id} with id "+ id);
+        return staffBusiness.findStaffById(id);
     }
 
     @PostMapping("/post")
-    public String postStats(){
-        System.out.println("postStats()");
-        Stats stats = new Stats();
-        statsRepository.save(stats);
-        return statsRepository.findAll().toString();
+    public Long postStats(@RequestBody Staff staff){
+        logger.info("On method POST staff/post");
+        return staffBusiness.postStaff(staff);
     }
 
     @PutMapping("/update")
-    public String putStats(){
-        System.out.println("updateStats()");
-        Stats stats = statsRepository.findAll().iterator().next();
-        stats.setConvertionKickHits((byte) 1);
-        statsRepository.save(stats);
-        return statsRepository.findAll().toString();
+    public Long putStats(@RequestBody Staff staff){
+        logger.info("On method PUT staff/update");
+        return staffBusiness.updateStaff(staff);
     }
 
     @DeleteMapping("/delete")
-    public String deleteStats(){
-        System.out.println("deleteStats()");
-        return statsRepository.findAll().toString();
+    public ResponseEntity<?> deleteStats(@RequestBody Staff staff){
+        logger.info("On method DELETE staff/delete");
+        staffBusiness.deleteStaff(staff);
+        return ResponseEntity.ok().build();
     }
 }
