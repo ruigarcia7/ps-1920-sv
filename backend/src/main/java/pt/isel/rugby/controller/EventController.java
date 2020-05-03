@@ -17,7 +17,7 @@ public class EventController {
     @Autowired
     EventBusiness eventBusiness;
 
-    @RequestMapping("event/all")
+    @RequestMapping("/all")
     public Iterable<Event> findAllEvents(){
         logger.info("On method GET event/all");
         return eventBusiness.findAllEvents();

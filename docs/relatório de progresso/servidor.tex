@@ -1,0 +1,182 @@
+\chapter{Aplicação Servidor} \label{cap:exemplos}
+
+Este capítulo vai apresentar a nossa solução para o lado da aplicação servidor.
+
+\section{Introdução e Estrutura da Aplicação Servidor} \label{sec31}
+A aplicação servidor é uma das duas partições da nossa aplicação. É a partição onde se encontra a base de dados, o modelo de dados, e todo o comportamento que os interliga um com o outro, assim como com a aplicação cliente, sejam estes leituras e escritas, algoritmos de pesquisa ou \emph{routing}.
+
+A partir das propriedades principais discutidas na sub-secção 2.2.1, foi possível desenvolver a estrutura do nosso modelo de dados, afim de ser mais perceptível a maneira como os dados iriam ser guardados persistentemente e ligados entre sim, e qual os comportamentos que essas ligações iriam gerar. No Apêndice A pode-se observar a descrição do modelo de dados.
+
+Como descrito na secção 2.3, a aplicação servidor irá ser desenvolvida com uso da \emph{Spring Boot framework} e de 
+\emph{JPA - Java Persistence API}. Dadas as funcionalidades acrescentadas destas \emph{framework} e \emph{API}, a nossa solução separa a aplicação servidor em quatro camadas distintas:
+\begin{enumerate}
+	\item \emph{Model}
+	\item \emph{Repository}
+	\item \emph{Business}
+	\item \emph{Controller}
+\end{enumerate}
+As seguintes sub-secções explicam como cada camada funciona e como é que estas interagem entre si.
+
+\subsection{\emph{Model}} \label{sec311}
+A camada \emph{Model}, referida nesta sub-secção como camada do Modelo, representa o modelo de dados. É aqui que encontramos todas as Entidades que estruturam o modelo de dados, assim como as relações entre elas. 
+
+Uma das características chave do JPA é a possibilidade de criar classes com a anotação \emph{@Entity} onde, mapeando os campos das entidades do modelo de dados diretamente, consegue-se gerar automaticamente a base de dados, e todas as conexões necessárias entre esta e o modelo de dados. 
+
+Podemos observar no troço de código seguinte, como exemplo, a classe \emph{Event} inserida na camada do Modelo, que representa um Evento.
+
+
+\begin{verbatim}
+@Entity
+@Table(name = "event")
+@Data
+public class Event {
+
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+
+@Column
+private String name;
+
+@Column
+private String description;
+
+@Column
+private Date date;
+
+@Column
+private String local;
+
+@Column
+@OneToMany(mappedBy = "events")
+private List<Profile> profiles;
+}
+\end{verbatim}
+
+Replicando este conceito para todas as outras entidades, obtemos uma camada de Modelo onde estão geradas todas as tabelas da base de dados, que constituem a camada do Modelo.
+
+\subsection{\emph{Repository}} \label{sec312}
+A camada \emph{Repository}, referida nesta sub-secção como camada de Repositório, representa os repositórios para cada entidade. 
+Outra das características chave do JPA é a habilidade de criação de interfaces de repositórios associadas às entidades do modelo, permitindo gerar persistência na base de dados. Quando a aplicação interage com os repositórios (através da chamada a métodos de \emph{querries}), o JPA gera as ligações à base de dados e garante a comunicação entre o modelo físico e o modelo de dados.
+
+Podemos observar no troço de código seguinte, como exemplo, a interface \emph{EventRepository} inserida na camada do Repositório.
+
+\begin{verbatim}
+public interface EventRepository extends CrudRepository<Event, Long> {
+	List<Event> findByDate(Date date);
+}
+\end{verbatim}
+
+Ao extender da interface \emph{CrudRepository}, já implementada na biblioteca do JPA, as nossas classes de repositório herdam métodos para trabalhar com a persistência dos nossos objetos (neste caso, do \emph{Event}), através de operações \emph{Create} , \emph{Read} , \emph{Update} e \emph{Delete}. Conforme a necessidade e o contexto, é possível adicionar
+outras \emph{querries} (\emph{findByDate}) diretamente a estas interfaces, sem a necessidade de as implementar. 
+
+O agrupamento de todos os repositórios de todas as nossas entidades constituem a nossa camada de Repositório.
+\subsection{\emph{Business}} \label{sec313}
+A camada \emph{Business}, referida nesta sub-secção como camada de Negócio, representa todos os comportamentos referentes ao nosso modelo de negócios.
+É nesta camada que se encontra toda a algoritmia dedicada aos comportamentos da aplicação. Foram geradas classes \emph{Business} para cada entidade, que contém comportamentos relacionados com procura e verificação de recursos. Esta camada liga diretamente aos repositórios.
+
+Podemos observar no troço de código seguinte, como exemplo, a classe \emph{EventBusiness} inserida na camada de Negócio.
+\begin{verbatim}
+@Component
+public class EventBusiness {
+@Autowired
+EventRepository eventRepository;
+
+public Iterable<Event> findAllEvents(){
+return eventRepository.findAll();
+}
+
+public Long postEvent(Event event){
+return eventRepository.save(event).getId();
+}
+
+public Event findEventById(Long id){
+return eventRepository.findById(id)
+.orElseThrow(()-> new ResourceNotFoundException("Event", "Id", id));
+}
+
+public Long updateEvent(Event event)
+eventRepository.findById(event.getId())
+.orElseThrow(()-> new ResourceNotFoundException("Event", "Id", event.getId()));
+return eventRepository.save(event).getId();
+}
+
+public void deleteEvent(Event event){
+eventRepository.findById(event.getId())
+.orElseThrow(() -> new ResourceNotFoundException("Event", "Id", event.getId()));
+eventRepository.delete(event);
+}
+}
+\end{verbatim}
+
+A anotação \emph{@AutoWired} garante a injeção do \emph{EventRepository} quando a classe \emph{EventBusiness} é criada. A anotação \emph{@Component} permite que as classes sejam injetadas com \emph{@AutoWired}. Cada um destes métodos tem uma interação diferente com o repositório, e nos casos justificados, faz a verificação da existência do objeto no repositório antes de o alterar/remover/retornar.
+
+Este modelo de negócios garante a comunicação entre as camadas de controlo e repositório, servindo de camada intermédia onde é feita a verificação dos objetos antes de serem feitas alterações persistentes à base de dados, e contem um comportamento que será incremental ao longo da realização do projeto.
+
+\subsection{\emph{Controller}} \label{sec314}
+A camada \emph{Controller}, referida nesta sub-secção como camada de Controlo, representa todo o \emph{rounting} do exterior para a aplicação servidor. É a camada que gera todos os \emph{endpoints}, assim como os métodos associados a estes \emph{endpoints}. 
+
+Podemos observar no troço de código seguinte, como exemplo, a classe \emph{EventController} inserida na camada de Controlo.
+
+\begin{verbatim}
+@RestController()
+@RequestMapping("/event")
+public class EventController {
+private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
+
+@Autowired
+EventBusiness eventBusiness;
+
+@RequestMapping("event/all")
+public Iterable<Event> findAllEvents(){
+logger.info("On method GET event/all");
+return eventBusiness.findAllEvents();
+}
+
+@GetMapping("/findById/{id}")
+public Event findEventById(@PathVariable Long id){
+logger.info("On method GET event/findById/{id} with id: "+ id);
+return eventBusiness.findEventById(id);
+}
+
+@PostMapping("/post")
+public Long postEvent(@RequestBody Event event){
+logger.info("On method POST event/post");
+return eventBusiness.postEvent(event);
+}
+
+@PutMapping("/update")
+public Long putEvent(@RequestBody Event event){
+logger.info("On method PUT event/update");
+return eventBusiness.updateEvent(event);
+}
+
+@DeleteMapping("/delete")
+public ResponseEntity<?> deleteStats(@RequestBody Event event){
+logger.info("On method GET event/all");
+eventBusiness.deleteEvent(event);
+return ResponseEntity.ok().build();
+}
+
+}
+\end{verbatim}
+
+A anotação \emph{RestController} serve para implementar classes de controlo, que contém métodos capazes de processar pedidos HTTP, ao mesmo tempo que serializa os objetos de retorno destes métodos para \emph{HttpResponse}.
+Ou seja, todos os métodos desta classe são mapeados para um \emph{endpoint} diferente e processam os pedidos para esse \emph{endpoint}.
+A anotação \emph{@RequestMapping} recebe os parâmetros de mapeamento, podendo especificar-se o \emph{endpoint} que o método ou classe de controlo vão processar, assim como outros parâmetros. 
+
+É de salientar que\\
+\begin{tabular}{ll}\\
+	\emph{@GetMapping} & corresponde a \emph{@RequestMapping(method = RequestMethod.GET)}\\
+	\\
+	\emph{@PostMapping} & corresponde a \emph{@RequestMapping(method = RequestMethod.POST)}\\
+	\\
+	\emph{@PutMapping} & corresponde a \emph{@RequestMapping(method = RequestMethod.PUT)}\\
+	\\
+	\emph{@DeleteMapping} & corresponde a \emph{@RequestMapping(method = RequestMethod.DELETE)}\\
+	\\
+\end{tabular}
+
+Podemos então observar que todos os pedidos para o caminho \emph{\event} serão por esta classe, onde cada método de cada pedido é processado num método da classe.
+
+Após replicar este comportamento para as classes das diversas entidades, obtemos um \emph{Router} completo para todos os \emph{endpoints} da nossa aplicação. Também esta camada tem comportamento que será incremental ao longo do desenvolvimento do projeto.

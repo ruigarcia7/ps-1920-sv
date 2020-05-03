@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{wiki:bigdata2019}
+{Wikipedia contributors}.
+\newblock Big data --- {Wikipedia}{,} the free encyclopedia, 2019.
+\newblock [Online; accessed 28-February-2019].
+
+\bibitem{6547630}
+Xindong Wu, Xingquan Zhu, Gong-Qing Wu, and Wei Ding.
+\newblock Data mining with big data.
+\newblock {\em Knowledge and Data Engineering, IEEE Transactions on},
+  26(1):97--107, Jan 2014.
+
+\bibitem{6824752}
+J.G. Andrews, S.~Buzzi, Wan Choi, S.V. Hanly, A.~Lozano, A.C.K. Soong, and J.C.
+  Zhang.
+\newblock What will 5g be?
+\newblock {\em Selected Areas in Communications, IEEE Journal on},
+  32(6):1065--1082, June 2014.
+
+\bibitem{Neumann:1958:CB:578873}
+John~von Neumann.
+\newblock {\em The Computer and the Brain}.
+\newblock Yale University Press, New Haven, CT, USA, 1958.
+
+\bibitem{Kernighan:1982:EPS:578130}
+Brian~W. Kernighan and P.~J. Plauger.
+\newblock {\em The Elements of Programming Style}.
+\newblock McGraw-Hill, Inc., New York, NY, USA, 2nd edition, 1982.
+
+\bibitem{Boytsov:2011:IMA:1963190.1963191}
+Leonid Boytsov.
+\newblock Indexing methods for approximate dictionary searching: Comparative
+  analysis.
+\newblock {\em J. Exp. Algorithmics}, 16:1.1:1.1--1.1:1.91, May 2011.
+
+\bibitem{Jurkiewicz:2015:MVA:2627368.2656337}
+Tomasz Jurkiewicz and Kurt Mehlhorn.
+\newblock On a model of virtual address translation.
+\newblock {\em J. Exp. Algorithmics}, 19:1.9:1.1--1.9:1.28, January 2015.
+
+\end{thebibliography}

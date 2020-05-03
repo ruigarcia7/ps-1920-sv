@@ -1,0 +1,178 @@
+entity Profile {
+	name String,
+    birth Instant,
+    address String,
+    mail String,
+    phone Long,
+    photo String
+}
+
+entity Athlete {
+	height Double,
+    weight Double,
+    atheteNumber Integer,
+    comment String
+}
+
+entity Staff {
+	staffNumber Integer,
+    position StaffType
+}
+
+enum StaffType {
+	COACH, PHYSIO, OTHER
+}
+
+entity Tournament {
+	classification Integer,
+    comments String
+}
+
+entity Calendar {
+	
+}
+
+entity Game {
+	date  Instant,
+    local String,
+    comments String
+}
+
+entity Opponent{
+	name String,
+    photo String
+}
+
+entity Practice {
+	date Instant,
+    local String,
+    comment String
+}
+
+entity TrainingSchedule {
+	description String, 
+    link String,
+    day Instant
+}
+
+entity Event {
+	name String,
+    description String,
+    date Instant,
+    local String
+}
+
+entity Tackle {
+	hit Integer,
+    miss Integer
+}
+
+entity Mellee {
+	hit Integer,
+    miss Integer
+}
+
+entity Goalkick{
+	hit Integer,
+    miss Integer
+}
+
+entity ConvertionKick {
+	hit Integer,
+    miss Integer
+}
+
+entity DropKick {
+	hit Integer,
+    miss Integer
+}
+
+entity OffsideKick {
+	hit Integer,
+    miss Integer
+}
+
+entity LineOut {
+	hit Integer,
+    miss Integer
+}
+
+entity Stats {
+	error Integer,
+    fouls Integer,
+    turnOver Integer,
+    yellowCard Integer,
+    redCard Integer,
+    try Integer,
+    maul Integer,
+    playingTime Integer
+}
+
+entity GameStats {
+
+}
+
+relationship ManyToMany{
+	GameStats {game} to Game
+    GameStats {stats} to Stats
+    GameStats {athlete} to Athlete
+}
+
+relationship OneToOne {
+	Stats {tackles} to Tackle
+    Stats {mellees} to Mellee
+    Stats {convertionKicks} to ConvertionKick
+    Stats {goalkicks} to Goalkick
+    Stats {dropKicks} to DropKick
+    Stats {offsideKicks} to OffsideKick
+    Stats {lineOuts} to LineOut
+}
+
+relationship OneToOne {
+	User to Profile
+}
+
+// Profile
+relationship OneToOne {
+	Athlete {profile} to Profile
+    Staff {profile} to Profile
+}
+relationship OneToMany {
+	Tournament {games} to Game 
+}
+
+
+relationship OneToMany {
+	Opponent to Game{opponent}
+}
+
+relationship ManyToOne {
+	Athlete to Game{roster}
+    Athlete to Game{active}
+}
+
+relationship ManyToMany {
+	Profile{event} to Event
+}
+
+relationship OneToMany {
+	Calendar {games} to Game
+    Calendar {practices} to Practice
+    Calendar {events} to Event
+    Calendar {tournament} to Tournament
+}
+
+relationship ManyToMany {
+	Practice{athlete} to Athlete
+    // New Table will have booleans tracking physical and regular practices
+}
+
+relationship ManyToMany {
+	TrainingSchedule{athlete} to Athlete
+}
+/*
+*relationship OneToOne {
+*	entity(field) to entity
+*}
+*/
+

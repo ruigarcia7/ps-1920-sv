@@ -1,0 +1,74 @@
+%
+% Capítulo 2
+%
+\chapter{Formulação do Problema} \label{cap:formulacao}
+
+Este capítulo está organizado em três secções, onde se descreve a formulação do problema e as suas propriedades, assim como as especificações.\\
+
+\section{Formulação}\label{sec21}
+Esta secção aborda todos os aspetos referentes à Formulação do Problema.\\
+
+\begin{tabular}{ll}
+	Tema: & Aplicação de Suporte a Equipas de Rugby \\
+	Problema v1: & As equipas técnicas de Rugby têm ferramentas de suporte à sua organização? \\
+		&	Que aspectos são necessários implementar numa aplicação para garantir \\
+		&	a sua utilidade?\\
+	Problema v2: & Que aspectos são necessários implementar numa aplicação para garantir \\
+		&	a cobertura da falta de ferramentas de apoio às equipas técnicas de Rugby?\\
+\end{tabular}\\[10mm]
+A hipótese de resposta a esta pergunta foi adquirida através da concatenação entre a noção pessoal dos estudantes, como indivíduos com ligações interpessoais com o desporto, e o envolvimento das duas equipas referidas neste documento. Após diversas reuniões com foco na recolha de ideias, foi atingida a hipótese de resposta cujos objetivos e funcionalidades estão descritos na secção 1.2. Apesar do problema apresentar algum teor subjectivo (equipas distintas operam e organizam-se de formas distintas, e sentem necessidades distintas em factores distintos), foi possível alcançar uma solução que aglomera os fatores mais importantes para garantir a utilidade e a cobertura necessárias no contexto desta aplicação.
+
+\section{Propriedades Básicas}\label{sec22}
+Esta secção enumera as propriedades básicas da nossa solução, separando-as em propriedades principais e propriedades secundárias.
+
+\subsection{Propriedades Principais} \label{sec221}
+A primeira sub-secção desta secção lista todos os conceitos chave que se pretendem desenvolver como propriedades principais:
+\begin{enumerate}
+	\item Conceito de Perfil de Atleta;
+	\item Conceito de Perfil de Equipa Técnica;
+	\item Conceito de Jogo;
+	\item Conceito de Estatísticas de Jogo;
+	\item Conceito de Treino;
+	\item Conceito de Planos de Treinos Físicos;
+	\item Conceito de Calendário de Eventos;
+	\item Conceito de Torneio;
+	\item Conceito de Evento;
+\end{enumerate}
+
+Estes conceitos refletem a estrutura da nossa aplicação. 
+
+A nossa aplicação irá implementar um perfil de Atleta, onde se pode observar a informação correspondente do atleta, como a idade, peso, altura, posições, assim como as suas estatísticas ao longo da época. Também será possível observar uma lista dos jogos onde foi convocado, ligações para as suas estatísticas nos mesmos, e uma lista de treinos e eventos a que compareceu. A aplicação irá também implementar perfis dedicados aos integrantes das equipas técnicas, para adicionar alguma coesão sobre a informação global da equipa.
+
+A nossa aplicação irá implementar um menu de jogo, com as estatísticas da equipa no contexto desse jogo, os jogadores convocados e titulares, o oponente, e comentários adicionais.
+
+A nossa aplicação irá implementar um menu de treinos, com as datas e locais de treinos, a lista de comparecentes, e comentários adicionais. A lista de comparecentes irá conseguir diferenciar os atletas que compareceram como treinantes, os que compareceram sem participar no treino ou os que compareceram para outra atividade ligada ao treino, como treinos físicos e de recuperação de lesões.
+
+A nossa aplicação irá implementar um menu de planos de treino, onde a equipa técnica poderá fazer \emph{upload} de planos de treino físicos ou de ginásio, e indicar as datas onde estes planos se devem concretizar e os atletas a que os planos se dirigem.
+
+A nossa aplicação irá implementar um calendário, onde irão estar demonstrados todos os jogos, treinos, torneios ou outros eventos adicionados pela equipa técnica e a sua respectiva data de concretização.
+
+
+
+\subsection{Propriedades Secundárias} \label{sec222}
+Esta é a segunda sub-secção desta secção, que aponta os conceitos de algumas propriedades secundárias. Conforme a disponibilidade, são propriedades que poderão ser inseridas no contexto da aplicação, nomeadamente:
+\begin{enumerate}
+	\item Conceito de Fisioterapeuta;
+	\item Conceito de Lesão;
+	\item Conceito de Campeonato;
+	\item Conceito de Estatísticas Gráficas;
+	\item Conceito de Exportação de Dados;
+\end{enumerate}
+
+Estes conceitos refletem a possibilidade de monitorizar e documentar lesões, e apresenta-las de forma organizada numa interface própria para uso pelos fisioterapeutas, assim como de organizar os diversos jogos da época num campeonato com respectivas classificações. Também propõe a possibilidade de exportar dados em formatos de texto para serem consumidos por outros meios, assim como de representar visualmente as estatísticas dos jogos com auxilio gráfico.
+
+\section{Especificação}\label{sec23}
+Esta secção explicita as especificações da nossa aplicação.
+
+A nossa aplicação irá ser dividida entre aplicação servidor e aplicação cliente.
+
+A aplicação servidor irá ser programada em \emph{Java} com uso da \emph{Spring Boot framework}. A base de dados irá ser programada em \emph{MySQL} com a ligação entre estes componentes feitos com o auxilio de \emph{JPA - Java Persistence API}.
+
+A aplicação cliente irá ser dividida em aplicação \emph{Web} e aplicação \emph{mobile}, ambas programadas em \emph{TypeScript}. A vertente \emph{Web} irá ser programada com o uso de \emph{Angular framework}, e a vertente \emph{mobile} com o uso de \emph{IONIC framework}.
+
+Entende-se que a maioria destes domínios sejam familiarizados pelo leitor.
+
