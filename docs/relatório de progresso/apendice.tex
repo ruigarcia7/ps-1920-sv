@@ -1,3 +1,5 @@
+% !TeX spellcheck = pt_PT
+%
 %
 % Apêndice 1
 %
@@ -9,11 +11,11 @@ A lista de entidades representa as propriedades que são tipos primitivos pelo s
 
 Lista de Entidades
 \begin{enumerate}
-	\item \emph{Athlete}	(id,height,weight,athleteNumber,comment,\emph{Profile},List$<$Practice$>$,List$<$\emph{TrainingSchedule}$>$,
+	\item \emph{Athlete}	(id,height,weight,athleteNumber,comment,\emph{Profile},List$<$\emph{Practice}$>$,List$<$\emph{TrainingSchedule}$>$,
 	List$<$\emph{Game}$>$,List$<$\emph{AthleteGameStats}$>$)
 	\item \emph{AthleteGameStats} (id,\emph{Athlete},\emph{Stats},\emph{Game})
 	\item \emph{Event} (id,name,description,date,local,List$<$\emph{Profile}$>$)
-	\item \emph{Game} (id,date,local,comment,\emph{Opponent},List$<$\emph{Athlete}$e>$,List$<$\emph{AthleteGameStats}$>$)
+	\item \emph{Game} (id,date,local,comment,\emph{Opponent},List$<$\emph{Athlete}$>$,List$<$\emph{AthleteGameStats}$>$)
 	\item \emph{Opponent}
 	(id,name,photo)
 	\item \emph{Practice} (id,date,local,comment,List$<$\emph{Athlete}$>$)

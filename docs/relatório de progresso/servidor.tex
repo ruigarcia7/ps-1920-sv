@@ -1,3 +1,5 @@
+% !TeX spellcheck = pt_PT
+%
 \chapter{Aplicação Servidor} \label{cap:exemplos}
 
 Este capítulo vai apresentar a nossa solução para o lado da aplicação servidor.
@@ -5,7 +7,9 @@ Este capítulo vai apresentar a nossa solução para o lado da aplicação servi
 \section{Introdução e Estrutura da Aplicação Servidor} \label{sec31}
 A aplicação servidor é uma das duas partições da nossa aplicação. É a partição onde se encontra a base de dados, o modelo de dados, e todo o comportamento que os interliga um com o outro, assim como com a aplicação cliente, sejam estes leituras e escritas, algoritmos de pesquisa ou \emph{routing}.
 
-A partir das propriedades principais discutidas na sub-secção 2.2.1, foi possível desenvolver a estrutura do nosso modelo de dados, afim de ser mais perceptível a maneira como os dados iriam ser guardados persistentemente e ligados entre sim, e qual os comportamentos que essas ligações iriam gerar. No Apêndice A pode-se observar a descrição do modelo de dados.
+A partir das propriedades principais discutidas na sub-secção 2.2.1, foi possível desenvolver a estrutura do nosso modelo de dados, afim de ser mais perceptível a maneira como os dados iriam ser guardados persistentemente e ligados entre sim, e qual os comportamentos que essas ligações iriam gerar. 
+
+No Apêndice A pode-se observar a descrição do modelo de dados.
 
 Como descrito na secção 2.3, a aplicação servidor irá ser desenvolvida com uso da \emph{Spring Boot framework} e de 
 \emph{JPA - Java Persistence API}. Dadas as funcionalidades acrescentadas destas \emph{framework} e \emph{API}, a nossa solução separa a aplicação servidor em quatro camadas distintas:
@@ -114,7 +118,7 @@ A anotação \emph{@AutoWired} garante a injeção do \emph{EventRepository} qua
 Este modelo de negócios garante a comunicação entre as camadas de controlo e repositório, servindo de camada intermédia onde é feita a verificação dos objetos antes de serem feitas alterações persistentes à base de dados, e contem um comportamento que será incremental ao longo da realização do projeto.
 
 \subsection{\emph{Controller}} \label{sec314}
-A camada \emph{Controller}, referida nesta sub-secção como camada de Controlo, representa todo o \emph{rounting} do exterior para a aplicação servidor. É a camada que gera todos os \emph{endpoints}, assim como os métodos associados a estes \emph{endpoints}. 
+A camada \emph{Controller}, referida nesta sub-secção como camada de Controlo, representa todo o \emph{routing} do exterior para a aplicação servidor. É a camada que gera todos os \emph{endpoints}, assim como os métodos associados a estes \emph{endpoints}. 
 
 Podemos observar no troço de código seguinte, como exemplo, a classe \emph{EventController} inserida na camada de Controlo.
 
@@ -177,6 +181,6 @@ A anotação \emph{@RequestMapping} recebe os parâmetros de mapeamento, podendo
 	\\
 \end{tabular}
 
-Podemos então observar que todos os pedidos para o caminho \emph{\event} serão por esta classe, onde cada método de cada pedido é processado num método da classe.
+Podemos então observar que todos os pedidos para o caminho \emph{\event} serão processados por esta classe, onde cada método de cada pedido é processado num método da classe.
 
 Após replicar este comportamento para as classes das diversas entidades, obtemos um \emph{Router} completo para todos os \emph{endpoints} da nossa aplicação. Também esta camada tem comportamento que será incremental ao longo do desenvolvimento do projeto.
