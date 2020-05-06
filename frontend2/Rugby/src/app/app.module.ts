@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-
-import { EventComponent} from './components/event/event.component';
+import {EventComponent} from './components/event/event.component';
+import {AthleteComponent} from './components/athlete/athlete.component';
 
 @NgModule({
   imports: [
@@ -27,10 +27,7 @@ import { EventComponent} from './components/event/event.component';
       enabled: environment.production
     })
   ],
-  declarations: [
-    AppComponent,
-    EventComponent
-  ],
+  declarations: [AppComponent, EventComponent, AthleteComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })

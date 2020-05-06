@@ -11,12 +11,17 @@ import { EventService } from '../../httpservices/event.service';
 export class EventComponent implements OnInit {
   events: Event[];
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) {
+  }
 
   ngOnInit() {}
 
   showEvents() {
     this.eventService.getEvents()
-      .subscribe(events => this.events = events);
+      .subscribe(events => {
+        this.events = events;
+        debugger;
+        console.log('events found ' + events);
+      });
   }
 }
