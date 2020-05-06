@@ -31,7 +31,7 @@ public class webController {
 
         //return repository.findAll().toString()+'\n'+
         StringBuilder sb = new StringBuilder();
-        athleteRepository.findAll().forEach(item -> sb.append(item.toString()+'\n'));
+        //athleteRepository.findAll().forEach(item -> sb.append(item.toString()+'\n'));
         return athleteRepository.findAll().toString();
     }
 
