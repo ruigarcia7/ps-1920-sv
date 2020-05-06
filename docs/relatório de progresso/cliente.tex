@@ -1,0 +1,35 @@
+% !TeX spellcheck = pt_PT
+%
+
+\chapter{Aplicação Cliente} \label{cliente}
+
+Este capítulo vai apresentar a nossa solução para o lado da aplicação cliente.
+
+\section{Introdução e Estrutura da Aplicação Cliente} \label{sec41}
+A aplicação cliente é a segunda partição da nossa aplicação. É a partição onde se encontra a interface de utilizador, painéis de controlo e alguma lógica de negócio adicional.
+
+No estado atual do nosso projeto, a aplicação cliente ainda não apresenta grande desenvolvimento. Para além do sub-projeto gerado em \emph{Angular}, foram geradas as classes correspondentes às Entidades da aplicação servidor em \emph{TypeScript}.
+
+Podemos observar no troço de código seguinte, como exemplo, a classe \emph{Event.ts} inserida no \emph{package} de classes da nossa Aplicação Cliente.
+
+\begin{verbatim}
+import {Profile} from './profile';
+
+export class Event {
+constructor(
+private id?: number,
+private name?: string,
+private description?: string,
+private date?: Date,
+private local?: string,
+private profiles?: Profile[]
+) {
+this.id = id ? id : 0;
+this.description = description ? description : '';
+this.date = date ? date : new Date(0);
+this.local = local ? local : '';
+this.name = name ? name : '';
+this.profiles = profiles ? profiles : [];}}
+\end{verbatim}
+
+Um dos aspetos principais a salientar na implementação dos construtores das Entidades na aplicação cliente é a questão das propriedades poderem ser \emph{nullable}. Organizando os construtores para que todas as propriedades sejam \emph{nullable} enquanto se faz a verificação no corpo do construtor para a ausência destas propriedades, permite-se construir objetos atribuindo valores padrão a todas as propriedades que não existem na altura da criação. Este detalhe de implementação ajuda a gerar objetos vazios sem os problemas que ocorrem frequentemente na manipulação de valores \emph{null}.
