@@ -16,7 +16,7 @@ export class AthleteComponent implements OnInit {
   ngOnInit() {}
 
   showEvents() {
-    this.eventService.getAtlhletes()
+    this.eventService.getAthletes()
       .subscribe(athletes => {
         debugger;
         this.athletes = athletes;

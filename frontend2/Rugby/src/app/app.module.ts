@@ -12,8 +12,9 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-import {EventComponent} from './components/event/event.component';
-import {AthleteComponent} from './components/athlete/athlete.component';
+import { EventComponent } from './components/event/event.component';
+import { AthleteComponent } from './components/athlete/athlete.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import {AthleteComponent} from './components/athlete/athlete.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatTableModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {

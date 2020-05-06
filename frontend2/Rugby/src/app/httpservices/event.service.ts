@@ -11,20 +11,20 @@ import {validateOptionsWithSchema} from "@angular-devkit/schematics/tools";
 })
 
 export class EventService {
-  private eventUrl = 'localhost:8080/event/';
+  private eventUrl = 'http://localhost:8080/event/';
   headers: Headers;
 
   constructor(private http: HttpClient) {
   }
 
   getEvents(): Observable<Event[]> {
-    const url = `${this.eventUrl}/all`;
-    const options = { headers: { name: 'Access-Control-Allow-Origin' } };
+    const url = `${this.eventUrl}all`;
+    const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
     return this.http.get<Event[]>(url, options);
   }
 
-  getAtlhletes() {
-    const url = 'http://localhost:8080/athlete\/all';
+  getAthletes() {
+    const url = 'http://localhost:8080/athlete/all';
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
     debugger;
     return this.http.get<Athlete[]>(url, options);

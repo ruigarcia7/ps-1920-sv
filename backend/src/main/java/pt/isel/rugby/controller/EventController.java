@@ -9,6 +9,8 @@ import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.EventBusiness;
 import pt.isel.rugby.model.Event;
 
+
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
 @RequestMapping("/event")
 public class EventController {

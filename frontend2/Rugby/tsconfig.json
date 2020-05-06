@@ -13,6 +13,11 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl" : "src",
+    "paths" : {
+      "@httpservices/*" : ["/app/httpservices/*"],
+      "@classes/*" : ["/app/classes/*"]
+    }
   }
 }
