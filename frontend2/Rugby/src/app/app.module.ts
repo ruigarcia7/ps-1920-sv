@@ -13,6 +13,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 
+import { EventComponent} from './components/event/event.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,7 +27,10 @@ import { FormsModule } from '@angular/forms';
       enabled: environment.production
     })
   ],
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    EventComponent
+  ],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })

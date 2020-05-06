@@ -15,6 +15,7 @@ export class EventService {
 
   getEvents(): Observable<Event[]> {
     const url = `${this.eventUrl}/all`;
-    return this.http.get<Event[]>(url);
+    const options = { headers: { name: 'Access-Control-Allow-Origin' } };
+    return this.http.get<Event[]>(url, options);
   }
 }
