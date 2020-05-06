@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b74d9191-7774-42a6-aae4-1ada8c9125a2" name="Default Changelist" comment="Merge branch 'master' of https://github.com/ruigarcia7/ps-1920-sv&#10;&#10;# Conflicts:&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/AthleteController.java&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/StaffController.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteGameStatsBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/GameBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/OpponentBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/PracticeBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StatsBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/TournamentBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/TrainingScheduleBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteGameStatsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/repository/AthleteGameStatsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/OpponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/OpponentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/PracticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/PracticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/StaffController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/StatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/StatsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/TournamentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/TournamentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/TrainingScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/TrainingScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/webController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/webController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Staff.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +79,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../trab/LI41N-G07" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -155,7 +131,10 @@
       <workItem from="1588253139479" duration="7660000" />
       <workItem from="1588261626331" duration="13002000" />
       <workItem from="1588327865223" duration="29181000" />
-      <workItem from="1588410979272" duration="8239000" />
+      <workItem from="1588410979272" duration="8851000" />
+      <workItem from="1588446510034" duration="1315000" />
+      <workItem from="1588526285569" duration="761000" />
+      <workItem from="1588613948394" duration="37000" />
     </task>
     <servers />
   </component>
@@ -207,9 +186,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="198" y="85" key="DiffContextDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279795506" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588261491437">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588613983298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588613983298" />
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588261491437" />
     <state width="1473" height="202" key="GridCell.Tab.0.bottom" timestamp="1588339857561">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -275,10 +255,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588336799404" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588411024093">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588613949399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588411024093" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588613949399" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588526369609" />
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588254425347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
