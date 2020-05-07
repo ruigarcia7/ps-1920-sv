@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {2.2}Propriedades Básicas}{3}%
 \contentsline {subsection}{\numberline {2.2.1}Propriedades Principais}{3}%
 \contentsline {subsection}{\numberline {2.2.2}Propriedades Secundárias}{4}%
-\contentsline {section}{\numberline {2.3}Especificação}{5}%
+\contentsline {section}{\numberline {2.3}Arquitetura da Solução}{5}%
 \contentsline {chapter}{\numberline {3}Aplicação Servidor}{7}%
 \contentsline {section}{\numberline {3.1}Introdução e Estrutura da Aplicação Servidor}{7}%
 \contentsline {subsection}{\numberline {3.1.1}\emph {Model}}{8}%

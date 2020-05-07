@@ -7,7 +7,7 @@ Este capítulo vai apresentar a nossa solução para o lado da aplicação servi
 \section{Introdução e Estrutura da Aplicação Servidor} \label{sec31}
 A aplicação servidor é uma das duas partições da nossa aplicação. É a partição onde se encontra a base de dados, o modelo de dados, e todo o comportamento que os interliga um com o outro, assim como com a aplicação cliente, sejam estes leituras e escritas, algoritmos de pesquisa ou \emph{routing}.
 
-A partir das propriedades principais discutidas na sub-secção 2.2.1, foi possível desenvolver a estrutura do nosso modelo de dados, afim de ser mais perceptível a maneira como os dados iriam ser guardados persistentemente e ligados entre sim, e qual os comportamentos que essas ligações iriam gerar. 
+A partir das propriedades principais discutidas na sub-secção 2.2.1, foi possível desenvolver a estrutura do nosso modelo de dados, de modo a ser mais perceptível a maneira como os dados iriam ser guardados persistentemente e ligados entre sim, e qual os comportamentos que essas ligações iriam gerar. 
 
 No Apêndice A pode-se observar a descrição do modelo de dados.
 
@@ -71,7 +71,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 }
 \end{verbatim}
 
-Ao extender da interface \emph{CrudRepository}, já implementada na biblioteca do JPA, as nossas classes de repositório herdam métodos para trabalhar com a persistência dos nossos objetos (neste caso, do \emph{Event}), através de operações \emph{Create} , \emph{Read} , \emph{Update} e \emph{Delete}. Conforme a necessidade e o contexto, é possível adicionar
+Ao estender da interface \emph{CrudRepository}, já implementada na biblioteca do JPA, as nossas classes de repositório herdam métodos para trabalhar com a persistência dos nossos objetos (neste caso, do \emph{Event}), através de operações \emph{Create} , \emph{Read} , \emph{Update} e \emph{Delete}. Conforme a necessidade e o contexto, é possível adicionar
 outras \emph{querries} (\emph{findByDate}) diretamente a estas interfaces, sem a necessidade de as implementar. 
 
 O agrupamento de todos os repositórios de todas as nossas entidades constituem a nossa camada de Repositório.
