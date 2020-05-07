@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../httpservices/event.service';
 import {Athlete} from '../../classes/athlete';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-athlete',
@@ -8,19 +9,20 @@ import {Athlete} from '../../classes/athlete';
   styleUrls: ['./athlete.component.scss'],
 })
 export class AthleteComponent implements OnInit {
-
   athletes: Athlete[];
+  displayedColumns: string[] = ['ID', 'height', 'weight', 'athletenumber', 'comment'
+    , 'profile', 'practices', 'trainingschedules', 'games', 'athletegamestats'];
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {}
 
-  showEvents() {
+  showAthletes() {
     this.eventService.getAthletes()
       .subscribe(athletes => {
-        debugger;
         this.athletes = athletes;
-        console.log('events found ' + athletes);
+        debugger;
+        console.log('athletes found ' + athletes);
       });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { Event } from '../../classes/event';
 import { EventService } from '../../httpservices/event.service';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-event',
@@ -10,9 +11,9 @@ import { EventService } from '../../httpservices/event.service';
 
 export class EventComponent implements OnInit {
   events: Event[];
+  displayedColumns: string[] = ['ID', 'name', 'description', 'date', 'local', 'profiles'];
 
-  constructor(private eventService: EventService) {
-  }
+  constructor(private eventService: EventService) {}
 
   ngOnInit() {}
 
