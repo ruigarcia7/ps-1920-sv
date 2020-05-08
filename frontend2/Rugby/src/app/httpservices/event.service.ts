@@ -28,4 +28,10 @@ export class EventService {
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
     return this.http.get<Athlete[]>(url, options);
   }
+
+  getAthlete(id: any) {
+    const url = `http://localhost:8080/athlete/findById/${id}`;
+    const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
+    return this.http.get<Athlete>(url, options);
+  }
 }

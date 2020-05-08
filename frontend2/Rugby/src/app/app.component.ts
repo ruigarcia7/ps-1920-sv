@@ -19,17 +19,17 @@ export class AppComponent {
   appPages = [
     {
       title: 'Calendar',
-      url: '/calendar',
+      url: '/app/calendar',
       icon: 'calendar'
     },
     {
       title: 'Athletes',
-      url: '/athletes',
+      url: '/app/athlete',
       icon: 'people'
     },
     {
       title: 'Staff',
-      url: '/staff',
+      url: '/app/staff',
       icon: 'people'
     },
   ];

@@ -6,16 +6,16 @@ import {AthleteGameStats} from './associations/AthleteGameStats';
 
 export class Athlete {
   constructor(
-    private id?: number,
-    private height?: string,
-    private weight?: string,
-    private athleteNumber?: string,
-    private comment?: string,
-    private profile?: Profile,
-    private practices?: Practice[],
-    private trainingSchedule?: TrainingSchedule[],
-    private games?: Game[],
-    private athleteGameStats?: AthleteGameStats[]
+    public id?: number,
+    public height?: string,
+    public weight?: string,
+    public athleteNumber?: string,
+    public comment?: string,
+    public profile?: Profile,
+    public practices?: Practice[],
+    public trainingSchedule?: TrainingSchedule[],
+    public games?: Game[],
+    public athleteGameStats?: AthleteGameStats[]
   ) {
     this.id = id ? id : 0;
     this.height = height ? height : '';
