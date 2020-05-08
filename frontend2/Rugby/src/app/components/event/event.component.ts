@@ -1,6 +1,6 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { Event } from '../../classes/event';
-import { EventService } from '../../httpservices/event.service';
+import { EventService } from '@httpservices/event/event.service';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
