@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../../httpservices/event.service';
 import {Athlete} from '../../classes/athlete';
-import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-athlete',
@@ -15,7 +14,7 @@ export class AthleteComponent implements OnInit {
 
   constructor(private eventService: EventService) { }
 
-  ngOnInit() {}
+  ngOnInit() {this.showAthletes();}
 
   showAthletes() {
     this.eventService.getAthletes()
@@ -24,5 +23,11 @@ export class AthleteComponent implements OnInit {
         debugger;
         console.log('athletes found ' + athletes);
       });
+  }
+
+  stuff() {
+    this.athletes.forEach(athlete => {
+      console.log(athlete.id);
+    });
   }
 }
