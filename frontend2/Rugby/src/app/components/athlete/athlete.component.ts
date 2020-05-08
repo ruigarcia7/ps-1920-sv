@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../httpservices/event.service';
-import { Athlete } from '../../classes/athlete';
+import {Athlete} from '../../classes/athlete';
+import {EventService} from '../../../app/httpservices/event/event.service';
 
 @Component({
   selector: 'app-athlete',
