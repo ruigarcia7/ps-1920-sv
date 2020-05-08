@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event/event.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event/event.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/event.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/event/event.service.spec.ts" afterDir="false" />

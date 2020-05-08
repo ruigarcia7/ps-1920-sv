@@ -12,29 +12,25 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { EventComponent } from './components/event/event.component';
+import { AthleteComponent } from './components/athlete/athlete.component';
 import { MatTableModule } from '@angular/material/table';
-
-import { EventModule } from './components/event/event.module';
-import { AthleteModule } from './components/athlete/athlete.module';
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     MatTableModule,
-    AthleteModule,
-    EventModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })
   ],
-declarations: [AppComponent],
-providers: [InAppBrowser, SplashScreen, StatusBar],
-bootstrap: [ AppComponent ]
+  declarations: [AppComponent, EventComponent, AthleteComponent],
+  providers: [InAppBrowser, SplashScreen, StatusBar],
+  bootstrap: [AppComponent]
 })
-
-export class AppModule { }
+export class AppModule {}

@@ -1,8 +1,8 @@
 {
-  "name": "ionic-conference-app",
+  "name": "rugby-app",
   "version": "0.0.0",
-  "description": "Ionic Conference App",
-  "author": "Ionic Team <hi@ionicframework.com>",
+  "description": "Rugby App",
+  "author": "PSG39",
   "license": "Apache-2.0",
   "scripts": {
     "ng": "ng",
