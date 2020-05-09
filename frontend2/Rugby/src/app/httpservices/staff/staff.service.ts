@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Practice} from '../../classes/practice';
+
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Staff} from '../../classes/staff';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PracticeService {
+export class StaffService {
 
-  private BASE_URL = 'http://localhost:8080/practice';
+  private BASE_URL = 'http://localhost:8080/staff';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -19,28 +20,27 @@ export class PracticeService {
 
   constructor(private http: HttpClient) { }
 
-  getPractices(): Observable<Practice[]> {
+  getStaffs(): Observable<Staff[]> {
     const url = `${this.BASE_URL}/all`;
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
-    return this.http.get<Practice[]>(url, this.httpOptions);
+    return this.http.get<Staff[]>(url, this.httpOptions);
   }
 
-  getPracticeById(id: number): Observable<Practice> {
+  getStaffById(id: number): Observable<Staff> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
-  postPractice(practice: Practice): Observable<any> {
+  postStaff(staff: Staff): Observable<any> {
     const url = `${this.BASE_URL}/post`;
-    return this.http.post(url, practice, this.httpOptions);
+    return this.http.post(url, staff, this.httpOptions);
   }
 
-  updatePractice(practice: Practice): Observable<any> {
+  updateStaff(staff: Staff): Observable<any> {
     const url = `${this.BASE_URL}/update`;
-    return this.http.put(url, practice, this.httpOptions);
+    return this.http.put(url, staff, this.httpOptions);
   }
-
-  deletePractice(id: number): Observable<any> {
+  deleteStaff(id: number): Observable<any> {
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }

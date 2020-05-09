@@ -1,6 +1,6 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { Event } from '../../classes/event';
-import { EventService } from '@httpservices/event/event.service';
+import { EventService } from '../../httpservices/event/event.service';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
@@ -21,7 +21,6 @@ export class EventComponent implements OnInit {
     this.eventService.getEvents()
       .subscribe(events => {
         this.events = events;
-        debugger;
         console.log('events found ' + events);
       });
   }

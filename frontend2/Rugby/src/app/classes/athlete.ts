@@ -6,7 +6,7 @@ import {AthleteGameStats} from './associations/AthleteGameStats';
 
 export class Athlete {
   constructor(
-    private id?: number,
+    public id?: number,
     private height?: string,
     private weight?: string,
     private athleteNumber?: string,
