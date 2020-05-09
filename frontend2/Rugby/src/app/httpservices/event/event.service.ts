@@ -47,4 +47,10 @@ export class EventService {
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }
+
+  getAthlete(id: any) {
+    const url = `http://localhost:8080/athlete/findById/${id}`;
+    const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
+    return this.http.get<Athlete>(url, options);
+  }
 }

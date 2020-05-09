@@ -2,14 +2,14 @@ import {Event} from './event';
 
 export class Profile {
   constructor(
-    private id?: number,
-    private name?: string,
-    private birth?: Date,
-    private address?: string,
-    private mail?: string,
-    private phone?: string,
-    private photo?: string,
-    private events?: Event[]
+    public id?: number,
+    public name?: string,
+    public birth?: Date,
+    public address?: string,
+    public mail?: string,
+    public phone?: string,
+    public photo?: string,
+    public events?: Event[]
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';
