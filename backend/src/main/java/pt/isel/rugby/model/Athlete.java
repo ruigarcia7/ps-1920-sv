@@ -40,6 +40,9 @@ public class Athlete implements Serializable{
     @ManyToMany
     private List<Game> games;
 
+    @ManyToMany
+    private List<Position> positions;
+
     @OneToMany(mappedBy = "athlete")
     private List<AthleteGameStats> athleteGameStats;
     

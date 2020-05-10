@@ -1,3 +1,70 @@
-<p>
-  staff-profile works!
-</p>
+<ion-content class="athlete-profile">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/athlete"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons *ngIf="staff" slot="end">
+        <ion-button (click)="openContact(staff)">
+          <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
+        </ion-button>
+        <ion-button (click)="openSpeakerShare(staff)">
+          <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]="3" [rowspan]="3">
+      <img [src]="staff?.profile.photo">
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+      {{staff?.profile.name}}
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Data de Nascimento </ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY" value="{{staff?.profile.birth}}"></ion-datetime>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <ion-label> Morada </ion-label>
+      <ion-label> {{staff?.profile.address}} </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Número de Staff </ion-label>
+      <ion-label> {{staff?.staffnumber}} </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Tipo de Staff </ion-label>
+      <ion-label> {{staff?.stafftype}} </ion-label>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+
+  <div class="ion-padding athlete-profile">
+    <p>{{staff?.profile.name}} Say hello on social media!</p>
+
+    <hr>
+
+    <ion-chip color="twitter" button>
+      <ion-icon name="logo-twitter"></ion-icon>
+      <ion-label>Twitter</ion-label>
+    </ion-chip>
+
+    <ion-chip color="dark" button>
+      <ion-icon name="logo-github"></ion-icon>
+      <ion-label>GitHub</ion-label>
+    </ion-chip>
+
+    <ion-chip color="instagram" button>
+      <ion-icon name="logo-instagram"></ion-icon>
+      <ion-label>Instagram</ion-label>
+    </ion-chip>
+  </div>
+</ion-content>

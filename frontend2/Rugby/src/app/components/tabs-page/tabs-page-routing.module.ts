@@ -43,7 +43,7 @@ const routes: Routes = [
             loadChildren: () => import('../staff/staff.module').then(m => m.StaffModule)
           },
           {
-            path: '',
+            path: 'staff-profile/:id',
             loadChildren: () => import('../staff-profile/staff-profile.module').then(m => m.StaffProfileModule)
           }
         ]

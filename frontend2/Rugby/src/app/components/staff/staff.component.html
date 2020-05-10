@@ -1,3 +1,42 @@
-<p>
-  staff works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Staff</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Staff</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let staff of staff">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/staff/staff-profile//{{staff.id}}">
+              <ion-avatar slot="start">
+                <img [src]="staff.profile.photo" [alt]="staff.profile.name + ' profile picture'">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{staff.profile.name}}</h2>
+                <p>{{staff.stafftype}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+
+          <ion-item detail="false" routerLink="/app/staff/staff-profile/{{staff.id}}">
+            <ion-label>
+              <h3>Perfil {{staff.profile.name}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -3,10 +3,10 @@ import { StaffType } from './stafftype';
 
 export class Staff {
   constructor(
-  private id?: number,
-  private staffnumber?: string,
-  private profile?: Profile,
-  private stafftype?: StaffType
+  public id?: number,
+  public staffnumber?: string,
+  public profile?: Profile,
+  public stafftype?: StaffType
   ) {
     this.id = id ? id : 0;
     this.staffnumber = staffnumber ? staffnumber : '';

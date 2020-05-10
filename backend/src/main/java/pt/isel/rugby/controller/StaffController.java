@@ -9,6 +9,7 @@ import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.StaffBusiness;
 import pt.isel.rugby.model.Staff;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
 @RequestMapping("/staff")
 public class StaffController {
@@ -17,7 +18,7 @@ public class StaffController {
     @Autowired
     StaffBusiness staffBusiness;
 
-    @GetMapping("/findAll")
+    @GetMapping("/all")
     public Iterable<Staff> findAllStaff() {
         logger.info("On method GET staff/all");
         return staffBusiness.findAllStaff();

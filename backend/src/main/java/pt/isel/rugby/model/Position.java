@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "staff_type")
+@Table(name = "position")
 @Data
-public class StaffType implements Serializable {
+public class Position implements Serializable {
     //TODO: does it make sense that our enums have ids?
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

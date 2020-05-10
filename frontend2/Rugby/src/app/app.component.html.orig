@@ -1,5 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
+  <!--<ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content">
       <ion-content>
         <ion-list lines="none">

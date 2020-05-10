@@ -10,6 +10,7 @@ export class Athlete {
     public height?: string,
     public weight?: string,
     public athleteNumber?: string,
+    public positions?: string,
     public comment?: string,
     public profile?: Profile,
     public practices?: Practice[],
@@ -22,6 +23,7 @@ export class Athlete {
     this.weight = weight ? weight : '';
     this.athleteNumber = athleteNumber ? athleteNumber : '';
     this.comment = comment ? comment : '';
+    this.positions = positions ? positions : '';
     this.profile = profile ? profile : new Profile();
     this.practices = practices ? practices : [];
     this.trainingSchedule = trainingSchedule ? trainingSchedule : [];

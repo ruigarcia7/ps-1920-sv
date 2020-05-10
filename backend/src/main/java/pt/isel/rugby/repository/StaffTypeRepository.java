@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import pt.isel.rugby.model.StaffType;
 
 public interface StaffTypeRepository extends CrudRepository<StaffType, Long> {
+    StaffType findByName(String name);
 }

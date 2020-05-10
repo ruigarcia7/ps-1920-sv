@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Athlete} from '../../classes/athlete';
-import {EventService} from '../../../app/httpservices/event/event.service';
+import {AthleteService} from '../../../app/httpservices/athlete/athlete.service';
 
 @Component({
   selector: 'app-athlete',
@@ -9,25 +9,17 @@ import {EventService} from '../../../app/httpservices/event/event.service';
 })
 export class AthleteComponent implements OnInit {
   athletes: Athlete[];
-  displayedColumns: string[] = ['ID', 'height', 'weight', 'athletenumber', 'comment'
-    , 'profile', 'practices', 'trainingschedules', 'games', 'athletegamestats'];
 
-  constructor(private eventService: EventService) { }
+  constructor(private athleteService: AthleteService) { }
 
   ngOnInit() {this.showAthletes();}
 
   showAthletes() {
-    this.eventService.getAthletes()
+    this.athleteService.getAthletes()
       .subscribe(athletes => {
         this.athletes = athletes;
         debugger;
         console.log('athletes found ' + athletes);
       });
-  }
-
-  stuff() {
-    this.athletes.forEach(athlete => {
-      console.log(athlete.id);
-    });
   }
 }

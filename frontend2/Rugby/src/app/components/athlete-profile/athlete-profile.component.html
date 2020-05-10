@@ -1,12 +1,65 @@
-<ion-content class="speaker-detail">
+<ion-content class="athlete-profile">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/athlete"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons *ngIf="athlete" slot="end">
+        <ion-button (click)="openContact(athlete)">
+          <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
+        </ion-button>
+        <ion-button (click)="openSpeakerShare(athlete)">
+          <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-  <div class="speaker-background">
-    <img [src]="profile?.photo" [alt]="profile?.name">
+  <!--<div class="speaker-background">
+    <ion-avatar>
+      <img [src]="profile?.photo">
+    </ion-avatar>
     <h2>{{profile?.name}}</h2>
-  </div>
+  </div>-->
 
-  <div class="ion-padding speaker-detail">
-    <p>{{profile?.name}} Say hello on social media!</p>
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]="3" [rowspan]="3">
+        <img [src]="athlete?.profile.photo">
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+      {{athlete?.profile.name}}
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Data de Nascimento </ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY" value="{{athlete?.profile.birth}}"></ion-datetime>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <ion-label> Morada </ion-label>
+      <ion-label> {{athlete?.profile.address}} </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Número de Atleta </ion-label>
+      <ion-label> {{athlete?.athleteNumber}} </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Altura </ion-label>
+      <ion-label> {{athlete?.height}} </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label> Peso </ion-label>
+      <ion-label> {{athlete?.weight}} </ion-label>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <div class="ion-padding athlete-profile">
+    <p>{{athlete?.profile.name}} Say hello on social media!</p>
 
     <hr>
 
