@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Practice} from '../../classes/practice';
+import {TrainingSchedule} from '../../classes/trainingschedule';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PracticeService {
+export class TrainingScheduleService {
 
-  private BASE_URL = 'http://localhost:8080/practice';
+  private BASE_URL = 'http://localhost:8080/schedule';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -19,29 +19,30 @@ export class PracticeService {
 
   constructor(private http: HttpClient) { }
 
-  getPractices(): Observable<Practice[]> {
+  getTrainingSchedules(): Observable<TrainingSchedule[]> {
     const url = `${this.BASE_URL}/all`;
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
-    return this.http.get<Practice[]>(url, this.httpOptions);
+    return this.http.get<TrainingSchedule[]>(url, this.httpOptions);
   }
 
-  getPracticeById(id: number): Observable<Practice> {
+  getTrainingScheduleById(id: number): Observable<TrainingSchedule> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
-  postPractice(practice: Practice): Observable<any> {
+  postTrainingSchedule(trainingSchedule: TrainingSchedule): Observable<any> {
     const url = `${this.BASE_URL}/post`;
-    return this.http.post(url, practice, this.httpOptions);
+    return this.http.post(url, trainingSchedule, this.httpOptions);
   }
 
-  updatePractice(practice: Practice): Observable<any> {
+  updateTrainingSchedule(trainingSchedule: TrainingSchedule): Observable<any> {
     const url = `${this.BASE_URL}/update`;
-    return this.http.put(url, practice, this.httpOptions);
+    return this.http.put(url, trainingSchedule, this.httpOptions);
   }
 
-  deletePractice(id: number): Observable<any> {
+  deleteTrainingSchedule(id: number): Observable<any> {
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }
+
 }

@@ -22,7 +22,7 @@ export class StaffService {
   getStaff(): Observable<Staff[]> {
     const url = `${this.BASE_URL}/all`;
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
-    return this.http.get<Staff[]>(url, this.options);
+    return this.http.get<Staff[]>(url, this.httpOptions);
   }
 
   getStaffById(id: any): Observable<Staff> {
@@ -32,6 +32,15 @@ export class StaffService {
 
   postStaff(staff: Staff): Observable<any> {
     const url = `${this.BASE_URL}/post`;
-    return this.http.post(this.BASE_URL, staff, this.httpOptions);
+    return this.http.post(url, staff, this.httpOptions);
+  }
+
+  updateStaff(staff: Staff): Observable<any> {
+    const url = `${this.BASE_URL}/update`;
+    return this.http.put(url, staff, this.httpOptions);
+  }
+  deleteStaff(id: number): Observable<any> {
+    const url = `${this.BASE_URL}/delete/${id}`;
+    return this.http.delete(url, this.httpOptions);
   }
 }

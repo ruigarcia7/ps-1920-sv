@@ -63,3 +63,5 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+/backend/.idea/workspace.xml
+/backend/.idea/workspace.xml

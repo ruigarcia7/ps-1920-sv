@@ -28,6 +28,6 @@ public class Event {
     private String local;
 
     @Column
-    @OneToMany(mappedBy = "events")
+    @ManyToMany(mappedBy = "events")
     private List<Profile> profiles;
 }

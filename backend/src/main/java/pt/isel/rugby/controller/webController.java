@@ -1,6 +1,7 @@
 package pt.isel.rugby.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,8 @@ import pt.isel.rugby.model.Staff;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
 import pt.isel.rugby.repository.StaffRepository;
+
+import javax.annotation.security.PermitAll;
 
 
 /**
@@ -58,5 +61,9 @@ public class webController {
         Iterable<Staff> all = staffRepository.findAll();
         all.forEach(System.out::println);
         return all.toString();
+    }
+
+    @RequestMapping("/fillDb")
+    public void fillDb() {
     }
 }

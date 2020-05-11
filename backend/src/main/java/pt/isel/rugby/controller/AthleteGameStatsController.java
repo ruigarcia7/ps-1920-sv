@@ -11,7 +11,7 @@ import pt.isel.rugby.model.AthleteGameStats;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
 
 @RestController
-@RequestMapping("/athleteGameStatsController")
+@RequestMapping("/athletegamestats")
 public class AthleteGameStatsController {
     private static final Logger logger = LoggerFactory.getLogger(RugbyApplication.class);
 

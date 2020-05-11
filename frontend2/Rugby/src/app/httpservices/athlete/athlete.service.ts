@@ -16,13 +16,12 @@ export class AthleteService {
       'Access-Control-Allow-Origin': '*'
     })
   };
-  private options = { headers: { 'Access-Control-Allow-Origin': '*' } };
   constructor(private http: HttpClient) { }
 
   getAthletes(): Observable<Athlete[]> {
     const url = `${this.BASE_URL}/all`;
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
-    return this.http.get<Athlete[]>(url, this.options);
+    return this.http.get<Athlete[]>(url, this.httpOptions);
   }
 
   getAthleteById(id: any): Observable<Athlete> {
@@ -33,5 +32,16 @@ export class AthleteService {
   postAthlete(athlete: Athlete): Observable<any> {
     const url = `${this.BASE_URL}/post`;
     return this.http.post(url, athlete, this.httpOptions);
+    return this.http.post(url, athlete, this.httpOptions);
   }
+
+  updateAthlete(athlete: Athlete): Observable<any> {
+    const url = `${this.BASE_URL}/update`;
+    return this.http.put(url, athlete, this.httpOptions);
+  }
+  deleteAthlete(id: number): Observable<any> {
+    const url = `${this.BASE_URL}/delete/${id}`;
+    return this.http.delete(url, this.httpOptions);
+  }
+
 }
