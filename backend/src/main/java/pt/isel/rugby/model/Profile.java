@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
@@ -37,5 +38,6 @@ public class Profile implements Serializable {
     private String photo;
 
     @ManyToMany
+    @JsonIgnore
     private List<Event> events;
 }

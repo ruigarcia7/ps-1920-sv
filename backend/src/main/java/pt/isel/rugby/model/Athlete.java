@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -32,18 +33,22 @@ public class Athlete implements Serializable{
     private Profile profile;
 
     @ManyToMany
+    @JsonIgnore
     private List<Practice> practices;
 
     @ManyToMany
+    @JsonIgnore
     private List<TrainingSchedule> trainingSchedules;
 
     @ManyToMany
+    @JsonIgnore
     private List<Game> games;
 
     @ManyToMany
     private List<Position> positions;
 
     @OneToMany(mappedBy = "athlete")
+    @JsonIgnore
     private List<AthleteGameStats> athleteGameStats;
     
 }

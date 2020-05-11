@@ -8,7 +8,7 @@
   <form (ngSubmit)="processAthlete()" #loginForm="ngForm">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked"> Athlete Name <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
         <input required type="text"[(ngModel)]="athlete.profile.name" name="name">
       </ion-item>
 
@@ -31,13 +31,40 @@
 
       <ion-item>
         <ion-label position="stacked"> Birth </ion-label>
-        <input required type="date"[(ngModel)]="athlete.profile.birth" name="birth">
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="athlete.profile.birth" name="birth"></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked"> Athlete Number </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.athleteNumber" name="number"
+               pattern="[0-9]{1,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Weight </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.weight" name="weight"
+               pattern="[0-9]{1,3}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Height </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.height" name="height"
+               pattern="[0-9]{1,3}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Positions </ion-label>
+        <ion-select multiple="true" cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let position of positions">
+            <ion-select-option value=item> {{position.name}}</ion-select-option>
+          </tr>
+        </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-
     </ion-list>
   </form>
 </ion-content>

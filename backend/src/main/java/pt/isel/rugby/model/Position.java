@@ -1,9 +1,11 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "position")
@@ -16,4 +18,8 @@ public class Position implements Serializable {
 
     @Column
     private String name;
+
+    @ManyToMany
+    @JsonIgnore
+    private List<Athlete> athletes;
 }
