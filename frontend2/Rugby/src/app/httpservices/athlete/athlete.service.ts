@@ -32,7 +32,6 @@ export class AthleteService {
   postAthlete(athlete: Athlete): Observable<any> {
     const url = `${this.BASE_URL}/post`;
     return this.http.post(url, athlete, this.httpOptions);
-    return this.http.post(url, athlete, this.httpOptions);
   }
 
   updateAthlete(athlete: Athlete): Observable<any> {

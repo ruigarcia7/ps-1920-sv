@@ -1,30 +1,365 @@
-INSERT INTO `staff_type` (`id`, `name`) VALUES ('1', 'Coach'), ('2', 'Prysio')
-
-INSERT INTO `profile` (`id`, `name`, `address`, `birth`, `mail`, `phone`, `photo`, `events_id`) VALUES ('1', 'Sebastian Hans Eli Fors', 'Stockholm, Sweden', '1990-12-16', 'sebastian.fors@banned.com', '78998765412', NULL, NULL), ('2', 'Byron Bernstein', 'Los Angeles, California', '1989-5-8', '<-- NO MAIL -->', '8798794565', NULL, NULL), ('3', 'Octavian Morosan', 'Toronto, Canada', '1987-6-30', NULL, '8528525844215', NULL, NULL), ('4', 'Jeffrey Shih', 'Bay Area, California', '1987-06-28', 'val@mail.com', '123123123', NULL, NULL), ('5', 'Chance Morris', 'Austin, Texas', '1994-2-15', 'ChanceMorris@gmail.com', '14489516468479662', NULL, NULL), ('6', 'Tyler Steinkamp', 'Missouri, U.S.', '1995-3-7', '1t@hotmail.com', '123124', NULL, NULL), ('7', 'Michael Grzesiek', 'Mississauga, Ontario', '1994-6-2', 'smoke@mail.com', '123445213', NULL, NULL), ('8', 'Michael Santana', 'Not Available', '1990-1-1', 'some@mail.com', '21232352', NULL, NULL), ('9', 'Yanni Azamoum', 'Ontario Canada', '1995-3-30', 'll@mail.com', '1234234523', NULL, NULL), ('10', 'Kitboga', 'Somewhere not India', '1990-1-1', 'legitmail@mail.com', '1324324235', NULL, NULL);
-
-INSERT INTO `opponent` (`id`, `name`, `photo`) VALUES ('1', 'Team1', NULL), ('2', 'SuperTeam', NULL), ('3', 'Galacticos', NULL), ('4', 'Team do Boss', NULL);
-
-INSERT INTO `athlete` (`id`, `athlete_number`, `comment`, `height`, `weight`, `profile_id`) VALUES ('1', '123', 'bryron', '180', '80', '2'), ('2', '1234', 'Dr. Octo Octavious', '175', '60', '3'), ('3', '', 'mister T', '160', '50', '4'), ('4', '1', '1', '150', '70', '6'), ('5', '696969', 'Miss Q-Q', '180', '80', '9');
-
-INSERT INTO `staff` (`id`, `staff_number`, `profile_id`, `staff_type_id`) VALUES ('1', '1', '1', '1'), ('2', NULL, '7', '2');
-
-INSERT INTO `practice` (`id`, `comment`, `date`, `local`) VALUES ('1', 'normal gear', '2020-05-26', 'Field 1'), ('2', 'running gear', '2020-05-13 19:30:00', 'Track1');
-
-INSERT INTO `athlete_practices` (`athletes_id`, `practices_id`) VALUES ('4', '1'), ('2', '1'), ('3', '1'), ('5', '2'), ('2', '2'), ('4', '2'), ('5', '2');
-
-INSERT INTO `training_schedule` (`id`, `date`, `description`, `link`) VALUES ('1', '2020-05-26', 'Gym 1', NULL), ('2', '2020-05-20 11:34:35', 'Gym 2', NULL);
-
-INSERT INTO `athlete_training_schedules` (`athletes_id`, `training_schedules_id`) VALUES ('2', '1'), ('5', '2'), ('1', '1'), ('1', '2');
-
-INSERT INTO `event` (`id`, `date`, `description`, `local`, `name`) VALUES ('1', '2020-06-10 11:49:12', 'team building', 'sky', 'dkydiving'), ('2', '2020-08-20 11:49:12', 'dinner', 'Fancy Restaurant', 'Dinner'), ('3', '2020-09-10 11:49:12', 'Board Games', 'Mansion 2', 'Borad Games');
-
-INSERT INTO `profile_events` (`profiles_id`, `events_id`) VALUES ('1', '1'), ('2', '1'), ('3', '3'), ('4', '3'), ('5', '3'), ('6', '3'), ('7', '3'), ('8', '3'), ('9', '3'), ('10', '3'), ('1', '2'), ('2', '2'), ('1', '2'), ('10', '1'), ('8', '1');
-
-INSERT INTO `stats` (`id`, `convertion_kick_hits`, `convertion_kick_miss`, `dropkick_hits`, `dropkick_miss`, `errors`, `fouls`, `goalkick_hits`, `goalkick_miss`, `line_out_hits`, `line_out_miss`, `mauls`, `mellee_hits`, `mellee_miss`, `offside_hits`, `offside_miss`, `playing_time`, `red_cards`, `tackle_hits`, `tackle_miss`, `tries`, `turn_overs`, `yellow_cards`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'), ('2', '0', '00', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'), ('3', '5', '3', '2', '3', '1', '9', '8', '7', '6', '8', '5', '4', '9', '8', '3', '080', '0', '5', '5', '4', '6', '0'), ('4', '7', '8', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7', '8', '7'), ('5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
-INSERT INTO `game` (`id`, `comment`, `date`, `local`, `opponent_id`) VALUES ('1', 'Vs galaticos', '2020-05-15 13:33:17', 'madrid', '3'), ('2', 'vs superteam', '2020-05-22 13:33:17', 'unsiverse', '2'), ('3', 't1', '2020-05-29 13:33:17', 'seol', '1'), ('4', 'tdb', '2020-07-11 13:33:17', NULL, '4');
-
-INSERT INTO `athlete_game_stats` (`id`, `athlete_id`, `game_id`, `stats_id`) VALUES ('1', '3', '3', '1'), ('2', '4', '3', '2'), ('3', '1', '3', '4'), ('4', '5', '3', '5'), ('5', '5', '1', '3');
-
-INSERT INTO `tournament` (`id`, `classification`, `comment`) VALUES ('1', '1', 'we won');
-
+INSERT INTO `staff_type`(`id`, `name`)
+VALUES('1', 'Coach'),('2', 'Prysio');
+INSERT INTO `profile`(
+    `id`,
+    `name`,
+    `address`,
+    `birth`,
+    `mail`,
+    `phone`,
+    `photo`
+)
+VALUES(
+    '1',
+    'Sebastian Hans Eli Fors',
+    'Stockholm, Sweden',
+    '1990-12-16',
+    'sebastian.fors@banned.com',
+    '78998765412',
+    NULL
+),(
+    '2',
+    'Byron Bernstein',
+    'Los Angeles, California',
+    '1989-5-8',
+    '<-- NO MAIL -->',
+    '8798794565',
+    NULL
+),(
+    '3',
+    'Octavian Morosan',
+    'Toronto, Canada',
+    '1987-6-30',
+    NULL,
+    '8528525844215',
+    NULL
+),(
+    '4',
+    'Jeffrey Shih',
+    'Bay Area, California',
+    '1987-06-28',
+    'val@mail.com',
+    '123123123',
+    NULL
+),(
+    '5',
+    'Chance Morris',
+    'Austin, Texas',
+    '1994-2-15',
+    'ChanceMorris@gmail.com',
+    '14489516468479662',
+    NULL
+),(
+    '6',
+    'Tyler Steinkamp',
+    'Missouri, U.S.',
+    '1995-3-7',
+    '1t@hotmail.com',
+    '123124',
+    NULL
+),(
+    '7',
+    'Michael Grzesiek',
+    'Mississauga, Ontario',
+    '1994-6-2',
+    'smoke@mail.com',
+    '123445213',
+    NULL
+),(
+    '8',
+    'Michael Santana',
+    'Not Available',
+    '1990-1-1',
+    'some@mail.com',
+    '21232352',
+    NULL
+),(
+    '9',
+    'Yanni Azamoum',
+    'Ontario Canada',
+    '1995-3-30',
+    'll@mail.com',
+    '1234234523',
+    NULL
+),(
+    '10',
+    'Kitboga',
+    'Somewhere not India',
+    '1990-1-1',
+    'legitmail@mail.com',
+    '1324324235',
+    NULL
+);
+INSERT INTO `opponent`(`id`, `name`, `photo`)
+VALUES('1', 'Team1', NULL),('2', 'SuperTeam', NULL),('3', 'Galacticos', NULL),('4', 'Team do Boss', NULL);
+INSERT INTO `athlete`(
+    `id`,
+    `athlete_number`,
+    `comment`,
+    `height`,
+    `weight`,
+    `profile_id`
+)
+VALUES('1', '123', 'bryron', '180', '80', '2'),(
+    '2',
+    '1234',
+    'Dr. Octo Octavious',
+    '175',
+    '60',
+    '3'
+),('3', '', 'mister T', '160', '50', '4'),('4', '1', '1', '150', '70', '6'),(
+    '5',
+    '696969',
+    'Miss Q-Q',
+    '180',
+    '80',
+    '9'
+);
+INSERT INTO `staff`(
+    `id`,
+    `staff_number`,
+    `profile_id`,
+    `staff_type_id`
+)
+VALUES('1', '1', '1', '1'),('2', NULL, '7', '2');
+INSERT INTO `practice`(`id`, `comment`, `date`, `local`)
+VALUES(
+    '1',
+    'normal gear',
+    '2020-05-26',
+    'Field 1'
+),(
+    '2',
+    'running gear',
+    '2020-05-13 19:30:00',
+    'Track1'
+);
+INSERT INTO `athlete_practices`(`athletes_id`, `practices_id`)
+VALUES('4', '1'),('2', '1'),('3', '1'),('5', '2'),('2', '2'),('4', '2'),('5', '2');
+INSERT INTO `training_schedule`(`id`, `date`, `description`, `link`)
+VALUES('1', '2020-05-26', 'Gym 1', NULL),(
+    '2',
+    '2020-05-20 11:34:35',
+    'Gym 2',
+    NULL
+);
+INSERT INTO `athlete_training_schedules`(
+    `athletes_id`,
+    `training_schedules_id`
+)
+VALUES('2', '1'),('5', '2'),('1', '1'),('1', '2');
+INSERT INTO `event`(
+    `id`,
+    `date`,
+    `description`,
+    `local`,
+    `name`
+)
+VALUES(
+    '1',
+    '2020-06-10 11:49:12',
+    'team building',
+    'sky',
+    'dkydiving'
+),(
+    '2',
+    '2020-08-20 11:49:12',
+    'dinner',
+    'Fancy Restaurant',
+    'Dinner'
+),(
+    '3',
+    '2020-09-10 11:49:12',
+    'Board Games',
+    'Mansion 2',
+    'Borad Games'
+);
+INSERT INTO `profile_events`(`profiles_id`, `events_id`)
+VALUES('1', '1'),('2', '1'),('3', '3'),('4', '3'),('5', '3'),('6', '3'),('7', '3'),('8', '3'),('9', '3'),('10', '3'),('1', '2'),('2', '2'),('1', '2'),('10', '1'),('8', '1');
+INSERT INTO `stats`(
+    `id`,
+    `convertion_kick_hits`,
+    `convertion_kick_miss`,
+    `dropkick_hits`,
+    `dropkick_miss`,
+    `errors`,
+    `fouls`,
+    `goalkick_hits`,
+    `goalkick_miss`,
+    `line_out_hits`,
+    `line_out_miss`,
+    `mauls`,
+    `mellee_hits`,
+    `mellee_miss`,
+    `offside_hits`,
+    `offside_miss`,
+    `playing_time`,
+    `red_cards`,
+    `tackle_hits`,
+    `tackle_miss`,
+    `tries`,
+    `turn_overs`,
+    `yellow_cards`
+)
+VALUES(
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1',
+    '1'
+),(
+    '2',
+    '0',
+    '00',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0',
+    '0'
+),(
+    '3',
+    '5',
+    '3',
+    '2',
+    '3',
+    '1',
+    '9',
+    '8',
+    '7',
+    '6',
+    '8',
+    '5',
+    '4',
+    '9',
+    '8',
+    '3',
+    '080',
+    '0',
+    '5',
+    '5',
+    '4',
+    '6',
+    '0'
+),(
+    '4',
+    '7',
+    '8',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7',
+    '8',
+    '7'
+),(
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+INSERT INTO `game`(
+    `id`,
+    `comment`,
+    `date`,
+    `local`,
+    `opponent_id`
+)
+VALUES(
+    '1',
+    'Vs galaticos',
+    '2020-05-15 13:33:17',
+    'madrid',
+    '3'
+),(
+    '2',
+    'vs superteam',
+    '2020-05-22 13:33:17',
+    'unsiverse',
+    '2'
+),(
+    '3',
+    't1',
+    '2020-05-29 13:33:17',
+    'seol',
+    '1'
+),(
+    '4',
+    'tdb',
+    '2020-07-11 13:33:17',
+    NULL,
+    '4'
+);
+INSERT INTO `athlete_game_stats`(
+    `id`,
+    `athlete_id`,
+    `game_id`,
+    `stats_id`
+)
+VALUES('1', '3', '3', '1'),('2', '4', '3', '2'),('3', '1', '3', '4'),('4', '5', '3', '5'),('5', '5', '1', '3');
+INSERT INTO `tournament`(`id`, `classification`, `comment`)
+VALUES('1', '1', 'we won');

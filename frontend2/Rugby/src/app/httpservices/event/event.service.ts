@@ -43,4 +43,5 @@ export class EventService {
   deleteEvent(id: number): Observable<any> {
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
+  }
 }

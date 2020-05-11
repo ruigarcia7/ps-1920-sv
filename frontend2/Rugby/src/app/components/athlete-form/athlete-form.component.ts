@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
 import {Profile} from '../../classes/profile';
+import {AthleteService} from '../../httpservices/athlete/athlete.service';
 
 @Component({
   selector: 'app-athlete-form',
@@ -10,7 +11,7 @@ import {Profile} from '../../classes/profile';
 export class AthleteFormComponent implements OnInit {
   athlete: Athlete;
   profile: Profile;
-  constructor() { }
+  constructor(private athleteService: AthleteService) { }
 
   ngOnInit() {
     this.athlete = new Athlete();
@@ -20,8 +21,8 @@ export class AthleteFormComponent implements OnInit {
   }
 
   processAthlete() {
-    const a = this.athlete;
     debugger;
+    this.athleteService.postAthlete(this.athlete).subscribe( (res) => { console.log(res); });
   }
 
 }
