@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
 import { Profile } from '../../classes/profile';
 import { Position } from '../../classes/position';
+import {AthleteService} from '../../httpservices/athlete/athlete.service';
 import { EnumService } from '../../httpservices/enum/enum.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class AthleteFormComponent implements OnInit {
   athlete: Athlete;
   profile: Profile;
   positions: Position[];
+  constructor(private athleteService: AthleteService) { }
   constructor(private enumService: EnumService) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class AthleteFormComponent implements OnInit {
   processAthlete() {
     const a = this.athlete;
     debugger;
+    this.athleteService.postAthlete(this.athlete).subscribe( (res) => { console.log(res); });
   }
 
 }
