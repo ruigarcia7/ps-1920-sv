@@ -9,7 +9,7 @@ import { Observable, throwError} from 'rxjs';
 })
 
 export class EnumService {
-  private BASE_URL_POSITION = 'http://localhost:8080/enumerables/positions/';
+  private BASE_URL_POSITION = 'http://localhost:8080/enumerables/position/';
   private BASE_URL_STAFFTYPE = 'http://localhost:8080/enumerables/stafftype/';
   private httpOptions = {
     headers: new HttpHeaders({
