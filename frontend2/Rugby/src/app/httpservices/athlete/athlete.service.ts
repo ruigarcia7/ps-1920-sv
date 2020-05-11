@@ -25,13 +25,13 @@ export class AthleteService {
     return this.http.get<Athlete[]>(url, this.options);
   }
 
-  getAthletesById(id: number): Observable<Athlete> {
+  getAthleteById(id: any): Observable<Athlete> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
   postAthlete(athlete: Athlete): Observable<any> {
     const url = `${this.BASE_URL}/post`;
-    return this.http.post(this.BASE_URL, athlete, this.httpOptions);
+    return this.http.post(url, athlete, this.httpOptions);
   }
 }

@@ -32,6 +32,10 @@ const routes: Routes = [
           {
             path: 'athlete-profile/:id',
             loadChildren: () => import('../athlete-profile/athlete-profile.module').then(m => m.AthleteProfileModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../athlete-form/athlete-form.module').then(m => m.AthleteFormModule)
           }
         ]
       },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../httpservices/event/event.service';
+import { AthleteService } from '../../httpservices/athlete/athlete.service';
 import { Athlete } from '../../classes/athlete';
 import { ActionSheetController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -16,7 +16,7 @@ export class AthleteProfileComponent implements OnInit {
   athlete: Athlete;
 
   constructor(
-    private eventService: EventService,
+    private athleteService: AthleteService,
     public actionSheetCtrl: ActionSheetController,
     public inAppBrowser: InAppBrowser,
     public route: ActivatedRoute
@@ -25,7 +25,7 @@ export class AthleteProfileComponent implements OnInit {
   ngOnInit() {this.showProfile(); }
 
   showProfile() {
-    this.eventService.getAthlete( this.route.snapshot.paramMap.get('id') )
+    this.athleteService.getAthleteById( this.route.snapshot.paramMap.get('id') )
       .subscribe(athlete => {
         this.athlete = athlete;
         debugger;

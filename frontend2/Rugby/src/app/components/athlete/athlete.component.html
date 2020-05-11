@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
+
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/app/athlete"></ion-back-button>
     </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/app/athlete/post">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>Athletes</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -33,12 +42,35 @@
               <ion-item detail="false" routerLink="/app/athlete/athlete-profile/{{athlete.id}}">
                 <ion-label>
                   <h3>Perfil {{athlete.profile.name}}</h3>
+                  <ion-button slot="end" routerLink="/app/athlete/update">
+                    <ion-icon name="chevron-up-circle-outline"></ion-icon>
+                  </ion-button>
+                  <ion-button slot="end" routerLink="/app/athlete/delete">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                  </ion-button>
                 </ion-label>
+
+
               </ion-item>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+<!--
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon md="caret-back" name="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="light" routerLink="/app/athlete/post">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" routerLink="/app/athlete/delete">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>-->
+
 </ion-content>
 
 

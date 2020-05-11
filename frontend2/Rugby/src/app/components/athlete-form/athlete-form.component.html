@@ -1,0 +1,43 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Create Athlete</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processAthlete()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked"> Athlete Name <ion-text color="danger">*</ion-text></ion-label>
+        <input required type="text"[(ngModel)]="athlete.profile.name" name="name">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Address </ion-label>
+        <input required type="text"[(ngModel)]="athlete.profile.address" name="address">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Mail </ion-label>
+        <input required type="email"[(ngModel)]="athlete.profile.mail" name="mail"
+               pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Phone </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.profile.phone" name="phone"
+        pattern="[0-9]{9,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Birth </ion-label>
+        <input required type="date"[(ngModel)]="athlete.profile.birth" name="birth">
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>
