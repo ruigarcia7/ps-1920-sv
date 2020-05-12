@@ -44,8 +44,8 @@ public class Athlete implements Serializable{
     @JsonIgnore
     private List<Game> games;
 
-    @ManyToMany
-    private List<Position> positions;
+    @Column
+    private String positions;
 
     @OneToMany(mappedBy = "athlete")
     @JsonIgnore

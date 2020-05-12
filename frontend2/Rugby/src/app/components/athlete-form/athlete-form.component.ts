@@ -14,8 +14,8 @@ export class AthleteFormComponent implements OnInit {
   athlete: Athlete;
   profile: Profile;
   positions: Position[];
-  constructor(private athleteService: AthleteService) { }
-  constructor(private enumService: EnumService) { }
+  constructor(private athleteService: AthleteService, private enumService: EnumService) { }
+
 
   ngOnInit() {
     this.athlete = new Athlete();

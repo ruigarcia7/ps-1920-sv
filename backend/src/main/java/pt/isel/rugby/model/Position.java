@@ -19,7 +19,4 @@ public class Position implements Serializable {
     @Column
     private String name;
 
-    @ManyToMany
-    @JsonIgnore
-    private List<Athlete> athletes;
 }

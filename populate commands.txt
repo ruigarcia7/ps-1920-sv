@@ -92,29 +92,9 @@ VALUES(
 );
 INSERT INTO `opponent`(`id`, `name`, `photo`)
 VALUES('1', 'Team1', NULL),('2', 'SuperTeam', NULL),('3', 'Galacticos', NULL),('4', 'Team do Boss', NULL);
-INSERT INTO `athlete`(
-    `id`,
-    `athlete_number`,
-    `comment`,
-    `height`,
-    `weight`,
-    `profile_id`
-)
-VALUES('1', '123', 'bryron', '180', '80', '2'),(
-    '2',
-    '1234',
-    'Dr. Octo Octavious',
-    '175',
-    '60',
-    '3'
-),('3', '', 'mister T', '160', '50', '4'),('4', '1', '1', '150', '70', '6'),(
-    '5',
-    '696969',
-    'Miss Q-Q',
-    '180',
-    '80',
-    '9'
-);
+
+INSERT INTO `athlete` (`id`, `athlete_number`, `comment`, `height`, `positions`, `weight`, `profile_id`) VALUES ('1', '11', 'byron', '180', 'FullBack', '91', '2'), ('2', '12', 'qts', '190', 'bench', '110', '8')('3', '13', 'dr. octopus', '200', 'GK', '100', '3'), ('4', '14', 'value', '160', 'FW', '50', '4'), ('5', '15', 'Dice man', '170', 'LW', '78', '5'), ('6', '11111111', 'must improve', '160', 'CB', '75', '6'), ('7', '17', 'random', '190', 'CMF', '99', '7'), ('8', '18', 'Naevia', '160', 'RB', '55', '10');
+
 INSERT INTO `staff`(
     `id`,
     `staff_number`,
