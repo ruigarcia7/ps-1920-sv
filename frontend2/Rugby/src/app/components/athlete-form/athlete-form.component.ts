@@ -22,19 +22,17 @@ export class AthleteFormComponent implements OnInit {
     this.profile = new Profile();
     this.athlete.profile = this.profile;
     this.getPositions();
-    debugger;
   }
 
   getPositions() {
     this.enumService.getPositions()
       .subscribe( position => {
         this.positions = position;
-        debugger;
       });
   }
 
   processAthlete() {
-    const a = this.athlete;
+    this.athlete.positions = this.athlete.positions.toString();
     debugger;
     this.athleteService.postAthlete(this.athlete).subscribe( (res) => { console.log(res); });
   }

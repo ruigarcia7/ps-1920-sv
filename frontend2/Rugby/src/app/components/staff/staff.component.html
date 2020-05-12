@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/app/calendar"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/app/staff/post">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-title>Staff</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -30,9 +37,16 @@
             </ion-item>
           </ion-card-header>
 
+
           <ion-item detail="false" routerLink="/app/staff/staff-profile/{{staff.id}}">
             <ion-label>
               <h3>Perfil {{staff.profile.name}}</h3>
+              <ion-button slot="end" routerLink="/app/staff/update">
+                <ion-icon name="chevron-up-circle-outline"></ion-icon>
+              </ion-button>
+              <ion-button slot="end" routerLink="/app/staff/delete">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ion-button>
             </ion-label>
           </ion-item>
         </ion-card>
@@ -40,7 +54,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="light">
       <ion-icon md="caret-back" name="chevron-back-circle-outline"></ion-icon>
     </ion-fab-button>
@@ -52,5 +66,5 @@
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>

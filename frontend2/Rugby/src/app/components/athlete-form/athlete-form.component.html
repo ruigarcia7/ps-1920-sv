@@ -1,5 +1,8 @@
 <ion-header translucent>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/athlete"></ion-back-button>
+    </ion-buttons>
     <ion-title>Create Athlete</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -59,7 +62,8 @@
 
       <ion-item>
         <ion-label position="stacked"> Positions </ion-label>
-        <ion-select multiple="true" cancelText="Cancel" okText="Confirm">
+        <ion-select [(ngModel)]="athlete.positions" name="positions"
+                    multiple="true" cancelText="Cancel" okText="Confirm">
           <tr *ngFor="let position of positions">
             <ion-select-option value="{{position.name}}"> {{position.name}}</ion-select-option>
           </tr>

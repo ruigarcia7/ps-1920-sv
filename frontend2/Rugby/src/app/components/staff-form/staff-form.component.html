@@ -1,0 +1,66 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/staff"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Staff</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processStaff()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
+        <input required type="text" id="name"
+               [(ngModel)]="staff.profile.name" name="name" #name="ngModel">
+        <!--<div [hidden]="name.valid" class="alert alert-danger">
+          Name is Required.
+        </div>-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Address </ion-label>
+        <input required type="text"[(ngModel)]="staff.profile.address" name="address">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Mail </ion-label>
+        <input required type="email"[(ngModel)]="staff.profile.mail" name="mail"
+               pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Phone </ion-label>
+        <input required type="tel"[(ngModel)]="staff.profile.phone" name="phone"
+               pattern="[0-9]{9,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Birth </ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="staff.profile.birth" name="birth"></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked"> Staff Number </ion-label>
+        <input required type="tel"[(ngModel)]="staff.staffnumber" name="number"
+               pattern="[0-9]{1,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Type </ion-label>
+        <ion-select [(ngModel)]="staff.stafftype" name="positions"
+                    cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let types of stafftype">
+            <ion-select-option value="{{types.name}}"> {{types.name}}</ion-select-option>
+          </tr>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

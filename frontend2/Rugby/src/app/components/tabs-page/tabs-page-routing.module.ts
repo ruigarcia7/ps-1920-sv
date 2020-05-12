@@ -49,6 +49,28 @@ const routes: Routes = [
           {
             path: 'staff-profile/:id',
             loadChildren: () => import('../staff-profile/staff-profile.module').then(m => m.StaffProfileModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../staff-form/staff-form.module').then(m => m.StaffFormModule)
+          }
+        ]
+      },
+      {
+        path: 'event',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../event/event.module').then(m => m.EventModule)
+          }
+        ]
+      },
+      {
+        path: 'practice',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../practice/practice.module').then(m => m.PracticeModule)
           }
         ]
       },

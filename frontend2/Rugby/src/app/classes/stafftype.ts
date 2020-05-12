@@ -1,7 +1,7 @@
 export class StaffType {
   constructor(
     private id?: number,
-    private name?: string,
+    public name?: string,
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';
