@@ -13,10 +13,10 @@ export class Athlete {
     public positions?: string,
     public comment?: string,
     public profile?: Profile,
-    // public practices?: Practice[],
-    // public trainingSchedule?: TrainingSchedule[],
-    // public games?: Game[],
-    // public athleteGameStats?: AthleteGameStats[]
+    public practices?: Practice[],
+    public trainingSchedule?: TrainingSchedule[],
+    public games?: Game[],
+    public athleteGameStats?: AthleteGameStats[]
   ) {
     this.id = id ? id : 0;
     this.height = height ? height : '';
@@ -25,10 +25,10 @@ export class Athlete {
     this.comment = comment ? comment : '';
     this.positions = positions ? positions : '';
     this.profile = profile ? profile : new Profile();
-    // this.practices = practices ? practices : [];
-    // this.trainingSchedule = trainingSchedule ? trainingSchedule : [];
-    // this.games = games ? games : [];
-    // this.athleteGameStats = athleteGameStats ? athleteGameStats : [];
+    this.practices = practices ? practices : [];
+    this.trainingSchedule = trainingSchedule ? trainingSchedule : [];
+    this.games = games ? games : [];
+    this.athleteGameStats = athleteGameStats ? athleteGameStats : [];
   }
 }
 
