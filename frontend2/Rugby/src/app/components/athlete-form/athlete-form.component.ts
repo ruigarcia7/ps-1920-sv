@@ -29,6 +29,7 @@ export class AthleteFormComponent implements OnInit {
     this.enumService.getPositions()
       .subscribe( position => {
         this.positions = position;
+        debugger;
       });
   }
 
