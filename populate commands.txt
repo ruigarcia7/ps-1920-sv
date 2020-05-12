@@ -1,5 +1,5 @@
 INSERT INTO `staff_type`(`id`, `name`)
-VALUES('1', 'Coach'),('2', 'Prysio');
+VALUES('1000', 'Coach'),('2000', 'Prysio');
 INSERT INTO `profile`(
     `id`,
     `name`,
@@ -10,7 +10,7 @@ INSERT INTO `profile`(
     `photo`
 )
 VALUES(
-    '1',
+    '1000',
     'Sebastian Hans Eli Fors',
     'Stockholm, Sweden',
     '1990-12-16',
@@ -18,7 +18,7 @@ VALUES(
     '78998765412',
     NULL
 ),(
-    '2',
+    '2000',
     'Byron Bernstein',
     'Los Angeles, California',
     '1989-5-8',
@@ -26,7 +26,7 @@ VALUES(
     '8798794565',
     NULL
 ),(
-    '3',
+    '3000',
     'Octavian Morosan',
     'Toronto, Canada',
     '1987-6-30',
@@ -34,7 +34,7 @@ VALUES(
     '8528525844215',
     NULL
 ),(
-    '4',
+    '4000',
     'Jeffrey Shih',
     'Bay Area, California',
     '1987-06-28',
@@ -42,7 +42,7 @@ VALUES(
     '123123123',
     NULL
 ),(
-    '5',
+    '5000',
     'Chance Morris',
     'Austin, Texas',
     '1994-2-15',
@@ -50,7 +50,7 @@ VALUES(
     '14489516468479662',
     NULL
 ),(
-    '6',
+    '6000',
     'Tyler Steinkamp',
     'Missouri, U.S.',
     '1995-3-7',
@@ -58,7 +58,7 @@ VALUES(
     '123124',
     NULL
 ),(
-    '7',
+    '7000',
     'Michael Grzesiek',
     'Mississauga, Ontario',
     '1994-6-2',
@@ -66,7 +66,7 @@ VALUES(
     '123445213',
     NULL
 ),(
-    '8',
+    '8000',
     'Michael Santana',
     'Not Available',
     '1990-1-1',
@@ -74,7 +74,7 @@ VALUES(
     '21232352',
     NULL
 ),(
-    '9',
+    '9000',
     'Yanni Azamoum',
     'Ontario Canada',
     '1995-3-30',
@@ -82,7 +82,7 @@ VALUES(
     '1234234523',
     NULL
 ),(
-    '10',
+    '10000',
     'Kitboga',
     'Somewhere not India',
     '1990-1-1',
@@ -91,9 +91,12 @@ VALUES(
     NULL
 );
 INSERT INTO `opponent`(`id`, `name`, `photo`)
-VALUES('1', 'Team1', NULL),('2', 'SuperTeam', NULL),('3', 'Galacticos', NULL),('4', 'Team do Boss', NULL);
+VALUES('1000', 'Team1', NULL),('2000', 'SuperTeam', NULL),('3000', 'Galacticos', NULL),('4000', 'Team do Boss', NULL);
 
-INSERT INTO `athlete` (`id`, `athlete_number`, `comment`, `height`, `positions`, `weight`, `profile_id`) VALUES ('1', '11', 'byron', '180', 'FullBack', '91', '2'), ('2', '12', 'qts', '190', 'bench', '110', '8')('3', '13', 'dr. octopus', '200', 'GK', '100', '3'), ('4', '14', 'value', '160', 'FW', '50', '4'), ('5', '15', 'Dice man', '170', 'LW', '78', '5'), ('6', '11111111', 'must improve', '160', 'CB', '75', '6'), ('7', '17', 'random', '190', 'CMF', '99', '7'), ('8', '18', 'Naevia', '160', 'RB', '55', '10');
+INSERT INTO `athlete` (`id`, `athlete_number`, `comment`, `height`, `positions`, `weight`, `profile_id`) 
+VALUES ('1000', '11', 'byron', '180', 'FullBack', '91', '2000'), ('2000', '12', 'qts', '190', 'bench', '110', '8000'),('3000', '13', 'dr. octopus', '200', 'GK', '100', '3000'),
+ ('4000', '14', 'value', '160', 'FW', '50', '4000'), ('5000', '15', 'Dice man', '170', 'LW', '78', '5000'), ('6000', '11111111', 'must improve', '160', 'CB', '75', '6000'), 
+ ('7000', '17', 'random', '190', 'CMF', '99', '7000'), ('8000', '18', 'Naevia', '160', 'RB', '55', '10000');
 
 INSERT INTO `staff`(
     `id`,
@@ -101,24 +104,24 @@ INSERT INTO `staff`(
     `profile_id`,
     `staff_type_id`
 )
-VALUES('1', '1', '1', '1'),('2', NULL, '7', '2');
+VALUES('1000', '1', '1000', '1000'),('2000', NULL, '7000', '2000');
 INSERT INTO `practice`(`id`, `comment`, `date`, `local`)
 VALUES(
-    '1',
+    '1000',
     'normal gear',
     '2020-05-26',
     'Field 1'
 ),(
-    '2',
+    '2000',
     'running gear',
     '2020-05-13 19:30:00',
     'Track1'
 );
 INSERT INTO `athlete_practices`(`athletes_id`, `practices_id`)
-VALUES('4', '1'),('2', '1'),('3', '1'),('5', '2'),('2', '2'),('4', '2'),('5', '2');
+VALUES('4000', '1000'),('2000', '1000'),('3000', '1000'),('5000', '2000'),('2000', '2000'),('4000', '2000'),('5000', '2000');
 INSERT INTO `training_schedule`(`id`, `date`, `description`, `link`)
-VALUES('1', '2020-05-26', 'Gym 1', NULL),(
-    '2',
+VALUES('1000', '2020-05-26', 'Gym 1', NULL),(
+    '2000',
     '2020-05-20 11:34:35',
     'Gym 2',
     NULL
@@ -127,7 +130,7 @@ INSERT INTO `athlete_training_schedules`(
     `athletes_id`,
     `training_schedules_id`
 )
-VALUES('2', '1'),('5', '2'),('1', '1'),('1', '2');
+VALUES('2000', '1000'),('5000', '2000'),('1000', '1000'),('1000', '2000');
 INSERT INTO `event`(
     `id`,
     `date`,
@@ -136,26 +139,27 @@ INSERT INTO `event`(
     `name`
 )
 VALUES(
-    '1',
+    '1000',
     '2020-06-10 11:49:12',
     'team building',
     'sky',
     'dkydiving'
 ),(
-    '2',
+    '2000',
     '2020-08-20 11:49:12',
     'dinner',
     'Fancy Restaurant',
     'Dinner'
 ),(
-    '3',
+    '3000',
     '2020-09-10 11:49:12',
     'Board Games',
     'Mansion 2',
     'Borad Games'
 );
 INSERT INTO `profile_events`(`profiles_id`, `events_id`)
-VALUES('1', '1'),('2', '1'),('3', '3'),('4', '3'),('5', '3'),('6', '3'),('7', '3'),('8', '3'),('9', '3'),('10', '3'),('1', '2'),('2', '2'),('1', '2'),('10', '1'),('8', '1');
+VALUES('1000', '1000'),('2000', '1000'),('3000', '3000'),('4000', '3000'),('5000', '3000'),('6000', '3000'),('7000', '3000'),
+('8000', '3000'),('9000', '3000'),('10000', '3000'),('1000', '2000'),('2000', '2000'),('1000', '2000'),('10000', '1000'),('8000', '1000');
 INSERT INTO `stats`(
     `id`,
     `convertion_kick_hits`,
@@ -182,7 +186,7 @@ INSERT INTO `stats`(
     `yellow_cards`
 )
 VALUES(
-    '1',
+    '1000',
     '1',
     '1',
     '1',
@@ -206,7 +210,7 @@ VALUES(
     '1',
     '1'
 ),(
-    '2',
+    '2000',
     '0',
     '00',
     '0',
@@ -230,7 +234,7 @@ VALUES(
     '0',
     '0'
 ),(
-    '3',
+    '3000',
     '5',
     '3',
     '2',
@@ -254,7 +258,7 @@ VALUES(
     '6',
     '0'
 ),(
-    '4',
+    '4000',
     '7',
     '8',
     '8',
@@ -278,7 +282,7 @@ VALUES(
     '8',
     '7'
 ),(
-    '5',
+    '5000',
     NULL,
     NULL,
     NULL,
@@ -310,29 +314,29 @@ INSERT INTO `game`(
     `opponent_id`
 )
 VALUES(
-    '1',
+    '1000',
     'Vs galaticos',
     '2020-05-15 13:33:17',
     'madrid',
-    '3'
+    '3000'
 ),(
-    '2',
+    '2000',
     'vs superteam',
     '2020-05-22 13:33:17',
     'unsiverse',
-    '2'
+    '2000'
 ),(
-    '3',
+    '3000',
     't1',
     '2020-05-29 13:33:17',
     'seol',
-    '1'
+    '1000'
 ),(
-    '4',
+    '4000',
     'tdb',
     '2020-07-11 13:33:17',
     NULL,
-    '4'
+    '4000'
 );
 INSERT INTO `athlete_game_stats`(
     `id`,
@@ -340,6 +344,13 @@ INSERT INTO `athlete_game_stats`(
     `game_id`,
     `stats_id`
 )
-VALUES('1', '3', '3', '1'),('2', '4', '3', '2'),('3', '1', '3', '4'),('4', '5', '3', '5'),('5', '5', '1', '3');
+VALUES('1000', '3000', '3000', '1000'),('2000', '4000', '3000', '2000'),('3000', '1000', '3000', '4000'),('4000', '5000', '3000', '5000'),('5000', '5000', '1000', '3000');
 INSERT INTO `tournament`(`id`, `classification`, `comment`)
-VALUES('1', '1', 'we won');
+VALUES('1000', '1', 'we won');
+
+INSERT INTO `position`(
+	`id`,
+	`name`
+)
+VALUES('1000','Pilar'),('2000','Tanulador'),('3000','Segunda Linha'),('4000','Asa'),('5000','Oito'),('6000','Formação'),('7000','Abertura'),('8000','Primeiro Centro')
+,('9000','Segundo Centro'),('10000','Ponta'),('11000','Harrier');

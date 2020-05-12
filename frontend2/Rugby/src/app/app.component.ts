@@ -32,6 +32,16 @@ export class AppComponent {
       url: '/app/staff',
       icon: 'people'
     },
+    {
+      title: 'Events',
+      url: '/app/event',
+      icon: 'american-football'
+    },
+    {
+      title: 'Practices',
+      url: '/app/practice',
+      icon: 'barbell'
+    }
   ];
 
   constructor(

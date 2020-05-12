@@ -18,7 +18,6 @@ export class AthleteComponent implements OnInit {
     this.athleteService.getAthletes()
       .subscribe(athletes => {
         this.athletes = athletes;
-        debugger;
         console.log('athletes found ' + athletes);
       });
   }

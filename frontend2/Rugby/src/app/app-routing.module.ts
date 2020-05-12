@@ -22,6 +22,14 @@ const routes: Routes = [
   {
     path: 'staff',
     loadChildren: () => import('./components/staff/staff.module').then(m => m.StaffModule)
+  },
+  {
+    path: 'event',
+    loadChildren: () => import('./components/event/event.module').then(m => m.EventModule)
+  },
+  {
+    path: 'practice',
+    loadChildren: () => import('./components/practice/practice.module').then(m => m.PracticeModule)
   }
 ];
 
