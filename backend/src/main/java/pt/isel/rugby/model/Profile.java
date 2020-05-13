@@ -37,6 +37,9 @@ public class Profile implements Serializable {
     @Column
     private String photo;
 
+    @Column
+    private boolean isAthlete;
+
     @ManyToMany
     @JsonIgnore
     private List<Event> events;
