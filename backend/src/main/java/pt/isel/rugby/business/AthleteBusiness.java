@@ -24,7 +24,7 @@ public class AthleteBusiness {
 
     public Long postAthlete(Athlete athlete) {
         athlete.getProfile().setId(null);
-        profileRepository.save(athlete.getProfile());
+        athlete.setProfile(profileRepository.save(athlete.getProfile()));
         return athleteRepository.save(athlete).getId();
     }
 
