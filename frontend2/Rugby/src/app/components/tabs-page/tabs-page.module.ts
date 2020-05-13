@@ -10,8 +10,6 @@ import {StaffProfileModule} from '../staff-profile/staff-profile.module';
 import {AthleteModule} from '../athlete/athlete.module';
 import {AthleteProfileModule} from '../athlete-profile/athlete-profile.module';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

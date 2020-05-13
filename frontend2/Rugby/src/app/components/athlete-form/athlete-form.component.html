@@ -7,6 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- THIS ONE WORKS WELL
 <ion-content fullscreen>
   <form (ngSubmit)="processAthlete()" #loginForm="ngForm">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
@@ -14,9 +15,6 @@
         <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
         <input required type="text" id="name"
                [(ngModel)]="athlete.profile.name" name="name" #name="ngModel">
-        <!--<div [hidden]="name.valid" class="alert alert-danger">
-          Name is Required.
-        </div>-->
       </ion-item>
 
       <ion-item>
@@ -34,6 +32,76 @@
         <ion-label position="stacked"> Phone </ion-label>
         <input required type="tel"[(ngModel)]="athlete.profile.phone" name="phone"
         pattern="[0-9]{9,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Birth </ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="athlete.profile.birth" name="birth"></ion-datetime>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked"> Athlete Number </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.athleteNumber" name="number"
+               pattern="[0-9]{1,12}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Weight </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.weight" name="weight"
+               pattern="[0-9]{1,3}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Height </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.height" name="height"
+               pattern="[0-9]{1,3}">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Positions </ion-label>
+        <ion-select [(ngModel)]="athlete.positions" name="positions"
+                    multiple="true" cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let position of positions">
+            <ion-select-option value="{{position.name}}"> {{position.name}}</ion-select-option>
+          </tr>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
+-->
+<ion-content fullscreen>
+  <form (ngSubmit)="processAthlete()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
+        <input required type="text" id="name"
+               [(ngModel)]="athlete.profile.name" name="name" #name="ngModel">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Address </ion-label>
+        <input required type="text"[(ngModel)]="athlete.profile.address" name="address">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Email </ion-label>
+        <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. email@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email')">
+          Please enter a valid email address.
+        </mat-error>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Phone </ion-label>
+        <input required type="tel"[(ngModel)]="athlete.profile.phone" name="phone"
+               pattern="[0-9]{9,12}">
       </ion-item>
 
       <ion-item>

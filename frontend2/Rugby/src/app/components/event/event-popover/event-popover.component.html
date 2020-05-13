@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-title>Attendances</ion-title>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let profile of this.navParams.get('profiles')">
+      <ng-template [ngIf]="profile.athlete" [ngIfElse]="staff">
+        <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/{{profile.id}}">
+          <ion-label>
+            <h3>{{profile.name}}</h3>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+      <ng-template #staff>
+        <ion-item detail="false" (click)="close()" routerLink="/app/staff/staff-profile/{{profile.id}}">
+          <ion-label>
+            <h3>{{profile.name}}</h3>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

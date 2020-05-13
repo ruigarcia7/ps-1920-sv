@@ -9,6 +9,8 @@ import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.PracticeBusiness;
 import pt.isel.rugby.model.Practice;
 
+
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
 @RequestMapping("/practice")
 public class PracticeController {
@@ -17,7 +19,7 @@ public class PracticeController {
     @Autowired
     PracticeBusiness practiceBusiness;
 
-    @GetMapping("/findAll")
+    @GetMapping("/all")
     public Iterable<Practice> findAllPractices(){
         logger.info("On method GET practice/all");
         return practiceBusiness.findAllPractices();

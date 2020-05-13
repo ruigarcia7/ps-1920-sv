@@ -9,7 +9,8 @@ export class Profile {
     public mail?: string,
     public phone?: string,
     public photo?: string,
-    public events?: Event[]
+    public events?: Event[],
+    public isAthlete?: boolean
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';
@@ -19,5 +20,6 @@ export class Profile {
     this.phone = phone ? phone : '';
     this.photo = photo ? photo : '';
     this.events = events ? events : [];
+    this.isAthlete =  isAthlete ? isAthlete : false;
   }
 }

@@ -6,7 +6,7 @@ export class Practice {
     private date?: Date,
     private local?: string,
     private comment?: string,
-    private athletes?: Athlete[]
+    public athletes?: Athlete[]
   ) {
     this.id = id ? id : 0;
     this.comment = comment ? comment : '';

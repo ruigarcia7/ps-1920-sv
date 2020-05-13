@@ -43,6 +43,7 @@ export class AppComponent {
       icon: 'barbell'
     }
   ];
+  dark = false;
 
   constructor(
     private menu: MenuController,
