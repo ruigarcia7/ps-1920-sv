@@ -32,4 +32,9 @@ public class EventBusiness {
         eventRepository.findById(event.getId()).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", event.getId()));
         eventRepository.delete(event);
     }
+
+    public void deleteEventById(Long id) {
+        eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", id));
+        eventRepository.deleteById(id);
+    }
 }

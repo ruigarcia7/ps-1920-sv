@@ -48,4 +48,12 @@ public class GameController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteGameById(@PathVariable Long id){
+        logger.info("On method DELETE athlete/delete/{id} with id "+ id);;
+        gameBusiness.deleteGameById(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }

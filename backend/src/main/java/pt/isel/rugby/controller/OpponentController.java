@@ -47,4 +47,11 @@ public class OpponentController {
         opponentBusiness.deleteOpponent(opponent);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteOpponentById(@PathVariable Long id){
+        logger.info("On method DELETE opponent/delete/{id} with id "+ id);
+        opponentBusiness.deleteOpponentByib(id);
+        return ResponseEntity.ok().build();
+    }
 }

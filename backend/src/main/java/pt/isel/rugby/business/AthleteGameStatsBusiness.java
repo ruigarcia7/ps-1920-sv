@@ -56,4 +56,10 @@ public class AthleteGameStatsBusiness {
     public AthleteGameStats findAthleteGameStatsById(Long id) {
         return athleteGameStatsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("AthleteGameStats", "Id", id));
     }
+
+    public void deleteAthleteGameStatsById(Long id) {
+        AthleteGameStats athleteGameStats = athleteGameStatsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("AthleteGameStats", "Id", id));
+        statsRepository.delete(athleteGameStats.getStats());
+        athleteGameStatsRepository.deleteById(id);
+    }
 }

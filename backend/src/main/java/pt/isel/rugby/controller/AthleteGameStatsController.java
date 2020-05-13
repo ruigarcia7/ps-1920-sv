@@ -50,4 +50,10 @@ public class AthleteGameStatsController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAthleteGameStatsById(@PathVariable Long id){
+        logger.info("On method DELETE athleteGameStats/delete/{id} with id "+ id);
+        athleteGameStatsBusiness.deleteAthleteGameStatsById(id);
+        return ResponseEntity.ok().build();
+    }
 }

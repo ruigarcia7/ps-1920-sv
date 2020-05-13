@@ -33,6 +33,7 @@ public class AthleteBusiness {
     }
 
     public Long updateAthlete(Athlete athlete) {
+        profileRepository.findById(athlete.getProfile().getId()).orElseThrow(() -> new ResourceNotFoundException("Profile", "Id", athlete.getId()));
         athleteRepository.findById(athlete.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", athlete.getId()));
         athleteRepository.save(athlete);
         profileRepository.save(athlete.getProfile());
@@ -41,7 +42,9 @@ public class AthleteBusiness {
     }
 
     public void deleteAthlete(Athlete athlete) {
+        profileRepository.findById(athlete.getProfile().getId()).orElseThrow(() -> new ResourceNotFoundException("Profile", "Id", athlete.getId()));
         athleteRepository.findById(athlete.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", athlete.getId()));
+        profileRepository.delete(athlete.getProfile());
         athleteRepository.delete(athlete);
     }
 

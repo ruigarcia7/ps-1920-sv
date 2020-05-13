@@ -33,4 +33,9 @@ public class PracticeBusiness {
         practiceRepository.findById(practice.getId()).orElseThrow(() -> new ResourceNotFoundException("Practice", "Id", practice.getId()));
         practiceRepository.delete(practice);
     }
+
+    public void deletePracticeById(Long id) {
+        practiceRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Practice", "Id", id));
+        practiceRepository.deleteById(id);
+    }
 }

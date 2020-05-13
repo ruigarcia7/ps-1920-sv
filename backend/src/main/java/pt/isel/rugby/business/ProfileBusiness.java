@@ -32,4 +32,9 @@ public class ProfileBusiness {
         profileRepository.findById(profile.getId()).orElseThrow(()-> new ResourceNotFoundException("Profile", "Id", profile.getId()));
         profileRepository.delete(profile);
     }
+
+    public void deleteProfileByid(Long id) {
+        profileRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Profile", "Id", id));
+        profileRepository.deleteById(id);
+    }
 }

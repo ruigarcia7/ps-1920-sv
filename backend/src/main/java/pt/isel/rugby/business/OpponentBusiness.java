@@ -32,4 +32,9 @@ public class OpponentBusiness {
         opponentRepository.findById(opponent.getId()).orElseThrow(()-> new ResourceNotFoundException("Opponent", "Id", opponent.getId()));
         opponentRepository.delete(opponent);
     }
+
+    public void deleteOpponentByib(Long id) {
+        opponentRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Opponent", "Id", id));
+        opponentRepository.deleteById(id);
+    }
 }

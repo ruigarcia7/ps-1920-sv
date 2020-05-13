@@ -45,8 +45,16 @@ public class EventController {
 
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteStats(@RequestBody Event event){
-        logger.info("On method GET event/all");
+        logger.info("On method DELETE event/delete");
         eventBusiness.deleteEvent(event);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteStatsById(@PathVariable Long id){
+        logger.info("On method DELETE event/delete/{id} with id "+ id);
+        eventBusiness.deleteEventById(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
