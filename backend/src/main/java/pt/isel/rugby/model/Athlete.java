@@ -34,7 +34,7 @@ public class Athlete implements Serializable{
 
     @ManyToMany
     @JsonIgnore
-    private List<Practice> practices;
+    private List<AthletePractice> athletePractices;
 
     @ManyToMany
     @JsonIgnore

@@ -3,6 +3,7 @@ package pt.isel.rugby.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
+import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.model.Staff;
 import pt.isel.rugby.repository.ProfileRepository;
 import pt.isel.rugby.repository.StaffRepository;
@@ -21,8 +22,10 @@ public class StaffBusiness {
     }
 
     public Long postStaff(Staff staff){
-        staff.getProfile().setId(null);
-        staff.setProfile(profileRepository.save(staff.getProfile()));
+        Profile profile = staff.getProfile();
+        profile.setId(null);
+        profile = profileRepository.save(profile);
+        staff.setId(profile.getId());
         return staffRepository.save(staff).getId();
     }
 
