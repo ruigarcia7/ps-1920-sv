@@ -22,10 +22,9 @@ public class AthletePractice implements Serializable {
     @Column
     private Boolean regular;
 
-    @Column
     @ManyToOne
     private Practice practice;
 
-    @ManyToMany(mappedBy = "athletePractices")
-    private List<Athlete> athletes;
+    @ManyToOne
+    private Athlete athlete;
 }
