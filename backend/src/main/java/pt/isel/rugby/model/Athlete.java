@@ -32,9 +32,9 @@ public class Athlete implements Serializable{
     @JoinColumn(name = "profileId", referencedColumnName = "id")
     private Profile profile;
 
-    @ManyToMany
-    @JsonIgnore
-    private List<Practice> practices;
+    @OneToMany(mappedBy = "athlete")
+    @JsonIgnore()
+    private List<AthletePractice> athletePractices;
 
     @ManyToMany
     @JsonIgnore

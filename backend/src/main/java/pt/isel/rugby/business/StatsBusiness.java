@@ -28,7 +28,7 @@ public class StatsBusiness {
 
     }
 
-    public void deleteAthlete(Stats stats) {
+    public void deleteStats(Stats stats) {
         statsRepository.findById(stats.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", stats.getId()));
         statsRepository.delete(stats);
     }

@@ -49,4 +49,11 @@ public class PracticeController {
         practiceBusiness.deletePractice(practice);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deletePracticeById(@PathVariable Long id){
+        logger.info("On method DELETE practice/delete/{id} with id "+ id);
+        practiceBusiness.deletePracticeById(id);
+        return ResponseEntity.ok().build();
+    }
 }

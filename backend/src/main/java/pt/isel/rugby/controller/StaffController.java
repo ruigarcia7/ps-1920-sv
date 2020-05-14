@@ -42,11 +42,18 @@ public class StaffController {
         return staffBusiness.postStaff(staff);
     }
 
-    // TODO: verify how to delete elements
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteAthlete(@RequestBody Staff staff) {
         logger.info("On method DELETE staff/delete");
         staffBusiness.deleteStaff(staff);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAthleteById(@RequestParam Long id) {
+        logger.info("On method DELETE staff/delete/{id} with id: "+id );
+        staffBusiness.deleteStaffById(id);
         return ResponseEntity.ok().build();
     }
 }

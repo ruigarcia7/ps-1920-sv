@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
 import pt.isel.rugby.model.Athlete;
+import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
 
@@ -23,8 +24,11 @@ public class AthleteBusiness {
 
 
     public Long postAthlete(Athlete athlete) {
-        athlete.getProfile().setId(null);
-        athlete.setProfile(profileRepository.save(athlete.getProfile()));
+        Profile profile = athlete.getProfile();
+        profile.setId(null);
+        profile = profileRepository.save(profile);
+        athlete.setProfile(profile);
+        athlete.getProfile().setId(profile.getId());
         return athleteRepository.save(athlete).getId();
     }
 
@@ -33,6 +37,7 @@ public class AthleteBusiness {
     }
 
     public Long updateAthlete(Athlete athlete) {
+        profileRepository.findById(athlete.getProfile().getId()).orElseThrow(() -> new ResourceNotFoundException("Profile", "Id", athlete.getId()));
         athleteRepository.findById(athlete.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", athlete.getId()));
         athleteRepository.save(athlete);
         profileRepository.save(athlete.getProfile());
@@ -41,7 +46,9 @@ public class AthleteBusiness {
     }
 
     public void deleteAthlete(Athlete athlete) {
+        profileRepository.findById(athlete.getProfile().getId()).orElseThrow(() -> new ResourceNotFoundException("Profile", "Id", athlete.getId()));
         athleteRepository.findById(athlete.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", athlete.getId()));
+        profileRepository.delete(athlete.getProfile());
         athleteRepository.delete(athlete);
     }
 

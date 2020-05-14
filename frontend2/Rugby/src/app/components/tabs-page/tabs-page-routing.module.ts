@@ -36,6 +36,10 @@ const routes: Routes = [
           {
             path: 'post',
             loadChildren: () => import('../athlete-form/athlete-form.module').then(m => m.AthleteFormModule)
+          },
+          {
+            path: 'update/:id',
+            loadChildren: () => import('../athlete-form/athlete-form.module').then(m => m.AthleteFormModule)
           }
         ]
       },

@@ -50,4 +50,12 @@ public class GameBusiness {
         athleteGameStatsRepository.deleteAll(ags);
         gameRepository.delete(game);
     }
+
+    public void deleteGameById(Long id) {
+        Game game = gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", id));
+        List<AthleteGameStats> ags = game.getAthleteGameStats();
+        ags.forEach(item -> statsRepository.delete(item.getStats()));
+        athleteGameStatsRepository.deleteAll(ags);
+        gameRepository.delete(game);
+    }
 }

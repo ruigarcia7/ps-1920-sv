@@ -43,7 +43,13 @@ public class ProfileController {
 
     @DeleteMapping("/delete")
     public void deleteAthlete(@RequestBody Profile profile){
-        System.out.println("deleteAthlete()");
+        logger.info("On method DELETE profile/delete");
         profileBusiness.deleteProfile(profile);
+    }
+
+    @DeleteMapping("/delete/id")
+    public void deleteAthlete(@PathVariable Long id){
+        logger.info("On method DELETE profile/delete/{id} with id "+ id);
+        profileBusiness.deleteProfileByid(id);
     }
 }

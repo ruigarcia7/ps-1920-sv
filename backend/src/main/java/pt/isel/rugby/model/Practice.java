@@ -27,6 +27,6 @@ public class Practice implements Serializable {
     @Column
     private String comment;
 
-    @ManyToMany(mappedBy = "practices")
-    private List<Athlete> athletes;
+    @OneToMany(mappedBy = "practice")
+    private List<AthletePractice> athletePractices;
 }
