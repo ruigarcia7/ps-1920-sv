@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Storage } from '@ionic/storage';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +45,7 @@ export class AppComponent {
     }
   ];
   dark = false;
+  theme = new BehaviorSubject('light-theme');
 
   constructor(
     private menu: MenuController,
@@ -68,6 +70,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  angularSwitchDark() {
+    debugger;
+    this.theme.next('dark-theme');
   }
 }
 

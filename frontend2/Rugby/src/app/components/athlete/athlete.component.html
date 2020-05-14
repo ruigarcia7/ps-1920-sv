@@ -6,6 +6,9 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="information"></ion-icon>
+      </ion-button>
       <ion-button routerLink="/app/athlete/post">
         <ion-icon name="add"></ion-icon>
       </ion-button>
@@ -39,7 +42,7 @@
             </ion-item>
           </ion-card-header>
 
-              <ion-item detail="false" routerLink="/app/athlete/athlete-profile/{{athlete.id}}">
+              <ion-item detail="false"><!--routerLink="/app/athlete/athlete-profile/{{athlete.id}}"-->
                 <ion-label>
                   <h3>Perfil {{athlete.profile.name}}</h3>
                   <ion-button slot="end" routerLink="/app/athlete/update">

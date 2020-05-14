@@ -3,10 +3,10 @@ import {Profile} from './profile';
 export class Event {
   constructor(
     private id?: number,
-    private name?: string,
-    private description?: string,
-    private date?: Date,
-    private local?: string,
+    public name?: string,
+    public description?: string,
+    public date?: Date,
+    public local?: string,
     public profiles?: Profile[]
   ) {
     this.id = id ? id : 0;

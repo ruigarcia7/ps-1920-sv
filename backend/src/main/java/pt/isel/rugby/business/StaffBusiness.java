@@ -18,7 +18,6 @@ public class StaffBusiness {
 
     public Long postStaff(Staff staff){
         staff.getProfile().setId(null);
-        staff
         return staffRepository.save(staff).getId();
     }
 

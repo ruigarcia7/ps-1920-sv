@@ -1,0 +1,43 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/practice"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Practice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processPractice()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked"> Date <ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="practice.date" name="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Local <ion-text color="danger">*</ion-text></ion-label>
+        <input required type="text" [(ngModel)]="practice.local" name="local">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Comment </ion-label>
+        <input type="text"[(ngModel)]="practice.comment" name="comment">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Attendances </ion-label>
+        <ion-select [(ngModel)]="practice.athletes" name="athletes"
+                    multiple="true" cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let athlete of athletes">
+            <ion-select-option [value]="athlete"> {{athlete.profile.name}}</ion-select-option>
+          </tr>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

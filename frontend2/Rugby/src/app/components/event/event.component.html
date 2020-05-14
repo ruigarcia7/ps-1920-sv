@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/app/calendar"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button routerLink="/app/events/post">
+      <ion-button routerLink="/app/event/post">
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -51,17 +51,4 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-<!--<button mat-icon-button [matMenuTriggerFor]="menu" arial-label="icon-button menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
-  <tr *ngFor="let profile of events.pop().profiles">
-    <button mat-menu-item defaultHref="/app/athlete-profile/{{profile.id}}">
-      <mat-icon>people</mat-icon>
-      <span> profile.name</span>
-    </button>
-  </tr>
-</mat-menu>-->
 </table>

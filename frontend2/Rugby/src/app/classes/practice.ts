@@ -3,9 +3,9 @@ import {Athlete} from './athlete';
 export class Practice {
   constructor(
     private id?: number,
-    private date?: Date,
-    private local?: string,
-    private comment?: string,
+    public date?: Date,
+    public local?: string,
+    public comment?: string,
     public athletes?: Athlete[]
   ) {
     this.id = id ? id : 0;

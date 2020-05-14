@@ -8,6 +8,7 @@ import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.ProfileBusiness;
 import pt.isel.rugby.model.Profile;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/profile")
 public class ProfileController {

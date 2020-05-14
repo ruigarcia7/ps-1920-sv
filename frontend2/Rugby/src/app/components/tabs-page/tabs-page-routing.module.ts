@@ -62,6 +62,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../event/event.module').then(m => m.EventModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../event-form/event-form.module').then(m => m.EventFormModule)
           }
         ]
       },
@@ -71,6 +75,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../practice/practice.module').then(m => m.PracticeModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../practice-form/practice-form.module').then(m => m.PracticeFormModule)
           }
         ]
       },
