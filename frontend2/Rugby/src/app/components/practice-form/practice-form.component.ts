@@ -5,8 +5,9 @@ import { AthleteService } from '../../httpservices/athlete/athlete.service';
 import { PracticeService } from '../../httpservices/practice/practice.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {ModalController} from "@ionic/angular";
-import {EventPopoverComponent} from "../event/event-popover/event-popover.component";
+import {ModalController} from '@ionic/angular';
+import {EventPopoverComponent} from '../event/event-popover/event-popover.component';
+import {PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
 
 @Component({
   selector: 'app-practice-form',
@@ -17,7 +18,7 @@ export class PracticeFormComponent implements OnInit {
   practice: Practice;
   athletes: Athlete[];
   constructor(private athleteService: AthleteService, private practiceService: PracticeService
-            ,modalController: ModalController) { }
+            , private modalController: ModalController) { }
 
   ngOnInit() {
     this.practice = new Practice();
@@ -36,13 +37,12 @@ export class PracticeFormComponent implements OnInit {
     this.practiceService.postPractice(this.practice).subscribe( (res) => { console.log(res); });
   }
 
-  /*async onOk(){
-    const popover = await this.popoverController.create({
-      component: EventPopoverComponent,
-      componentProps: { profiles },
-      event: ev
+  async onOk() {
+    const modal = await this.modalController.create({
+      component: PracticeFormModalComponent,
+      componentProps: { athletes : this.practice.athletes }
     });
-    debugger;
-    return await popover.present();
-  }*/
+    const data = await modal.onWillDismiss();
+    return await modal.present();
+  }
 }

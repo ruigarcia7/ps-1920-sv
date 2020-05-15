@@ -4,7 +4,7 @@ import {Athlete} from '../athlete';
 export class AthletePractice {
   constructor(
     private id?: number,
-    private athlete?: Athlete,
+    public athlete?: Athlete,
     private practice?: Practice,
     private physio?: boolean,
     private regular?: boolean
