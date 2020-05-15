@@ -19,7 +19,8 @@ import {AthleteProfileModule} from '../athlete-profile/athlete-profile.module';
     StaffProfileModule,
     AthleteModule,
     AthleteProfileModule,
-    TabsPageRoutingModule
+    TabsPageRoutingModule,
+
   ],
   declarations: [
     TabsPage,

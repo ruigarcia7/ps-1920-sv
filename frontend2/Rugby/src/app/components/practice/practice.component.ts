@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { PopoverController } from '@ionic/angular';
 import { PracticePopoverComponent } from './practice-popover/practice-popover.component';
+import {AthletePractice} from '../../classes/associations/AthletePractice';
 
 @Component({
   selector: 'app-practice',
@@ -31,13 +32,14 @@ export class PracticeComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.practices);
         this.dataSource.sort = this.sort;
         console.log('practices found ' + practices);
+        debugger;
       });
   }
 
-  async createPopover(athletes: Athlete[], ev) {
+  async createPopover(athletePractices: AthletePractice[], ev) {
     const popover = await this.popoverController.create({
       component: PracticePopoverComponent,
-      componentProps: { athletes },
+      componentProps: { athletePractices },
       event: ev
     });
     debugger;

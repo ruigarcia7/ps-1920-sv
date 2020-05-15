@@ -4,10 +4,19 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let athlete of this.navParams.get('athletes')">
-      <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/{{athlete.id}}">
+    <ion-item *ngFor="let athletePractice of this.navParams.get('athletePractices')">
+      <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/
+{{athletePractice.athlete.id}}">
         <ion-label>
-          <h3>{{athlete.profile.name}}</h3>
+          <ng-template [ngIf]="athletePractice.regular">
+            <h3 style="color:green;">{{athletePractice.athlete.profile.name}}</h3>
+          </ng-template>
+          <ng-template [ngIf]="athletePractice.physio">
+            <h3 style="color:orangered;">{{athletePractice.athlete.profile.name}}</h3>
+          </ng-template>
+          <ng-template [ngIf]="!athletePractice.regular && !athletePractice.physio">
+            <h3 style="color:red;">{{athletePractice.athlete.profile.name}}</h3>
+          </ng-template>
         </ion-label>
       </ion-item>
     </ion-item>

@@ -30,6 +30,32 @@ const routes: Routes = [
   {
     path: 'practice',
     loadChildren: () => import('./components/practice/practice.module').then(m => m.PracticeModule)
+  },
+  {
+    path: 'game',
+    loadChildren: () => import('./components/game/game.module').then(m => m.GameModule)
+  },
+  {
+    path: 'tournament',
+    loadChildren: () => import('./components/tournament/tournament.module')
+      .then(m => m.TournamentModule)
+  },
+  {
+    path: 'training-schedule',
+    loadChildren: () => import('./components/trainingschedule/trainingschedule.module')
+      .then(m => m.TrainingScheduleModule)
+  },
+  {
+    path: 'stats',
+    loadChildren: () => import('./components/stats/stats.module').then(m => m.StatsModule)
+  },
+  {
+    path: 'injury',
+    loadChildren: () => import('./components/injuries/injuries.module').then(m => m.InjuriesModule)
+  },
+  {
+    path: 'opponent',
+    loadChildren: () => import('./components/opponent/opponent.module').then(m => m.OpponentModule)
   }
 ];
 

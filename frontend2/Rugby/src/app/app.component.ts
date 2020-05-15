@@ -19,7 +19,7 @@ import {BehaviorSubject} from 'rxjs';
 export class AppComponent {
   appPages = [
     {
-      title: 'Calendar',
+      title: '[PH]Calendar',
       url: '/app/calendar',
       icon: 'calendar'
     },
@@ -42,6 +42,31 @@ export class AppComponent {
       title: 'Practices',
       url: '/app/practice',
       icon: 'barbell'
+    },
+    {
+      title: '[PH]Game',
+      url: '/app/game',
+      icon: 'baseball'
+    },
+    {
+      title: '[PH]Tournaments',
+      url: '/app/tournament',
+      icon: 'earth'
+    },
+    {
+      title: '[PH]Training Schedules',
+      url: '/app/training-schedule',
+      icon: 'fitness'
+    },
+    {
+      title: '[PH]Stats',
+      url: '/app/stats',
+      icon: 'newspaper'
+    },
+    {
+      title: '[PH]Injuries',
+      url: '/app/injury',
+      icon: 'bandage'
     }
   ];
   dark = false;

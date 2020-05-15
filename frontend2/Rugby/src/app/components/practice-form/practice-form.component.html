@@ -28,7 +28,7 @@
       <ion-item>
         <ion-label position="stacked"> Attendances </ion-label>
         <ion-select [(ngModel)]="practice.athletes" name="athletes"
-                    multiple="true" cancelText="Cancel" okText="Confirm">
+                    multiple="true" cancelText="Cancel" okText="Confirm"> <!--(ok)="onOk()"-->
           <tr *ngFor="let athlete of athletes">
             <ion-select-option [value]="athlete"> {{athlete.profile.name}}</ion-select-option>
           </tr>

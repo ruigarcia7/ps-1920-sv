@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 
@@ -23,6 +24,7 @@ public class AthletePractice implements Serializable {
     private Boolean regular;
 
     @ManyToOne
+    @JsonIgnore
     private Practice practice;
 
     @ManyToOne

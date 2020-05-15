@@ -87,6 +87,62 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'game',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../game/game.module').then(m => m.GameModule)
+          }
+          ]
+      },
+      {
+        path: 'tournament',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../tournament/tournament.module')
+              .then(m => m.TournamentModule)
+          }
+        ]
+      },
+      {
+        path: 'training-schedule',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../trainingschedule/trainingschedule.module')
+              .then(m => m.TrainingScheduleModule)
+          }
+          ]
+      },
+      {
+        path: 'stats',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../stats/stats.module').then(m => m.StatsModule)
+          }
+          ]
+      },
+      {
+        path: 'injury',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../injuries/injuries.module').then(m => m.InjuriesModule)
+          }
+          ]
+      },
+      {
+        path: 'opponent',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../opponent/opponent.module').then(m => m.OpponentModule)
+          }
+          ]
+      },
+      {
         path: '',
         redirectTo: '/calendar',
         pathMatch: 'full'

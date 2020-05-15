@@ -7,7 +7,8 @@ INSERT INTO `profile`(
     `birth`,
     `mail`,
     `phone`,
-    `photo`
+    `photo`,
+	`is_athlete`
 )
 VALUES(
     '1000',
@@ -16,7 +17,8 @@ VALUES(
     '1990-12-16',
     'sebastian.fors@banned.com',
     '78998765412',
-    NULL
+    NULL,
+	0
 ),(
     '2000',
     'Byron Bernstein',
@@ -24,7 +26,8 @@ VALUES(
     '1989-5-8',
     '<-- NO MAIL -->',
     '8798794565',
-    NULL
+    NULL,
+	1
 ),(
     '3000',
     'Octavian Morosan',
@@ -32,7 +35,8 @@ VALUES(
     '1987-6-30',
     NULL,
     '8528525844215',
-    NULL
+    NULL,
+	1
 ),(
     '4000',
     'Jeffrey Shih',
@@ -40,7 +44,8 @@ VALUES(
     '1987-06-28',
     'val@mail.com',
     '123123123',
-    NULL
+    NULL,
+	1
 ),(
     '5000',
     'Chance Morris',
@@ -48,7 +53,8 @@ VALUES(
     '1994-2-15',
     'ChanceMorris@gmail.com',
     '14489516468479662',
-    NULL
+    NULL,
+	1
 ),(
     '6000',
     'Tyler Steinkamp',
@@ -56,7 +62,8 @@ VALUES(
     '1995-3-7',
     '1t@hotmail.com',
     '123124',
-    NULL
+    NULL,
+	1
 ),(
     '7000',
     'Michael Grzesiek',
@@ -64,7 +71,8 @@ VALUES(
     '1994-6-2',
     'smoke@mail.com',
     '123445213',
-    NULL
+    NULL,
+	1
 ),(
     '8000',
     'Michael Santana',
@@ -72,7 +80,8 @@ VALUES(
     '1990-1-1',
     'some@mail.com',
     '21232352',
-    NULL
+    NULL,
+	1
 ),(
     '9000',
     'Yanni Azamoum',
@@ -80,7 +89,8 @@ VALUES(
     '1995-3-30',
     'll@mail.com',
     '1234234523',
-    NULL
+    NULL,
+	0
 ),(
     '10000',
     'Kitboga',
@@ -88,7 +98,8 @@ VALUES(
     '1990-1-1',
     'legitmail@mail.com',
     '1324324235',
-    NULL
+    NULL,
+	true
 );
 INSERT INTO `opponent`(`id`, `name`, `photo`)
 VALUES('1000', 'Team1', NULL),('2000', 'SuperTeam', NULL),('3000', 'Galacticos', NULL),('4000', 'Team do Boss', NULL);
@@ -117,8 +128,8 @@ VALUES(
     '2020-05-13 19:30:00',
     'Track1'
 );
-INSERT INTO `athlete_practices`(`athletes_id`, `practices_id`)
-VALUES('4000', '1000'),('2000', '1000'),('3000', '1000'),('5000', '2000'),('2000', '2000'),('4000', '2000'),('5000', '2000');
+INSERT INTO `athlete_practice`(`athlete_id`, `practice_id`, `physio`, `regular`)
+VALUES('4000', '1000',1,0),('2000', '1000',0,0),('3000', '1000',0,1),('5000', '2000',0,1),('2000', '2000',1,0),('4000', '2000'0,1),('5000', '2000'0,1);
 INSERT INTO `training_schedule`(`id`, `date`, `description`, `link`)
 VALUES('1000', '2020-05-26', 'Gym 1', NULL),(
     '2000',
