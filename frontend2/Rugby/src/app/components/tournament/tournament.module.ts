@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TournamentComponent } from './tournament.component';
 import { TournamentRoutingModule } from './tournament-routing.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -11,7 +13,9 @@ import { TournamentRoutingModule } from './tournament-routing.module';
     FormsModule,
     IonicModule,
     TournamentRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatSortModule
   ],
   declarations: [
     TournamentComponent,

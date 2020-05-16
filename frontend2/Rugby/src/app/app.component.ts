@@ -44,17 +44,17 @@ export class AppComponent {
       icon: 'barbell'
     },
     {
-      title: '[PH]Game',
+      title: 'Game',
       url: '/app/game',
       icon: 'baseball'
     },
     {
-      title: '[PH]Tournaments',
+      title: 'Tournaments',
       url: '/app/tournament',
       icon: 'earth'
     },
     {
-      title: '[PH]Training Schedules',
+      title: 'Training Schedules',
       url: '/app/training-schedule',
       icon: 'fitness'
     },
