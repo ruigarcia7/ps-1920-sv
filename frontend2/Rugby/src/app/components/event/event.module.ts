@@ -5,8 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { EventComponent } from './event.component';
 import { EventPopoverComponent} from './event-popover/event-popover.component';
 import { EventRoutingModule } from './event-routing.module';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [

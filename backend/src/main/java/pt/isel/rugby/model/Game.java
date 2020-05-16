@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -32,5 +33,6 @@ public class Game {
     private List<Athlete> athletes;
 
     @OneToMany(mappedBy = "game")
+    @JsonIgnore
     private List<AthleteGameStats> athleteGameStats;
 }

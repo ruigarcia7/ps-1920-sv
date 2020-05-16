@@ -10,6 +10,7 @@ import pt.isel.rugby.business.AthleteGameStatsBusiness;
 import pt.isel.rugby.model.AthleteGameStats;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/athletegamestats")
 public class AthleteGameStatsController {

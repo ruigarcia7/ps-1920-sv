@@ -8,7 +8,7 @@ import {Tournament} from '../../classes/tournament';
 })
 export class TournamentService {
 
-  private BASE_URL = 'http://localhost:8080/game';
+  private BASE_URL = 'http://localhost:8080/tournament';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

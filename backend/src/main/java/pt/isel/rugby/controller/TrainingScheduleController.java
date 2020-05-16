@@ -9,6 +9,7 @@ import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.TrainingScheduleBusiness;
 import pt.isel.rugby.model.TrainingSchedule;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
 @RequestMapping("/schedule")
 public class TrainingScheduleController {

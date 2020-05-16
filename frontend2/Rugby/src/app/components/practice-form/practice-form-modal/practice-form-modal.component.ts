@@ -12,12 +12,12 @@ export class PracticeFormModalComponent implements OnInit {
   athletes: Athlete[] = [];
 
   constructor(public navParams: NavParams, private modalController: ModalController) {
-    this.athletes = this.navParams.get('athletes').athlete;
-    // let cenas: Athlete[] = this.athletes.athlete;
-    debugger;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.athletes = this.navParams.get('practice');
+    debugger;
+  }
 
   dismiss() {
     this.modalController.dismiss({
