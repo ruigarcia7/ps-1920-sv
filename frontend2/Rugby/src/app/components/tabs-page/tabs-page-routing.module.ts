@@ -57,6 +57,10 @@ const routes: Routes = [
           {
             path: 'post',
             loadChildren: () => import('../staff-form/staff-form.module').then(m => m.StaffFormModule)
+          },
+          {
+            path: 'update/:id',
+            loadChildren: () => import('../staff-form/staff-form.module').then(m => m.StaffFormModule)
           }
         ]
       },

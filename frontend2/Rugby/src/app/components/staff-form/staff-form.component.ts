@@ -4,6 +4,7 @@ import { Profile } from '../../classes/profile';
 import { StaffType } from '../../classes/stafftype';
 import { StaffService } from '../../httpservices/staff/staff.service';
 import { EnumService } from '../../httpservices/enum/enum.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-staff-form',
@@ -14,13 +15,18 @@ export class StaffFormComponent implements OnInit {
   staff: Staff;
   profile: Profile;
   stafftype: StaffType[];
-  constructor(private staffService: StaffService, private enumService: EnumService) { }
+  constructor(private staffService: StaffService, private enumService: EnumService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
     this.staff = new Staff();
     this.profile = new Profile();
     this.staff.profile = this.profile;
+
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.staffService.getStaffById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.staff = item);
+    }
     this.getTypes();
   }
 

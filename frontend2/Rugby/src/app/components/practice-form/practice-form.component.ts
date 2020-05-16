@@ -38,11 +38,17 @@ export class PracticeFormComponent implements OnInit {
   }
 
   async onOk() {
+    debugger;
     const modal = await this.modalController.create({
       component: PracticeFormModalComponent,
       componentProps: { athletes : this.practice.athletes }
     });
-    const data = await modal.onWillDismiss();
+    //const data = await modal.onWillDismiss();
     return await modal.present();
+  }
+
+  change(event: CustomEvent) {
+    debugger;
+    console.log(event);
   }
 }

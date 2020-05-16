@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalController, NavParams} from '@ionic/angular';
 import {AthletePractice} from '../../../classes/associations/AthletePractice';
 import {Athlete} from '../../../classes/athlete';
+import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'app-practice-form-modal',
@@ -10,14 +11,17 @@ import {Athlete} from '../../../classes/athlete';
 })
 export class PracticeFormModalComponent implements OnInit {
   athletes: Athlete[] = [];
+  athletePractice: AthletePractice[] = [];
 
-  constructor(public navParams: NavParams, private modalController: ModalController) {
+  constructor(public navParams: NavParams, private modalController: ModalController) { }
+
+  ngOnInit() {
     this.athletes = this.navParams.get('athletes').athlete;
-    // let cenas: Athlete[] = this.athletes.athlete;
+    this.athletes.forEach(item => {
+      this.athletePractice.push(new AthletePractice(null, item));
+    })
     debugger;
   }
-
-  ngOnInit() {}
 
   dismiss() {
     this.modalController.dismiss({

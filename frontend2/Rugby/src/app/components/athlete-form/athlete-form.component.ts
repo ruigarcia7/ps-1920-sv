@@ -30,15 +30,12 @@ export class AthleteFormComponent implements OnInit {
   constructor(private athleteService: AthleteService, private enumService: EnumService,  private route: ActivatedRoute) { }
 
   ngOnInit() {
-    /*if(path == 0)
-      this.athlete = new;
-    else
-      this.athlete = fetch();
-*/
     this.athlete = new Athlete();
     this.profile = new Profile();
     this.getPositions();
     this.athlete.profile = this.profile;
+
+    // check if "update" or post to set current object
     if (this.route.snapshot.paramMap.get('id')) {
       this.athleteService.getAthleteById(this.route.snapshot.paramMap.get('id')).subscribe( item => this.athlete = item );
     }

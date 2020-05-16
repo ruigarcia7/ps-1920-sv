@@ -53,7 +53,9 @@ public class AthleteBusiness {
     }
 
     public void deleteAthleteById(Long id) {
-         Athlete athlete = athleteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", id));
+        Athlete athlete = athleteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", id));
+        profileRepository.findById(athlete.getId()).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", id));
         athleteRepository.delete(athlete);
+        profileRepository.deleteById(athlete.getId());
     }
 }

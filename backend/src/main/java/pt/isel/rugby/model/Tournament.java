@@ -3,6 +3,7 @@ package pt.isel.rugby.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tournament")
@@ -14,8 +15,14 @@ public class Tournament {
     private Long id;
 
     @Column
+    private String name;
+
+    @Column
     private String classification;
 
     @Column
     private String comment;
+
+    @OneToMany(mappedBy = "tournament")
+    List<Game> games;
 }

@@ -49,6 +49,7 @@ public class StaffBusiness {
         Staff staff = staffRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Staff", "Id", id));
         profileRepository.findById(staff.getProfile().getId()).orElseThrow(()-> new ResourceNotFoundException("Profile", "Id", staff.getId()));
         staffRepository.findById(staff.getId()).orElseThrow(()-> new ResourceNotFoundException("Staff", "Id", staff.getId()));
+        profileRepository.deleteById(staff.getId());
         staffRepository.delete(staff);
     }
 }

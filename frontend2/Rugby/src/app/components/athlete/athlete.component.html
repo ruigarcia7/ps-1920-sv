@@ -1,10 +1,8 @@
 <ion-header>
   <ion-toolbar>
-
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/calendar"></ion-back-button>
     </ion-buttons>
-
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon name="information"></ion-icon>
@@ -13,19 +11,15 @@
         <ion-icon name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
-
     <ion-title>Athletes</ion-title>
-
   </ion-toolbar>
 </ion-header>
-
 <ion-content fullscreen="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Athletes</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let athlete of athletes">
@@ -41,19 +35,16 @@
               </ion-label>
             </ion-item>
           </ion-card-header>
-
               <ion-item detail="false" >
                 <ion-label>
                   <h3>Perfil {{athlete.profile.name}}</h3>
-                  <ion-button slot="end" routerLink="/app/athlete/update/{{athlete.id}}">
+                  <ion-button slot="end" routerLink="/app/athlete/update//{{athlete.id}}">
                     <ion-icon name="chevron-up-circle-outline"> </ion-icon>Edit
                   </ion-button>
                   <ion-button slot="end" routerLink="/app/athlete/delete">
                     <ion-icon name="close-circle-outline"></ion-icon>Delete
                   </ion-button>
                 </ion-label>
-
-
               </ion-item>
         </ion-card>
       </ion-col>

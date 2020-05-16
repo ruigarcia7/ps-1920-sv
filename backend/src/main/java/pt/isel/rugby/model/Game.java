@@ -33,4 +33,7 @@ public class Game {
 
     @OneToMany(mappedBy = "game")
     private List<AthleteGameStats> athleteGameStats;
+
+    @ManyToOne
+    private Tournament tournament;
 }
