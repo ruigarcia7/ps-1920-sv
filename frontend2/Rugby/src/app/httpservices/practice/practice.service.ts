@@ -32,6 +32,7 @@ export class PracticeService {
 
   postPractice(practice: Practice): Observable<any> {
     const url = `${this.BASE_URL}/post`;
+    debugger;
     return this.http.post(url, practice, this.httpOptions);
   }
 

@@ -8,6 +8,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import {PracticeFormModalComponent} from './practice-form-modal/practice-form-mo
     MatGridListModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatCheckboxModule
   ],
   declarations: [
     PracticeFormComponent,

@@ -27,10 +27,10 @@
 
       <ion-item>
         <ion-label position="stacked"> Attendances </ion-label>
-        <ion-select (ionChange)="onOk()" [(ngModel)]="practice.athletePractices.athlete" name="athletes"
+        <ion-select (ionChange)="onOk()" [(ngModel)]="practice.athletePractices" name="athletes"
                     multiple="true" cancelText="Cancel" okText="Confirm">
-          <tr *ngFor="let athlete of athletes">
-            <ion-select-option [value]="athlete"> {{athlete.profile.name}}</ion-select-option>
+          <tr *ngFor="let athletePractice of practice.athletePractices">
+            <ion-select-option [value]="athletePractice"> {{athletePractice.athlete.profile.name}}</ion-select-option>
           </tr>
         </ion-select>
       </ion-item>
