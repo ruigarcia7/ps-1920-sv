@@ -51,7 +51,7 @@ public class StaffController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteAthleteById(@RequestParam Long id) {
+    public ResponseEntity<?> deleteAthleteById(@PathVariable Long id) {
         logger.info("On method DELETE staff/delete/{id} with id: "+id );
         staffBusiness.deleteStaffById(id);
         return ResponseEntity.ok().build();

@@ -17,8 +17,14 @@
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> Should we put names? </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let element"> A Date would be cool tbh </td>
+    </ng-container>
+
 
     <ng-container matColumnDef="classification">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Classification </th>
@@ -33,8 +39,20 @@
     <ng-container matColumnDef="games">
       <th mat-header-cell *matHeaderCellDef> Games </th>
       <td mat-cell *matCellDef="let element">
-        <ion-button (click)="createPopover(null,$event)">
+        <ion-button (click)="createPopover(element.games,$event)">
           <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <ion-button routerlink="/app/practice/update">
+          <ion-icon name="chevron-up-circle-outline"> </ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="close-circle-outline"></ion-icon>
         </ion-button>
       </td>
     </ng-container>

@@ -39,7 +39,9 @@ export class StaffService {
     const url = `${this.BASE_URL}/update`;
     return this.http.put(url, staff, this.httpOptions);
   }
+
   deleteStaff(id: number): Observable<any> {
+    debugger;
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }

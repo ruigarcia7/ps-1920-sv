@@ -37,5 +37,6 @@ public class Game {
     private List<AthleteGameStats> athleteGameStats;
 
     @ManyToOne
+    @JsonIgnore
     private Tournament tournament;
 }

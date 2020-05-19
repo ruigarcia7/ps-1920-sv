@@ -25,7 +25,7 @@ export class GameService {
     return this.http.get<Game[]>(url, this.httpOptions);
   }
 
-  getGameById(id: number): Observable<Game> {
+  getGameById(id: any): Observable<Game> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

@@ -7,7 +7,7 @@
     <ion-item *ngFor="let athlete of this.navParams.get('athletes')">
         <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/{{athlete.id}}">
           <ion-label>
-            <h3>{{athlete.name}}</h3>
+            <h3>{{athlete.profile.name}}</h3>
           </ion-label>
         </ion-item>
     </ion-item>

@@ -1,8 +1,8 @@
 export class Opponent {
   constructor(
     private id?: number,
-    private name?: string,
-    private photo?: string
+    public name?: string,
+    public photo?: string
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';

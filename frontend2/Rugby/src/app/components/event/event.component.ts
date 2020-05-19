@@ -15,7 +15,7 @@ import { EventPopoverComponent } from './event-popover/event-popover.component';
 
 export class EventComponent implements OnInit {
   events: Event[];
-  displayedColumns: string[] = ['name', 'description', 'date', 'local', 'profiles'];
+  displayedColumns: string[] = ['name', 'description', 'date', 'local', 'profiles', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 

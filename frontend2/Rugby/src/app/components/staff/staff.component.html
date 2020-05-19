@@ -44,7 +44,7 @@
               <ion-button slot="end" routerLink="/app/staff/update/{{staff.id}}">
                 <ion-icon name="chevron-up-circle-outline"></ion-icon>Edit
               </ion-button>
-              <ion-button slot="end" routerLink="/app/staff/delete">
+              <ion-button slot="end" (click)="presentAlert(staff)">
                 <ion-icon name="close-circle-outline"></ion-icon>Delete
               </ion-button>
             </ion-label>
@@ -54,17 +54,4 @@
     </ion-row>
   </ion-grid>
 
-  <!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="light">
-      <ion-icon md="caret-back" name="chevron-back-circle-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="start">
-      <ion-fab-button color="light" routerLink="/app/staff/post">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light" routerLink="/app/staff/delete">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>-->
 </ion-content>

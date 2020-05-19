@@ -18,12 +18,9 @@ export class PracticeFormModalComponent implements OnInit {
   ngOnInit() {
     this.athletes.forEach(item => {
       this.athletePractice.push(new AthletePractice(null, item));
-    })
+    });
   }
 
-    this.athletes = this.navParams.get('practice');
-    debugger;
-  }
   dismiss() {
     this.modalController.dismiss({
       dismissed: true

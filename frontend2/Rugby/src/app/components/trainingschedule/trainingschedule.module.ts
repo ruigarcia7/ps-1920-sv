@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import {TrainingschedulePopoverComponent} from './trainingschedule-popover/trainingschedule-popover.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   declarations: [
     TrainingScheduleComponent,
+    TrainingschedulePopoverComponent
   ]
 })
 

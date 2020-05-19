@@ -96,6 +96,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../game/game.module').then(m => m.GameModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../game-form/game-form.module').then(m => m.GameFormModule)
           }
           ]
       },
@@ -106,6 +110,11 @@ const routes: Routes = [
             path: '',
             loadChildren: () => import('../tournament/tournament.module')
               .then(m => m.TournamentModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../tournament-form/tournament-form.module')
+              .then(m => m.TournamentFormModule)
           }
         ]
       },
@@ -116,6 +125,11 @@ const routes: Routes = [
             path: '',
             loadChildren: () => import('../trainingschedule/trainingschedule.module')
               .then(m => m.TrainingScheduleModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../training-schedule-form/training-schedule-form.module')
+              .then(m => m.TrainingScheduleFormModule)
           }
           ]
       },
@@ -125,6 +139,11 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../stats/stats.module').then(m => m.StatsModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../stats-form/stats-form.module')
+              .then(m => m.StatsFormModule)
           }
           ]
       },
@@ -143,6 +162,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../opponent/opponent.module').then(m => m.OpponentModule)
+          },
+          {
+            path: 'post',
+            loadChildren: () => import('../opponent-form/opponent-form.module').then(m => m.OpponentFormModule)
           }
           ]
       },

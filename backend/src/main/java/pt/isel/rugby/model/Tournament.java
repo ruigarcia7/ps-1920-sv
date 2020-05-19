@@ -23,6 +23,7 @@ public class Tournament {
     @Column
     private String comment;
 
+    //TODO: hummm.
     @OneToMany(mappedBy = "tournament")
     List<Game> games;
 }

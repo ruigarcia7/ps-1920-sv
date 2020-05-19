@@ -16,7 +16,7 @@ import {AthletePractice} from '../../classes/associations/AthletePractice';
 
 export class PracticeComponent implements OnInit {
   practices: Practice[];
-  displayedColumns: string[] = ['date', 'local', 'comment', 'athletes'];
+  displayedColumns: string[] = ['date', 'local', 'comment', 'athletes', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   constructor(private practiceService: PracticeService, private popoverController: PopoverController) { }

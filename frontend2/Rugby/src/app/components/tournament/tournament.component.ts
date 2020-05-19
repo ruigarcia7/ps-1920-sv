@@ -1,11 +1,11 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Game } from '../../classes/game';
 import { Tournament } from '../../classes/tournament';
 import { TournamentService } from '../../httpservices/tournament/tournament.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { EventPopoverComponent } from '../event/event-popover/event-popover.component';
 import { PopoverController } from '@ionic/angular';
+import { TournamentPopoverComponent } from './tournament-popover/tournament-popover.component';
 
 @Component({
   selector: 'app-tournament',
@@ -14,7 +14,7 @@ import { PopoverController } from '@ionic/angular';
 })
 export class TournamentComponent implements OnInit {
   tournaments: Tournament[];
-  displayedColumns: string[] = ['name', 'classification', 'comment', 'games'];
+  displayedColumns: string[] = ['name', 'date', 'classification', 'comment', 'games', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
@@ -31,12 +31,13 @@ export class TournamentComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.tournaments);
         this.dataSource.sort = this.sort;
         console.log('tournaments found ' + tournaments);
+        debugger;
       });
   }
 
   async createPopover(games: Game[], ev) {
     const popover = await this.popoverController.create({
-      component: EventPopoverComponent,
+      component: TournamentPopoverComponent,
       componentProps: { games },
       event: ev
     });

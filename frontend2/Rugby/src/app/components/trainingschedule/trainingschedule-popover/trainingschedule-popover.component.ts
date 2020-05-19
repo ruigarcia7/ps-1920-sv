@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavParams, PopoverController} from '@ionic/angular';
 
 @Component({
   selector: 'app-trainingschedule-popover',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingschedulePopoverComponent implements OnInit {
 
-  constructor() { }
+  constructor(public navParams: NavParams, public popoverController: PopoverController) {
+    this.navParams.get('athletes');
+    debugger;
+  }
 
   ngOnInit() {}
+
+  close() {
+    debugger;
+    this.popoverController.dismiss().then(r => console.log(r));
+  }
 
 }

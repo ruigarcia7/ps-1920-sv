@@ -5,10 +5,10 @@ import {Athlete} from './athlete';
 export class Game {
   constructor(
     private id?: number,
-    private date?: Date,
-    private local?: string,
-    private comment?: string,
-    private opponent?: Opponent,
+    public date?: Date,
+    public local?: string,
+    public comment?: string,
+    public opponent?: Opponent,
     private athletes?: Athlete[],
     private athleteGameStats?: AthleteGameStats[]
   ) {

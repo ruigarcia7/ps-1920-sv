@@ -4,8 +4,8 @@ import { Athlete } from '../../classes/athlete';
 import { TrainingScheduleService } from '../../httpservices/trainingschedule/trainingscheduleservice.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { EventPopoverComponent } from '../event/event-popover/event-popover.component';
 import { PopoverController } from '@ionic/angular';
+import { TrainingschedulePopoverComponent } from './trainingschedule-popover/trainingschedule-popover.component';
 
 @Component({
   selector: 'app-trainingschedule',
@@ -14,7 +14,7 @@ import { PopoverController } from '@ionic/angular';
 })
 export class TrainingScheduleComponent implements OnInit {
   trainingSchedules: TrainingSchedule[];
-  displayedColumns: string[] = ['date', 'description', 'link', 'targets'];
+  displayedColumns: string[] = ['date', 'description', 'link', 'targets', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   constructor(private trainingService: TrainingScheduleService, private popoverController: PopoverController) {
@@ -36,7 +36,7 @@ export class TrainingScheduleComponent implements OnInit {
 
   async createPopover(athletes: Athlete[], ev) {
     const popover = await this.popoverController.create({
-      component: EventPopoverComponent,
+      component: TrainingschedulePopoverComponent,
       componentProps: {athletes},
       event: ev
     });

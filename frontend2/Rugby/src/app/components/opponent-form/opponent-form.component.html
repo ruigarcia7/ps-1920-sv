@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/game"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Opponent</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processOpponent()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+      <ion-item>
+        <ion-label position="stacked"> Name </ion-label>
+        <input required type="text"[(ngModel)]="opponent.name" name="name">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Photo </ion-label>
+        <input required type="text"[(ngModel)]="opponent.photo" name="name">
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+
+  </form>
+</ion-content>
+

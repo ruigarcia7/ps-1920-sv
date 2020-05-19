@@ -6,6 +6,7 @@ import { TournamentComponent } from './tournament.component';
 import { TournamentRoutingModule } from './tournament-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import {TournamentPopoverComponent} from './tournament-popover/tournament-popover.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   declarations: [
     TournamentComponent,
+    TournamentPopoverComponent
   ]
 })
 

@@ -1,0 +1,44 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/game"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Game</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processGame()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+      <ion-item>
+        <ion-label position="stacked"> Date </ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY HH mm" [(ngModel)]="game.date" name="date"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Local </ion-label>
+        <input required type="text"[(ngModel)]="game.local" name="local">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Comment </ion-label>
+        <input required type="text"[(ngModel)]="game.comment" name="comment">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Opponent </ion-label>
+        <ion-select [(ngModel)]="game.opponent" name="opponent"
+                    cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let opponent of opponents">
+            <ion-select-option value="{{opponent.name}}"> {{opponent.name}}</ion-select-option>
+          </tr>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
