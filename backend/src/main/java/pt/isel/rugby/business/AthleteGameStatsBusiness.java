@@ -62,4 +62,8 @@ public class AthleteGameStatsBusiness {
         statsRepository.delete(athleteGameStats.getStats());
         athleteGameStatsRepository.deleteById(id);
     }
+
+    public AthleteGameStats[] findAthleteGameStatsByGameId(Long id) {
+        return athleteGameStatsRepository.findAllByGameId(id);
+    }
 }
