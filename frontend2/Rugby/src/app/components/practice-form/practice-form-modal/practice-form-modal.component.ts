@@ -13,15 +13,16 @@ export class PracticeFormModalComponent implements OnInit {
   athletes: Athlete[] = [];
   athletePractice: AthletePractice[] = [];
 
+  displayedColumns: string[] = ['name', 'regular', 'physio'];
+
+
   constructor(public navParams: NavParams, private modalController: ModalController) { }
 
   ngOnInit() {
-    this.athletes.forEach(item => {
-      this.athletePractice.push(new AthletePractice(null, item));
-    });
+    this.athletePractice = this.navParams.get('practice').athletePractices;
+    debugger;
   }
-
-  dismiss() {
+dismiss() {
     this.modalController.dismiss({
       dismissed: true
     });

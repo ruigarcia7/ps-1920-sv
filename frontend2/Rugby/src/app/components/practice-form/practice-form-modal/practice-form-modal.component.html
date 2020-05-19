@@ -3,7 +3,42 @@
 </ion-header>
 
 <ion-content>
-  <ion-label *ngFor="let athlete of athletes" color="danger">
-    <h3 style="color:black"> {{athlete.profile.name}} </h3>
-  </ion-label>
+  <!--  <ion-label *ngFor="let ap of athletePractice" color="danger">
+      <h3 style="color:black"> {{ap.athlete.profile.name}} </h3>
+    </ion-label>
+
+        public physio?: boolean,
+      public regular?: boolean
+    -->
+
+
+    <table mat-table [dataSource]="this.athletePractice" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef > Name</th>
+        <td mat-cell *matCellDef="let item"> {{item.athlete.profile.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="athlete">
+        <th mat-header-cell *matHeaderCellDef > Name</th>
+        <td mat-cell *matCellDef="let item"> {{item.athlete.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="regular">
+        <th mat-header-cell *matHeaderCellDef> Regular</th>
+        <td mat-cell *matCellDef="let item">
+            <ion-checkbox [(ngModel)]="item.regular"></ion-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="physio">
+        <th mat-header-cell *matHeaderCellDef> Physio</th>
+        <td mat-cell *matCellDef="let item">
+            <ion-checkbox [(ngModel)]="item.physio"></ion-checkbox>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
 </ion-content>

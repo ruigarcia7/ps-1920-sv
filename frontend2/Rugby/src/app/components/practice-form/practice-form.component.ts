@@ -8,6 +8,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import {ModalController} from '@ionic/angular';
 import {EventPopoverComponent} from '../event/event-popover/event-popover.component';
 import {PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
+import {AthletePractice} from '../../classes/associations/AthletePractice';
 
 @Component({
   selector: 'app-practice-form',
@@ -28,7 +29,10 @@ export class PracticeFormComponent implements OnInit {
   getAthletes() {
     this.athleteService.getAthletes()
       .subscribe( athletes => {
+        debugger;
         this.athletes = athletes;
+        this.practice.athletePractices = [];
+        athletes.forEach(item => this.practice.athletePractices.push(new AthletePractice(null, item)));
       });
   }
 
@@ -45,10 +49,6 @@ export class PracticeFormComponent implements OnInit {
     });
     //const data = await modal.onWillDismiss();
     return await modal.present();
-  }
-
-  change(event: CustomEvent) {
     debugger;
-    console.log(event);
   }
 }
