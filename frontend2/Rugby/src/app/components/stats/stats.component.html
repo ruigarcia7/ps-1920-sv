@@ -15,28 +15,22 @@
 <ion-content fullscreen="true">
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="12" size-md="6" *ngFor="let stat of stats">
+      <ion-col size="12" size-md="6" *ngFor="let stat of athleteGameStats">
         <ion-card class="speaker-card">
           <ion-card-header>
-            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/athlete/athlete-profile//{{athlete.id}}">
+            <ion-item detail="false" lines="none" class="speaker-item" routerLink="/app/stats">
               <ion-avatar slot="start">
-                <img [src]="athlete.profile.photo" [alt]="athlete.profile.name + ' profile picture'">
+                <img [src]="stat.game.opponent.photo">
               </ion-avatar>
               <ion-label>
-                <h2>{{athlete.profile.name}}</h2>
-                <p>{{athlete.positions}}</p>
+                <h2>{{stat.game.comment}}</h2>
+                <p>{{stat.athlete.profile.name}}</p>
               </ion-label>
             </ion-item>
           </ion-card-header>
           <ion-item detail="false" >
-            <ion-label>
-              <h3>Perfil {{athlete.profile.name}}</h3>
-              <ion-button slot="end" routerLink="/app/athlete/update//{{athlete.id}}">
-                <ion-icon name="chevron-up-circle-outline"> </ion-icon>Edit
-              </ion-button>
-              <ion-button slot="end" routerLink="/app/athlete/delete">
-                <ion-icon name="close-circle-outline"></ion-icon>Delete
-              </ion-button>
+            <ion-label routerLink="/app/athlete">
+              <h3>Perfil {{stat.athlete.profile.name}}</h3>
             </ion-label>
           </ion-item>
         </ion-card>

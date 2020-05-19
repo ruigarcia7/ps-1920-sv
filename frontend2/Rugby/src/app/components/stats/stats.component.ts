@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Stats } from '../../classes/stats';
-import { StatsService } from '../../httpservices/stats/stats.service';
+import { AthleteGameStats } from '../../classes/associations/AthleteGameStats';
+import { HttpAthleteGameStatsService } from '../../httpservices/athletegamestats/athletegamestats.service';
 
 @Component({
   selector: 'app-stats',
@@ -8,17 +8,17 @@ import { StatsService } from '../../httpservices/stats/stats.service';
   styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent implements OnInit {
-  stats: Stats[];
+  athleteGameStats: AthleteGameStats[];
 
-  constructor(private statsService: StatsService) {
+  constructor(private athleteGameStatsService: HttpAthleteGameStatsService) {
   }
 
   ngOnInit() {this.showStats();}
 
   showStats() {
-    this.statsService.getStats()
+    this.athleteGameStatsService.getAthleteGameStats()
       .subscribe(stats => {
-        this.stats = stats;
+        this.athleteGameStats = stats;
         console.log('athletes found ' + stats);
       });
   }

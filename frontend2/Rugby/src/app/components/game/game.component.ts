@@ -14,7 +14,7 @@ import {PopoverController} from '@ionic/angular';
 })
 export class GameComponent implements OnInit {
   games: Game[];
-  displayedColumns: string[] = ['date', 'local', 'opponent', 'comment', 'athletes', 'actions'];
+  displayedColumns: string[] = ['name', 'date', 'local', 'opponent', 'comment', 'athletes', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 

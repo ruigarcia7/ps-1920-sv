@@ -4,10 +4,10 @@ import {Athlete} from '../athlete';
 
 export class AthleteGameStats {
   constructor(
-    private id?: number,
-    private athlete?: Athlete,
-    private stats?: Stats,
-    private game?: Game
+    public id?: number,
+    public athlete?: Athlete,
+    public stats?: Stats,
+    public game?: Game
   ) {
     this.id = id ? id : 0;
     this.athlete = athlete ? athlete : new Athlete();

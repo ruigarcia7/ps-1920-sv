@@ -1,5 +1,6 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,5 +21,6 @@ public class AthleteGameStats {
     private Stats stats;
 
     @ManyToOne
+    @JsonIgnore
     private Game game;
 }

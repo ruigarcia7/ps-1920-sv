@@ -33,7 +33,6 @@ public class Game {
     private List<Athlete> athletes;
 
     @OneToMany(mappedBy = "game")
-    @JsonIgnore
     private List<AthleteGameStats> athleteGameStats;
 
     @ManyToOne

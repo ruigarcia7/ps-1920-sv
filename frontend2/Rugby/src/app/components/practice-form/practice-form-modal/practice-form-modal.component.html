@@ -2,16 +2,7 @@
   <ion-title>Attendances</ion-title>
 </ion-header>
 
-<ion-content>
-  <!--  <ion-label *ngFor="let ap of athletePractice" color="danger">
-      <h3 style="color:black"> {{ap.athlete.profile.name}} </h3>
-    </ion-label>
-
-        public physio?: boolean,
-      public regular?: boolean
-    -->
-
-
+<ion-content fullscreen="true">
     <table mat-table [dataSource]="this.athletePractice" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
