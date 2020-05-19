@@ -37,6 +37,12 @@ public class AthleteGameStatsController {
         return athleteGameStatsBusiness.findAthleteGameStatsById(id);
     }
 
+    @GetMapping("/findByGameId/{id}")
+    public AthleteGameStats[] findAthleteGameStatsByGameId(@PathVariable Long id){
+        logger.info("On method GET athleteGameStats/findById/{id} with id "+ id);
+        return athleteGameStatsBusiness.findAthleteGameStatsByGameId(id);
+    }
+
     @PutMapping("/update")
     public Long updateAthleteGameStats(@RequestBody AthleteGameStats athleteGameStats){
         logger.info("On method PUT athleteGameStats/update");
