@@ -1,11 +1,3 @@
-import {Mellee} from './stats/mellee';
-import {Tackle} from './stats/tackle';
-import {ConversionKick} from './stats/conversionkick';
-import {GoalKick} from './stats/goalkick';
-import {DropKick} from './stats/dropkick';
-import {OffSideKick} from './stats/offsidekick';
-import {LineOut} from './stats/lineout';
-
 export class Stats {
   constructor(
     private id?: number,
@@ -17,13 +9,20 @@ export class Stats {
     public tries?: number,
     public mauls?: number,
     public playingTime?: number,
-    public tackles?: Tackle,
-    public mellees?: Mellee,
-    public conversionkicks?: ConversionKick,
-    public goalkicks?: GoalKick,
-    public dropkicks?: DropKick,
-    public offsidekicks?: OffSideKick,
-    public lineouts?: LineOut
+    public tacklesHit?: number,
+    public tacklesMiss?: number,
+    public melleesHit?: number,
+    public melleesMiss?: number,
+    public conversionkicksHit?: number,
+    public conversionkicksMiss?: number,
+    public goalkicksHit?: number,
+    public goalkicksMiss?: number,
+    public dropkicksHit?: number,
+    public dropkicksMiss?: number,
+    public offsidekicksHit?: number,
+    public offsidekicksMiss?: number,
+    public lineoutsHit?: number,
+    public lineoutsMiss?: number
   ) {
     this.id = id ? id : 0;
     this.errors = errors ? errors : 0;
@@ -34,12 +33,19 @@ export class Stats {
     this.tries = tries ? tries : 0;
     this.mauls = mauls ? mauls : 0;
     this.playingTime = playingTime ? playingTime : 0;
-    this.tackles = tackles ? tackles : new Tackle();
-    this.mellees = mellees ? mellees : new Mellee();
-    this.conversionkicks = conversionkicks ? conversionkicks : new ConversionKick();
-    this.goalkicks = goalkicks ? goalkicks : new GoalKick();
-    this.dropkicks = dropkicks ? dropkicks : new DropKick();
-    this.offsidekicks = offsidekicks ? offsidekicks : new OffSideKick();
-    this.lineouts = lineouts ? lineouts : new LineOut();
+    this.tacklesHit = tacklesHit ? tacklesHit : 0;
+    this.tacklesMiss = tacklesMiss ? tacklesMiss : 0;
+    this.melleesHit = melleesHit ? melleesHit : 0;
+    this.melleesMiss = melleesMiss ? melleesMiss : 0;
+    this.conversionkicksHit = conversionkicksHit ? conversionkicksHit : 0;
+    this.conversionkicksMiss = conversionkicksMiss ? conversionkicksMiss : 0;
+    this.goalkicksHit = goalkicksHit ? goalkicksHit : 0;
+    this.goalkicksMiss = goalkicksMiss ? goalkicksMiss : 0;
+    this.dropkicksHit = dropkicksHit ? dropkicksHit : 0;
+    this.dropkicksMiss = dropkicksMiss ? dropkicksMiss : 0;
+    this.offsidekicksHit = offsidekicksHit ? offsidekicksHit : 0;
+    this.offsidekicksMiss = offsidekicksMiss ? offsidekicksMiss : 0;
+    this.lineoutsHit = lineoutsHit ? lineoutsHit : 0;
+    this.lineoutsMiss = lineoutsMiss ? lineoutsMiss : 0;
   }
 }

@@ -13,10 +13,17 @@
       <ion-col>
         <ion-item button (click)="onClick(ags)">
           <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
-          <ion-label> <!--{{ags.athlete.profile.name.split(' ',1)}}--> {{ags.id}} </ion-label>
+          <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
         </ion-item>
       </ion-col>
     </tr>
+    <ion-col>
+      <ion-item>
+        <ion-label> Selected </ion-label>
+        <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
+        <ion-label> {{currentAthlete.profile.name.split(' ',1)}} </ion-label>
+      </ion-item>
+    </ion-col>
   </ion-row>
 
   <ion-row>
@@ -109,14 +116,14 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'tackles'))">
-            Tackles {{statsService.percentage(currentStats,'tackles')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'tacklesHit','tacklesMiss'))">
+            Tackles {{statsService.percentage(currentStats,'tacklesHit','tacklesMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'tackles')">
+                    (click)="statsService.increment(currentStats,'tacklesHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'tackles')">
+                    (click)="statsService.increment(currentStats,'tacklesMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
@@ -124,14 +131,14 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'conversionkicks'))">
-            Conversion Kicks {{statsService.percentage(currentStats,'conversionkicks')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss'))">
+            Conversion Kicks {{statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'conversionkicks')">
+                    (click)="statsService.increment(currentStats,'conversionkicksHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'conversionkicks')">
+                    (click)="statsService.increment(currentStats,'conversionkicksMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
@@ -142,14 +149,14 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'goalkicks'))">
-            Goal Kicks {{statsService.percentage(currentStats,'goalkicks')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss'))">
+            Goal Kicks {{statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'goalkicks')">
+                    (click)="statsService.increment(currentStats,'goalkicksHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'goalkicks')">
+                    (click)="statsService.increment(currentStats,'goalkicksMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
@@ -157,14 +164,14 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'dropkicks'))">
-            Drop Kicks {{statsService.percentage(currentStats,'dropkicks')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss'))">
+            Drop Kicks {{statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'dropkicks')">
+                    (click)="statsService.increment(currentStats,'dropkicksHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'dropkicks')">
+                    (click)="statsService.increment(currentStats,'dropkicksMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
@@ -175,14 +182,14 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'lineouts'))">
-            Line Outs {{statsService.percentage(currentStats,'lineouts')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss'))">
+            Line Outs {{statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'lineouts')">
+                    (click)="statsService.increment(currentStats,'lineoutsHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'lineouts')">
+                    (click)="statsService.increment(currentStats,'lineoutsMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
@@ -190,17 +197,20 @@
     <ion-col>
       <ion-item>
         <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'offsidekicks'))">
-            Offside Kicks {{statsService.percentage(currentStats,'offsidekicks')}} % </h6> </label>
+          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss'))">
+            Offside Kicks {{statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss')}} % </h6> </label>
         <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.hit(currentStats,'offsidekicks')">
+                    (click)="statsService.increment(currentStats,'offsidekicksHit')">
           <ion-icon name="add-circle-outline"></ion-icon>
         </ion-button>
         <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.miss(currentStats,'offsidekicks')">
+                    (click)="statsService.increment(currentStats,'offsidekicksMiss')">
           <ion-icon name="remove-circle-outline"></ion-icon>
         </ion-button>
       </ion-item>
     </ion-col>
   </ion-row>
+  <ion-item>
+    <ion-button type="submit" class="ion-no-margin">Submit</ion-button>
+  </ion-item>
 </ion-grid>

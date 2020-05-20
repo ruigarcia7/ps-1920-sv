@@ -141,7 +141,7 @@ const routes: Routes = [
             loadChildren: () => import('../stats/stats.module').then(m => m.StatsModule)
           },
           {
-            path: 'post',
+            path: 'post/:id',
             loadChildren: () => import('../stats-form/stats-form.module')
               .then(m => m.StatsFormModule)
           }

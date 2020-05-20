@@ -44,6 +44,11 @@ public class Athlete implements Serializable{
     @JsonIgnore
     private List<Game> games;
 
+    /*
+    @ManyToMany
+    @JsonIgnore
+    private List<Game> activeGames;*/
+
     @Column
     private String positions;
 

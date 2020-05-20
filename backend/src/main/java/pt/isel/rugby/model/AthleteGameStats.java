@@ -21,6 +21,5 @@ public class AthleteGameStats {
     private Stats stats;
 
     @ManyToOne
-    @JsonIgnore
     private Game game;
 }

@@ -32,7 +32,12 @@ public class Game {
     @ManyToMany(mappedBy = "games")
     private List<Athlete> athletes;
 
+    /*
+    @ManyToMany(mappedBy = "games")
+    private List<Athlete> activeRoster;*/
+
     @OneToMany(mappedBy = "game")
+    @JsonIgnore
     private List<AthleteGameStats> athleteGameStats;
 
     @ManyToOne

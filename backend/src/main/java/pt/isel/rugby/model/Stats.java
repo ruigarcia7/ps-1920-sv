@@ -41,39 +41,39 @@ public class Stats implements Serializable {
     private Byte playingTime;
 
     @Column
-    private Byte tackleHits;
+    private Byte tacklesHit;
     @Column
-    private Byte tackleMiss;
+    private Byte tacklesMiss;
 
     @Column
-    private Byte melleeHits;
+    private Byte melleesHit;
     @Column
-    private Byte melleeMiss;
+    private Byte melleesMiss;
 
     @Column
-    private Byte convertionKickHits;
+    private Byte conversionkicksHit;
     @Column
-    private Byte convertionKickMiss;
+    private Byte conversionkicksMiss;
 
     @Column
-    private Byte goalkickHits;
+    private Byte goalkicksHit;
     @Column
-    private Byte goalkickMiss;
+    private Byte goalkicksMiss;
 
     @Column
-    private Byte dropkickHits;
+    private Byte dropkicksHit;
     @Column
-    private Byte dropkickMiss;
+    private Byte dropkicksMiss;
 
     @Column
-    private Byte offsideHits;
+    private Byte offsidekicksHit;
     @Column
-    private Byte offsideMiss;
+    private Byte offsidekicksMiss;
 
     @Column
-    private Byte lineOutHits;
+    private Byte lineoutsHit;
     @Column
-    private Byte lineOutMiss;
+    private Byte lineoutsMiss;
 
     @OneToMany(mappedBy = "stats")
     @JsonIgnore

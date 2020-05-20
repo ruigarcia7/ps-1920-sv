@@ -4,7 +4,7 @@ import {Athlete} from './athlete';
 
 export class Game {
   constructor(
-    private id?: number,
+    public id?: number,
     public name?: string,
     public date?: Date,
     public local?: string,
