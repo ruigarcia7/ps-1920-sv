@@ -1,0 +1,32 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/game"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Roster</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processRoster()">
+      <div *ngFor="let position of positions">
+        <ion-item>
+          <ion-label position="stacked"> {{position.name}} </ion-label>
+          <ion-select [(ngModel)]="selected" name="selected"
+                      cancelText="Cancel" okText="Confirm" (ionChange)="onChange(position.id)">
+            <ng-template [ngIf]="athletes != undefined">
+                <ion-select-option
+                  *ngFor="let athlete of athleteService.getAthletesByPosition(athletes,position.name)"
+                [value]="athlete">
+                  {{athlete.profile.name}}
+                </ion-select-option>
+            </ng-template>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-button type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+  </form>
+</ion-content>

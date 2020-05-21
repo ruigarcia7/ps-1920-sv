@@ -17,7 +17,7 @@ VALUES(
     '1990-12-16',
     'sebastian.fors@banned.com',
     '78998765412',
-    NULL,
+    '\\assets\\img\\speakers\\bear.jpg',
 	0
 ),(
     '2000',
@@ -26,7 +26,7 @@ VALUES(
     '1989-5-8',
     '<-- NO MAIL -->',
     '8798794565',
-    NULL,
+    '\\assets\\img\\speakers\\turtle.jpg',
 	1
 ),(
     '3000',
@@ -35,7 +35,7 @@ VALUES(
     '1987-6-30',
     NULL,
     '8528525844215',
-    NULL,
+    '\\assets\\img\\speakers\\cheetah.jpg',
 	1
 ),(
     '4000',
@@ -44,7 +44,7 @@ VALUES(
     '1987-06-28',
     'val@mail.com',
     '123123123',
-    NULL,
+    '\\assets\\img\\speakers\\duck.jpg',
 	1
 ),(
     '5000',
@@ -53,7 +53,7 @@ VALUES(
     '1994-2-15',
     'ChanceMorris@gmail.com',
     '14489516468479662',
-    NULL,
+    '\\assets\\img\\speakers\\puppy.jpg',
 	1
 ),(
     '6000',
@@ -62,7 +62,7 @@ VALUES(
     '1995-3-7',
     '1t@hotmail.com',
     '123124',
-    NULL,
+    '\\assets\\img\\speakers\\lion.jpg',
 	1
 ),(
     '7000',
@@ -71,7 +71,7 @@ VALUES(
     '1994-6-2',
     'smoke@mail.com',
     '123445213',
-    NULL,
+    '\\assets\\img\\speakers\\eagle.jpg',
 	1
 ),(
     '8000',
@@ -80,7 +80,7 @@ VALUES(
     '1990-1-1',
     'some@mail.com',
     '21232352',
-    NULL,
+    '\\assets\\img\\speakers\\kitten.jpg',
 	1
 ),(
     '9000',
@@ -89,7 +89,7 @@ VALUES(
     '1995-3-30',
     'll@mail.com',
     '1234234523',
-    NULL,
+    '\\assets\\img\\speakers\\iguana.jpg',
 	0
 ),(
     '10000',
@@ -98,16 +98,16 @@ VALUES(
     '1990-1-1',
     'legitmail@mail.com',
     '1324324235',
-    NULL,
+    '\\assets\\img\\speakers\\elephant.jpg',
 	true
 );
 INSERT INTO `opponent`(`id`, `name`, `photo`)
-VALUES('1000', 'Team1', NULL),('2000', 'SuperTeam', NULL),('3000', 'Galacticos', NULL),('4000', 'Team do Boss', NULL);
+VALUES('1000', 'Team1', '\\assets\\img\\speakers\\turtle.jpg'),('2000', 'SuperTeam', '\\assets\\img\\speakers\\turtle.jpg'),('3000', 'Galacticos', '\\assets\\img\\speakers\\turtle.jpg'),('4000', 'Team do Boss', '\\assets\\img\\speakers\\turtle.jpg');
 
 INSERT INTO `athlete` (`id`, `athlete_number`, `comment`, `height`, `positions`, `weight`, `profile_id`) 
-VALUES ('1000', '11', 'byron', '180', 'FullBack', '91', '2000'), ('2000', '12', 'qts', '190', 'bench', '110', '8000'),('3000', '13', 'dr. octopus', '200', 'GK', '100', '3000'),
- ('4000', '14', 'value', '160', 'FW', '50', '4000'), ('5000', '15', 'Dice man', '170', 'LW', '78', '5000'), ('6000', '11111111', 'must improve', '160', 'CB', '75', '6000'), 
- ('7000', '17', 'random', '190', 'CMF', '99', '7000'), ('8000', '18', 'Naevia', '160', 'RB', '55', '10000');
+VALUES ('1000', '11', 'byron', '180', 'Primeira Linha, Segunda Linha', '91', '2000'), ('2000', '12', 'qts', '190', 'Asa, Oito', '110', '8000'),('3000', '13', 'dr. octopus', '200', 'Formação, Abertura', '100', '3000'),
+ ('4000', '14', 'value', '160', 'Primeiro Centro, Segundo Centro', '50', '4000'), ('5000', '15', 'Dice man', '170', 'Ponta, Harrier', '78', '5000'), ('6000', '11111111', 'must improve', '160', 'Primeira Linha, Segunda Linha, Asa, Oito', '75', '6000'), 
+ ('7000', '17', 'random', '190', 'Formação, Abertura, Primeiro Centro, Segundo Centro, Ponta, Harrier', '99', '7000'), ('8000', '18', 'Naevia', '160', 'Primeira Linha', '55', '10000');
 
 INSERT INTO `staff`(
     `id`,
@@ -131,11 +131,11 @@ VALUES(
 INSERT INTO `athlete_practice`(`id`,`athlete_id`, `practice_id`, `physio`, `regular`)
 VALUES('1000','4000', '1000',1,0),('2000','2000', '1000',0,0),('3000','3000', '1000',0,1),('4000','5000', '2000',0,1),('5000','2000', '2000',1,0),('6000','4000', '2000',0,1),('7000','5000', '2000',0,1);
 INSERT INTO `training_schedule`(`id`, `date`, `description`, `link`)
-VALUES('1000', '2020-05-26', 'Gym 1', NULL),(
+VALUES('1000', '2020-05-26', 'Gym 1', 'example.com'),(
     '2000',
     '2020-05-20 11:34:35',
     'Gym 2',
-    NULL
+    'example.com'
 );
 INSERT INTO `athlete_training_schedules`(
     `athletes_id`,
@@ -173,25 +173,25 @@ VALUES('1000', '1000'),('2000', '1000'),('3000', '3000'),('4000', '3000'),('5000
 ('8000', '3000'),('9000', '3000'),('10000', '3000'),('1000', '2000'),('2000', '2000'),('1000', '2000'),('10000', '1000'),('8000', '1000');
 INSERT INTO `stats`(
     `id`,
-    `convertion_kick_hits`,
-    `convertion_kick_miss`,
-    `dropkick_hits`,
-    `dropkick_miss`,
+    `conversionkicks_hit`,
+    `conversionkicks_miss`,
+    `dropkicks_hit`,
+    `dropkicks_miss`,
     `errors`,
     `fouls`,
-    `goalkick_hits`,
-    `goalkick_miss`,
-    `line_out_hits`,
-    `line_out_miss`,
+    `goalkicks_hit`,
+    `goalkicks_miss`,
+    `lineouts_hit`,
+    `lineouts_miss`,
     `mauls`,
-    `mellee_hits`,
-    `mellee_miss`,
-    `offside_hits`,
-    `offside_miss`,
+    `mellees_hit`,
+    `mellees_miss`,
+    `offsidekicks_hit`,
+    `offsidekicks_miss`,
     `playing_time`,
     `red_cards`,
-    `tackle_hits`,
-    `tackle_miss`,
+    `tackles_hit`,
+    `tackles_miss`,
     `tries`,
     `turn_overs`,
     `yellow_cards`
@@ -317,37 +317,44 @@ VALUES(
     NULL,
     NULL
 );
+INSERT INTO `tournament`(`id`, `classification`, `comment`,`name`)
+VALUES('1000', '1', 'we won','Torneio das Caldas');
 INSERT INTO `game`(
     `id`,
     `comment`,
     `date`,
     `local`,
-    `opponent_id`
+    `opponent_id`,
+	`tournament_id`
 )
 VALUES(
     '1000',
     'Vs galaticos',
     '2020-05-15 13:33:17',
     'madrid',
-    '3000'
+    '3000',
+	NULL
 ),(
     '2000',
     'vs superteam',
     '2020-05-22 13:33:17',
     'unsiverse',
-    '2000'
+    '2000',
+	'1000'
 ),(
     '3000',
     't1',
     '2020-05-29 13:33:17',
     'seol',
-    '1000'
+    '1000',
+	'1000'
 ),(
     '4000',
     'tdb',
     '2020-07-11 13:33:17',
     NULL,
-    '4000'
+    '4000',
+	NULL
 );
 INSERT INTO `athlete_game_stats`(
     `id`,
@@ -356,8 +363,7 @@ INSERT INTO `athlete_game_stats`(
     `stats_id`
 )
 VALUES('1000', '3000', '3000', '1000'),('2000', '4000', '3000', '2000'),('3000', '1000', '3000', '4000'),('4000', '5000', '3000', '5000'),('5000', '5000', '1000', '3000');
-INSERT INTO `tournament`(`id`, `classification`, `comment`)
-VALUES('1000', '1', 'we won');
+
 
 INSERT INTO `position`(
 	`id`,

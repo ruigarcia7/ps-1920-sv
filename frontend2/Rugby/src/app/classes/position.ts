@@ -1,6 +1,6 @@
 export class Position {
   constructor(
-    private id?: number,
+    public id?: number,
     public name?: string,
   ) {
     this.id = id ? id : 0;

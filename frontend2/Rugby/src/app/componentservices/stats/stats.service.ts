@@ -20,7 +20,6 @@ export class StatsService {
   }*/
 
   percentage(stats: Stats, hit: string, miss: string) {
-    debugger;
     let num = stats[hit] / ( stats[miss] + stats[hit] ) * 100;
     return isNaN(num) ? 0 : Math.round((num + Number.EPSILON) * 100) / 100;
   }

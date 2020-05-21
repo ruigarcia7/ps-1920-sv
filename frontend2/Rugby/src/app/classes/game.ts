@@ -1,6 +1,7 @@
 import {Opponent} from './opponent';
 import {AthleteGameStats} from './associations/AthleteGameStats';
 import {Athlete} from './athlete';
+import { ActiveRoster } from './associations/ActiveRoster';
 
 export class Game {
   constructor(
@@ -10,8 +11,8 @@ export class Game {
     public local?: string,
     public comment?: string,
     public opponent?: Opponent,
-    private athletes?: Athlete[],
-    public athleteGameStats?: AthleteGameStats[]
+    public athletes?: Athlete[],
+    public activeRoster?: ActiveRoster[]
   ) {
     this.id = id ? id : 0;
     this.name = name ? name : '';
@@ -20,6 +21,6 @@ export class Game {
     this.local = local ? local : '';
     this.opponent = opponent ? opponent : new Opponent();
     this.athletes = athletes ? athletes : [];
-    this.athleteGameStats = athleteGameStats ? athleteGameStats : [];
+    this.activeRoster = activeRoster ? activeRoster : [];
   }
 }

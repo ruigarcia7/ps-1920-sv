@@ -1,10 +1,12 @@
 package pt.isel.rugby.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,10 +46,10 @@ public class Athlete implements Serializable{
     @JsonIgnore
     private List<Game> games;
 
-    /*
-    @ManyToMany
+
+    @OneToMany(mappedBy = "athlete", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<Game> activeGames;*/
+    private List<ActiveRoster> activeRosters = new ArrayList();
 
     @Column
     private String positions;

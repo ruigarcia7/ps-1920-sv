@@ -100,6 +100,10 @@ const routes: Routes = [
           {
             path: 'post',
             loadChildren: () => import('../game-form/game-form.module').then(m => m.GameFormModule)
+          },
+          {
+            path: ':id/roster',
+            loadChildren: () => import('../game-roster/game-roster.module').then(m => m.GameRosterModule)
           }
           ]
       },

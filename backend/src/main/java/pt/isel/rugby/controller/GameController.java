@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.GameBusiness;
+import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.Game;
+
+import java.util.ArrayList;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
@@ -32,13 +35,18 @@ public class GameController {
 
     @PostMapping("/post")
     public Long postGame(@RequestBody Game game){
-        logger.info("On method POST athlete/post");
+        logger.info("On method POST game/post");
+        //game.getActiveRoster().forEach( ar -> ar.setGame(game));
         return gameBusiness.postGame(game);
     }
 
     @PutMapping("/update")
     public Long putGame(@RequestBody Game game){
         logger.info("On method PUT athlete/update");
+        /*game.getActiveRoster().forEach( ar -> {
+           ar.setGame(new Game());
+           ar.getGame().setId(game.getId());
+        });*/
         return gameBusiness.updateGame(game);
     }
 

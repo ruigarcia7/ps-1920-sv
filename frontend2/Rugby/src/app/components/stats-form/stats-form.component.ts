@@ -35,6 +35,7 @@ export class StatsFormComponent implements OnInit {
   getAthleteGameStats(id: any) {
     this.httpathletegamestatsService.getAthleteGameStatsByGameId(id)
       .subscribe( ags => {
+        debugger;
         this.athleteGameStats = ags;
         this.currentStats = this.athleteGameStats[0].stats;
         this.currentAthlete = this.athleteGameStats[0].athlete;

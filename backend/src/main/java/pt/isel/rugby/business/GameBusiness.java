@@ -26,9 +26,10 @@ public class GameBusiness {
     public Iterable<Game> findAllGames() {return gameRepository.findAll();}
 
     public Long postGame (Game game){
-        List<AthleteGameStats> ags = game.getAthleteGameStats();
+        /*List<AthleteGameStats> ags = game.getAthleteGameStats();
         ags.forEach(item -> item.setId(statsRepository.save(item.getStats()).getId()));
-        athleteGameStatsRepository.saveAll(ags);
+        athleteGameStatsRepository.saveAll(ags);*/
+        game.setId(null);
         return gameRepository.save(game).getId();
     }
 
@@ -37,9 +38,9 @@ public class GameBusiness {
     }
     public Long updateGame(Game game){
         gameRepository.findById(game.getId()).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", game.getId()));
-        List<AthleteGameStats> ags = game.getAthleteGameStats();
+        /*List<AthleteGameStats> ags = game.getAthleteGameStats();
         ags.forEach(item -> item.setId(statsRepository.save(item.getStats()).getId()));
-        athleteGameStatsRepository.saveAll(ags);
+        athleteGameStatsRepository.saveAll(ags);*/
         return gameRepository.save(game).getId();
     }
 

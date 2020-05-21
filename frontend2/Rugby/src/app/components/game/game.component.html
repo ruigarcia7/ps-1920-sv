@@ -18,11 +18,6 @@
 <ion-content>
   <table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> Name Would Be Nice Tbh </td>
-    </ng-container>
-
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
       <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
@@ -49,7 +44,7 @@
     </ng-container>
 
     <ng-container matColumnDef="athletes">
-      <th mat-header-cell *matHeaderCellDef> Attendances </th>
+      <th mat-header-cell *matHeaderCellDef> Call </th>
       <td mat-cell *matCellDef="let element">
         <ion-button (click)="createPopover(element.athletes,$event)">
           <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
@@ -60,11 +55,14 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <ion-button routerlink="/app/games/update">
+        <ion-button routerLink="/app/games/update">
           <ion-icon name="chevron-up-circle-outline"> </ion-icon>
         </ion-button>
         <ion-button>
           <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button routerLink="/app/game/{{element.id}}/roster">
+          <ion-icon name="person-add-outline"></ion-icon>
         </ion-button>
       </td>
     </ng-container>

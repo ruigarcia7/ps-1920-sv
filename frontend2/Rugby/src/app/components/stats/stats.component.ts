@@ -14,7 +14,7 @@ export class StatsComponent implements OnInit {
   constructor(private gameService: GameService) {
   }
 
-  ngOnInit() {this.showGames();}
+  ngOnInit() {this.showGames(); }
 
   showGames() {
     this.gameService.getGames()

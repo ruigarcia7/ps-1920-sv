@@ -9,21 +9,25 @@
 
 <ion-grid fixed>
   <ion-row>
-    <tr *ngFor="let ags of athleteGameStats">
+    <ng-template [ngIf]="athleteGameStats != undefined">
+      <tr *ngFor="let ags of athleteGameStats">
+        <ion-col>
+          <ion-item button (click)="onClick(ags)">
+            <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
+            <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
+          </ion-item>
+        </ion-col>
+      </tr>
       <ion-col>
-        <ion-item button (click)="onClick(ags)">
-          <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
-          <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
-        </ion-item>
+        <ng-template [ngIf]="currentAthlete != undefined || currentAthlete.id != 0">
+          <ion-item>
+            <ion-label> Selected </ion-label>
+            <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
+            <ion-label> {{currentAthlete.profile.name.split(' ',1)}} </ion-label>
+          </ion-item>
+        </ng-template>
       </ion-col>
-    </tr>
-    <ion-col>
-      <ion-item>
-        <ion-label> Selected </ion-label>
-        <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
-        <ion-label> {{currentAthlete.profile.name.split(' ',1)}} </ion-label>
-      </ion-item>
-    </ion-col>
+    </ng-template>
   </ion-row>
 
   <ion-row>
