@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Athlete} from '../../../app/classes/athlete';
+import {TrainingSchedule} from '../../classes/trainingschedule';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AthleteService {
+export class TrainingScheduleService {
 
-  private BASE_URL = 'http://localhost:8080/athlete';
+  private BASE_URL = 'http://localhost:8080/schedule';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -16,33 +16,32 @@ export class AthleteService {
       'Access-Control-Allow-Origin': '*'
     })
   };
+
   constructor(private http: HttpClient) { }
 
-  getAthletes(): Observable<Athlete[]> {
+  getTrainingSchedules(): Observable<TrainingSchedule[]> {
     const url = `${this.BASE_URL}/all`;
     const options = { headers: { 'Access-Control-Allow-Origin': '*' } };
-    return this.http.get<Athlete[]>(url, this.httpOptions);
+    return this.http.get<TrainingSchedule[]>(url, this.httpOptions);
   }
 
-<<<<<<< HEAD
-  getAthleteById(id: any): Observable<Athlete> {
-=======
-  getAthleteById(id: number): Observable<Athlete> {
->>>>>>> 6d2315a191403cadcf65cf93a8d3128d41541fb4
+  getTrainingScheduleById(id: number): Observable<TrainingSchedule> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
-  postAthlete(athlete: Athlete): Observable<any> {
+  postTrainingSchedule(trainingSchedule: TrainingSchedule): Observable<any> {
     const url = `${this.BASE_URL}/post`;
-    return this.http.post(url, athlete, this.httpOptions);
+    return this.http.post(url, trainingSchedule, this.httpOptions);
   }
 
-  updateAthlete(athlete: Athlete): Observable<any> {
+  updateTrainingSchedule(trainingSchedule: TrainingSchedule): Observable<any> {
     const url = `${this.BASE_URL}/update`;
-    return this.http.put(url, athlete, this.httpOptions);
+    return this.http.put(url, trainingSchedule, this.httpOptions);
   }
-  deleteAthlete(id: number): Observable<any> {
+
+  deleteTrainingSchedule(id: number): Observable<any> {
+    debugger;
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }

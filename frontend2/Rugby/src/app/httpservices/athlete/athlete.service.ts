@@ -38,7 +38,9 @@ export class AthleteService {
     const url = `${this.BASE_URL}/update`;
     return this.http.put(url, athlete, this.httpOptions);
   }
+
   deleteAthlete(id: number): Observable<any> {
+    debugger;
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }

@@ -51,8 +51,8 @@ public class AthleteController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<?> deleteAthleteById(@RequestParam Long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAthleteById(@PathVariable Long id){
         logger.info("On method DELETE athlete/delete/id with id "+ id);
         athleteBusiness.deleteAthleteById(id);
         return ResponseEntity.ok().build();

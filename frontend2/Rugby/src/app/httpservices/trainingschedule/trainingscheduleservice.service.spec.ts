@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TrainingScheduleService } from './TrainingScheduleService.service';
+import { TrainingScheduleService } from './trainingscheduleservice.service';
 
 describe('TrauninscheduleService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

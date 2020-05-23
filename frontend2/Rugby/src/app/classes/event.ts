@@ -2,7 +2,7 @@ import {Profile} from './profile';
 
 export class Event {
   constructor(
-    private id?: number,
+    public id?: number,
     public name?: string,
     public description?: string,
     public date?: Date,

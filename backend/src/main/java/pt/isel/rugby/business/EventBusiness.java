@@ -16,6 +16,7 @@ public class EventBusiness {
     }
 
     public Long postEvent(Event event){
+        //event.getProfiles().forEach(event::addProfile);
         return eventRepository.save(event).getId();
     }
 
@@ -34,7 +35,8 @@ public class EventBusiness {
     }
 
     public void deleteEventById(Long id) {
-        eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", id));
+        //TODO: We need to delete all profile_event entries with this event id UwU
+        Event e = eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", id));
         eventRepository.deleteById(id);
     }
 }

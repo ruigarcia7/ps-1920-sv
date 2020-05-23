@@ -6,7 +6,7 @@ import {Practice} from '../../classes/practice';
 @Injectable({
   providedIn: 'root'
 })
-export class PracticeService {
+export class HttpPracticeService {
 
   private BASE_URL = 'http://localhost:8080/practice';
   private httpOptions = {

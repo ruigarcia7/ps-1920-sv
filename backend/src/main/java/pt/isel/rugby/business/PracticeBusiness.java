@@ -17,6 +17,7 @@ public class PracticeBusiness {
     }
 
     public Long postPractice(Practice practice){
+        practice.getAthletePractices().forEach(ap -> ap.setId(null));
         return practiceRepository.save(practice).getId();
     }
 

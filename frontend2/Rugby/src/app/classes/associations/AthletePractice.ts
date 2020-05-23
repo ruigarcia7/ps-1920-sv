@@ -3,7 +3,7 @@ import {Athlete} from '../athlete';
 
 export class AthletePractice {
   constructor(
-    private id?: number,
+    public id?: number,
     public athlete?: Athlete,
     public physio?: boolean,
     public regular?: boolean

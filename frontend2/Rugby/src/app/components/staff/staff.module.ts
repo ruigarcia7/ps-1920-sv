@@ -14,6 +14,9 @@ import { StaffRoutingModule } from './staff-routing.module';
   ],
   declarations: [
     StaffComponent,
+  ],
+  exports: [
+    StaffComponent
   ]
 })
 export class StaffModule { }

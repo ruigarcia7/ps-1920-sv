@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Staff} from '../../classes/staff';
 import {StaffService} from '../../httpservices/staff/staff.service';
 import {AlertController} from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.scss'],
 })
+
 export class StaffComponent implements OnInit {
   staff: Staff[];
 
-  constructor(private staffService: StaffService, private alertController: AlertController) { }
+  constructor(private staffService: StaffService, private alertController: AlertController,
+              private router: Router) { }
 
-  ngOnInit() {this.showStaff(); }
+  ngOnInit() {this.showStaff(null); }
 
-  showStaff() {
+  showStaff(callback) {
     this.staffService.getStaff()
       .subscribe(staff => {
         this.staff = staff;
         console.log('staff found ' + staff);
+        debugger;
+        if (callback != null) callback();
       });
   }
 
@@ -44,8 +49,14 @@ export class StaffComponent implements OnInit {
     this.staffService.deleteStaff(staff.id)
       .subscribe( response => {
         console.log(response);
+        //this.ngOnInit();
+        this.refresh();
         debugger;
       });
+  }
+
+  refresh() {
+    this.showStaff(null);
   }
 }
 

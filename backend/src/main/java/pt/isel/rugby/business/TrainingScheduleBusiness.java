@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.controller.TrainingScheduleController;
 import pt.isel.rugby.exception.ResourceNotFoundException;
+import pt.isel.rugby.model.Tournament;
 import pt.isel.rugby.model.TrainingSchedule;
 import pt.isel.rugby.repository.TrainingScheduleRepository;
 
@@ -31,5 +32,11 @@ public class TrainingScheduleBusiness {
     public void deleteTrainingSchedule(TrainingSchedule trainingSchedule){
         trainingScheduleRepository.findById(trainingSchedule.getId()).orElseThrow(() -> new ResourceNotFoundException("TrainingSchedule", "Id", trainingSchedule.getId()));
         trainingScheduleRepository.delete(trainingSchedule);
+    }
+
+    public void deleteTrainingScheduleById(Long id) {
+        TrainingSchedule schedule = trainingScheduleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Training Schedule", "Id", id));
+        trainingScheduleRepository.findById(schedule.getId()).orElseThrow(()-> new ResourceNotFoundException("Training Schedule", "Id", schedule.getId()));
+        trainingScheduleRepository.delete(schedule);
     }
 }

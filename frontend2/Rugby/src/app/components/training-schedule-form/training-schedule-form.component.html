@@ -1,3 +1,44 @@
-<p>
-  training-schedule-form works!
-</p>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/training-schedule"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Training Schedule</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form (ngSubmit)="processTrainingSchedule()" #loginForm="ngForm">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked"> Day <ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="trainingSchedule.date" name="day"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Description </ion-label>
+        <input required type="text" [(ngModel)]="trainingSchedule.description" name="description">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Link </ion-label>
+        <input type="text"[(ngModel)]="trainingSchedule.link" name="link">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Target </ion-label>
+        <ion-select [(ngModel)]="trainingSchedule.athletes" name="target"
+                    multiple="true" cancelText="Cancel" okText="Confirm">
+          <ion-select-option *ngFor="let athlete of athletes"
+                             [value]="athlete">
+            {{athlete.profile.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

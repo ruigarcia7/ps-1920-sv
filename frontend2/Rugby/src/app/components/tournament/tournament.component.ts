@@ -4,8 +4,9 @@ import { Tournament } from '../../classes/tournament';
 import { TournamentService } from '../../httpservices/tournament/tournament.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { PopoverController } from '@ionic/angular';
+import { AlertController, PopoverController } from '@ionic/angular';
 import { TournamentPopoverComponent } from './tournament-popover/tournament-popover.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournament',
@@ -18,7 +19,8 @@ export class TournamentComponent implements OnInit {
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private tournamentService: TournamentService, private popoverController: PopoverController) {}
+  constructor(private tournamentService: TournamentService, private popoverController: PopoverController,
+              private router: Router, private alertController: AlertController) {}
 
   ngOnInit() {
     this.showTournaments();
@@ -43,6 +45,36 @@ export class TournamentComponent implements OnInit {
     });
     debugger;
     return await popover.present();
+  }
+
+  async presentAlert(game: Game) {
+    debugger;
+    const alert = await this.alertController.create({
+      header: 'Delete Tournament',
+      message: 'Are you sure you want to delete this Tournament?',
+      buttons: ['No',
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteClick(game);
+          }
+        }]
+    });
+    await alert.present();
+  }
+
+  deleteClick(game: Game) {
+    debugger;
+    this.tournamentService.deleteTournament(game.id)
+      .subscribe( response => {
+        console.log(response);
+        this.refresh();
+        debugger;
+      });
+  }
+
+  refresh() {
+    this.showTournaments();
   }
 
 }

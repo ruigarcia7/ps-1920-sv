@@ -47,4 +47,11 @@ public class TrainingScheduleController {
         trainingScheduleBusiness.deleteTrainingSchedule(trainingSchedule);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteTrainingScheduleById(@PathVariable Long id){
+        logger.info("On method DELETE schedule/delete/id with id "+ id);
+        trainingScheduleBusiness.deleteTrainingScheduleById(id);
+        return ResponseEntity.ok().build();
+    }
 }

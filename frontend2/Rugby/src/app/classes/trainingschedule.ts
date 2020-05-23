@@ -2,7 +2,7 @@ import {Athlete} from './athlete';
 
 export class TrainingSchedule {
   constructor(
-    private id?: number,
+    public id?: number,
     public description?: string,
     public link?: string,
     public date?: Date,

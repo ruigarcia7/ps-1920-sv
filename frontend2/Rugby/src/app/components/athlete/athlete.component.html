@@ -41,7 +41,7 @@
                   <ion-button slot="end" routerLink="/app/athlete/update//{{athlete.id}}">
                     <ion-icon name="chevron-up-circle-outline"> </ion-icon>Edit
                   </ion-button>
-                  <ion-button slot="end" routerLink="/app/athlete/delete">
+                  <ion-button slot="end"  (click)="presentAlert(athlete)">
                     <ion-icon name="close-circle-outline"></ion-icon>Delete
                   </ion-button>
                 </ion-label>

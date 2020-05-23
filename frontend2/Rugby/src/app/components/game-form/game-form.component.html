@@ -31,7 +31,17 @@
         <ion-select [(ngModel)]="game.opponent" name="opponent"
                     cancelText="Cancel" okText="Confirm">
           <tr *ngFor="let opponent of opponents">
-            <ion-select-option value="{{opponent.name}}"> {{opponent.name}}</ion-select-option>
+            <ion-select-option [value]="opponent"> {{opponent.name}}</ion-select-option>
+          </tr>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Call </ion-label>
+        <ion-select [(ngModel)]="game.athletes" name="call"
+                    multiple="true" cancelText="Cancel" okText="Confirm">
+          <tr *ngFor="let athlete of athletes">
+            <ion-select-option [value]="athlete"> {{athlete.profile.name}}</ion-select-option>
           </tr>
         </ion-select>
       </ion-item>

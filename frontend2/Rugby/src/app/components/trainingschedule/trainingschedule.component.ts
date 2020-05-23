@@ -4,7 +4,7 @@ import { Athlete } from '../../classes/athlete';
 import { TrainingScheduleService } from '../../httpservices/trainingschedule/trainingscheduleservice.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { PopoverController } from '@ionic/angular';
+import {AlertController, PopoverController} from '@ionic/angular';
 import { TrainingschedulePopoverComponent } from './trainingschedule-popover/trainingschedule-popover.component';
 
 @Component({
@@ -17,7 +17,8 @@ export class TrainingScheduleComponent implements OnInit {
   displayedColumns: string[] = ['date', 'description', 'link', 'targets', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  constructor(private trainingService: TrainingScheduleService, private popoverController: PopoverController) {
+  constructor(private trainingService: TrainingScheduleService,
+              private popoverController: PopoverController, private alertController: AlertController) {
   }
 
   ngOnInit() {
@@ -42,5 +43,36 @@ export class TrainingScheduleComponent implements OnInit {
     });
     debugger;
     return await popover.present();
+  }
+
+
+  async presentAlert(trainingSchedule: TrainingSchedule) {
+    debugger;
+    const alert = await this.alertController.create({
+      header: 'Delete Training Schedule',
+      message: 'Are you sure you want to delete this Training Schedule?',
+      buttons: ['No',
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteClick(trainingSchedule);
+          }
+        }]
+    });
+    await alert.present();
+  }
+
+  deleteClick(trainingSchedule: TrainingSchedule) {
+    debugger;
+    this.trainingService.deleteTrainingSchedule(trainingSchedule.id)
+      .subscribe( response => {
+        console.log(response);
+        this.refresh();
+        debugger;
+      });
+  }
+
+  refresh() {
+    this.showTrainingSchedules();
   }
 }
