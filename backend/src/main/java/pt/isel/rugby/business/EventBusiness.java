@@ -12,7 +12,11 @@ public class EventBusiness {
     EventRepository eventRepository;
 
     public Iterable<Event> findAllEvents(){
-        return eventRepository.findAll();
+        Iterable<Event> allEvents = eventRepository.findAll();
+        for (Event event : allEvents) {
+            event.getProfiles().forEach(profile -> profile.setEvents(null));
+        }
+        return allEvents;
     }
 
     public Long postEvent(Event event){
