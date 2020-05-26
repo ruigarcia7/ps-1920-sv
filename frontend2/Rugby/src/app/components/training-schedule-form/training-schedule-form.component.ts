@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TrainingSchedule} from '../../classes/trainingschedule';
 import {Athlete} from '../../classes/athlete';
 import {AthleteService} from '../../httpservices/athlete/athlete.service';
@@ -16,10 +16,16 @@ export class TrainingScheduleFormComponent implements OnInit {
   athletes: Athlete[];
   constructor(private athleteService: AthleteService,
               private trainingScheduleService: TrainingScheduleService,
-              private toastController: ToastController, private router: Router) { }
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.trainingSchedule = new TrainingSchedule();
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.trainingScheduleService.getTrainingScheduleById(this.route.snapshot.paramMap.get('id'))
+        .subscribe(item => this.trainingSchedule = item);
+    }
     this.getAthletes();
   }
 

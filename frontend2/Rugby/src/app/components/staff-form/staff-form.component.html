@@ -44,13 +44,13 @@
 
       <ion-item>
         <ion-label position="stacked"> Staff Number </ion-label>
-        <input required type="tel"[(ngModel)]="staff.staffnumber" name="number"
+        <input required type="tel"[(ngModel)]="staff.staffNumber" name="number"
                pattern="[0-9]{1,12}">
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked"> Type </ion-label>
-        <ion-select [(ngModel)]="staff.stafftype" name="positions"
+        <ion-select [(ngModel)]="staff.staffType" name="staff"
                     cancelText="Cancel" okText="Confirm">
           <tr *ngFor="let types of stafftype">
             <ion-select-option value="{{types.name}}"> {{types.name}}</ion-select-option>

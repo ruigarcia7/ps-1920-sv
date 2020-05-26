@@ -11,7 +11,6 @@ import java.util.List;
 @Table(name = "position")
 @Data
 public class Position implements Serializable {
-    //TODO: does it make sense that our enums have ids?
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

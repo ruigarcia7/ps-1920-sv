@@ -74,6 +74,10 @@ const routes: Routes = [
           {
             path: 'post',
             loadChildren: () => import('../event-form/event-form.module').then(m => m.EventFormModule)
+          },
+          {
+            path: 'update/:id',
+            loadChildren: () => import('../event-form/event-form.module').then(m => m.EventFormModule)
           }
         ]
       },
@@ -86,6 +90,10 @@ const routes: Routes = [
           },
           {
             path: 'post',
+            loadChildren: () => import('../practice-form/practice-form.module').then(m => m.PracticeFormModule)
+          },
+          {
+            path: 'update/:id',
             loadChildren: () => import('../practice-form/practice-form.module').then(m => m.PracticeFormModule)
           }
         ]
@@ -104,6 +112,10 @@ const routes: Routes = [
           {
             path: ':id/roster',
             loadChildren: () => import('../game-roster/game-roster.module').then(m => m.GameRosterModule)
+          },
+          {
+            path: 'update/:id',
+            loadChildren: () => import('../game-form/game-form.module').then(m => m.GameFormModule)
           }
           ]
       },
@@ -119,6 +131,10 @@ const routes: Routes = [
             path: 'post',
             loadChildren: () => import('../tournament-form/tournament-form.module')
               .then(m => m.TournamentFormModule)
+          },
+          {
+            path: 'update/:id',
+            loadChildren: () => import('../tournament-form/tournament-form.module').then(m => m.TournamentFormModule)
           }
         ]
       },
@@ -132,6 +148,11 @@ const routes: Routes = [
           },
           {
             path: 'post',
+            loadChildren: () => import('../training-schedule-form/training-schedule-form.module')
+              .then(m => m.TrainingScheduleFormModule)
+          },
+          {
+            path: 'update/:id',
             loadChildren: () => import('../training-schedule-form/training-schedule-form.module')
               .then(m => m.TrainingScheduleFormModule)
           }

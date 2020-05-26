@@ -5,8 +5,8 @@ import { EventService } from '../../httpservices/event/event.service';
 import { ProfileService } from '../../httpservices/profile/profile.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {Router} from "@angular/router";
-import {ToastController} from "@ionic/angular";
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-event-form',
@@ -18,11 +18,21 @@ export class EventFormComponent implements OnInit {
   profiles: Profile[];
 
   constructor(private eventService: EventService, private profileService: ProfileService,
-              private toastController: ToastController, private router: Router) { }
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.event = new Event();
     this.getProfiles();
+
+    // check if "update" or post to set current object
+    //TODO: fix the fact that the selects dont keep state on updates
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.eventService.getEventsById(this.route.snapshot.paramMap.get('id')).subscribe(item => {
+        debugger;
+        this.event = item;
+      });
+    }
   }
 
   getProfiles() {

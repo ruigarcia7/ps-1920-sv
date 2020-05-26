@@ -9,7 +9,7 @@ import {ModalController, ToastController} from '@ionic/angular';
 import { PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
 import { AthletePractice} from '../../classes/associations/AthletePractice';
 import { PracticeService } from '../../componentservices/practice/practice.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-practice-form',
@@ -23,12 +23,16 @@ export class PracticeFormComponent implements OnInit {
 
   constructor(private athleteService: AthleteService, private httppracticeService: HttpPracticeService
             , private modalController: ModalController, private practiceService: PracticeService,
-              private toastController: ToastController, private router: Router) { }
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.practice = new Practice();
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.httppracticeService.getPracticeById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.practice = item);
+    }
     this.getAthletes();
-    debugger;
   }
 
   getAthletes() {

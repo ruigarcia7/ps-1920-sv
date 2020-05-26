@@ -43,7 +43,8 @@ export class StaffFormComponent implements OnInit {
   }
 
   processStaff() {
-    this.staff.stafftype = this.staff.stafftype.toString();
+    debugger;
+    //this.staff.staffType = this.stafftype[];
     this.staffService.postStaff(this.staff)
       .subscribe( (res) => {
         this.presentToast();

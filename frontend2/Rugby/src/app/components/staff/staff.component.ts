@@ -49,7 +49,6 @@ export class StaffComponent implements OnInit {
     this.staffService.deleteStaff(staff.id)
       .subscribe( response => {
         console.log(response);
-        //this.ngOnInit();
         this.refresh();
         debugger;
       });

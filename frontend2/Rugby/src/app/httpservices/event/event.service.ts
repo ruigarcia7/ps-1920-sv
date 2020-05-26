@@ -25,7 +25,7 @@ export class EventService {
     const url = `${this.BASE_URL}/all`;
     return this.http.get<Event[]>(url, this.httpOptions);
   }
-  getEventsById(id: number) {
+  getEventsById(id: any) {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

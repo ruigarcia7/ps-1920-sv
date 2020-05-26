@@ -6,7 +6,7 @@ import { GameService } from '../../httpservices/game/game.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-tournament-form',
@@ -17,10 +17,15 @@ export class TournamentFormComponent implements OnInit {
   tournament: Tournament;
   games: Game[];
   constructor(private gameService: GameService, private tournamentService: TournamentService,
-              private toastController: ToastController, private router: Router) { }
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.tournament = new Tournament();
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.tournamentService.getTournamentById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.tournament = item);
+    }
     this.getGames();
   }
 

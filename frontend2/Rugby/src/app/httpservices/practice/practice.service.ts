@@ -25,7 +25,7 @@ export class HttpPracticeService {
     return this.http.get<Practice[]>(url, this.httpOptions);
   }
 
-  getPracticeById(id: number): Observable<Practice> {
+  getPracticeById(id: any): Observable<Practice> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

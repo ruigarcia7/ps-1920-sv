@@ -25,7 +25,7 @@ export class TrainingScheduleService {
     return this.http.get<TrainingSchedule[]>(url, this.httpOptions);
   }
 
-  getTrainingScheduleById(id: number): Observable<TrainingSchedule> {
+  getTrainingScheduleById(id: any): Observable<TrainingSchedule> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }
