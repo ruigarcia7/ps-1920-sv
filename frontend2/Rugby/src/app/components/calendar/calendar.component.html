@@ -11,7 +11,7 @@
         Past
       </ion-segment-button>
     </ion-segment>
-    <ion-searchbar *ngIf="showSearchbar" showCancelButton="always" [(ngModel)]="queryText" (ionCancel)="showSearchbar = false" placeholder="Search"></ion-searchbar>
+    <ion-searchbar *ngIf="showSearchbar" showCancelButton="always" (ionChange)="searchFilter($event)" (ionCancel)="onCancel()" placeholder="Search"></ion-searchbar>
     <ion-buttons slot="end">
       <ion-button *ngIf="!showSearchbar" (click)="showSearchbar = true">
         <ion-icon slot="icon-only" name="search"></ion-icon>
@@ -67,47 +67,30 @@
 
   <ion-router-outlet id="main"></ion-router-outlet>
 
-  <ion-list >
-    <ion-item-group *ngFor="let info of getDisplayInfo()" [hidden]="info.hide">
-      <ion-item-divider sticky>
-        <ion-label *ngIf="this.calendarService.isGame(info)">
-          {{info.date | date:"medium"}} Game vs {{info.opponent.name}} at {{info.local}}
-        </ion-label>
-        <ion-label *ngIf="this.calendarService.isEvent(info)">
-          {{info.date | date:"medium"}} Event at {{info.local}}
-        </ion-label>
-        <ion-label *ngIf="this.calendarService.isPractice(info)">
-          {{info.date | date:"medium"}} Practice at {{info.local}}
-        </ion-label>
-        <ion-label *ngIf="this.calendarService.isTournament(info)">
-          Tournament {{info.name}}
-        </ion-label>
-      </ion-item-divider>
-
-
-
-<!--      <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase"
-                        [hidden]="session.hide">
-        <ion-item routerLink="/app/tabs/schedule/session/{{session.id}}">
-          <ion-label>
-            <h3>{{session.name}}</h3>
-            <p>
-              {{session.timeStart}} &mdash; {{session.timeEnd}}: {{session.location}}
-            </p>
+  <ion-content>
+    <ion-list>
+      <ion-item-group *ngFor="let info of getDisplayInfo()" [hidden]="info.hide">
+        <ion-item-divider sticky>
+          <ion-label *ngIf="this.calendarService.isGame(info)">
+            <div> {{info.date | date:"medium"}} Game vs {{info.opponent.name}} at {{info.local}} </div>
           </ion-label>
-        </ion-item>
-        <ion-item-options>
-          <ion-item-option color="favorite" (click)="addFavorite()" *ngIf="segment === 'all'">
-            Favorite
-          </ion-item-option>
-          <ion-item-option color="danger" (click)="removeFavorite()"
-                           *ngIf="segment === 'favorites'">
-            Remove
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>-->
-    </ion-item-group>
-  </ion-list>
+          <ion-label *ngIf="this.calendarService.isEvent(info)">
+            <div> {{info.date | date:"medium"}} Event at {{info.local}} </div>
+          </ion-label>
+          <ion-label *ngIf="this.calendarService.isPractice(info)">
+            <div> {{info.date | date:"medium"}} Practice at {{info.local}} </div>
+          </ion-label>
+          <ion-label *ngIf="this.calendarService.isTournament(info)">
+            <div> {{info.date | date:"medium"}} {{info.name}} at {{info.local}} </div>
+          </ion-label>
+          <ion-item slot="end" *ngIf="segment === 'upcomming'">
+            <b> [{{this.calendarService.getRemainingTime(info)}}] </b>
+          </ion-item>
+        </ion-item-divider>
+      </ion-item-group>
+    </ion-list>
+  </ion-content>
+
 
   <ion-list-header [hidden]="info.length > 0">
     Nothing Found

@@ -3,7 +3,7 @@ import { Athlete } from '../../classes/athlete';
 import { Profile } from '../../classes/profile';
 import { Position } from '../../classes/position';
 import { AthleteService } from '../../httpservices/athlete/athlete.service';
-import { EnumService } from '../../httpservices/enum/enum.service';
+import { HttpEnumService } from '../../httpservices/enum/enum.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -28,7 +28,7 @@ export class AthleteFormComponent implements OnInit {
   athlete: Athlete;
   profile: Profile;
   positions: Position[];
-  constructor(private athleteService: AthleteService, private enumService: EnumService,
+  constructor(private athleteService: AthleteService, private httpenumService: HttpEnumService,
               private route: ActivatedRoute, private toastController: ToastController,
               private router: Router) { }
 
@@ -45,7 +45,7 @@ export class AthleteFormComponent implements OnInit {
   }
 
   getPositions() {
-    this.enumService.getPositions()
+    this.httpenumService.getPositions()
       .subscribe( position => {
         this.positions = position;
       });

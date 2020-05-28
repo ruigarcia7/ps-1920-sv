@@ -42,9 +42,6 @@ export class CalendarService {
   sortByDate(items: any[]) {
     debugger;
     return items.sort((a, b) => {
-      if (a.date === undefined && b.date === undefined) return (new Date(0) as any) - (new Date(0) as any);
-      if (a.date === undefined) return (new Date(0) as any) - (new Date(b.date) as any);
-      if (b.date === undefined) return (new Date(a.date) as any) - (new Date(0) as any);
       return (new Date(a.date) as any) - (new Date(b.date) as any);
     });
   }
@@ -117,5 +114,48 @@ export class CalendarService {
 
   addDays(date, days) {
     return date.setDate(date.getDate() + days);
+  }
+
+  searchFilter(items, word) {
+    debugger;
+    return items.filter(item => {
+        if(this.isGame(item))
+          return item.opponent.name.toLowerCase().includes(word) || item.local.toLowerCase().includes(word);
+        if(this.isPractice(item))
+          return item.local.toLowerCase().includes(word);
+        return item.local.toLowerCase().includes(word) || item.name.toLowerCase().includes(word);
+    });
+  }
+
+  getRemainingTime(item) {
+    let today = new Date();
+    let itemdate = new Date(item.date);
+    let d = itemdate.getTime() - today.getTime();
+    let weekdays = Math.floor(d/1000/60/60/24/7);
+    let days     = Math.floor(d/1000/60/60/24 - weekdays*7);
+    let hours    = Math.floor(d/1000/60/60    - weekdays*7*24         - days*24);
+    let minutes  = Math.floor(d/1000/60       - weekdays*7*24*60      - days*24*60  - hours*60);
+    /*// let seconds  = Math.floor(d/1000          - weekdays*7*24*60*60   - days*24*60  - hours*60  - minutes*60);
+    let t = {};
+    ['weekdays', 'days', 'hours', 'minutes', 'seconds'].forEach( q => { t[q] = eval(q); });*/
+    debugger;
+    return this.remainingToString(weekdays, days, hours, minutes);
+  }
+
+  remainingToString(weekdays, days, hours, minutes) {
+    debugger;
+    let w = weekdays > 10 ? weekdays + 'w ' : '0' + weekdays + 'w ';
+    let d = days > 10 ? days + 'd ' : '0' + days + 'd ';
+    let h = hours > 10 ? hours + 'h ' : '0' + hours + 'h ';
+    let m = minutes > 10 ? minutes + 'm' : '0' + minutes + 'm';
+    return`${w}${d}${h}${m}`;
+    /*
+    let s: string = '';
+    s.concat(weekdays > 10 ? weekdays + ' w' : '0' + weekdays + ' w');
+    s.concat();
+    s.concat(hours > 10 ? hours + ' h' : '0' + hours + ' h');
+    s.concat(minutes > 10 ? minutes + ' m' : '0' + minutes + ' w');
+    return s;
+    */
   }
 }

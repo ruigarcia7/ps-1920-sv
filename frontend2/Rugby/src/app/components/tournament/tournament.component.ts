@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class TournamentComponent implements OnInit {
   tournaments: Tournament[];
-  displayedColumns: string[] = ['name', 'date', 'classification', 'comment', 'games', 'actions'];
+  displayedColumns: string[] = ['name', 'date', 'local', 'classification', 'comment', 'games', 'actions'];
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 

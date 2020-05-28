@@ -6,7 +6,6 @@ import { ActiveRoster } from './associations/ActiveRoster';
 export class Game {
   constructor(
     public id?: number,
-    public name?: string,
     public date?: Date,
     public local?: string,
     public comment?: string,
@@ -15,7 +14,6 @@ export class Game {
     public activeRoster?: ActiveRoster[]
   ) {
     this.id = id ? id : 0;
-    this.name = name ? name : '';
     this.comment = comment ? comment : '';
     this.date = date ? date : new Date(0);
     this.local = local ? local : '';

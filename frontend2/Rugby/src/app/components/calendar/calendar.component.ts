@@ -14,11 +14,12 @@ import {MenuController} from '@ionic/angular';
 export class CalendarComponent implements OnInit {
   upcomming_days = 15;
   segment = 'upcomming';
+  searchtext = '';
   showSearchbar: boolean;
-  queryText = '';
   info: (Event|Game|Practice|Tournament)[] = [];
-  upcomming: (Event|Game|Practice|Tournament)[] = [];
   show: (Event|Game|Practice|Tournament)[] = [];
+  showFilter: (Event|Game|Practice|Tournament)[] = [];
+  upcomming: (Event|Game|Practice|Tournament)[] = [];
   past: (Event|Game|Practice|Tournament)[] = [];
 
   constructor(private calendarService: CalendarService, private menuController: MenuController) { }
@@ -35,24 +36,30 @@ export class CalendarComponent implements OnInit {
         this.info.push.apply(this.info, resList[3]);
         this.info = this.calendarService.sortByDate(this.info);
         this.show = this.info;
+        this.showFilter = this.info;
         this.getUpcomming();
         this.getPast();
     });
   }
 
   getPast() {
-    this.past = this.calendarService.getPast(this.show);
+    debugger;
+    this.past = this.searchtext ? this.calendarService.getPast(this.showFilter)
+                : this.calendarService.getPast(this.show);
   }
 
   getUpcomming() {
-    debugger;
-    this.upcomming = this.calendarService.getUpcomming(this.show,
-      this.calendarService.addDays(new Date(), this.upcomming_days));
+    this.upcomming = this.searchtext ?
+      this.calendarService.getUpcomming(this.showFilter,
+        this.calendarService.addDays(new Date(), this.upcomming_days)) :
+      this.calendarService.getUpcomming(this.show,
+        this.calendarService.addDays(new Date(), this.upcomming_days));
   }
 
   getDisplayInfo() {
     if (this.segment === 'past') return this.past;
-    return this.segment === 'all' ? this.show : this.upcomming;
+    if (this.segment === 'upcomming') return this.upcomming;
+    return this.searchtext ? this.showFilter : this.show;
   }
 
   async openFilterMenu() {
@@ -122,5 +129,22 @@ export class CalendarComponent implements OnInit {
   eventCheckChange(e) {
     let newState = !e.currentTarget.checked;
     this.filterEvent(newState);
+  }
+
+  searchFilter(event) {
+    this.searchtext = event.target.value.toLowerCase() === '' ? undefined : event.target.value.toLowerCase();
+    if (this.searchtext) this.showFilter = this.calendarService.searchFilter(this.show, this.searchtext);
+    else this.showFilter = this.show;
+    this.getUpcomming();
+    this.getPast();
+  }
+
+  onCancel() {
+    debugger;
+    this.showSearchbar = false;
+    this.searchtext = undefined;
+    this.getUpcomming();
+    this.getPast();
+    this.getDisplayInfo();
   }
 }

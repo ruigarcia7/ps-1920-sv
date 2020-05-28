@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AthleteService} from '../../componentservices/athlete/athlete.service';
-import {EnumService} from '../../httpservices/enum/enum.service';
+import {HttpEnumService} from '../../httpservices/enum/enum.service';
 import {GameService} from '../../httpservices/game/game.service';
 import {ActiveRoster} from '../../classes/associations/ActiveRoster';
 import {Position} from '../../classes/position';
@@ -20,7 +20,7 @@ export class GameRosterComponent implements OnInit {
   athletes: Athlete[];
   selected: Athlete;
 
-  constructor(private athleteService: AthleteService, private enumService: EnumService,
+  constructor(private athleteService: AthleteService, private httpenumService: HttpEnumService,
               private gameService: GameService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class GameRosterComponent implements OnInit {
   }
 
   getPositions() {
-    this.enumService.getPositions()
+    this.httpenumService.getPositions()
       .subscribe(positions => {
         this.positions = positions;
       });
@@ -53,7 +53,7 @@ export class GameRosterComponent implements OnInit {
   processRoster() {
     console.log(this.activeRoster);
     this.game.activeRoster = this.activeRoster;
-    this.gameService.updateGame(this.game).subscribe( (res) => { console.log(res); });;
+    this.gameService.updateGame(this.game).subscribe( (res) => { console.log(res); });
     debugger;
   }
 }

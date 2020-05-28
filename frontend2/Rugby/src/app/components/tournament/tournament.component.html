@@ -22,10 +22,14 @@
 
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-      <td mat-cell *matCellDef="let element">
-        <div *ngIf="element.games.length > 0; else elseBlock"> {{element.games[0].date | date }} </div>
-        <ng-template #elseBlock> <h5> No Games Found </h5> </ng-template>
-      </td>
+      <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
+        <!--<div *ngIf="element.games.length > 0; else elseBlock"> {{element.games[0].date | date }} </div>
+        <ng-template #elseBlock> <h5> No Games Found </h5> </ng-template> </td>-->
+    </ng-container>
+
+    <ng-container matColumnDef="local">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Local </th>
+      <td mat-cell *matCellDef="let element"> {{element.local}} </td>
     </ng-container>
 
     <ng-container matColumnDef="classification">
