@@ -44,6 +44,9 @@
                   <ion-button slot="end"  (click)="presentAlert(athlete)">
                     <ion-icon name="close-circle-outline"></ion-icon>Delete
                   </ion-button>
+                  <ion-button slot="end"  routerLink="/app/athlete/athletegamestats/{{athlete.id}}">
+                    <ion-icon name="bar-chart-outline"></ion-icon>
+                  </ion-button>
                 </ion-label>
               </ion-item>
         </ion-card>

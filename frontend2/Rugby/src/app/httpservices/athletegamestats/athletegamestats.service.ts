@@ -35,6 +35,11 @@ export class HttpAthleteGameStatsService {
     return this.http.get<AthleteGameStats[]>(url, this.httpOptions);
   }
 
+  getAthleteGameStatsByAthleteId(id: any): Observable<AthleteGameStats[]> {
+    const url = `${this.BASE_URL}/findByAthleteId/${id}`;
+    return this.http.get<AthleteGameStats[]>(url, this.httpOptions);
+  }
+
   postAthleteGameStats(athleteGameStats: AthleteGameStats): Observable<any> {
     const url = `${this.BASE_URL}/post`;
     return this.http.post(url, athleteGameStats, this.httpOptions);

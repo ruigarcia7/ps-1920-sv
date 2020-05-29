@@ -40,6 +40,11 @@ const routes: Routes = [
           {
             path: 'update/:id',
             loadChildren: () => import('../athlete-form/athlete-form.module').then(m => m.AthleteFormModule)
+          },
+          {
+            path: 'athletegamestats/:id',
+            loadChildren: () => import('../athletegamestats/athletegamestats.module').then(
+              m => m.AthleteGameStatsModule)
           }
         ]
       },
