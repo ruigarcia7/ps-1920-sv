@@ -22,6 +22,16 @@
       </ion-item>
 
       <ion-item>
+        <ion-label position="stacked"> Team Score </ion-label>
+        <input type="text"[(ngModel)]="game.teamScore" name="teamscore">
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"> Opponent Score </ion-label>
+        <input type="text"[(ngModel)]="game.opponentScore" name="opponentScore">
+      </ion-item>
+
+      <ion-item>
         <ion-label position="stacked"> Comment </ion-label>
         <input required type="text"[(ngModel)]="game.comment" name="comment">
       </ion-item>

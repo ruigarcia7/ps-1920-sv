@@ -16,6 +16,7 @@ import {ToastController} from '@ionic/angular';
 export class EventFormComponent implements OnInit {
   event: Event;
   profiles: Profile[];
+  all: boolean;
 
   constructor(private eventService: EventService, private profileService: ProfileService,
               private toastController: ToastController, private router: Router,
@@ -65,4 +66,8 @@ export class EventFormComponent implements OnInit {
     await toast.present().then(this.navigate.bind(this));
   }
 
+  toggleAll() {
+    debugger;
+    return this.all ? this.event.profiles = this.profiles : this.event.profiles = [];
+  }
 }

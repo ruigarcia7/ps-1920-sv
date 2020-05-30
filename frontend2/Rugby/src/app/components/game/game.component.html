@@ -38,6 +38,11 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef> Score </th>
+      <td mat-cell *matCellDef="let element"> {{element.teamScore}} - {{element.opponentScore}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="comment">
       <th mat-header-cell *matHeaderCellDef> Comment </th>
       <td mat-cell *matCellDef="let element"> {{element.comment}} </td>

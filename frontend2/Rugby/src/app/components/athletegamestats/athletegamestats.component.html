@@ -11,10 +11,85 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/athlete"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end" size="large" fill="solid" (click)="openSubMenu()">
+      <ion-icon name="key-outline"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true">
+  <ion-menu side="end" contentId="main" menuId="subtitle">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title> Subtitles </ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeSubMenu()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-label> E - Errors </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> F - Fouls </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> RC - Red Cards</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> YC - Yellow Cards</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> TO - TurnOvers</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> Tr - Tries </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> M - Mauls </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> PT - Playing Time </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> Ta - Tackles </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> CK - Conversion Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> GK - Goal Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> DK - Drop Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> LO - Line Outs </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> OK - Offside Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> H - Hits </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> M - Misses </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> % - Percentage </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+<ng-template [ngIf]="hasData">
+  <ion-content>
     <table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="game">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Game </th>
@@ -53,7 +128,7 @@
       </ng-container>
 
       <ng-container matColumnDef="tries">
-        <th mat-header-cell *matHeaderCellDef> T </th>
+        <th mat-header-cell *matHeaderCellDef> Tr </th>
         <td mat-cell *matCellDef="let element"> {{element.stats.tries}} </td>
         <td mat-footer-cell *matFooterCellDef> <b> {{total.tries}} </b> </td>
       </ng-container>
@@ -71,19 +146,19 @@
       </ng-container>
 
       <ng-container matColumnDef="tacklesHit">
-        <th mat-header-cell *matHeaderCellDef> T H </th>
+        <th mat-header-cell *matHeaderCellDef> Ta H </th>
         <td mat-cell *matCellDef="let element"> {{element.stats.tacklesHit}} </td>
         <td mat-footer-cell *matFooterCellDef> <b> {{total.tacklesHit}} </b> </td>
       </ng-container>
 
       <ng-container matColumnDef="tacklesMiss">
-        <th mat-header-cell *matHeaderCellDef> T M </th>
+        <th mat-header-cell *matHeaderCellDef> Ta M </th>
         <td mat-cell *matCellDef="let element"> {{element.stats.tacklesMiss}} </td>
         <td mat-footer-cell *matFooterCellDef> <b> {{total.tacklesMiss}} </b> </td>
       </ng-container>
 
       <ng-container matColumnDef="tacklesPercentage">
-        <th mat-header-cell *matHeaderCellDef> T % </th>
+        <th mat-header-cell *matHeaderCellDef> Ta % </th>
         <td mat-cell *matCellDef="let element">
           {{statsService.percentage(element.stats,'tacklesHit', 'tacklesMiss')}}
         </td>
@@ -207,4 +282,6 @@
       <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
     </table>
 
+  </ion-content>
+  </ng-template>
 </ion-content>

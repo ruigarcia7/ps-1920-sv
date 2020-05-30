@@ -10,6 +10,8 @@ export class Game {
     public local?: string,
     public comment?: string,
     public opponent?: Opponent,
+    public teamScore?: number,
+    public opponentScore?: number,
     public athletes?: Athlete[],
     public activeRoster?: ActiveRoster[]
   ) {
@@ -18,6 +20,8 @@ export class Game {
     this.date = date ? date : new Date(0);
     this.local = local ? local : '';
     this.opponent = opponent ? opponent : new Opponent();
+    this.teamScore = teamScore ? teamScore : 0;
+    this.opponentScore = opponentScore ? opponentScore : 0;
     this.athletes = athletes ? athletes : [];
     this.activeRoster = activeRoster ? activeRoster : [];
   }

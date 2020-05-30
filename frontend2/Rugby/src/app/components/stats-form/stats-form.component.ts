@@ -43,27 +43,24 @@ export class StatsFormComponent implements OnInit {
   }
 
   getNegativeColor(value: any) {
-    if (value < 3) return 'green';
-    if (value < 10) return 'orange';
-    return 'red';
-}
+    return this.statsService.getColorByValue(value);
+  }
 
   getPositiveColor(value: any) {
-    if (value < 3) return 'red';
-    if (value < 10) return 'orange';
-    return 'green';
+    return this.statsService.getColorByValue(10 - value);
   }
 
   getColorPercent(value: any) {
-    if (value < 25) return 'red';
-    if (value < 50) return 'orange';
-    if (value < 75) return 'green';
-    return 'blue';
+    debugger;
+    return this.statsService.getColorByValue(10 - Math.round(value / 10));
   }
 
   onClick(ags: AthleteGameStats) {
     debugger;
     this.currentStats = ags.stats;
     this.currentAthlete = ags.athlete;
+  }
+
+  undo() {
   }
 }
