@@ -40,7 +40,10 @@ public class Profile implements Serializable {
     @Column
     private boolean isAthlete;
 
-    @ManyToMany
-    @JsonIgnore
+    //@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.MERGE})
     private List<Event> events;
+
+    public void  addEvent(Event event){
+    }
 }

@@ -29,6 +29,12 @@ public class Event {
     private String local;
 
     @Column
-    @ManyToMany(mappedBy = "events")
+   // @ManyToMany(mappedBy = "events", cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(mappedBy = "events", cascade = {CascadeType.MERGE})
     private List<Profile> profiles;
+
+    public void addProfile(Profile profile){
+        profiles.add(profile);
+        profile.getEvents().add(this);
+    }
 }

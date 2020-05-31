@@ -25,6 +25,7 @@ export class EventFormComponent implements OnInit {
   getProfiles() {
     this.profileService.getProfiles()
       .subscribe( profiles => {
+        debugger;
         this.profiles = profiles;
       });
   }

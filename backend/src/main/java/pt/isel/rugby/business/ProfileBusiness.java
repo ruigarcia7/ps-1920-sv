@@ -6,13 +6,19 @@ import pt.isel.rugby.exception.ResourceNotFoundException;
 import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.ProfileRepository;
 
+import java.util.Collections;
+
 @Component
 public class ProfileBusiness {
     @Autowired
     ProfileRepository profileRepository;
 
     public Iterable<Profile> getProfiles(){
-        return profileRepository.findAll();
+        Iterable<Profile> profiles = profileRepository.findAll();
+        profiles.forEach(profile -> {
+            profile.getEvents().forEach(event -> event.setProfiles(Collections.emptyList()));
+        });
+        return profiles;
     }
 
     public Long postProfile(Profile profile){
