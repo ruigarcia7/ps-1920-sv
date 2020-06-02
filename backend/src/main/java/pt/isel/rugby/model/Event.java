@@ -30,7 +30,10 @@ public class Event {
 
     @Column
    // @ManyToMany(mappedBy = "events", cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-    @ManyToMany(mappedBy = "events", cascade = {CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "profile_events",
+            joinColumns = { @JoinColumn(name = "event_id") },
+            inverseJoinColumns = { @JoinColumn(name = "profile_id") })
     private List<Profile> profiles;
 
     public void addProfile(Profile profile){
