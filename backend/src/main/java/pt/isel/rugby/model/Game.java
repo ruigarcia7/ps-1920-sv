@@ -27,6 +27,12 @@ public class Game {
     @Column
     private String comment;
 
+    @Column
+    private Long teamScore;
+
+    @Column
+    private Long opponentScore;
+
     @OneToOne
     @JoinColumn(name = "opponentId", referencedColumnName = "id")
     private Opponent opponent;

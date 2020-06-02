@@ -30,6 +30,8 @@ public class StaffController {
         return staffBusiness.findStaffById(id);
     }
 
+    //TODO: add conversion from stafftype name to stafftype when we make the mappers;
+    //The staff returns a string, but we want to map to the ID of the stafftype its associated to;
     @PostMapping("/post")
     public Long postStaff(@RequestBody Staff staff) {
         logger.info("On method POST staff/post");

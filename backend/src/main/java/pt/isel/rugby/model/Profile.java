@@ -1,13 +1,17 @@
 package pt.isel.rugby.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "profile")
@@ -45,7 +49,6 @@ public class Profile implements Serializable {
     @JoinTable(name = "profile_events",
             joinColumns = { @JoinColumn(name = "profile_id") },
             inverseJoinColumns = { @JoinColumn(name = "event_id") })
-    private List<Event> events;
 
     public void  addEvent(Event event){
     }

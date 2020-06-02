@@ -4,7 +4,7 @@ import { Profile } from '../../classes/profile';
 import { EventService } from '../../httpservices/event/event.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { PopoverController } from '@ionic/angular';
+import {AlertController, PopoverController} from '@ionic/angular';
 import { EventPopoverComponent } from './event-popover/event-popover.component';
 
 @Component({
@@ -19,7 +19,8 @@ export class EventComponent implements OnInit {
   dataSource: any;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private eventService: EventService, private popoverController: PopoverController) {}
+  constructor(private eventService: EventService, private popoverController: PopoverController,
+              private alertController: AlertController) {}
 
   ngOnInit() {
     this.showEvents();
@@ -43,5 +44,35 @@ export class EventComponent implements OnInit {
     });
     debugger;
     return await popover.present();
+  }
+
+  async presentAlert(event: Event) {
+    debugger;
+    const alert = await this.alertController.create({
+      header: 'Delete Event',
+      message: 'Are you sure you want to delete this Event?',
+      buttons: ['No',
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteClick(event);
+          }
+        }]
+    });
+    await alert.present();
+  }
+
+  deleteClick(event: Event) {
+    debugger;
+    this.eventService.deleteEvent(event.id)
+      .subscribe( response => {
+        console.log(response);
+        this.refresh();
+        debugger;
+      });
+  }
+
+  refresh() {
+    this.showEvents();
   }
 }

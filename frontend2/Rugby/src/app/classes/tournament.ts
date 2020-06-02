@@ -5,6 +5,7 @@ export class Tournament {
     private id?: number,
     public name?: string,
     public date?: Date,
+    public local?: string,
     public classification?: string,
     public comment?: string,
     public games?: Game[]
@@ -12,6 +13,7 @@ export class Tournament {
     this.id = id ? id : 0;
     this.name = name ? name : '';
     this.date = date ? date : new Date(0);
+    this.local = local ? local : '';
     this.comment = comment ? comment : '';
     this.classification = classification ? classification : '';
     this.games = games ? games : [];

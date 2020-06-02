@@ -7,214 +7,440 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-grid fixed>
-  <ion-row>
-    <ng-template [ngIf]="athleteGameStats != undefined">
-      <tr *ngFor="let ags of athleteGameStats">
-        <ion-col>
-          <ion-item button (click)="onClick(ags)">
-            <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
-            <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
-          </ion-item>
-        </ion-col>
-      </tr>
-      <ion-col>
-        <ng-template [ngIf]="currentAthlete != undefined || currentAthlete.id != 0">
-          <ion-item>
-            <ion-label> Selected </ion-label>
-            <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
-            <ion-label> {{currentAthlete.profile.name.split(' ',1)}} </ion-label>
-          </ion-item>
-        </ng-template>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="2" *ngFor="let ags of athleteGameStats">
+        <ion-item button (click)="onClick(ags)">
+          <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
+          <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
+        </ion-item>
       </ion-col>
-    </ng-template>
-  </ion-row>
+    </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getNegativeColor(currentStats.errors)"> Errors {{currentStats.errors}} </h6> </label>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'errors')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getNegativeColor(currentStats.fouls)"> Fouls {{currentStats.fouls}} </h6> </label>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'fouls')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getNegativeColor(currentStats.redCards)"> Red Cards {{currentStats.redCards}} </h6> </label>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'redCards')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getNegativeColor(currentStats.yellowCards)"> Yellow Cards {{currentStats.yellowCards}} </h6> </label>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'yellowCards')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getPositiveColor(currentStats.turnOvers)"> TurnOvers {{currentStats.turnOvers}} </h6>
-        </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'turnOvers')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getPositiveColor(currentStats.tries)"> Tries {{currentStats.tries}} </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'tries')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getPositiveColor(currentStats.mauls)"> Mauls {{currentStats.mauls}} </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'mauls')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getPositiveColor(currentStats.playingTime)"> Playing Time {{currentStats.playingTime}} </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'playingTime')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+        <ion-col size="4" offset="4">
+            <ion-item>
+              <ion-label> Selected </ion-label>
+              <ng-template [ngIf]="currentAthlete != undefined || currentAthlete.id != 0">
+                <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
+                <ion-label> {{currentAthlete.profile.name.split(' ',1)}} </ion-label>
+              </ng-template>
+            </ion-item>
+        </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'tacklesHit','tacklesMiss'))">
-            Tackles {{statsService.percentage(currentStats,'tacklesHit','tacklesMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'tacklesHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'tacklesMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss'))">
-            Conversion Kicks {{statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'conversionkicksHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'conversionkicksMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.errors)"> <b> Errors </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.errors)"> {{currentStats.errors}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'errors')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+              <ion-button color="secondary" slot="icon-only"
+                          (click)="statsService.decrement(currentStats,'errors')">
+                <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.fouls)"> <b> Fouls </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.fouls)"> {{currentStats.fouls}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'fouls')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+              <ion-button color="secondary" slot="icon-only"
+                          (click)="statsService.decrement(currentStats,'fouls')">
+                <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.redCards)"> <b> Red Cards </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.redCards)"> {{currentStats.redCards}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'redCards')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'redCards')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
 
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss'))">
-            Goal Kicks {{statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'goalkicksHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'goalkicksMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss'))">
-            Drop Kicks {{statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'dropkicksHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'dropkicksMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.yellowCards)"> <b> Yellow Cards </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getNegativeColor(currentStats.yellowCards)"> {{currentStats.yellowCards}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'yellowCards')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'yellowCards')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss'))">
-            Line Outs {{statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'lineoutsHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'lineoutsMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <label position="fixed">
-          <h6 [style.color]="getColorPercent(statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss'))">
-            Offside Kicks {{statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss')}} % </h6> </label>
-        <ion-button color="success" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'offsidekicksHit')">
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
-        <ion-button color="danger" size="small" slot="end"
-                    (click)="statsService.increment(currentStats,'offsidekicksMiss')">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-item>
-    <ion-button type="submit" class="ion-no-margin">Submit</ion-button>
-  </ion-item>
-</ion-grid>
+    <ion-row>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.turnOvers)"> <b> Turn Overs </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.turnOvers)"> {{currentStats.turnOvers}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'turnOvers')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'turnOvers')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+
+        </ion-item>
+      </ion-col>
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.tries)"> <b> Tries </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.tries)"> {{currentStats.tries}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'tries')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'tries')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.mauls)"> <b> Mauls </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.mauls)"> {{currentStats.mauls}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'mauls')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'mauls')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size = "3">
+        <ion-item>
+          <ion-label>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.playingTime)"> <b> Playing Time </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6 [style.color]="getPositiveColor(currentStats.playingTime)"> {{currentStats.playingTime}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'playingTime')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'playingTime')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'tacklesHit','tacklesMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'tacklesHit','tacklesMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'tacklesHit','tacklesMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Tackles </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.tacklesHit}} - {{currentStats.tacklesMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'tacklesHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'tacklesHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'tacklesMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'tacklesMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'conversionkicksHit','conversionkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Conversion Kicks </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.conversionkicksHit}} - {{currentStats.conversionkicksMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'conversionkicksHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'conversionkicksHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'conversionkicksMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'conversionkicksMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'goalkicksHit','goalkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Goal Kicks </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.goalkicksHit}} - {{currentStats.goalkicksMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'goalkicksHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'goalkicksHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'goalkicksMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'goalkicksMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'dropkicksHit','dropkicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Drop Kicks </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.dropkicksHit}} - {{currentStats.dropkicksMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'dropkicksHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'dropkicksHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'dropkicksMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'dropkicksMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'lineoutsHit','lineoutsMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Line Outs </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.lineoutsHit}} - {{currentStats.lineoutsMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'lineoutsHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'lineoutsHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'lineoutsMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'lineoutsMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> {{statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss')}} % </b> </h6>
+            </div>
+          </ion-label>
+          <ion-label [style.color]="getColorPercent(statsService.percentage(currentStats,'offsidekicksHit','offsidekicksMiss'))">
+            <div class="ion-text-center">
+              <h6 > <b> Offside Kicks </b> </h6>
+            </div>
+            <div class="ion-text-center">
+              <h6> {{currentStats.offsidekicksHit}} - {{currentStats.offsidekicksMiss}} </h6>
+            </div>
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button color="success" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.increment(currentStats,'offsidekicksHit')">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
+                        (click)="statsService.decrement(currentStats,'offsidekicksHit')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" slot="icon-only"
+                        (click)="statsService.increment(currentStats,'offsidekicksMiss')">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="secondary" slot="icon-only"
+                        (click)="statsService.decrement(currentStats,'offsidekicksMiss')">
+              <ion-icon name="arrow-undo-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-button type="submit" class="ion-no-margin">Submit</ion-button>
+    </ion-item>
+  </ion-grid>
+
+</ion-content>

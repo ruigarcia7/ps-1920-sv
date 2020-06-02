@@ -3,6 +3,7 @@ package pt.isel.rugby.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,12 @@ public class Tournament {
 
     @Column
     private String comment;
+
+    @Column
+    private Date date;
+
+    @Column
+    private String local;
 
     //TODO: hummm.
     @OneToMany(mappedBy = "tournament")

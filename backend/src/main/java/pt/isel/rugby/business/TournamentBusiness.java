@@ -3,6 +3,8 @@ package pt.isel.rugby.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
+import pt.isel.rugby.model.Athlete;
+import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.model.Tournament;
 import pt.isel.rugby.repository.TournamentRepository;
 
@@ -29,6 +31,12 @@ public class TournamentBusiness {
 
     public void deleteTournament (Tournament tournament){
         tournamentRepository.findById(tournament.getId()).orElseThrow(() -> new ResourceNotFoundException("Tournament", "Id", tournament.getId()));
+        tournamentRepository.delete(tournament);
+    }
+
+    public void deleteTournamentById(Long id) {
+        Tournament tournament = tournamentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tournament", "Id", id));
+        tournamentRepository.findById(tournament.getId()).orElseThrow(()-> new ResourceNotFoundException("Tournament", "Id", tournament.getId()));
         tournamentRepository.delete(tournament);
     }
 }

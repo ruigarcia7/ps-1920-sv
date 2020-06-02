@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
 import { Practice } from '../../classes/practice';
 import { AthleteService } from '../../httpservices/athlete/athlete.service';
-import { PracticeService } from '../../httpservices/practice/practice.service';
+import { HttpPracticeService } from '../../httpservices/practice/practice.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {ModalController} from '@ionic/angular';
-import {EventPopoverComponent} from '../event/event-popover/event-popover.component';
-import {PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
-import {AthletePractice} from '../../classes/associations/AthletePractice';
+import {ModalController, ToastController} from '@ionic/angular';
+import { PracticeFormModalComponent} from './practice-form-modal/practice-form-modal.component';
+import { AthletePractice} from '../../classes/associations/AthletePractice';
+import { PracticeService } from '../../componentservices/practice/practice.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-practice-form',
@@ -18,11 +19,19 @@ import {AthletePractice} from '../../classes/associations/AthletePractice';
 export class PracticeFormComponent implements OnInit {
   practice: Practice;
   athletes: Athlete[];
-  constructor(private athleteService: AthleteService, private practiceService: PracticeService
-            , private modalController: ModalController) { }
+  selected: Athlete[];
+
+  constructor(private athleteService: AthleteService, private httppracticeService: HttpPracticeService
+            , private modalController: ModalController, private practiceService: PracticeService,
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.practice = new Practice();
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.httppracticeService.getPracticeById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.practice = item);
+    }
     this.getAthletes();
   }
 
@@ -32,23 +41,42 @@ export class PracticeFormComponent implements OnInit {
         debugger;
         this.athletes = athletes;
         this.practice.athletePractices = [];
-        athletes.forEach(item => this.practice.athletePractices.push(new AthletePractice(null, item)));
+        // athletes.forEach(item => this.practice.athletePractices.push(new AthletePractice(null, item)));
       });
   }
 
   processPractice() {
     debugger;
-    this.practiceService.postPractice(this.practice).subscribe( (res) => { console.log(res); });
+    this.httppracticeService.postPractice(this.practice).subscribe( (res) => {
+      console.log(res);
+      this.presentToast();
+    });
   }
 
   async onOk() {
+    this.practiceService.refreshArray(this.selected, this.practice.athletePractices);
     debugger;
     const modal = await this.modalController.create({
       component: PracticeFormModalComponent,
       componentProps: { practice : this.practice }
     });
-    //const data = await modal.onWillDismiss();
+    // const data = await modal.onWillDismiss();
     return await modal.present();
     debugger;
+  }
+
+  navigate() {
+    debugger;
+    this.router.navigate(['/app/practice']).then(res => { window.location.reload(); });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      header: 'Success',
+      message: 'Event Submitted.',
+      position: 'bottom',
+      duration: 5000
+    });
+    await toast.present().then(this.navigate.bind(this));
   }
 }

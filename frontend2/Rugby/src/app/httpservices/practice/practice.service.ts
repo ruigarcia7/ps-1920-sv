@@ -6,7 +6,7 @@ import {Practice} from '../../classes/practice';
 @Injectable({
   providedIn: 'root'
 })
-export class PracticeService {
+export class HttpPracticeService {
 
   private BASE_URL = 'http://localhost:8080/practice';
   private httpOptions = {
@@ -25,7 +25,7 @@ export class PracticeService {
     return this.http.get<Practice[]>(url, this.httpOptions);
   }
 
-  getPracticeById(id: number): Observable<Practice> {
+  getPracticeById(id: any): Observable<Practice> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

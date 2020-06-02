@@ -9,7 +9,7 @@ import {Athlete} from '../../classes/athlete';
 })
 
 export class EventService {
-  private BASE_URL = 'http://localhost:8080/event/';
+  private BASE_URL = 'http://localhost:8080/event';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -22,10 +22,10 @@ export class EventService {
   }
 
   getEvents(): Observable<Event[]> {
-    const url = `${this.BASE_URL}all`;
+    const url = `${this.BASE_URL}/all`;
     return this.http.get<Event[]>(url, this.httpOptions);
   }
-  getEventsById(id: number) {
+  getEventsById(id: any) {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

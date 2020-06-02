@@ -15,51 +15,72 @@
     </ion-toolbar>
   </ion-header>
 
-  <!--<div class="speaker-background">
+  <div class="speaker-background">
     <ion-avatar>
-      <img [src]="profile?.photo">
+      <img [src]="athlete?.profile.photo">
     </ion-avatar>
-    <h2>{{profile?.name}}</h2>
-  </div>-->
+    <h2>{{athlete?.profile.name}}</h2>
+  </div>
 
   <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile [colspan]="3" [rowspan]="3">
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
         <img [src]="athlete?.profile.photo">
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="3" [rowspan]="1">
-      {{athlete?.profile.name}}
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label> Data de Nascimento </ion-label>
-      <ion-datetime displayFormat="MMM DD, YYYY" value="{{athlete?.profile.birth}}"></ion-datetime>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <ion-label>
+        <div class="ion-text-center"> <b> Nome </b> </div>
+        <div class="ion-text-center">  {{athlete?.profile.name}} </div>
+      </ion-label>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <ion-label> Morada </ion-label>
-      <ion-label> {{athlete?.profile.address}}  </ion-label>
+      <ion-label>
+        <div class="ion-text-center"> <b> Posições </b> </div>
+        <div class="ion-text-center"> {{athlete?.positions}} </div>
+      </ion-label>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label> Número de Atleta </ion-label>
-      <ion-label> {{athlete?.athleteNumber}} </ion-label>
+      <ion-label>
+        <div class="ion-text-center"> <b> Altura [cm] </b> </div>
+        <div class="ion-text-center"> {{athlete?.height}} </div>
+      </ion-label>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label> Altura </ion-label>
-      <ion-label> {{athlete?.height}} </ion-label>
+      <ion-label>
+        <div class="ion-text-center"> <b> Peso [kg] </b> </div>
+        <div class="ion-text-center"> {{athlete?.weight}} </div>
+      </ion-label>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label> Peso </ion-label>
-      <ion-label> {{athlete?.weight}} </ion-label>
+      <ion-label>
+        <div class="ion-text-center"> <b> Data de Nascimento </b> </div>
+        <ion-datetime displayFormat="MMM DD, YYYY" value="{{athlete?.profile.birth}}"> </ion-datetime>
+      </ion-label>
     </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label>
+        <div class="ion-text-center"> <b> Morada </b> </div>
+        <div class="ion-text-center"> {{athlete?.profile.address}} </div>
+      </ion-label>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <ion-label>
+        <div class="ion-text-center"> <b> Número de Atleta </b> </div>
+        <div class="ion-text-center"> {{athlete?.athleteNumber}} </div>
+      </ion-label>
+    </mat-grid-tile>
+
   </mat-grid-list>
 
 
   <div class="ion-padding athlete-profile">
-    <p>{{athlete?.profile.name}} Say hello on social media!</p>
+    <p> Say hello to {{athlete?.profile.name}} on social media!</p>
 
     <hr>
 

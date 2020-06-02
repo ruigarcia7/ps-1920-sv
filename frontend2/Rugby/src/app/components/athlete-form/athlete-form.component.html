@@ -118,20 +118,20 @@
 
       <ion-item>
         <ion-label position="stacked"> Weight </ion-label>
-        <input required type="tel"[(ngModel)]="athlete.weight" name="weight"
+        <input type="tel"[(ngModel)]="athlete.weight" name="weight"
                pattern="[0-9]{1,3}">
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked"> Height </ion-label>
-        <input required type="tel"[(ngModel)]="athlete.height" name="height"
+        <input type="tel"[(ngModel)]="athlete.height" name="height"
                pattern="[0-9]{1,3}">
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked"> Positions </ion-label>
         <ion-select [(ngModel)]="athlete.positions" name="positions"
-                    multiple="true" cancelText="Cancel" okText="Confirm">
+                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
           <tr *ngFor="let position of positions">
             <ion-select-option value="{{position.name}}"> {{position.name}}</ion-select-option>
           </tr>

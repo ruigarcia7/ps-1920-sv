@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { StaffFormComponent } from './staff-form.component';
 import { StaffFormRoutingModule } from './staff-form-routing.module';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { StaffModule } from '../staff/staff.module';
+import {StaffComponent} from '../staff/staff.component';
 
 @NgModule({
   imports: [
@@ -12,10 +14,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     IonicModule,
     StaffFormRoutingModule,
-    MatGridListModule
+    MatGridListModule,
+    StaffModule
   ],
   declarations: [
     StaffFormComponent,
+  ],
+  providers: [
+    StaffComponent
   ]
 })
 

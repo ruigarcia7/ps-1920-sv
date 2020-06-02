@@ -5,3 +5,13 @@
 .tab-button {
   max-width: 200px;
 }
+
+.tab-class {
+  display: flex;
+  overflow-x: scroll;
+  .tab-item {
+    display: inline-block !important;
+    min-width: 100px !important;
+    width: auto !important;
+  }
+}

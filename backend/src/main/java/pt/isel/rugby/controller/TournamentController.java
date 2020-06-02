@@ -48,4 +48,11 @@ public class TournamentController {
         tournamentBusiness.deleteTournament(tournament);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAthleteById(@PathVariable Long id){
+        logger.info("On method DELETE tournament/delete/id with id "+ id);
+        tournamentBusiness.deleteTournamentById(id);
+        return ResponseEntity.ok().build();
+    }
 }

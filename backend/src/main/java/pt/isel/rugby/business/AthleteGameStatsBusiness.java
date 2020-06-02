@@ -66,4 +66,8 @@ public class AthleteGameStatsBusiness {
     public AthleteGameStats[] findAthleteGameStatsByGameId(Long id) {
         return athleteGameStatsRepository.findAllByGameId(id);
     }
+
+    public AthleteGameStats[] findAthleteGameStatsByAthleteId(Long id) {
+        return athleteGameStatsRepository.findAllByAthleteId(id);
+    }
 }

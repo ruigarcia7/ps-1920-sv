@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
 import { AthleteService } from '../../../app/httpservices/athlete/athlete.service';
+import {AlertController} from "@ionic/angular";
 
 @Component({
   selector: 'app-athlete',
@@ -11,7 +12,7 @@ import { AthleteService } from '../../../app/httpservices/athlete/athlete.servic
 export class AthleteComponent implements OnInit {
   athletes: Athlete[];
 
-  constructor(private athleteService: AthleteService) {
+  constructor(private athleteService: AthleteService, private alertController: AlertController) {
   }
 
   ngOnInit() {this.showAthletes();}
@@ -24,4 +25,36 @@ export class AthleteComponent implements OnInit {
         console.log('athletes found ' + athletes);
       });
   }
+
+  async presentAlert(athlete: Athlete) {
+    debugger;
+    const alert = await this.alertController.create({
+      header: 'Delete Athlete',
+      message: 'Are you sure you want to delete this Athlete?',
+      buttons: ['No',
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteClick(athlete);
+          }
+        }]
+    });
+    await alert.present();
+  }
+
+  deleteClick(athlete: Athlete) {
+    debugger;
+    this.athleteService.deleteAthlete(athlete.id)
+      .subscribe( response => {
+        console.log(response);
+        //this.ngOnInit();
+        this.refresh();
+        debugger;
+      });
+  }
+
+  refresh() {
+    this.showAthletes();
+  }
+
 }

@@ -5,6 +5,8 @@ import { EventService } from '../../httpservices/event/event.service';
 import { ProfileService } from '../../httpservices/profile/profile.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-event-form',
@@ -14,12 +16,24 @@ import { ErrorStateMatcher } from '@angular/material/core';
 export class EventFormComponent implements OnInit {
   event: Event;
   profiles: Profile[];
+  all: boolean;
 
-  constructor(private eventService: EventService, private profileService: ProfileService) { }
+  constructor(private eventService: EventService, private profileService: ProfileService,
+              private toastController: ToastController, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.event = new Event();
     this.getProfiles();
+
+    // check if "update" or post to set current object
+    //TODO: fix the fact that the selects dont keep state on updates
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.eventService.getEventsById(this.route.snapshot.paramMap.get('id')).subscribe(item => {
+        debugger;
+        this.event = item;
+      });
+    }
   }
 
   getProfiles() {
@@ -32,7 +46,29 @@ export class EventFormComponent implements OnInit {
 
   processEvent() {
     debugger;
-    this.eventService.postEvent(this.event).subscribe( (res) => { console.log(res); });
+    this.eventService.postEvent(this.event).subscribe( (res) => {
+      console.log(res);
+      this.presentToast();
+    });
   }
 
+  navigate() {
+    debugger;
+    this.router.navigate(['/app/event']).then(res => { window.location.reload(); });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      header: 'Success',
+      message: 'Event Submitted.',
+      position: 'bottom',
+      duration: 5000
+    });
+    await toast.present().then(this.navigate.bind(this));
+  }
+
+  toggleAll() {
+    debugger;
+    return this.all ? this.event.profiles = this.profiles : this.event.profiles = [];
+  }
 }

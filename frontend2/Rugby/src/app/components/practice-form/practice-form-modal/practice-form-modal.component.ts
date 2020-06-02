@@ -22,7 +22,8 @@ export class PracticeFormModalComponent implements OnInit {
     this.athletePractice = this.navParams.get('practice').athletePractices;
     debugger;
   }
-dismiss() {
+
+  dismiss() {
     this.modalController.dismiss({
       dismissed: true
     });

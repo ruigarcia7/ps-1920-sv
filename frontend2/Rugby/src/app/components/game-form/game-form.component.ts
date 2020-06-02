@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../classes/game';
 import { Opponent } from '../../classes/opponent';
+import { Athlete } from '../../classes/athlete';
 import { GameService } from '../../httpservices/game/game.service';
 import { OpponentService } from '../../httpservices/opponent/opponent.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { AthleteService} from '../../httpservices/athlete/athlete.service';
 
 
 @Component({
@@ -14,8 +17,11 @@ import { ActivatedRoute } from '@angular/router';
 export class GameFormComponent implements OnInit {
   game: Game;
   opponents: Opponent[];
-  constructor(private gameService: GameService, private opponentService: OpponentService
-              , private route: ActivatedRoute) { }
+  athletes: Athlete[];
+
+  constructor(private gameService: GameService, private opponentService: OpponentService,
+              private athleteService: AthleteService, private route: ActivatedRoute,
+              private toastController: ToastController, private router: Router) { }
 
   ngOnInit() {
     this.game = new Game();
@@ -25,6 +31,7 @@ export class GameFormComponent implements OnInit {
       this.gameService.getGameById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.game = item);
     }
     this.getOpponents();
+    this.getAthletes();
   }
 
   getOpponents() {
@@ -34,9 +41,35 @@ export class GameFormComponent implements OnInit {
       });
   }
 
+  getAthletes() {
+    this.athleteService.getAthletes()
+      .subscribe( athletes => {
+        this.athletes = athletes;
+      });
+  }
+
   processGame() {
     debugger;
-    this.gameService.postGame(this.game).subscribe( (res) => { console.log(res); });
+    this.gameService.postGame(this.game).subscribe( (res) => {
+      console.log(res);
+      this.presentToast();
+    });
+  }
+
+
+  navigate() {
+    debugger;
+    this.router.navigate(['/app/game']).then(res => { window.location.reload(); });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      header: 'Success',
+      message: 'Game Submitted.',
+      position: 'bottom',
+      duration: 5000
+    });
+    await toast.present().then(this.navigate.bind(this));
   }
 
 }

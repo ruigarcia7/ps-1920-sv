@@ -8,7 +8,7 @@ import { Observable, throwError} from 'rxjs';
   providedIn: 'root'
 })
 
-export class EnumService {
+export class HttpEnumService {
   private BASE_URL_POSITION = 'http://localhost:8080/enumerables/position/';
   private BASE_URL_STAFFTYPE = 'http://localhost:8080/enumerables/stafftype/';
   private httpOptions = {

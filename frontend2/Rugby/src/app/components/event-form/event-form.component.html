@@ -33,12 +33,16 @@
 
       <ion-item>
         <ion-label position="stacked"> Attendances </ion-label>
-        <ion-select interface="alert-radio-group" [(ngModel)]="event.profiles" name="profiles"
-                    multiple="true" cancelText="Cancel" okText="Confirm">
-          <tr *ngFor="let profile of profiles">
-            <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
-          </tr>
+          <ion-select interface="alert-radio-group" [(ngModel)]="event.profiles" name="profiles"
+              multiple="true" cancelText="Cancel" okText="Confirm">
+              <tr *ngFor="let profile of profiles">
+                <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
+              </tr>
         </ion-select>
+        <ion-item slot="end">
+          <ion-label> All </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="all" name="all" (ionChange)="toggleAll()"></ion-checkbox>
+        </ion-item>
       </ion-item>
 
       <ion-item>

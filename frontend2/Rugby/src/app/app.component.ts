@@ -19,7 +19,7 @@ import {BehaviorSubject} from 'rxjs';
 export class AppComponent {
   appPages = [
     {
-      title: '[PH]Calendar',
+      title: 'Calendar',
       url: '/app/calendar',
       icon: 'calendar'
     },
@@ -59,7 +59,7 @@ export class AppComponent {
       icon: 'fitness'
     },
     {
-      title: '[PH]Stats',
+      title: 'Stats',
       url: '/app/stats',
       icon: 'newspaper'
     },

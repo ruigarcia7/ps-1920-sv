@@ -16,8 +16,13 @@
       </ion-item>
 
       <ion-item>
+        <ion-label position="stacked"> Local </ion-label>
+        <input type="text"[(ngModel)]="tournament.local" name="local">
+      </ion-item>
+
+      <ion-item>
         <ion-label position="stacked"> Date </ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="tournament.date" name="date"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY hh MM" [(ngModel)]="tournament.date" name="day"></ion-datetime>
       </ion-item>
 
       <ion-item>

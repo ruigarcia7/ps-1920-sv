@@ -3,10 +3,11 @@ import { Athlete } from '../../classes/athlete';
 import { Profile } from '../../classes/profile';
 import { Position } from '../../classes/position';
 import { AthleteService } from '../../httpservices/athlete/athlete.service';
-import { EnumService } from '../../httpservices/enum/enum.service';
+import { HttpEnumService } from '../../httpservices/enum/enum.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastController} from '@ionic/angular';
 
 export class AthleteErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -27,7 +28,9 @@ export class AthleteFormComponent implements OnInit {
   athlete: Athlete;
   profile: Profile;
   positions: Position[];
-  constructor(private athleteService: AthleteService, private enumService: EnumService,  private route: ActivatedRoute) { }
+  constructor(private athleteService: AthleteService, private httpenumService: HttpEnumService,
+              private route: ActivatedRoute, private toastController: ToastController,
+              private router: Router) { }
 
   ngOnInit() {
     this.athlete = new Athlete();
@@ -42,7 +45,7 @@ export class AthleteFormComponent implements OnInit {
   }
 
   getPositions() {
-    this.enumService.getPositions()
+    this.httpenumService.getPositions()
       .subscribe( position => {
         this.positions = position;
       });
@@ -52,6 +55,24 @@ export class AthleteFormComponent implements OnInit {
     this.athlete.positions = this.athlete.positions.toString();
     this.athlete.profile.isAthlete = true;
     debugger;
-    this.athleteService.postAthlete(this.athlete).subscribe( (res) => { console.log(res); });
+    this.athleteService.postAthlete(this.athlete).subscribe((res) => {
+      console.log(res);
+      this.presentToast();
+    });
   }
-}
+
+  navigate() {
+    debugger;
+    this.router.navigate(['/app/athlete']).then(res => { window.location.reload(); });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      header: 'Success',
+      message: 'Athlete Submitted.',
+      position: 'bottom',
+      duration: 5000
+    });
+    await toast.present().then(this.navigate.bind(this));
+  }
+  }

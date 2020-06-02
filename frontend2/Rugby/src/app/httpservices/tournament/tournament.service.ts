@@ -26,7 +26,7 @@ export class TournamentService {
     return this.http.get<Tournament[]>(url, this.httpOptions);
   }
 
-  getTournamentById(id: number): Observable<Tournament> {
+  getTournamentById(id: any): Observable<Tournament> {
     const url = `${this.BASE_URL}/findById/${id}`;
     return this.http.get(url, this.httpOptions);
   }

@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Table(name = "staff_type")
 @Data
 public class StaffType implements Serializable {
-    //TODO: does it make sense that our enums have ids?
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

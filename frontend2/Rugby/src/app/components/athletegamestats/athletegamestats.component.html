@@ -1,0 +1,287 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="stats">
+        Stats
+      </ion-segment-button>
+      <ion-segment-button value="graph">
+        Graph
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/athlete"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" size="large" fill="solid" (click)="openSubMenu()">
+      <ion-icon name="key-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-menu side="end" contentId="main" menuId="subtitle">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title> Subtitles </ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeSubMenu()">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-label> E - Errors </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> F - Fouls </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> RC - Red Cards</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> YC - Yellow Cards</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> TO - TurnOvers</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> Tr - Tries </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> M - Mauls </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> PT - Playing Time </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> Ta - Tackles </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> CK - Conversion Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> GK - Goal Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> DK - Drop Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> LO - Line Outs </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> OK - Offside Kicks </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> H - Hits </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> M - Misses </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label> <b> XX </b> % - Percentage </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+<ng-template [ngIf]="hasData">
+  <ion-content>
+    <table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="game">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Game </th>
+        <td mat-cell *matCellDef="let element"> {{element.game.date | date:"M/d h:mm"}} vs {{element.game.opponent.name}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> Total </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="errors">
+        <th mat-header-cell *matHeaderCellDef> E </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.errors}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.errors}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fouls">
+        <th mat-header-cell *matHeaderCellDef> F </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.fouls}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.fouls}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="redCards">
+        <th mat-header-cell *matHeaderCellDef> RC </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.redCards}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.redCards}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="yellowCards">
+        <th mat-header-cell *matHeaderCellDef> YC </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.yellowCards}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.yellowCards}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="turnOvers">
+        <th mat-header-cell *matHeaderCellDef> TO </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.turnOvers}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.turnOvers}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tries">
+        <th mat-header-cell *matHeaderCellDef> Tr </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.tries}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.tries}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mauls">
+        <th mat-header-cell *matHeaderCellDef> M  </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.mauls}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.mauls}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="playingTime">
+        <th mat-header-cell *matHeaderCellDef> PT </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.playingTime}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.playingTime}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tacklesHit">
+        <th mat-header-cell *matHeaderCellDef> Ta H </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.tacklesHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.tacklesHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tacklesMiss">
+        <th mat-header-cell *matHeaderCellDef> Ta M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.tacklesMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.tacklesMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tacklesPercentage">
+        <th mat-header-cell *matHeaderCellDef> Ta % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'tacklesHit', 'tacklesMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'tacklesHit','tacklesMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="conversionkicksHit">
+        <th mat-header-cell *matHeaderCellDef> CK H </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.conversionkicksHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.conversionkicksHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="conversionkicksMiss">
+        <th mat-header-cell *matHeaderCellDef> CK M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.conversionkicksMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.conversionkicksMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="conversionkicksPercentage">
+        <th mat-header-cell *matHeaderCellDef> CK % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'conversionkicksHit', 'conversionkicksMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'conversionkicksHit','conversionkicksMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="goalkicksHit">
+        <th mat-header-cell *matHeaderCellDef> GK H </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.goalkicksHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.goalkicksHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="goalkicksMiss">
+        <th mat-header-cell *matHeaderCellDef> GK M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.goalkicksMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.goalkicksMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="goalkicksPercentage">
+        <th mat-header-cell *matHeaderCellDef> GK % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'goalkicksHit', 'goalkicksMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'goalkicksHit','goalkicksMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dropkicksHit">
+        <th mat-header-cell *matHeaderCellDef> DK H </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.dropkicksHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.dropkicksHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dropkicksMiss">
+        <th mat-header-cell *matHeaderCellDef> DK M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.dropkicksMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.dropkicksMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dropkicksPercentage">
+        <th mat-header-cell *matHeaderCellDef> DK % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'dropkicksHit', 'dropkicksMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'dropkicksHit','dropkicksMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lineoutsHit">
+        <th mat-header-cell *matHeaderCellDef> LO H</th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.lineoutsHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.lineoutsHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lineoutsMiss">
+        <th mat-header-cell *matHeaderCellDef> LO M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.lineoutsMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.lineoutsMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lineoutsPercentage">
+        <th mat-header-cell *matHeaderCellDef> LO % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'lineoutsHit', 'lineoutsMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'lineoutsHit','lineoutsMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="offsidekicksHit">
+        <th mat-header-cell *matHeaderCellDef> OK H </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.offsidekicksHit}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.offsidekicksHit}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="offsidekicksMiss">
+        <th mat-header-cell *matHeaderCellDef> OK M </th>
+        <td mat-cell *matCellDef="let element"> {{element.stats.offsidekicksMiss}} </td>
+        <td mat-footer-cell *matFooterCellDef> <b> {{total.offsidekicksMiss}} </b> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="offsidekicksPercentage">
+        <th mat-header-cell *matHeaderCellDef> OK % </th>
+        <td mat-cell *matCellDef="let element">
+          {{statsService.percentage(element.stats,'offsidekicksHit', 'offsidekicksMiss')}}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          <b> {{statsService.percentage(total,'offsidekicksHit','offsidekicksMiss')}} </b>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+    </table>
+
+  </ion-content>
+  </ng-template>
+</ion-content>
