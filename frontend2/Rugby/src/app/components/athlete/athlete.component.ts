@@ -20,6 +20,7 @@ export class AthleteComponent implements OnInit {
   showAthletes() {
     this.athleteService.getAthletes()
       .subscribe(athletes => {
+        debugger;
         this.athletes = athletes;
         console.log('athletes found ' + athletes);
       });

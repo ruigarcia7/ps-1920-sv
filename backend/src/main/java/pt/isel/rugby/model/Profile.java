@@ -44,7 +44,12 @@ public class Profile implements Serializable {
     @Column
     private boolean isAthlete;
 
-    @ManyToMany
-    @JsonIgnore
-    private Set<Event> events = new HashSet<>();
+    //@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "profile_events",
+            joinColumns = { @JoinColumn(name = "profile_id") },
+            inverseJoinColumns = { @JoinColumn(name = "event_id") })
+
+    public void  addEvent(Event event){
+    }
 }

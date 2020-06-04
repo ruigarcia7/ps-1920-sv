@@ -9,6 +9,12 @@ import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
 
+import java.util.Collections;
+
+/**
+ * Reprents the behaviour of the Athlete
+ *
+ */
 @Component
 public class AthleteBusiness {
 
@@ -18,8 +24,38 @@ public class AthleteBusiness {
     @Autowired
     ProfileRepository profileRepository;
 
+    /**
+     * Finds all Athletes
+     *
+     *
+     */
     public Iterable<Athlete> findAllAthletes(){
-        return athleteRepository.findAll();
+        Iterable<Athlete> athletes = athleteRepository.findAll();
+        athletes.forEach(athlete -> {
+            athlete.getAthletePractices().forEach(athletePractice -> {
+                athletePractice.setAthlete(null);
+                athletePractice.setPractice(null);
+            });
+            athlete.getAthleteGameStats().forEach(athleteGameStats -> {
+                athleteGameStats.setAthlete(null);
+                athleteGameStats.setGame(null);
+                athleteGameStats.setStats(null);
+            });
+            athlete.getActiveRosters().forEach(activeRoster -> {
+                activeRoster.setAthlete(null);
+                activeRoster.setGame(null);
+            });
+            athlete.getGames().forEach(game -> {
+                game.setAthletes(Collections.emptyList());
+            });
+            athlete.getProfile().getEvents().forEach(event -> {
+                event.setProfiles(Collections.emptyList());
+            });
+            athlete.setTrainingSchedules(Collections.emptyList());
+            athlete.setGames(Collections.emptyList());
+        });
+
+        return athletes;
     }
 
 
