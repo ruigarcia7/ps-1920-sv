@@ -77,18 +77,19 @@ export class AppComponent {
     private platform: Platform,
     private router: Router,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
+    private statusBar: StatusBar/*,
     private storage: Storage,
     private swUpdate: SwUpdate,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController*/
   ) {
     this.initializeApp();
   }
 
+  /*
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
-  }
+  }*/
 
   initializeApp() {
     this.platform.ready().then(() => {
