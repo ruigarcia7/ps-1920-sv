@@ -9,6 +9,7 @@ import pt.isel.rugby.repository.AthleteGameStatsRepository;
 import pt.isel.rugby.repository.GameRepository;
 import pt.isel.rugby.repository.StatsRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -23,7 +24,27 @@ public class GameBusiness {
     StatsRepository statsRepository;
 
 
-    public Iterable<Game> findAllGames() {return gameRepository.findAll();}
+    public Iterable<Game> findAllGames() {
+        Iterable<Game> games = gameRepository.findAll();
+        games.forEach(game -> {
+
+            game.getAthletes().forEach(athlete -> {
+                athlete.setGames(Collections.emptyList());
+                athlete.setTrainingSchedules(Collections.emptyList());
+                athlete.setAthletePractices(Collections.emptyList());
+                athlete.getProfile().setEvents(Collections.emptyList());
+            });
+            game.getAthleteGameStats().forEach(athleteGameStats ->{
+                        athleteGameStats.setGame(null);
+                        athleteGameStats.setStats(null);
+                        athleteGameStats.setAthlete(null);
+            });
+
+            game.setActiveRoster(Collections.emptyList());
+            game.setTournament(null);
+        });
+        return games;
+    }
 
     public Long postGame (Game game){
         /*List<AthleteGameStats> ags = game.getAthleteGameStats();

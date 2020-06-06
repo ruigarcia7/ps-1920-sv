@@ -31,29 +31,7 @@ public class AthleteBusiness {
      */
     public Iterable<Athlete> findAllAthletes(){
         Iterable<Athlete> athletes = athleteRepository.findAll();
-        athletes.forEach(athlete -> {
-            athlete.getAthletePractices().forEach(athletePractice -> {
-                athletePractice.setAthlete(null);
-                athletePractice.setPractice(null);
-            });
-            athlete.getAthleteGameStats().forEach(athleteGameStats -> {
-                athleteGameStats.setAthlete(null);
-                athleteGameStats.setGame(null);
-                athleteGameStats.setStats(null);
-            });
-            athlete.getActiveRosters().forEach(activeRoster -> {
-                activeRoster.setAthlete(null);
-                activeRoster.setGame(null);
-            });
-            athlete.getGames().forEach(game -> {
-                game.setAthletes(Collections.emptyList());
-            });
-            athlete.getProfile().getEvents().forEach(event -> {
-                event.setProfiles(Collections.emptyList());
-            });
-            athlete.setTrainingSchedules(Collections.emptyList());
-            athlete.setGames(Collections.emptyList());
-        });
+        athletes.forEach(athlete -> setInnerObjectsToNull(athlete));
 
         return athletes;
     }
@@ -68,8 +46,14 @@ public class AthleteBusiness {
     }
 
     public Athlete findAthleteById(Long id) {
-        return athleteRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Athlete", "Id", id));
+        Athlete athlete = athleteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", id));
+
+        setInnerObjectsToNull(athlete);
+
+        return athlete;
     }
+
+
 
     public Long updateAthlete(Athlete athlete) {
         profileRepository.findById(athlete.getProfile().getId()).orElseThrow(() -> new ResourceNotFoundException("Profile", "Id", athlete.getId()));
@@ -93,5 +77,29 @@ public class AthleteBusiness {
         athleteRepository.findById(athlete.getId()).orElseThrow(()-> new ResourceNotFoundException("Athlete", "Id", athlete.getId()));
         athleteRepository.delete(athlete);
         profileRepository.deleteById(profile.getId());
+    }
+
+    private void setInnerObjectsToNull(Athlete athlete) {
+        athlete.getAthletePractices().forEach(athletePractice -> {
+            athletePractice.setAthlete(null);
+            athletePractice.setPractice(null);
+        });
+        athlete.getAthleteGameStats().forEach(athleteGameStats -> {
+            athleteGameStats.setAthlete(null);
+            athleteGameStats.setGame(null);
+            athleteGameStats.setStats(null);
+        });
+        athlete.getActiveRosters().forEach(activeRoster -> {
+            activeRoster.setAthlete(null);
+            activeRoster.setGame(null);
+        });
+        athlete.getGames().forEach(game -> {
+            game.setAthletes(Collections.emptyList());
+        });
+        athlete.getProfile().getEvents().forEach(event -> {
+            event.setProfiles(Collections.emptyList());
+        });
+        athlete.setTrainingSchedules(Collections.emptyList());
+        athlete.setGames(Collections.emptyList());
     }
 }

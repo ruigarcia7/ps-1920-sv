@@ -49,6 +49,7 @@ public class Profile implements Serializable {
     @JoinTable(name = "profile_events",
             joinColumns = { @JoinColumn(name = "profile_id") },
             inverseJoinColumns = { @JoinColumn(name = "event_id") })
+    private List<Event> events;
 
     public void  addEvent(Event event){
     }

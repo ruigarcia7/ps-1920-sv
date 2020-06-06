@@ -6,6 +6,8 @@ import pt.isel.rugby.exception.ResourceNotFoundException;
 import pt.isel.rugby.model.Event;
 import pt.isel.rugby.repository.EventRepository;
 
+import java.util.Collections;
+
 @Component
 public class EventBusiness {
     @Autowired
@@ -14,7 +16,7 @@ public class EventBusiness {
     public Iterable<Event> findAllEvents(){
         Iterable<Event> allEvents = eventRepository.findAll();
         for (Event event : allEvents) {
-            event.getProfiles().forEach(profile -> profile.setEvents(null));
+            event.getProfiles().forEach(profile -> profile.setEvents(Collections.emptyList()));
         }
         return allEvents;
     }
@@ -27,7 +29,9 @@ public class EventBusiness {
     }
 
     public Event findEventById(Long id){
-        return eventRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Event", "Id", id));
+        Event event = eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", id));
+        event.getProfiles().forEach(profile -> profile.setEvents(null));
+        return event;
     }
 
     public Long updateEvent(Event event){

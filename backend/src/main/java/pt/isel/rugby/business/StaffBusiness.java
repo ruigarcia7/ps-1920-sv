@@ -8,6 +8,8 @@ import pt.isel.rugby.model.Staff;
 import pt.isel.rugby.repository.ProfileRepository;
 import pt.isel.rugby.repository.StaffRepository;
 
+import java.util.Collections;
+
 @Component
 public class StaffBusiness {
 
@@ -18,7 +20,11 @@ public class StaffBusiness {
     ProfileRepository profileRepository;
 
     public Iterable<Staff> findAllStaff(){
-        return staffRepository.findAll();
+        Iterable<Staff> staffs = staffRepository.findAll();
+        staffs.forEach(staff -> {
+            staff.getProfile().setEvents(Collections.emptyList());
+        });
+        return staffs;
     }
 
     public Long postStaff(Staff staff){

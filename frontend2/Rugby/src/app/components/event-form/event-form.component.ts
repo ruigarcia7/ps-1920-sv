@@ -54,7 +54,8 @@ export class EventFormComponent implements OnInit {
 
   navigate() {
     debugger;
-    this.router.navigate(['/app/event']).then(res => { window.location.reload(); });
+    // TODO: fix refresh
+    this.router.navigate(['/app/event']).then(res => {  window.location.reload(); });
   }
 
   async presentToast() {
