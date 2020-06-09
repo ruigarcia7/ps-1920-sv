@@ -6,6 +6,7 @@ import {Athlete} from '../../classes/athlete';
 })
 export class AthleteService {
 
+  //TODO: Change this from a foreach if true push to a filter.
   getAthletesByPosition(athletes: Athlete[], position: string) {
     const container: Athlete[] = [];
     athletes.forEach( athlete => {

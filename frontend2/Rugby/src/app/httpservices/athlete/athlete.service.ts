@@ -6,7 +6,7 @@ import {Athlete} from '../../../app/classes/athlete';
 @Injectable({
   providedIn: 'root'
 })
-export class AthleteService {
+export class HttpAthleteService {
 
   private BASE_URL = 'http://localhost:8080/athlete';
   private httpOptions = {

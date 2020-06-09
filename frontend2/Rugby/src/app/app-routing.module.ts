@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
+    {
     path: '',
-    redirectTo: '/calendar',
+    redirectTo: '/app/calendar',
     pathMatch: 'full'
   },
   {
     path: 'app',
     loadChildren: () => import('./components/tabs-page/tabs-page.module').then(m => m.TabsModule)
-  },
+  }]; /*
   {
     path: 'calendar',
     loadChildren: () => import('./components/calendar/calendar.module').then(m => m.CalendarModule)
@@ -57,7 +57,7 @@ const routes: Routes = [
     path: 'opponent',
     loadChildren: () => import('./components/opponent/opponent.module').then(m => m.OpponentModule)
   }
-];
+];*/
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

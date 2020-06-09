@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
-import { AthleteService } from '../../../app/httpservices/athlete/athlete.service';
-import {AlertController} from "@ionic/angular";
+import { HttpAthleteService } from '../../../app/httpservices/athlete/athlete.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-athlete',
@@ -12,7 +12,7 @@ import {AlertController} from "@ionic/angular";
 export class AthleteComponent implements OnInit {
   athletes: Athlete[];
 
-  constructor(private athleteService: AthleteService, private alertController: AlertController) {
+  constructor(private athleteService: HttpAthleteService, private alertController: AlertController) {
   }
 
   ngOnInit() {this.showAthletes();}

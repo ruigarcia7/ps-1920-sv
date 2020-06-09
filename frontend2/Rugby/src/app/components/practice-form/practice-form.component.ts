@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Athlete } from '../../classes/athlete';
 import { Practice } from '../../classes/practice';
-import { AthleteService } from '../../httpservices/athlete/athlete.service';
+import { HttpAthleteService } from '../../httpservices/athlete/athlete.service';
 import { HttpPracticeService } from '../../httpservices/practice/practice.service';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -21,7 +21,7 @@ export class PracticeFormComponent implements OnInit {
   athletes: Athlete[];
   selected: Athlete[];
 
-  constructor(private athleteService: AthleteService, private httppracticeService: HttpPracticeService
+  constructor(private athleteService: HttpAthleteService, private httppracticeService: HttpPracticeService
             , private modalController: ModalController, private practiceService: PracticeService,
               private toastController: ToastController, private router: Router,
               private route: ActivatedRoute) { }

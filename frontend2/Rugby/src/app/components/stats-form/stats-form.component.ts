@@ -4,7 +4,7 @@ import {AthleteGameStats} from '../../classes/associations/AthleteGameStats';
 import {Athlete} from '../../classes/athlete';
 import {Stats} from '../../classes/stats';
 import {GameService} from '../../httpservices/game/game.service';
-import {AthleteService} from '../../httpservices/athlete/athlete.service';
+import {HttpAthleteService} from '../../httpservices/athlete/athlete.service';
 import {HttpAthleteGameStatsService} from '../../httpservices/athletegamestats/athletegamestats.service';
 import {StatsService} from '../../componentservices/stats/stats.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ export class StatsFormComponent implements OnInit {
   currentStats: Stats;
   currentAthlete: Athlete;
 
-  constructor(private gameService: GameService, private athleteService: AthleteService,
+  constructor(private gameService: GameService, private athleteService: HttpAthleteService,
               private httpathletegamestatsService: HttpAthleteGameStatsService,
               private statsService: StatsService, private route: ActivatedRoute) { }
 

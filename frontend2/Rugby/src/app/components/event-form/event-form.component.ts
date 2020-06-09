@@ -3,10 +3,18 @@ import { Event } from '../../classes/event';
 import { Profile } from '../../classes/profile';
 import { EventService } from '../../httpservices/event/event.service';
 import { ProfileService } from '../../httpservices/profile/profile.service';
-import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
+
+
+export class EventErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-event-form',
@@ -14,6 +22,8 @@ import {ToastController} from '@ionic/angular';
   styleUrls: ['./event-form.component.scss'],
 })
 export class EventFormComponent implements OnInit {
+  requiredFormControl = new FormControl('', [Validators.required]);
+  matcher = new EventErrorStateMatcher();
   event: Event;
   profiles: Profile[];
   all: boolean;
@@ -27,10 +37,8 @@ export class EventFormComponent implements OnInit {
     this.getProfiles();
 
     // check if "update" or post to set current object
-    //TODO: fix the fact that the selects dont keep state on updates
     if (this.route.snapshot.paramMap.get('id')) {
       this.eventService.getEventsById(this.route.snapshot.paramMap.get('id')).subscribe(item => {
-        debugger;
         this.event = item;
       });
     }
@@ -39,13 +47,11 @@ export class EventFormComponent implements OnInit {
   getProfiles() {
     this.profileService.getProfiles()
       .subscribe( profiles => {
-        debugger;
         this.profiles = profiles;
       });
   }
 
   processEvent() {
-    debugger;
     this.eventService.postEvent(this.event).subscribe( (res) => {
       console.log(res);
       this.presentToast();
@@ -53,7 +59,6 @@ export class EventFormComponent implements OnInit {
   }
 
   navigate() {
-    debugger;
     // TODO: fix refresh
     this.router.navigate(['/app/event']).then(res => {  window.location.reload(); });
   }
@@ -69,7 +74,6 @@ export class EventFormComponent implements OnInit {
   }
 
   toggleAll() {
-    debugger;
     return this.all ? this.event.profiles = this.profiles : this.event.profiles = [];
   }
 }

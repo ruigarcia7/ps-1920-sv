@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AthleteService } from '../../httpservices/athlete/athlete.service';
+import { HttpAthleteService } from '../../httpservices/athlete/athlete.service';
 import { Athlete } from '../../classes/athlete';
 import { ActionSheetController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Tile } from '../../interfaces/tile';
 import { MatGridListModule} from '@angular/material/grid-list';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-athlete-profile',
@@ -16,7 +16,7 @@ export class AthleteProfileComponent implements OnInit {
   athlete: Athlete;
 
   constructor(
-    private athleteService: AthleteService,
+    private athleteService: HttpAthleteService,
     public actionSheetCtrl: ActionSheetController,
     public inAppBrowser: InAppBrowser,
     public route: ActivatedRoute

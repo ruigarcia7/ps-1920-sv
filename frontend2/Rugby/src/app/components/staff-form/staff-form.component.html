@@ -8,50 +8,74 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processStaff()" #loginForm="ngForm">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
-        <input required type="text" id="name"
-               [(ngModel)]="staff.profile.name" name="name" #name="ngModel">
-        <!--<div [hidden]="name.valid" class="alert alert-danger">
-          Name is Required.
-        </div>-->
-      </ion-item>
+  <form class="example-form" (ngSubmit)="processStaff()" #loginForm="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Name </mat-label>
+        <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+               [(ngModel)]="staff.profile.name" placeholder="Ex. Cristiano Ronaldo"> <!--name="name" id="name" type="text">-->
+        <button mat-button *ngIf="staff.profile.name" matSuffix mat-icon-button aria-label="Clear"
+                (click)="staff.profile.name=''"> <mat-icon> <b> X </b> </mat-icon> </button>
+        <mat-error *ngIf="requiredFormControl.hasError('required')">
+          Name is <b> Required </b>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Address </mat-label>
+      <input matInput type="text" [(ngModel)]="staff.profile.address" name="address"
+             placeholder="Ex. Somewhere Street, nº1">
+      <button mat-button *ngIf="staff.profile.address" matSuffix mat-icon-button aria-label="Clear"
+              (click)="staff.profile.address=''"> <mat-icon>x</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Email </mat-label>
+      <input matInput [(ngModel)]="staff.profile.mail" name="mail" placeholder="Ex. email@example.com"
+             pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+      <button mat-button *ngIf="staff.profile.mail" matSuffix mat-icon-button aria-label="Clear"
+              (click)="staff.profile.mail=''"> <mat-icon>x</mat-icon>
+      </button>
+      <mat-error>
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Phone </mat-label>
+      <input matInput type="tel"[(ngModel)]="staff.profile.phone" name="phone"
+             pattern="[0-9]{9,12}" placeholder="Ex. 910000000">
+      <button mat-button *ngIf="staff.profile.phone" matSuffix mat-icon-button aria-label="Clear"
+              (click)="staff.profile.phone=''"> <mat-icon>x</mat-icon>
+      </button>
+      <mat-error>
+        Please enter a valid phone number
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Staff Number </mat-label>
+      <input matInput type="tel" [(ngModel)]="staff.staffNumber" name="number"
+             pattern="[0-9]{1,12}" placeholder="Ex. 1234">
+      <button mat-button *ngIf="staff.staffNumber" matSuffix mat-icon-button aria-label="Clear"
+              (click)="staff.staffNumber=''"> <mat-icon>x</mat-icon>
+      </button>
+      <mat-error>
+        Please enter a valid value
+      </mat-error>
+    </mat-form-field>
+
+    <ion-item>
+      <mat-label position="stacked"> Birthday </mat-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="staff.profile.birth" name="birth"
+                    min="1920" max="2019" placeholder="Click to Select"></ion-datetime>
+    </ion-item>
 
       <ion-item>
-        <ion-label position="stacked"> Address </ion-label>
-        <input required type="text"[(ngModel)]="staff.profile.address" name="address">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Mail </ion-label>
-        <input required type="email"[(ngModel)]="staff.profile.mail" name="mail"
-               pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Phone </ion-label>
-        <input required type="tel"[(ngModel)]="staff.profile.phone" name="phone"
-               pattern="[0-9]{9,12}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Birth </ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="staff.profile.birth" name="birth"></ion-datetime>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label position="stacked"> Staff Number </ion-label>
-        <input required type="tel"[(ngModel)]="staff.staffNumber" name="number"
-               pattern="[0-9]{1,12}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Type </ion-label>
+        <mat-label position="stacked"> Type </mat-label>
         <ion-select [(ngModel)]="staff.staffType" name="staff"
-                    cancelText="Cancel" okText="Confirm">
+                    cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+                    [interfaceOptions]="this.selectOptions">
           <tr *ngFor="let types of stafftype">
             <ion-select-option value="{{types.name}}"> {{types.name}}</ion-select-option>
           </tr>
@@ -59,8 +83,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+        <ion-button [disabled]="!loginForm.form.valid || requiredFormControl.hasError('required')" type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-    </ion-list>
   </form>
 </ion-content>

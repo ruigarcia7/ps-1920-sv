@@ -10,7 +10,7 @@ export class Athlete {
     public height?: string,
     public weight?: string,
     public athleteNumber?: string,
-    public positions?: string,
+    public positions?: any,
     public comment?: string,
     public profile?: Profile,
     public practices?: Practice[],

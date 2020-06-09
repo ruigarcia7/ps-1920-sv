@@ -21,15 +21,25 @@
 \contentsline {subsection}{\numberline {4.1.2}\textit {Angular Service}}{15}%
 \contentsline {subsection}{\numberline {4.1.3}\textit {Angular Data Binding}}{17}%
 \contentsline {subsection}{\numberline {4.1.4}\textit {IONIC API}}{18}%
-\contentsline {section}{\numberline {4.2}Descrição dos \textit {Endpoints}}{23}%
-\contentsline {subsection}{\numberline {4.2.1}\textit {Main Component}}{23}%
-\contentsline {chapter}{\numberline {5}Testes}{25}%
-\contentsline {section}{\numberline {5.1}Aplicação Servidor}{25}%
-\contentsline {subsection}{\numberline {5.1.1}Testes de GET}{26}%
-\contentsline {subsection}{\numberline {5.1.2}Testes de POST}{29}%
-\contentsline {subsection}{\numberline {5.1.3}Testes de UPDATE}{31}%
-\contentsline {subsection}{\numberline {5.1.4}Testes de DELETE}{34}%
-\contentsline {chapter}{\numberline {6}Conclusão}{37}%
-\contentsline {section}{\numberline {6.1}Recapitulação}{37}%
-\contentsline {chapter}{Refer\^{e}ncias}{39}%
-\contentsline {chapter}{\numberline {A}Apêndice A}{41}%
+\contentsline {subsection}{\numberline {4.1.5}Angular Materials CDK}{23}%
+\contentsline {section}{\numberline {4.2}Descrição dos \textit {Endpoints}}{28}%
+\contentsline {subsection}{\numberline {4.2.1}\textit {Main Component}}{28}%
+\contentsline {subsection}{\numberline {4.2.2}\textit {Calendar}}{29}%
+\contentsline {subsection}{\numberline {4.2.3}\textit {Athletes/Staff}}{36}%
+\contentsline {subsection}{\numberline {4.2.4}\textit {Profile}}{37}%
+\contentsline {subsection}{\numberline {4.2.5}\textit {AthleteStats}}{38}%
+\contentsline {subsection}{\numberline {4.2.6}\textit {Events/Practices/Games/Tournaments/TrainingSchedules}}{40}%
+\contentsline {subsection}{\numberline {4.2.7}\textit {GameStats}}{44}%
+\contentsline {subsection}{\numberline {4.2.8}\textit {Forms}}{46}%
+\contentsline {subsection}{\numberline {4.2.9}\textit {[WIP]Injuries}}{48}%
+\contentsline {chapter}{\numberline {5}Testes}{49}%
+\contentsline {section}{\numberline {5.1}Aplicação Servidora}{49}%
+\contentsline {subsection}{\numberline {5.1.1}Testes de GET}{50}%
+\contentsline {subsection}{\numberline {5.1.2}Testes de POST}{53}%
+\contentsline {subsection}{\numberline {5.1.3}Testes de UPDATE}{55}%
+\contentsline {subsection}{\numberline {5.1.4}Testes de DELETE}{58}%
+\contentsline {section}{\numberline {5.2}Aplicação Cliente}{61}%
+\contentsline {chapter}{\numberline {6}Conclusões (até agora)}{63}%
+\contentsline {section}{\numberline {6.1}Recapitulação}{63}%
+\contentsline {chapter}{Refer\^{e}ncias}{65}%
+\contentsline {chapter}{\numberline {A}Apêndice A}{67}%

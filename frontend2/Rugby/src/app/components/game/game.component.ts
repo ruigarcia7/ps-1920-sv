@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { GamePopoverComponent} from '../../components/game/game-popover/game-popover.component';
 import {AlertController, PopoverController} from '@ionic/angular';
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',

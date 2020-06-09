@@ -24,7 +24,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /*
  * App CSS
  * ----------------------------------------------------------------------------
@@ -49,4 +49,11 @@
 .alert-checkbox-group::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }

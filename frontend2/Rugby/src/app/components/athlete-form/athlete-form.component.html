@@ -76,71 +76,116 @@
 </ion-content>
 -->
 <ion-content fullscreen>
-  <form (ngSubmit)="processAthlete()" #loginForm="ngForm">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
-        <input required type="text" id="name"
-               [(ngModel)]="athlete.profile.name" name="name" #name="ngModel">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Address </ion-label>
-        <input required type="text"[(ngModel)]="athlete.profile.address" name="address">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Email </ion-label>
-        <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-               placeholder="Ex. email@example.com">
-        <mat-error *ngIf="emailFormControl.hasError('email')">
-          Please enter a valid email address.
+  <form class="example-form" (ngSubmit)="processAthlete()" #loginForm="ngForm">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Name </mat-label>
+        <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+                  [(ngModel)]="athlete.profile.name" placeholder="Ex. Cristiano Ronaldo"> <!--name="name" id="name" type="text">-->
+        <button mat-button *ngIf="athlete.profile.name" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.profile.name=''"> <mat-icon>x</mat-icon> </button>
+        <mat-error *ngIf="requiredFormControl.hasError('required')">
+          Name is <b> Required </b>
         </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Address </mat-label>
+        <input matInput type="text" [(ngModel)]="athlete.profile.address" name="address"
+               placeholder="Ex. Somewhere Street, nº1">
+        <button mat-button *ngIf="athlete.profile.address" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.profile.address=''"> <mat-icon>x</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Email </mat-label>
+        <input matInput [(ngModel)]="athlete.profile.mail" name="mail" placeholder="Ex. email@example.com"
+               pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+        <button mat-button *ngIf="athlete.profile.mail" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.profile.mail=''"> <mat-icon>x</mat-icon>
+        </button>
+        <mat-error>
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Phone </mat-label>
+        <input matInput type="tel"[(ngModel)]="athlete.profile.phone" name="phone"
+               pattern="[0-9]{9,12}" placeholder="Ex. 910000000">
+        <button mat-button *ngIf="athlete.profile.phone" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.profile.phone=''"> <mat-icon>x</mat-icon>
+        </button>
+        <mat-error>
+          Please enter a valid phone number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Athlete Number </mat-label>
+        <input matInput type="tel" [(ngModel)]="athlete.athleteNumber" name="number"
+               pattern="[0-9]{1,12}" placeholder="Ex. 1234">
+        <button mat-button *ngIf="athlete.athleteNumber" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.athleteNumber=''"> <mat-icon>x</mat-icon>
+        </button>
+        <mat-error>
+          Please enter a valid value
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Weight </mat-label>
+        <input matInput type="tel"[(ngModel)]="athlete.weight" name="weight"
+               pattern="[0-9]{1,3}" placeholder="Ex. 100">
+        <button mat-button *ngIf="athlete.weight" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.weight=''"> <mat-icon>x</mat-icon>
+        </button>
+          <mat-error>
+          Please enter a valid value
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Height </mat-label>
+        <input matInput type="tel"[(ngModel)]="athlete.height" name="height"
+               pattern="[0-9]{1,3}" placeholder="Ex. 100">
+        <button mat-button *ngIf="athlete.height" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.height=''"> <mat-icon>x</mat-icon>
+        </button>
+          <mat-error>
+          Please enter a valid value
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Comment </mat-label>
+        <input matInput #input maxlength="256" type="tel"[(ngModel)]="athlete.comment" name="comment"
+               placeholder="Anything you want to write on his profile.">
+        <button mat-button *ngIf="athlete.comment" matSuffix mat-icon-button aria-label="Clear"
+                (click)="athlete.comment=''"> <mat-icon>x</mat-icon>
+        </button>
+        <mat-hint align="end">{{input.value?.length || 0}}/256</mat-hint>
+      </mat-form-field>
+
+      <ion-item>
+        <mat-label position="stacked"> Birthday </mat-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="athlete.profile.birth" name="birth"
+        min="1920" max="2019" placeholder="Click to Select"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked"> Phone </ion-label>
-        <input required type="tel"[(ngModel)]="athlete.profile.phone" name="phone"
-               pattern="[0-9]{9,12}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Birth </ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="athlete.profile.birth" name="birth"></ion-datetime>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label position="stacked"> Athlete Number </ion-label>
-        <input required type="tel"[(ngModel)]="athlete.athleteNumber" name="number"
-               pattern="[0-9]{1,12}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Weight </ion-label>
-        <input type="tel"[(ngModel)]="athlete.weight" name="weight"
-               pattern="[0-9]{1,3}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Height </ion-label>
-        <input type="tel"[(ngModel)]="athlete.height" name="height"
-               pattern="[0-9]{1,3}">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Positions </ion-label>
+        <mat-label position="stacked"> Positions </mat-label>
         <ion-select [(ngModel)]="athlete.positions" name="positions"
-                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
+                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+        [interfaceOptions]="this.selectOptions">
           <tr *ngFor="let position of positions">
             <ion-select-option value="{{position.name}}"> {{position.name}}</ion-select-option>
           </tr>
         </ion-select>
       </ion-item>
-
       <ion-item>
-        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+        <ion-button [disabled]="requiredFormControl.hasError('required')
+        || !loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-    </ion-list>
   </form>
 </ion-content>

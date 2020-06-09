@@ -6,13 +6,13 @@
 \chapter{Testes} \label{testes}
 Este capítulo aborda os testes executados no projeto.
 
-\section{Aplicação Servidor} \label{sec51}
-Nesta fase do projeto, os testes feitos à partição da aplicação servidor foram executados sem a participação da aplicação cliente.
+\section{Aplicação Servidora} \label{sec51}
+Os testes feitos à partição da aplicação servidor foram executados sem a participação da aplicação cliente.
 
 Para a execução destes testes, foram usadas duas ferramentas distintas:\\
 \\
 \begin{tabular}{ll}
-	\emph{XAMMP} & \emph{free open-source cross-platform web server solution stack} para criar um servidor\\
+	\emph{XAMPP} & \emph{free open-source cross-platform web server solution stack} para criar um servidor\\
 	 de testes.\\
 	 \\
 	\emph{Postman} & API cliente para gerar pedidos HTTP.\\
@@ -264,3 +264,6 @@ Os testes feitos ao \emph{endpoint} de \emph{DELETE} são executados com um obje
 	\end{center}
 	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventdelete404}
 \end{figure}
+\newpage
+\section{Aplicação Cliente}\label{sec52}
+Todos os testes feitos à aplicação cliente foram executados com ligação direta à \textit{web API} exposta pela aplicação servidora. Todos os exemplos e demonstrações apresentados ao longo do Capítulo 4 têm como base informação que provem diretamente das chamadas aos \textit{endpoints} da aplicação servidora, e toda a aplicação cliente foi testada com esses dados.

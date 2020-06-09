@@ -6,7 +6,7 @@ export class Staff {
   public id?: number,
   public staffNumber?: string,
   public profile?: Profile,
-  public staffType?: StaffType
+  public staffType?: any
   ) {
     this.id = id ? id : 0;
     this.staffNumber = staffNumber ? staffNumber : '';

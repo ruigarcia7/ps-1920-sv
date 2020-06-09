@@ -8,37 +8,47 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processEvent()" #loginForm="ngForm">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+  <form class="example-form" (ngSubmit)="processEvent()" #loginForm="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Name </mat-label>
+      <input matInput [(ngModel)]="event.name" name="name" placeholder="Ex. Jantar de Grupo/Reunião do Clube">
+      <button mat-button *ngIf="event.name" matSuffix mat-icon-button aria-label="Clear"
+              (click)="event.name=''"> <mat-icon>x</mat-icon> </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Description </mat-label>
+      <input matInput [(ngModel)]="event.description" name="description"
+             placeholder="Ex. Jantar de grupo/Reunião com o escalão senior.">
+      <button mat-button *ngIf="event.description" matSuffix mat-icon-button aria-label="Clear"
+              (click)="event.description=''"> <mat-icon>x</mat-icon> </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Local </mat-label>
+      <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+             [(ngModel)]="event.local" name="local" placeholder="Ex. Restaurante X/Campo da Equipa X"> <!--name="name" id="name" type="text">-->
+      <button mat-button *ngIf="event.local" matSuffix mat-icon-button aria-label="Clear"
+              (click)="event.local=''"> <mat-icon> <b> X </b> </mat-icon> </button>
+      <mat-error *ngIf="requiredFormControl.hasError('required')">
+        Local is <b> Required </b>
+      </mat-error>
+    </mat-form-field>
+
       <ion-item>
-        <ion-label position="stacked"> Name <ion-text color="danger">*</ion-text></ion-label>
-        <input required type="text" id="name"
-               [(ngModel)]="event.name" name="name" #name="ngModel">
+        <mat-label position="stacked"> Date </mat-label>
+        <ion-datetime displayFormat="MMM DD YYYY HH mm" [(ngModel)]="event.date" name="date"
+                      min="2020" max="2025" placeholder="Click to Select"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked"> Description </ion-label>
-        <input required type="text"[(ngModel)]="event.description" name="description">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Local </ion-label>
-        <input required type="tel"[(ngModel)]="event.local" name="local">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Date </ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY HH mm" [(ngModel)]="event.date" name="date"></ion-datetime>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Attendances </ion-label>
+        <mat-label> Attendances </mat-label>
           <ion-select interface="alert-radio-group" [(ngModel)]="event.profiles" name="profiles"
-              multiple="true" cancelText="Cancel" okText="Confirm">
+              multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
               <tr *ngFor="let profile of profiles">
                 <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
               </tr>
-        </ion-select>
+          </ion-select>
         <ion-item slot="end">
           <ion-label> All </ion-label>
           <ion-checkbox slot="start" [(ngModel)]="all" name="all" (ionChange)="toggleAll()"></ion-checkbox>
@@ -46,8 +56,8 @@
       </ion-item>
 
       <ion-item>
-        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+        <ion-button [disabled]="!loginForm.form.valid || requiredFormControl.hasError('required')"
+         type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-    </ion-list>
   </form>
 </ion-content>

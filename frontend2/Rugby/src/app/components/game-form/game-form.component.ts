@@ -6,7 +6,7 @@ import { GameService } from '../../httpservices/game/game.service';
 import { OpponentService } from '../../httpservices/opponent/opponent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { AthleteService} from '../../httpservices/athlete/athlete.service';
+import { HttpAthleteService} from '../../httpservices/athlete/athlete.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class GameFormComponent implements OnInit {
   athletes: Athlete[];
 
   constructor(private gameService: GameService, private opponentService: OpponentService,
-              private athleteService: AthleteService, private route: ActivatedRoute,
+              private athleteService: HttpAthleteService, private route: ActivatedRoute,
               private toastController: ToastController, private router: Router) { }
 
   ngOnInit() {

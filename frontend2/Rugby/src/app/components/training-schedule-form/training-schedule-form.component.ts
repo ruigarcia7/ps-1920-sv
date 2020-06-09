@@ -3,7 +3,7 @@ import {ToastController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TrainingSchedule} from '../../classes/trainingschedule';
 import {Athlete} from '../../classes/athlete';
-import {AthleteService} from '../../httpservices/athlete/athlete.service';
+import {HttpAthleteService} from '../../httpservices/athlete/athlete.service';
 import {TrainingScheduleService} from '../../httpservices/trainingschedule/trainingscheduleservice.service';
 
 @Component({
@@ -14,7 +14,7 @@ import {TrainingScheduleService} from '../../httpservices/trainingschedule/train
 export class TrainingScheduleFormComponent implements OnInit {
   trainingSchedule: TrainingSchedule;
   athletes: Athlete[];
-  constructor(private athleteService: AthleteService,
+  constructor(private athleteService: HttpAthleteService,
               private trainingScheduleService: TrainingScheduleService,
               private toastController: ToastController, private router: Router,
               private route: ActivatedRoute) { }

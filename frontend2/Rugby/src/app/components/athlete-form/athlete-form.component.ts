@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Athlete } from '../../classes/athlete';
-import { Profile } from '../../classes/profile';
-import { Position } from '../../classes/position';
-import { AthleteService } from '../../httpservices/athlete/athlete.service';
-import { HttpEnumService } from '../../httpservices/enum/enum.service';
-import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Athlete} from '../../classes/athlete';
+import {Profile} from '../../classes/profile';
+import {Position} from '../../classes/position';
+import { HttpAthleteService } from '../../httpservices/athlete/athlete.service';
+import {HttpEnumService} from '../../httpservices/enum/enum.service';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
+import {AthleteService} from '../../componentservices/athlete/athlete.service';
 
 export class AthleteErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,17 +21,22 @@ export class AthleteErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-athlete-form',
   templateUrl: './athlete-form.component.html',
   styleUrls: ['./athlete-form.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AthleteFormComponent implements OnInit {
-  emailFormControl = new FormControl ('', [Validators.email]);
+  constructor(private httpathleteService: HttpAthleteService, private httpenumService: HttpEnumService,
+              private route: ActivatedRoute, private toastController: ToastController,
+              private router: Router) { }
+  requiredFormControl = new FormControl('', [Validators.required]);
   matcher = new AthleteErrorStateMatcher();
   athlete: Athlete;
   profile: Profile;
   positions: Position[];
-  constructor(private athleteService: AthleteService, private httpenumService: HttpEnumService,
-              private route: ActivatedRoute, private toastController: ToastController,
-              private router: Router) { }
+
+  selectOptions: any = {
+    header: 'Positions'
+  };
 
   ngOnInit() {
     this.athlete = new Athlete();
@@ -40,7 +46,11 @@ export class AthleteFormComponent implements OnInit {
 
     // check if "update" or post to set current object
     if (this.route.snapshot.paramMap.get('id')) {
-      this.athleteService.getAthleteById(this.route.snapshot.paramMap.get('id')).subscribe( item => this.athlete = item );
+      this.httpathleteService.getAthleteById(this.route.snapshot.paramMap.get('id'))
+        .subscribe( item => {
+          this.athlete = item;
+          this.athlete.positions = this.athlete.positions.split(',');
+        } );
     }
   }
 
@@ -55,7 +65,7 @@ export class AthleteFormComponent implements OnInit {
     this.athlete.positions = this.athlete.positions.toString();
     this.athlete.profile.isAthlete = true;
     debugger;
-    this.athleteService.postAthlete(this.athlete).subscribe((res) => {
+    this.httpathleteService.postAthlete(this.athlete).subscribe((res) => {
       console.log(res);
       this.presentToast();
     });
@@ -75,4 +85,4 @@ export class AthleteFormComponent implements OnInit {
     });
     await toast.present().then(this.navigate.bind(this));
   }
-  }
+}

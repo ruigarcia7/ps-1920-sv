@@ -88,28 +88,28 @@ Podemos observar no troço de código seguinte, como exemplo, a classe \emph{Eve
 	 EventRepository eventRepository;
 	
 	 public Iterable<Event> findAllEvents(){
-	  	return eventRepository.findAll();
+	  return eventRepository.findAll();
 	 }
 	
 	 public Long postEvent(Event event){
-		return eventRepository.save(event).getId();
+	  return eventRepository.save(event).getId();
 	 }
 	
 	 public Event findEventById(Long id){
-	 	return eventRepository.findById(id)
-	 	.orElseThrow(()-> new ResourceNotFoundException("Event", "Id", id));
+	  return eventRepository.findById(id)
+	  .orElseThrow(()-> new ResourceNotFoundException("Event", "Id", id));
 	 }
 	
-	 public Long updateEvent(Event event)
-	 	eventRepository.findById(event.getId())
-		.orElseThrow(()-> new ResourceNotFoundException("Event", "Id", event.getId()));
-		return eventRepository.save(event).getId();
+	 public Long updateEvent(Event event){
+	  eventRepository.findById(event.getId())
+	  .orElseThrow(()-> new ResourceNotFoundException("Event", "Id", event.getId()));
+	  return eventRepository.save(event).getId();
 	 }
 	
 	 public void deleteEvent(Event event){
-	 	eventRepository.findById(event.getId())
+	   eventRepository.findById(event.getId())
 		.orElseThrow(() -> new ResourceNotFoundException("Event", "Id", event.getId()));
-		eventRepository.delete(event);
+	   eventRepository.delete(event);
 	 }
 }
 \end{lstlisting}
@@ -119,7 +119,7 @@ A anotação \emph{@AutoWired} garante a injeção do \emph{EventRepository} qua
 Este modelo de negócios garante a comunicação entre as camadas de controlo e repositório, servindo de camada intermédia onde é feita a verificação dos objetos antes de serem feitas alterações persistentes à base de dados, e contem um comportamento que será incremental ao longo da realização do projeto.
 
 \subsection{\emph{Controller}} \label{sec314}
-A camada \emph{Controller}, referida nesta sub-secção como camada de Controlo, representa todo o \emph{routing} do exterior para a aplicação servidor. É a camada que gera todos os \emph{endpoints}, assim como os métodos associados a estes \emph{endpoints}. 
+A camada \emph{Controller}, referida nesta sub-secção como camada de Controlo, representa todo o \emph{routing} do exterior para a aplicação servidor. É a camada que gera todos os \emph{endpoints}, assim como os métodos associados a estes \emph{endpoints}. Esta camada expõe uma \textit{web API}, que responde a pedidos feitos, no caso do nosso projeto, pela aplicação cliente.
 
 Podemos observar no troço de código seguinte, como exemplo, a classe \emph{EventController} inserida na camada de Controlo.
 

@@ -7,6 +7,8 @@ import { EventFormRoutingModule } from './event-form-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { MatInputModule } from '@angular/material/input';
     MatGridListModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [
     EventFormComponent,

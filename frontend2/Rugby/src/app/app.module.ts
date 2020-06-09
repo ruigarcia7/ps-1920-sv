@@ -13,9 +13,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { EventModule } from './components/event/event.module';
-import { AthleteModule } from './components/athlete/athlete.module';
 import { CommonModule} from '@angular/common';
+import { MaterialModule } from './material-modules';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+/*---*/
 
 @NgModule({
   imports: [
@@ -26,8 +27,8 @@ import { CommonModule} from '@angular/common';
     HttpClientModule,
     CommonModule,
     MatTableModule,
-    AthleteModule,
-    EventModule,
+    MaterialModule,
+    MatTableModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -35,7 +36,8 @@ import { CommonModule} from '@angular/common';
     })
   ],
 declarations: [AppComponent],
-providers: [InAppBrowser, SplashScreen, StatusBar],
+providers: [InAppBrowser, SplashScreen, StatusBar,
+  { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: 'fill'}],
 bootstrap: [ AppComponent ]
 })
 
