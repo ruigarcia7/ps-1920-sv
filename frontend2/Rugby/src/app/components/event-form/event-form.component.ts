@@ -28,6 +28,10 @@ export class EventFormComponent implements OnInit {
   profiles: Profile[];
   all: boolean;
 
+  selectOptions: any = {
+    header: 'Attendances'
+  };
+
   constructor(private eventService: EventService, private profileService: ProfileService,
               private toastController: ToastController, private router: Router,
               private route: ActivatedRoute) { }

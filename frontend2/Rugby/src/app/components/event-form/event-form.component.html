@@ -43,8 +43,9 @@
 
       <ion-item>
         <mat-label> Attendances </mat-label>
-          <ion-select interface="alert-radio-group" [(ngModel)]="event.profiles" name="profiles"
-              multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
+          <ion-select [(ngModel)]="event.profiles" name="profiles"
+              multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+                      [interfaceOptions]="this.selectOptions">
               <tr *ngFor="let profile of profiles">
                 <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
               </tr>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AthleteGameStats} from '../../classes/associations/AthleteGameStats';
 import {Stats} from '../../classes/stats';
 import {HttpAthleteGameStatsService} from '../../httpservices/athletegamestats/athletegamestats.service';
@@ -9,6 +9,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MenuController} from '@ionic/angular';
 import { LoadingService } from '../../componentservices/loading/loading.service';
 import {AthleteGameStatsService} from '../../componentservices/athletegamestats/athletegamestats.service';
+import { Chart } from 'chart.js';
+import {DataSetInfo} from '../../interfaces/datasetinfo';
 
 @Component({
   selector: 'app-athletegamestats',
@@ -27,6 +29,8 @@ export class AthleteGameStatsComponent implements OnInit {
     'offsidekicksHit', 'offsidekicksMiss', 'offsidekicksPercentage'];
   dataSource: any;
   hasData = false;
+  chart: any;
+  datasetinfo: DataSetInfo[];
 
   constructor(private httpathletegamestatsService: HttpAthleteGameStatsService,
               private statsService: StatsService, private route: ActivatedRoute,
@@ -36,6 +40,7 @@ export class AthleteGameStatsComponent implements OnInit {
 
   ngOnInit() {
     this.athleteGameStats = [];
+    this.datasetinfo = [];
     //this.loadingService.present('Please Wait...');
     this.getAthleteGameStats(this.route.snapshot.paramMap.get('id'));
   }
@@ -48,6 +53,7 @@ export class AthleteGameStatsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.athleteGameStats);
         this.total = this.athleteGameStatsService.getTotal(ags);
         //this.loadingService.dismiss();
+        this.createChart();
         this.hasData = true;
       });
   }
@@ -67,5 +73,55 @@ export class AthleteGameStatsComponent implements OnInit {
 
   async closeSubMenu() {
     await this.menuController.close('subtitle');
+  }
+
+  createChart() {
+    let alabels: any[] = this.athleteGameStats.map(res => res.game.opponent.name + ' ' +
+      this.athleteGameStatsService.formatDate(new Date(res.game.date)) );
+    debugger;
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: alabels,
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{display: true}], yAxes: [{display: true}]
+        }
+      }
+    });
+  }
+
+  pushTest(e, property) {
+    debugger;
+    let newState = !e.currentTarget.checked;
+    if ( newState) {
+      let newData = {
+        name: property,
+        data: this.athleteGameStats.map(res => res.stats[property]),
+        borderColor: this.athleteGameStatsService.getColor(this.datasetinfo.length)
+      };
+      this.datasetinfo.push(newData);
+      this.chart.data.datasets.push({
+        data: newData.data,
+        fill: false,
+        borderColor: newData.borderColor,
+        label: newData.name
+      });
+      this.chart.update();
+    } else {
+      let oldData = this.datasetinfo.filter( value => value.name === property) as any;
+      let index = this.datasetinfo.map( data => data.name ).indexOf(property);
+      if (index >= 0) {
+        this.chart.data.datasets.splice(index, 1);
+        this.datasetinfo.splice(index,1);
+        this.chart.update();
+      }
+    }
   }
 }

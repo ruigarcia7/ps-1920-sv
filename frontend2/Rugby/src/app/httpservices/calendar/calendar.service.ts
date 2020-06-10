@@ -149,13 +149,5 @@ export class CalendarService {
     let h = hours > 10 ? hours + 'h ' : '0' + hours + 'h ';
     let m = minutes > 10 ? minutes + 'm' : '0' + minutes + 'm';
     return`${w}${d}${h}${m}`;
-    /*
-    let s: string = '';
-    s.concat(weekdays > 10 ? weekdays + ' w' : '0' + weekdays + ' w');
-    s.concat();
-    s.concat(hours > 10 ? hours + ' h' : '0' + hours + ' h');
-    s.concat(minutes > 10 ? minutes + ' m' : '0' + minutes + ' w');
-    return s;
-    */
   }
 }

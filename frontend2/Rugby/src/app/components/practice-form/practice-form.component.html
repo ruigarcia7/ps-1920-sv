@@ -8,36 +8,57 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processPractice()" #loginForm="ngForm">
+  <form class="example-form" (ngSubmit)="processPractice()" #loginForm="ngForm">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Local </mat-label>
+        <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+               [(ngModel)]="practice.local" placeholder="Ex. Ginásio/Campo"> <!--name="name" id="name" type="text">-->
+        <button mat-button *ngIf="practice.local" matSuffix mat-icon-button aria-label="Clear"
+                (click)="practice.local=''"> <mat-icon>x</mat-icon> </button>
+        <mat-error *ngIf="requiredFormControl.hasError('required')">
+          Local is <b> Required </b>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label position="stacked"> Comment </mat-label>
+        <input matInput #input maxlength="256" type="tel"[(ngModel)]="practice.comment" name="comment"
+               placeholder="Ex. Treino de recuperação do jogo de Sábado.">
+        <button mat-button *ngIf="practice.comment" matSuffix mat-icon-button aria-label="Clear"
+                (click)="practice.comment=''"> <mat-icon>x</mat-icon>
+        </button>
+        <mat-hint align="end">{{input.value?.length || 0}}/256</mat-hint>
+      </mat-form-field>
+
+
       <ion-item>
-        <ion-label position="stacked"> Date <ion-text color="danger">*</ion-text></ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="practice.date" name="date"></ion-datetime>
+        <mat-label position="stacked"> Date </mat-label>
+        <ion-datetime displayFormat="MMM DD YYYY HH mm" [(ngModel)]="practice.date" name="date"
+                      min="2020" max="2025" placeholder="Click to Select"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked"> Local <ion-text color="danger">*</ion-text></ion-label>
-        <input required type="text" [(ngModel)]="practice.local" name="local">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Comment </ion-label>
-        <input type="text"[(ngModel)]="practice.comment" name="comment">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Attendances </ion-label>
+        <mat-label> Attendances </mat-label>
         <ion-select (ionChange)="onOk()" [(ngModel)]="selected" name="selected"
-                    multiple="true" cancelText="Cancel" okText="Confirm">
+                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+                    [interfaceOptions]="this.selectOptions">
             <ion-select-option *ngFor="let athlete of athletes"
               [value]="athlete">
               {{athlete.profile.name}}
             </ion-select-option>
         </ion-select>
+        <ion-item slot="end">
+          <ion-label> All </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="all" name="all" (ionChange)="toggleAll()"></ion-checkbox>
+        </ion-item>
       </ion-item>
 
+
       <ion-item>
-        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+        <ion-button [disabled]="!loginForm.form.valid || requiredFormControl.hasError('required')"
+                    type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
     </ion-list>
   </form>

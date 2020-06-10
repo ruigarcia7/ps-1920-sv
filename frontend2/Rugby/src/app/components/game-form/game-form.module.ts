@@ -7,6 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { GameFormComponent } from './game-form.component';
 import { GameFormRoutingModule } from '../game-form/game-form-routing.module';
+import {MatTableModule} from "@angular/material/table";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -17,7 +21,11 @@ import { GameFormRoutingModule } from '../game-form/game-form-routing.module';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    GameFormRoutingModule
+    GameFormRoutingModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [
     GameFormComponent,

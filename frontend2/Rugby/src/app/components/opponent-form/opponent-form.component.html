@@ -8,24 +8,27 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processOpponent()" #loginForm="ngForm">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+  <form class="example-form" (ngSubmit)="processOpponent()" #loginForm="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Name </mat-label>
+      <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+             [(ngModel)]="opponent.name" placeholder="Ex. Benfica"> <!--name="name" id="name" type="text">-->
+      <button mat-button *ngIf="opponent.name" matSuffix mat-icon-button aria-label="Clear"
+              (click)="opponent.name=''"> <mat-icon>x</mat-icon> </button>
+      <mat-error *ngIf="requiredFormControl.hasError('required')">
+        Local is <b> Required </b>
+      </mat-error>
+    </mat-form-field>
 
-      <ion-item>
-        <ion-label position="stacked"> Name </ion-label>
-        <input required type="text"[(ngModel)]="opponent.name" name="name">
-      </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked"> Photo </ion-label>
-        <input required type="text"[(ngModel)]="opponent.photo" name="name">
-      </ion-item>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label> Photo </mat-label>
+        <input matInput type="text"[(ngModel)]="opponent.photo" name="photo">
+    </mat-form-field>
 
       <ion-item>
         <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-    </ion-list>
-
   </form>
 </ion-content>
 

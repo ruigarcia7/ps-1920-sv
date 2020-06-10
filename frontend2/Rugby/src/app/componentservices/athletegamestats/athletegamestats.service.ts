@@ -6,6 +6,8 @@ import {Stats} from "../../classes/stats";
   providedIn: 'root'
 })
 export class AthleteGameStatsService {
+  spectrum: string[] = ['blue', 'red',  'gold', 'mediumseagreen', 'dodgerblue', 'orangered', 'turquoise',
+    'limegreen', 'orange', 'green'];
 
   constructor() { }
 
@@ -19,4 +21,18 @@ export class AthleteGameStatsService {
     debugger;
     return acc;
   }
+
+  getColor(index) {
+    return this.spectrum[index];
+  }
+
+  formatDate(date: Date) {
+    let datestring = date.getFullYear()
+      + '/' + (date.getMonth() + 1)
+      + '/' + date.getDate()
+      + ' ' + date.getHours()
+      + ':' + date.getMinutes();
+    return datestring;
+  }
+
 }

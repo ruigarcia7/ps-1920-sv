@@ -11,15 +11,29 @@ import { AthletePractice} from '../../classes/associations/AthletePractice';
 import { PracticeService } from '../../componentservices/practice/practice.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
+export class PracticeErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'app-practice-form',
   templateUrl: './practice-form.component.html',
   styleUrls: ['./practice-form.component.scss'],
 })
 export class PracticeFormComponent implements OnInit {
+  requiredFormControl = new FormControl('', [Validators.required]);
+  matcher = new PracticeErrorStateMatcher();
   practice: Practice;
   athletes: Athlete[];
   selected: Athlete[];
+  all: boolean;
+
+  selectOptions: any = {
+    header: 'Attendances'
+  };
 
   constructor(private athleteService: HttpAthleteService, private httppracticeService: HttpPracticeService
             , private modalController: ModalController, private practiceService: PracticeService,
@@ -78,5 +92,9 @@ export class PracticeFormComponent implements OnInit {
       duration: 5000
     });
     await toast.present().then(this.navigate.bind(this));
+  }
+
+  toggleAll() {
+    return this.all ? this.selected = this.athletes : this.selected = [];
   }
 }

@@ -3,6 +3,15 @@ import { Opponent } from '../../classes/opponent';
 import { OpponentService } from '../../httpservices/opponent/opponent.service';
 import { ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {ErrorStateMatcher} from "@angular/material/core";
+import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
+
+export class OpponentErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-opponent-form',
@@ -10,6 +19,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./opponent-form.component.scss'],
 })
 export class OpponentFormComponent implements OnInit {
+  requiredFormControl = new FormControl('', [Validators.required]);
+  matcher = new OpponentErrorStateMatcher();
   opponent: Opponent;
 
   constructor(private opponentService: OpponentService, private toastController: ToastController,

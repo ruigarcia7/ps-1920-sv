@@ -82,6 +82,9 @@
         <ion-item>
           <ion-label> <b> XX </b> % - Percentage </ion-label>
         </ion-item>
+        <ion-item>
+
+        </ion-item>
 
 
       </ion-list>
@@ -89,7 +92,7 @@
   </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
 
-<ng-template [ngIf]="hasData">
+<ng-template [ngIf]="segment === 'stats' && hasData">
   <ion-content>
     <table mat-table [dataSource]="this.dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="game">
@@ -285,4 +288,136 @@
 
   </ion-content>
   </ng-template>
+
+  <div [hidden]="!chart">
+    <canvas id="canvas"> {{chart}}</canvas>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label> Fouls </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'fouls')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Errors </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'errors')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Yellow Cards </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'yellowCards')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Red Cards </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'redCards')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> TurnOvers </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'turnOvers')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Tries </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'tries')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Mauls </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'mauls')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> PlayingTime </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'playingTime')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label> Tackles H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'tacklesHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Tackles M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'tacklesMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Conversion Kicks H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'conversionkicksHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Conversion Kicks M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'conversionkicksMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Goal Kicks H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'goalkicksHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Goal Kicks M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'goalkicksMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Drop Kicks H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'dropkicksHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Drop Kicks M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'dropkicksMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label> Line Outs H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'lineoutsHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Line Outs M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'lineoutsMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Offside Kicks H </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'offsidekicksHit')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label> Offside Kicks M </ion-label>
+          <ion-checkbox slot="start" (click)="pushTest($event,'offsidekicksMiss')"> </ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

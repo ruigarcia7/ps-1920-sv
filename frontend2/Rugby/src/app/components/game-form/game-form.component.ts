@@ -7,7 +7,15 @@ import { OpponentService } from '../../httpservices/opponent/opponent.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { HttpAthleteService} from '../../httpservices/athlete/athlete.service';
+import {ErrorStateMatcher} from "@angular/material/core";
+import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 
+export class GameErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-game-form',
@@ -15,9 +23,12 @@ import { HttpAthleteService} from '../../httpservices/athlete/athlete.service';
   styleUrls: ['./game-form.component.scss'],
 })
 export class GameFormComponent implements OnInit {
+  requiredFormControl = new FormControl('', [Validators.required]);
+  matcher = new GameErrorStateMatcher();
   game: Game;
   opponents: Opponent[];
   athletes: Athlete[];
+  all: boolean;
 
   constructor(private gameService: GameService, private opponentService: OpponentService,
               private athleteService: HttpAthleteService, private route: ActivatedRoute,
@@ -72,4 +83,7 @@ export class GameFormComponent implements OnInit {
     await toast.present().then(this.navigate.bind(this));
   }
 
+  toggleAll() {
+    return this.all ? this.game.athletes = this.athletes : this.game.athletes = [];
+  }
 }
