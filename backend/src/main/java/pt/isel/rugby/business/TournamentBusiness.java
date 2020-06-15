@@ -8,13 +8,25 @@ import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.model.Tournament;
 import pt.isel.rugby.repository.TournamentRepository;
 
+import java.util.Collections;
+
 @Component
 public class TournamentBusiness {
 
     @Autowired
     TournamentRepository tournamentRepository;
 
-    public Iterable<Tournament> findAllTournaments(){ return tournamentRepository.findAll();}
+    public Iterable<Tournament> findAllTournaments(){
+        Iterable<Tournament> tournaments = tournamentRepository.findAll();
+        tournaments.forEach(tournament -> {
+            tournament.getGames().forEach(game -> {
+                game.setActiveRoster(Collections.emptyList());
+                game.setAthletes(Collections.emptyList());
+                game.setAthleteGameStats(Collections.emptyList());
+            });
+        });
+
+        return tournaments;}
 
     public Long postTournament(Tournament tournament){
         return tournamentRepository.save(tournament).getId();

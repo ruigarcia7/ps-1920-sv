@@ -11,6 +11,8 @@ import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.GameRepository;
 import pt.isel.rugby.repository.StatsRepository;
 
+import java.util.Collections;
+
 @Component
 public class AthleteGameStatsBusiness {
     @Autowired
@@ -64,7 +66,23 @@ public class AthleteGameStatsBusiness {
     }
 
     public AthleteGameStats[] findAthleteGameStatsByGameId(Long id) {
-        return athleteGameStatsRepository.findAllByGameId(id);
+        AthleteGameStats[] ags = athleteGameStatsRepository.findAllByGameId(id);
+        for (AthleteGameStats a : ags) {
+            a.getGame().setAthleteGameStats(Collections.emptyList());
+            a.getGame().setAthletes(Collections.emptyList());
+            a.getGame().setActiveRoster(Collections.emptyList());
+            a.getGame().setTournament(null);
+            a.getStats().setAthleteGameStats(Collections.emptyList());
+            a.getAthlete().getProfile().setEvents(Collections.emptyList());
+            a.getAthlete().getProfile().setEvents(Collections.emptyList());
+            a.getAthlete().setGames(Collections.emptyList());
+            a.getAthlete().setAthletePractices(Collections.emptyList());
+            a.getAthlete().setAthleteGameStats(Collections.emptyList());
+            a.getAthlete().setTrainingSchedules(Collections.emptyList());
+
+        }
+
+        return ags;
     }
 
     public AthleteGameStats[] findAthleteGameStatsByAthleteId(Long id) {

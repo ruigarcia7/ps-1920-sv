@@ -36,7 +36,10 @@ public class StaffBusiness {
     }
 
     public Staff findStaffById(Long id){
-        return staffRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Staff", "Id", id));
+        Staff staff = staffRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Staff", "Id", id));
+
+        staff.getProfile().setEvents(Collections.emptyList());
+        return staff;
     }
 
     public Long updateStaff(Staff staff){

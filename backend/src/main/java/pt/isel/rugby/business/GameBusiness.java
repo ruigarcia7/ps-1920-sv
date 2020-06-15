@@ -14,6 +14,7 @@ import java.util.List;
 
 @Component
 public class GameBusiness {
+
     @Autowired
     GameRepository gameRepository;
 

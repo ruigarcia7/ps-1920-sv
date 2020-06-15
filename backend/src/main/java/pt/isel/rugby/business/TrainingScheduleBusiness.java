@@ -8,13 +8,27 @@ import pt.isel.rugby.model.Tournament;
 import pt.isel.rugby.model.TrainingSchedule;
 import pt.isel.rugby.repository.TrainingScheduleRepository;
 
+import java.util.Collections;
+
 @Component
 public class TrainingScheduleBusiness {
 
     @Autowired
     TrainingScheduleRepository trainingScheduleRepository;
 
-    public Iterable<TrainingSchedule> findAllTrainingSchedules(){return trainingScheduleRepository.findAll();}
+    public Iterable<TrainingSchedule> findAllTrainingSchedules(){
+        Iterable<TrainingSchedule> trainingSchedules = trainingScheduleRepository.findAll();
+        trainingSchedules.forEach(trainingSchedule -> {
+            trainingSchedule.getAthletes().forEach(athlete -> {
+                athlete.setAthletePractices(Collections.emptyList());
+                athlete.setTrainingSchedules(Collections.emptyList());
+                athlete.setGames(Collections.emptyList());
+                athlete.setActiveRosters(Collections.emptyList());
+                athlete.setAthleteGameStats(Collections.emptyList());
+                athlete.getProfile().setEvents(Collections.emptyList());
+            });
+        });
+        return trainingSchedules;}
 
     public Long postTrainingSchedule(TrainingSchedule trainingSchedule){
         return trainingScheduleRepository.save(trainingSchedule).getId();

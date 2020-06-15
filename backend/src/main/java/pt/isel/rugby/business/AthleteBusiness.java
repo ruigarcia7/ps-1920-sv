@@ -31,7 +31,7 @@ public class AthleteBusiness {
      */
     public Iterable<Athlete> findAllAthletes(){
         Iterable<Athlete> athletes = athleteRepository.findAll();
-        athletes.forEach(athlete -> setInnerObjectsToNull(athlete));
+        athletes.forEach(this::setInnerObjectsToNull);
 
         return athletes;
     }
@@ -47,9 +47,7 @@ public class AthleteBusiness {
 
     public Athlete findAthleteById(Long id) {
         Athlete athlete = athleteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Athlete", "Id", id));
-
         setInnerObjectsToNull(athlete);
-
         return athlete;
     }
 
