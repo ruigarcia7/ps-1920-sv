@@ -1,45 +1,42 @@
 \babel@toc {portuguese}{}
 \contentsline {chapter}{\numberline {1}Introdução}{1}%
 \contentsline {section}{\numberline {1.1}Enquadramento}{1}%
-\contentsline {section}{\numberline {1.2}Objetivos e Funcionalidades}{1}%
+\contentsline {section}{\numberline {1.2}Objetivos Funcionais}{1}%
 \contentsline {section}{\numberline {1.3}Organização do documento}{2}%
 \contentsline {chapter}{\numberline {2}Formulação do Problema}{3}%
 \contentsline {section}{\numberline {2.1}Formulação}{3}%
 \contentsline {section}{\numberline {2.2}Especificações Funcionais}{3}%
 \contentsline {subsection}{\numberline {2.2.1}Especificações Principais}{3}%
-\contentsline {subsection}{\numberline {2.2.2}Espeficiações Secundárias}{4}%
+\contentsline {subsection}{\numberline {2.2.2}Especificações Secundárias}{4}%
 \contentsline {section}{\numberline {2.3}Arquitetura da Solução}{5}%
-\contentsline {chapter}{\numberline {3}Aplicação Servidora}{7}%
-\contentsline {section}{\numberline {3.1}Introdução e Estrutura da Aplicação Servidora}{7}%
-\contentsline {subsection}{\numberline {3.1.1}\emph {Model}}{8}%
-\contentsline {subsection}{\numberline {3.1.2}\emph {Repository}}{8}%
-\contentsline {subsection}{\numberline {3.1.3}\emph {Business}}{9}%
-\contentsline {subsection}{\numberline {3.1.4}\emph {Controller}}{10}%
-\contentsline {chapter}{\numberline {4}Aplicação Cliente}{13}%
-\contentsline {section}{\numberline {4.1}Introdução e Estrutura da Aplicação Cliente}{13}%
-\contentsline {subsection}{\numberline {4.1.1}\textit {Angular Component}}{14}%
-\contentsline {subsection}{\numberline {4.1.2}\textit {Angular Service}}{15}%
-\contentsline {subsection}{\numberline {4.1.3}\textit {Angular Data Binding}}{17}%
-\contentsline {subsection}{\numberline {4.1.4}\textit {IONIC API}}{18}%
-\contentsline {subsection}{\numberline {4.1.5}Angular Materials CDK}{23}%
-\contentsline {section}{\numberline {4.2}Descrição dos \textit {Endpoints}}{28}%
-\contentsline {subsection}{\numberline {4.2.1}\textit {Main Component}}{28}%
-\contentsline {subsection}{\numberline {4.2.2}\textit {Calendar}}{29}%
-\contentsline {subsection}{\numberline {4.2.3}\textit {Athletes/Staff}}{36}%
-\contentsline {subsection}{\numberline {4.2.4}\textit {Profile}}{37}%
-\contentsline {subsection}{\numberline {4.2.5}\textit {AthleteStats}}{38}%
-\contentsline {subsection}{\numberline {4.2.6}\textit {Events/Practices/Games/Tournaments/TrainingSchedules}}{40}%
-\contentsline {subsection}{\numberline {4.2.7}\textit {GameStats}}{44}%
-\contentsline {subsection}{\numberline {4.2.8}\textit {Forms}}{46}%
-\contentsline {subsection}{\numberline {4.2.9}\textit {[WIP]Injuries}}{48}%
-\contentsline {chapter}{\numberline {5}Testes}{49}%
-\contentsline {section}{\numberline {5.1}Aplicação Servidora}{49}%
-\contentsline {subsection}{\numberline {5.1.1}Testes de GET}{50}%
-\contentsline {subsection}{\numberline {5.1.2}Testes de POST}{53}%
-\contentsline {subsection}{\numberline {5.1.3}Testes de UPDATE}{55}%
-\contentsline {subsection}{\numberline {5.1.4}Testes de DELETE}{58}%
-\contentsline {section}{\numberline {5.2}Aplicação Cliente}{61}%
-\contentsline {chapter}{\numberline {6}Conclusões (até agora)}{63}%
-\contentsline {section}{\numberline {6.1}Recapitulação}{63}%
-\contentsline {chapter}{Refer\^{e}ncias}{65}%
-\contentsline {chapter}{\numberline {A}Apêndice A}{67}%
+\contentsline {chapter}{\numberline {3}Aplicação Servidora}{6}%
+\contentsline {section}{\numberline {3.1}Introdução e Estrutura da Aplicação Servidora}{6}%
+\contentsline {subsection}{\numberline {3.1.1}\emph {Model}}{6}%
+\contentsline {subsection}{\numberline {3.1.2}\emph {Repository}}{7}%
+\contentsline {subsection}{\numberline {3.1.3}\emph {Business}}{8}%
+\contentsline {subsection}{\numberline {3.1.4}\emph {Controller}}{9}%
+\contentsline {chapter}{\numberline {4}Aplicação Cliente}{11}%
+\contentsline {section}{\numberline {4.1}Introdução e Estrutura da Aplicação Cliente}{11}%
+\contentsline {subsection}{\numberline {4.1.1}\textit {Angular Component}}{11}%
+\contentsline {subsection}{\numberline {4.1.2}\textit {Angular Service}}{12}%
+\contentsline {subsection}{\numberline {4.1.3}\textit {Angular Data Binding}}{14}%
+\contentsline {subsection}{\numberline {4.1.4}\textit {IONIC API}}{14}%
+\contentsline {subsection}{\numberline {4.1.5}Angular Materials CDK}{18}%
+\contentsline {subsection}{\numberline {4.1.6}Classes e Entidades}{20}%
+\contentsline {section}{\numberline {4.2}Descrição das Páginas}{21}%
+\contentsline {subsection}{\numberline {4.2.1}\textit {Calendar}}{21}%
+\contentsline {subsection}{\numberline {4.2.2}\textit {Athletes/Staff}}{23}%
+\contentsline {subsection}{\numberline {4.2.3}\textit {Profile}}{24}%
+\contentsline {subsection}{\numberline {4.2.4}\textit {AthleteStats}}{25}%
+\contentsline {subsection}{\numberline {4.2.5}\textit {Events/Practices/Games/Tournaments/TrainingSchedules}}{27}%
+\contentsline {subsection}{\numberline {4.2.6}\textit {GameStats}}{30}%
+\contentsline {subsection}{\numberline {4.2.7}\textit {Forms}}{32}%
+\contentsline {subsection}{\numberline {4.2.8}\textit {[WIP]Injuries}}{34}%
+\contentsline {chapter}{\numberline {5}Testes}{35}%
+\contentsline {section}{\numberline {5.1}Aplicação Servidora}{35}%
+\contentsline {section}{\numberline {5.2}Aplicação Cliente}{37}%
+\contentsline {chapter}{\numberline {6}Conclusões (até agora)}{38}%
+\contentsline {section}{\numberline {6.1}Recapitulação}{38}%
+\contentsline {chapter}{Refer\^{e}ncias}{39}%
+\contentsline {chapter}{\numberline {A}Diagrama de Entidades}{40}%
+\contentsline {chapter}{\numberline {B}Árvore de Navegação}{41}%

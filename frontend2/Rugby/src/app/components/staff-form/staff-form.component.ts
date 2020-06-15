@@ -75,7 +75,7 @@ export class StaffFormComponent implements OnInit {
     this.staffService.postStaff(this.staff)
       .subscribe( (res) => {
         this.presentToast();
-        //TODO: FIX THIS SHIT :D
+        //TODO: Fix Refresh
         //this.router.navigate(['/app/staff']).then( () => { window.location.reload(); } );
         //this.staffComponent.showStaff(this.navigate.bind(this));
         /*this.staffComponent.showStaff( () => {

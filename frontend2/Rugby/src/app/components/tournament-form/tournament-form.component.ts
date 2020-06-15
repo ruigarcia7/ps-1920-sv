@@ -7,6 +7,14 @@ import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/for
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
+import {GameErrorStateMatcher} from "../game-form/game-form.component";
+
+export class TournamentErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-tournament-form',
@@ -14,6 +22,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./tournament-form.component.scss'],
 })
 export class TournamentFormComponent implements OnInit {
+  requiredFormControl = new FormControl('', [Validators.required]);
+  matcher = new GameErrorStateMatcher();
   tournament: Tournament;
   games: Game[];
   constructor(private gameService: GameService, private tournamentService: TournamentService,

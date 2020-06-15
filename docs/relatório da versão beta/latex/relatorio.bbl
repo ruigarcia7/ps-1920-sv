@@ -4,5 +4,11 @@
 Ionic Docs. 2020. API Index - Ionic Documentation. [online] Available at: https://ionicframework.com/docs/api [Accessed 4 June 2020].
 
 \bibitem{angularframework}
-Team, A., 2020. Angular Material. [online] Angular Material. Available at: https://material.angular.io/ [Accessed 4 June 2020].
+Team, A., 2020. Angular Material. [online] Available at: https://material.angular.io/ [Accessed 4 June 2020].
+
+\bibitem{chartjs}
+Chartjs.org. 2020. Chart.Js | Open Source HTML5 Charts For Your Website. [online] Available at: https://www.chartjs.org/ [Accessed 15 June 2020].
+
+\bibitem{mockito}
+Site.mockito.org., 2020. Mockito Framework Site. [online] Available at: https://site.mockito.org/ [Accessed 15 June 2020].
 \end{thebibliography}

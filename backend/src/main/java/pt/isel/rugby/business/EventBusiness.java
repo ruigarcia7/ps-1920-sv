@@ -24,8 +24,7 @@ public class EventBusiness {
     public Long postEvent(Event event){
          event.getProfiles().forEach(profile -> profile.getEvents().add(event));
          event.setId(null);
-
-        return eventRepository.save(event).getId();
+         return eventRepository.save(event).getId();
     }
 
     public Event findEventById(Long id){

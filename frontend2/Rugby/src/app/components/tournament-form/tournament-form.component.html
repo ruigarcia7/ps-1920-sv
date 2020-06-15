@@ -8,41 +8,66 @@
 </ion-header>
 
 <ion-content fullscreen>
-  <form (ngSubmit)="processTournament()" #loginForm="ngForm">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+  <form class="example-form" (ngSubmit)="processTournament()" #loginForm="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Name </mat-label>
+      <input matInput [(ngModel)]="tournament.name" name="name" placeholder="Ex. Torneio das Caldas"> <!--name="name" id="name" type="text">-->
+      <button mat-button *ngIf="tournament.name" matSuffix mat-icon-button aria-label="Clear"
+              (click)="tournament.name=''"> <mat-icon> x </mat-icon> </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Local </mat-label>
+      <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
+             [(ngModel)]="tournament.local"  name="local" placeholder="Ex. Campo X"> <!--name="name" id="name" type="text">-->
+      <button mat-button *ngIf="tournament.local" matSuffix mat-icon-button aria-label="Clear"
+              (click)="tournament.local=''"> <mat-icon> x </mat-icon> </button>
+      <mat-error *ngIf="requiredFormControl.hasError('required')">
+        Local is <b> Required </b>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Comment </mat-label>
+      <input matInput #input maxlength="256" type="tel"[(ngModel)]="tournament.comment" name="comment"
+             placeholder="Ex. Jogo muito bem conseguido. Parabéns.">
+      <button mat-button *ngIf="tournament.comment" matSuffix mat-icon-button aria-label="Clear"
+              (click)="tournament.comment=''"> <mat-icon>x</mat-icon>
+      </button>
+      <mat-hint align="end">{{input.value?.length || 0}}/256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label position="stacked"> Classification </mat-label>
+      <input matInput #input type="tel"[(ngModel)]="tournament.classification" name="classification"
+             pattern="[0-9]{1,2}" placeholder="Ex. 1,2.">
+      <button mat-button *ngIf="tournament.comment" matSuffix mat-icon-button aria-label="Clear"
+              (click)="tournament.comment=''"> <mat-icon>x</mat-icon>
+      </button>
+      <mat-error>
+        Please enter a valid value
+      </mat-error>
+    </mat-form-field>
+
       <ion-item>
-        <ion-label position="stacked"> Name </ion-label>
-        <input type="text"[(ngModel)]="tournament.name" name="name">
+        <mat-label position="stacked"> Date </mat-label>
+        <ion-datetime displayFormat="MMM DD YYYY hh MM" [(ngModel)]="tournament.date" name="day"
+                      min="2020" max="2025" placeholder="Click to Select"></ion-datetime>
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked"> Local </ion-label>
-        <input type="text"[(ngModel)]="tournament.local" name="local">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Date </ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY hh MM" [(ngModel)]="tournament.date" name="day"></ion-datetime>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Classification </ion-label>
-        <input type="text"[(ngModel)]="tournament.classification" name="classification">
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked"> Games </ion-label>
+        <mat-label position="stacked"> Games </mat-label>
         <ion-select interface="alert-radio-group" [(ngModel)]="tournament.games" name="games"
-                    multiple="true" cancelText="Cancel" okText="Confirm">
+                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
           <tr *ngFor="let game of games">
-            <ion-select-option [value]="game"> {{game.comment}}</ion-select-option>
+            <ion-select-option [value]="game"> {{game.date | date:"medium"}} {{game.opponent}}</ion-select-option>
           </tr>
         </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
+        <ion-button [disabled]="requiredFormControl.hasError('required')
+                    || !loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
-    </ion-list>
   </form>
 </ion-content>

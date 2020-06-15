@@ -7,262 +7,69 @@
 Este capítulo aborda os testes executados no projeto.
 
 \section{Aplicação Servidora} \label{sec51}
-Os testes feitos à partição da aplicação servidor foram executados sem a participação da aplicação cliente.
+A partir desta fase do projeto, todos os testes feitos à aplicação servidora passaram a ser feitos a partir de uma \textit{framework} chamada \textit{Mockito}. Em [4] encontramos a referência para esta \textit{framework}. 
 
-Para a execução destes testes, foram usadas duas ferramentas distintas:\\
-\\
-\begin{tabular}{ll}
-	\emph{XAMPP} & \emph{free open-source cross-platform web server solution stack} para criar um servidor\\
-	 de testes.\\
-	 \\
-	\emph{Postman} & API cliente para gerar pedidos HTTP.\\
-	\\
-\end{tabular}
+O \textit{Mockito} é uma \textit{framework Java} focada em testes unitários, que permite injetar \textit{mocks} nas classes que queremos testar, permitindo assim criar um \textit{man-in-the-middle} que intercepta chamadas a métodos dessas classes. Através da lógica \textit{when(calledMethod)} - \textit{thenReturn(desiredValue)}, podemos atribuir comportamentos aos \textit{mocks} para que quando um certo método é chamado, em vez da chamada acontecer, o \textit{mock} retorna um valor pré-fabricado. Esta \textit{framework} é especialmente útil para testar a camada de \textit{Business} da nossa aplicação servidora, sem que os testes tenham de fazer \textit{GET} ou \textit{POST} sobre a informação da base de dados.
 
-No ficheiro \emph{apliccation.properties} existente na \emph{framework Spring} foram escritas as propriedades essenciais para garantir a ligação entre a aplicação e o servidor \emph{XAMMP}.
+Podemos observar, no troço de código seguinte, alguns dos testes feitos ao \textit{AthleteBusiness}:
 
-\begin{verbatim}
-spring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/test
-spring.datasource.username=root
-spring.datasource.password=
-\end{verbatim}
+\begin{lstlisting}
+public class AthleteBusinessTest {
 
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{100mm}{!}{\includegraphics{./figures/xammp.png}}
-	\end{center}
-	\caption{Figura do painel de controlo do \emph{XAMMP}.}\label{fig:logotipo}
-\end{figure}
+	@InjectMocks
+	 private AthleteBusiness business;
+	
+	@Mock
+	 AthleteRepository repository;
+	
+	@Mock
+	 ProfileRepository profileRepository;
+	
+	/* . . . */
+	
+	@Test
+	public void postProfileTest(){
+		Athlete athlete = createAthlete();
+		Mockito.when(repository.save(Mockito.any(Athlete.class))).thenReturn(athlete);
+		Mockito.when(profileRepository.save(Mockito.any(Profile.class))).thenReturn(createProfile());
+		Long id = business.postAthlete(athlete);
+		Assert.assertEquals(athlete.getId(), id);
+	}
+	
+	@Test
+	public void getExistingProfileById(){
+		Athlete athlete = createAthlete();
+		Mockito.when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(athlete));
+		Athlete athlete2 = business.findAthleteById(1L);
+		Assert.assertEquals(athlete.getTrainingSchedules().size(), athlete2.getTrainingSchedules().size());
+		Assert.assertEquals(athlete.getAthleteGameStats().size(), athlete2.getAthleteGameStats().size());
+		Assert.assertEquals(athlete.getAthletePractices().size(), athlete2.getAthletePractices().size());
+		Assert.assertEquals(athlete.getActiveRosters().size(), athlete2.getActiveRosters().size());
+		Assert.assertEquals(athlete.getGames().size(), athlete2.getGames().size());
+		Assert.assertEquals(athlete.getId(), athlete2.getId());
+		Assert.assertEquals(athlete.getAthleteNumber(), athlete2.getAthleteNumber());
+		Assert.assertEquals(athlete.getComment(), athlete2.getComment());
+		Assert.assertEquals(athlete.getHeight(), athlete2.getHeight());
+		Assert.assertEquals(athlete.getWeight(), athlete2.getWeight());
+		Assert.assertEquals(athlete.getPositions(), athlete2.getPositions());
+	}
+	
+	@Test(expected = ResourceNotFoundException.class)
+		public void updateNotExistingProfile(){
+		Athlete athlete = createAthlete();
+		Mockito.when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.empty());
+		Mockito.when(profileRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.empty());
+		business.updateAthlete(athlete);
+	}
+\end{lstlisting}
 
-As seguintes sub-secções demonstram os vários testes aos \emph{endpoints} da classe {\bf Evento}.\\
-
-
-\subsection{Testes de GET}\label{511}
-Os testes feitos aos \emph{endpoints} de \emph{GET} foram repetidos ao longo dos testes dos outros métodos para fins de observação de resultados, pelo que nesta sub-secção apenas se observam dois testes realizados antes da geração de informação de teste.\\
-
-
-\begin{tabular}{ll}
-	Teste : & \emph{GET ALL}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/all\\
-	\\
-	\emph{Body} : & Nenhum\\
-	\\
-	Resultado : & Lista de objetos \emph{JSON} de todos os Eventos.\\
-	\\
-	\emph{Status} : & \emph{200 OK}\\
-	\\
-	Nota : & Para efeitos de teste, foi colocado previamente um Evento para observação.\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventall.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventall}
-\end{figure}
-\newpage
-\begin{tabular}{ll}
-	Teste : & \emph{GET BY EXISTENT ID }\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/findById/3\\
-	\\
-	\emph{Body} : & Nenhum\\
-	\\
-	Resultado : & Objeto \emph{JSON} do evento com id 3.\\
-	\\
-	\emph{Status} : & \emph{200 OK}\\
-	\\
-	Nota : & Para efeitos de teste, foi colocado previamente um Evento com id 3 para observação. \\
-\end{tabular}
+A anotação \textit{@Mock} serve para criar \textit{Mocks} que vão suportar a classe que vai ser testada (neste caso, os repositórios das entidades da classe a ser testada). A anotação \textit{@InjectMocks} cria uma instância da classe que irá ser testada.
 
 \begin{figure}[h]
 	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventfindbyid200.png}}
+		\resizebox{120mm}{!}{\includegraphics{./figures/tests.png}}
 	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventfindbyid200}
-\end{figure}
-\newpage
-
-
-\begin{tabular}{ll}
-	Teste : & \emph{GET BY NONEXISTENT ID}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/findById/4\\
-	\\
-	\emph{Body} : & Nenhum\\
-	\\
-	Resultado : & Erro\\
-	\\
-	\emph{Status} : & \emph{404 NOT FOUND}\\
-	\\
-	Nota : & Para efeitos de teste, foi escolhido um id que não existe na base de dados.\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventfindbyid404.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventfindbyid404}
-\end{figure}
-\newpage
-
-\subsection{Testes de POST}\label{512}
-Os testes feitos ao \emph{endpoint} de \emph{POST} são executados com um objecto \emph{JSON} enviado no corpo do pedido. O id não é enviado juntamente com o resto da informação do objeto, pois é um campo gerado automaticamente e é retornado no corpo da resposta.\\
-\\
-\begin{tabular}{ll}
-	Teste : & \emph{POST}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/post\\
-	\\
-	\emph{Body} : & \{ \\
-				  &	"name": "TestEvent",\\
-				  & "description": "Description Of TestEvent",\\
-				  & "date": "2020-05-04T00:00:00.000Z",\\
-				  & "local": "Portugal",\\
-				  & "profiles": []\\
-				  & \} \\
-	\\
-	Resultado : & id do objeto criado.\\
-	\\
-	\emph{Status} : & \emph{200 OK}\\
-	\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventpost.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventfindbyid404}
-\end{figure}
-\newpage
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventallafterpost.png}}
-	\end{center}
-	\caption{Resultado de um \emph{GET ALL} depois do \emph{POST} observável no \emph{Postman}.}\label{fig:eventallafterpost}
-\end{figure}
-\newpage
-
-\subsection{Testes de UPDATE}\label{513}
-Os testes feitos ao \emph{endpoint} de \emph{UPDATE} são executados com um objecto \emph{JSON} enviado no corpo do pedido com o id do objeto a ser alterado, assim como os campos a alterar. O id continua a ser retornado no corpo da resposta.\\
-\\
-\begin{tabular}{ll}
-	Teste : & \emph{UPDATE EXISTENT OBJECT}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/update\\
-	\\
-	\emph{Body} : & \{ \\
-	& "id": 10, \\
-	& "name": "TestEventUpdated",\\
-	& "description": "Updated Description Of TestEvent",\\
-	& "date": "2020-05-05T00:00:00.000Z",\\
-	& "local": "Spain",\\
-	& "profiles": []\\
-	& \} \\
-	\\
-	Resultado : & id do objeto alterado.\\
-	\\
-	\emph{Status} : & \emph{200 OK}\\
-	\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventput.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventput}
-\end{figure}
-\newpage
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventallafterput.png}}
-	\end{center}
-	\caption{Resultado de um \emph{GET ALL} depois do \emph{PUT} observável no \emph{Postman}.}\label{fig:eventallafterput}
-\end{figure}
-\newpage
-
-\begin{tabular}{ll}
-	Teste : & \emph{UPDATE NONEXISTENT OBJECT}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/update\\
-	\\
-	\emph{Body} : & \{ \\
-	& "id": 9 \\
-	& "name": "TestEventUpdated",\\
-	& "description": "Updated Description Of TestEvent",\\
-	& "date": "2020-05-05T00:00:00.000Z",\\
-	& "local": "Spain",\\
-	& "profiles": []\\
-	& \} \\
-	\\
-	Resultado : & Erro.\\
-	\\
-	\emph{Status} : & \emph{404 NOT FOUND}\\
-	\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventput404.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventput404}
-\end{figure}
-\newpage
-
-\subsection{Testes de DELETE}\label{514}
-Os testes feitos ao \emph{endpoint} de \emph{DELETE} são executados com um objecto \emph{JSON} enviado no corpo do pedido com o id do objeto a ser apagado.\\
-\\
-\begin{tabular}{ll}
-	Teste : & \emph{DELETE EXISTENT OBJECT}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/delete\\
-	\\
-	\emph{Body} : & \{ \\
-	& "id": 10 \\
-	& \} \\
-	\\
-	Resultado : & Nenhum\\
-	\\
-	\emph{Status} : & \emph{200 OK}\\
-	\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventdelete.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventdelete}
-\end{figure}
-\newpage
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventallafterdelete.png}}
-	\end{center}
-	\caption{Resultado de um \emph{GET ALL} depois do \emph{DELETE} observável no \emph{Postman}.}\label{fig:eventallafterdelete}
-\end{figure}
-\newpage
-\begin{tabular}{ll}
-	Teste : & \emph{DELETE NONEXISTENT OBJECT}\\
-	\\
-	\emph{Endpoint} : & http://localhost:8080/event/delete\\
-	\\
-	\emph{Body} : & \{ \\
-	& "id": 9 \\
-	& \} \\
-	\\
-	Resultado : & Erro\\
-	\\
-	\emph{Status} : & \emph{404 NOT FOUND}\\
-	\\
-\end{tabular}
-
-\begin{figure}[h]
-	\begin{center}
-		\resizebox{150mm}{!}{\includegraphics{./figures/eventdelete404.png}}
-	\end{center}
-	\caption{Resultado observável no \emph{Postman}.}\label{fig:eventdelete404}
+	\caption{Demonstração de todos os testes da aplicação servidora a concluirem com sucesso.}\label{fig:gamessortednameup}
 \end{figure}
 \newpage
 \section{Aplicação Cliente}\label{sec52}

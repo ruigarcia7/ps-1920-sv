@@ -14,7 +14,7 @@
         <input matInput required [formControl]="requiredFormControl" [errorStateMatcher]="matcher"
                [(ngModel)]="staff.profile.name" placeholder="Ex. Cristiano Ronaldo"> <!--name="name" id="name" type="text">-->
         <button mat-button *ngIf="staff.profile.name" matSuffix mat-icon-button aria-label="Clear"
-                (click)="staff.profile.name=''"> <mat-icon> <b> X </b> </mat-icon> </button>
+                (click)="staff.profile.name=''"> <mat-icon> x </mat-icon> </button>
         <mat-error *ngIf="requiredFormControl.hasError('required')">
           Name is <b> Required </b>
         </mat-error>

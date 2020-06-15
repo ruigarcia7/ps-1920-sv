@@ -1,14 +1,15 @@
 % !TeX spellcheck = pt_PT
 %
 % Classe do documento e parâmetros gerais.
-\documentclass[a4paper,openright,twoside,11pt]{report}
+\documentclass[a4paper,openright,11pt]{report} %twoside,
 
 % Packages utilizadas e respetivos parâmetros.
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
+\usepackage{appendix}
 \addto{\captionsportuguese}{\renewcommand{\bibname}{Refer\^{e}ncias}}
 \addto{\captionsportuguese}{\renewcommand{\contentsname}{\'{I}ndice}}
-\addto{\captionsportuguese}{\renewcommand{\appendixname}{Ap\^{e}ndice}}
+%\addto{\captionsportuguese}{\renewcommand{\appendixname}{Ap\^{e}ndice}}
 
 \usepackage{lipsum} % gerador de texto
 \usepackage{graphicx}
@@ -84,9 +85,9 @@
   	{Orientador:} & Jorge Martins \\
 \end{tabular}\\[10mm]
 % Deixar o indicador respetivo em função da versão do relatório.
-Relatório de progresso realizado no âmbito de Projeto e Seminário\\
+Relatório da versão beta realizado no âmbito de Projeto e Seminário\\
 Licenciatura em Engenharia Informática e de Computadores\\[20mm]
-Maio de 2020}
+junho de 2020}
 
 
 \begin{document}
@@ -117,16 +118,16 @@ Maio de 2020}
               & \rule{75mm}{0.5pt}\\[5mm]
 \end{tabular}\\[10mm]
 
-Relatório de progresso realizado no âmbito de Projeto e Seminário\\
+Relatório da versão beta realizado no âmbito de Projeto e Seminário\\
 Licenciatura em Engenharia Informática e de Computadores\\[20mm]
-Maio de 2020\\
+junho de 2020\\
 \end{center}
 
 \cleardoublepage
 \chapter*{Resumo}
 O Rugby é um desporto que representa uma grande presença no quotidiano dos membros do nosso grupo, por sermos ou conhecermos praticantes ativos, e experienciarmos a maioria das vertentes deste desporto há um longo período de tempo. A falta de presença deste desporto no conceito geral da nossa cultura não o expõe a tanto apoio e auxílio como noutros desportos de grande renome, o que se constata de forma clara, sem a necessidade de uma busca intensiva. 
 
-A ideia deste projeto nasceu da nossa própria necessidade de criar uma aplicação que preencha essa lacuna. Com o foco primário em trazer às equipas deste desporto uma aplicação virada para a organização e gestão de informação dentro duma equipa, esperamos no fim apresentar uma ferramenta que consiga aglomerar os aspetos principais de uma equipa num único sitio, e que proporcione um apoio extra à maioria das suas necessidades funcionais.
+A ideia deste projeto nasceu da nossa própria necessidade de criar uma aplicação que preencha essa lacuna. Com o foco primário em trazer às equipas deste desporto uma aplicação virada para a organização e gestão de informação dentro das equipas, esperamos no fim apresentar uma ferramenta que consiga aglomerar os aspetos principais da gestão de equipas de rugby num único sitio, e que proporcione um apoio extra à maioria das suas necessidades funcionais.
 
 %{\bf Palavras-chave:} lista de palavras-chave separadas por ;.
 
@@ -141,7 +142,7 @@ Agradecemos às equipas técnicas do Belas Rugby Clube e do Sporting Clube de Po
 \tableofcontents \cleardoublepage
 
 % Geração do índice de figuras e de tabelas
-%\listoffigures \cleardoublepage
+\listoffigures \cleardoublepage
 %\listoftables \cleardoublepage
 
 % Reiniciar a numeração de páginas
@@ -174,5 +175,6 @@ Agradecemos às equipas técnicas do Belas Rugby Clube e do Sporting Clube de Po
 % Apêndices (opcional)
 \appendix
 \include{apendice}
+\include{apendice2}
 
 \end{document} 
