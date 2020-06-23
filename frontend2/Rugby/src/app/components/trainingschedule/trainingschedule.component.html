@@ -27,7 +27,7 @@
 
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef> Link </th>
-      <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+      <td mat-cell *matCellDef="let element"><a href="http://{{element.link}}"> {{element.link}} </a> </td>
     </ng-container>
 
     <ng-container matColumnDef="targets">

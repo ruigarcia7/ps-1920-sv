@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 public class AthleteGameStatsBusinessTest {
-
+/*
     @InjectMocks
     private AthleteGameStatsBusiness business;
 
@@ -46,7 +46,7 @@ public class AthleteGameStatsBusinessTest {
         Stats stats = new Stats();
         stats.setAthleteGameStats(Collections.emptyList());
         stats.setConversionkicksMiss((byte) 1);
-
+        stats.set
     }
 
     @Test
@@ -95,23 +95,23 @@ public class AthleteGameStatsBusinessTest {
     }
 
 
-    /*
+    *//*
     TODO: fix Mockito.when()
     @Test(expected = ResourceNotFoundException.class)
     public void getDeleteNotExistingProfile(){
         Mockito.when(repository.delete(Mockito.any(Profile.class)));
         business.findProfileByid(1L);
     }
-    */
+    *//*
 
-    /*
+    *//*
     TODO: fix Mockito.when()
     @Test(expected = ResourceNotFoundException.class)
     public void getDeleteNotExistingProfileById(){
         Mockito.when(repository.deleteById(Mockito.any(Long.class)));
         business.findProfileByid(1L);
     }
-    */
+    *//*
     @Test(expected = ResourceNotFoundException.class)
     public void updateNotExistingProfile(){
         Profile profile = createProfile();
@@ -182,5 +182,5 @@ public class AthleteGameStatsBusinessTest {
         p.setPhone("999999999");
         p.setPhoto("");
         return p;
-    }
+    }*/
 }

@@ -29,6 +29,7 @@ public class TournamentBusiness {
         return tournaments;}
 
     public Long postTournament(Tournament tournament){
+        tournament.setId(null);
         return tournamentRepository.save(tournament).getId();
     }
 

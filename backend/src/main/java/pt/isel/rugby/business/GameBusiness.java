@@ -29,20 +29,7 @@ public class GameBusiness {
         Iterable<Game> games = gameRepository.findAll();
         games.forEach(game -> {
 
-            game.getAthletes().forEach(athlete -> {
-                athlete.setGames(Collections.emptyList());
-                athlete.setTrainingSchedules(Collections.emptyList());
-                athlete.setAthletePractices(Collections.emptyList());
-                athlete.getProfile().setEvents(Collections.emptyList());
-            });
-            game.getAthleteGameStats().forEach(athleteGameStats ->{
-                        athleteGameStats.setGame(null);
-                        athleteGameStats.setStats(null);
-                        athleteGameStats.setAthlete(null);
-            });
-
-            game.setActiveRoster(Collections.emptyList());
-            game.setTournament(null);
+            setGameInnerFieldsNull(game);
         });
         return games;
     }
@@ -56,8 +43,14 @@ public class GameBusiness {
     }
 
     public Game findGameById(Long id){
-        return gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", id));
+
+        Game game = gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", id));
+        setGameInnerFieldsNull(game);
+        return game;
     }
+
+
+
     public Long updateGame(Game game){
         gameRepository.findById(game.getId()).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", game.getId()));
         /*List<AthleteGameStats> ags = game.getAthleteGameStats();
@@ -80,5 +73,22 @@ public class GameBusiness {
         ags.forEach(item -> statsRepository.delete(item.getStats()));
         athleteGameStatsRepository.deleteAll(ags);
         gameRepository.delete(game);
+    }
+
+    private void setGameInnerFieldsNull(Game game) {
+        game.getAthletes().forEach(athlete -> {
+            athlete.setGames(Collections.emptyList());
+            athlete.setTrainingSchedules(Collections.emptyList());
+            athlete.setAthletePractices(Collections.emptyList());
+            athlete.getProfile().setEvents(Collections.emptyList());
+        });
+        game.getAthleteGameStats().forEach(athleteGameStats ->{
+            athleteGameStats.setGame(null);
+            athleteGameStats.setStats(null);
+            athleteGameStats.setAthlete(null);
+        });
+
+        game.setActiveRoster(Collections.emptyList());
+        game.setTournament(null);
     }
 }

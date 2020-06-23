@@ -28,7 +28,8 @@ public class AthleteGameStatsBusiness {
     StatsRepository statsRepository;
 
     public Iterable<AthleteGameStats> findAll(){
-        return athleteGameStatsRepository.findAll();
+        Iterable<AthleteGameStats> all = athleteGameStatsRepository.findAll();
+        return all;
     }
 
 
@@ -86,6 +87,17 @@ public class AthleteGameStatsBusiness {
     }
 
     public AthleteGameStats[] findAthleteGameStatsByAthleteId(Long id) {
-        return athleteGameStatsRepository.findAllByAthleteId(id);
+
+        AthleteGameStats[] allByAthleteId = athleteGameStatsRepository.findAllByAthleteId(id);
+        for (AthleteGameStats athleteGameStats: allByAthleteId) {
+            athleteGameStats.getAthlete().getProfile().setEvents(Collections.emptyList());
+            athleteGameStats.getAthlete().setAthleteGameStats(Collections.emptyList());
+            athleteGameStats.getAthlete().setGames(Collections.emptyList());
+            athleteGameStats.getStats().setAthleteGameStats(Collections.emptyList());
+            athleteGameStats.getGame().setTournament(null);
+            athleteGameStats.getGame().setAthleteGameStats(Collections.emptyList());
+            athleteGameStats.getGame().setAthletes(Collections.emptyList());
+        }
+        return allByAthleteId;
     }
 }
