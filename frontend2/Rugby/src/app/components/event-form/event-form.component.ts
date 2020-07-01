@@ -39,25 +39,33 @@ export class EventFormComponent implements OnInit {
   ngOnInit() {
     this.event = new Event();
     this.getProfiles();
-
-    // check if "update" or post to set current object
-    if (this.route.snapshot.paramMap.get('id')) {
-      this.eventService.getEventsById(this.route.snapshot.paramMap.get('id')).subscribe(item => {
-        this.event = item;
-      });
-    }
   }
 
   getProfiles() {
     this.profileService.getProfiles()
       .subscribe( profiles => {
         this.profiles = profiles;
+        this.getEvent();
       });
   }
 
+  getEvent() {
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.eventService.getEventsById(this.route.snapshot.paramMap.get('id')).subscribe(item => {
+        debugger;
+        this.event = item;
+      });
+    }
+  }
+
   processEvent() {
+    debugger;
+    this.route.snapshot.paramMap.get('id') ?
+      this.eventService.updateEvent(this.event).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.eventService.postEvent(this.event).subscribe( (res) => {
-      console.log(res);
       this.presentToast();
     });
   }

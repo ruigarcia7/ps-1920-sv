@@ -19,6 +19,9 @@ public class StaffBusiness {
     @Autowired
     ProfileRepository profileRepository;
 
+    @Autowired
+    ProfileBusiness profileBusiness;
+
     public Iterable<Staff> findAllStaff(){
         Iterable<Staff> staffs = staffRepository.findAll();
         staffs.forEach(staff -> {
@@ -30,6 +33,8 @@ public class StaffBusiness {
     public Long postStaff(Staff staff){
         Profile profile = staff.getProfile();
         profile.setId(null);
+        String path = profileBusiness.uploadImage(profile);
+        profile.setPhoto(path);
         profile = profileRepository.save(profile);
         staff.setId(profile.getId());
         return staffRepository.save(staff).getId();

@@ -66,6 +66,11 @@
     </mat-form-field>
 
     <ion-item>
+      <mat-label position="stacked"> Profile Image </mat-label>
+      <input #imageInput type="file" accept="image/*" (change)="onFileChanged($event)">
+    </ion-item>
+
+    <ion-item>
       <mat-label position="stacked"> Birthday </mat-label>
       <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="staff.profile.birth" name="birth"
                     min="1920" max="2019" placeholder="Click to Select"></ion-datetime>

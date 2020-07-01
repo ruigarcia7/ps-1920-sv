@@ -6,6 +6,12 @@ import pt.isel.rugby.exception.ResourceNotFoundException;
 import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.ProfileRepository;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.Collections;
 
 @Component
@@ -42,5 +48,19 @@ public class ProfileBusiness {
     public void deleteProfileByid(Long id) {
         profileRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Profile", "Id", id));
         profileRepository.deleteById(id);
+    }
+
+    public String uploadImage(Profile p) {
+        byte[] data = Base64.getDecoder().decode(p.getFile().split(",")[1].getBytes(StandardCharsets.UTF_8));
+        Path destination = Paths.get("../frontend2/Rugby/src/assets/img/profile",p.getMail()+".jpg");
+        try {
+            if(!Files.exists(destination)){
+                Files.createFile(destination);
+            }
+            Files.write(destination,data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return destination.toString().split("src")[1];
     }
 }

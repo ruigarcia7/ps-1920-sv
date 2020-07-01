@@ -60,9 +60,11 @@ export class GameFormComponent implements OnInit {
   }
 
   processGame() {
-    debugger;
+    this.route.snapshot.paramMap.get('id') ?
+      this.gameService.updateGame(this.game).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.gameService.postGame(this.game).subscribe( (res) => {
-      console.log(res);
       this.presentToast();
     });
   }

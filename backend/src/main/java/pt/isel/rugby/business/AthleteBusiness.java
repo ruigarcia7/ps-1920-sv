@@ -24,6 +24,9 @@ public class AthleteBusiness {
     @Autowired
     ProfileRepository profileRepository;
 
+    @Autowired
+    ProfileBusiness profileBusiness;
+
     /**
      * Finds all Athletes
      *
@@ -40,6 +43,8 @@ public class AthleteBusiness {
     public Long postAthlete(Athlete athlete) {
         Profile profile = athlete.getProfile();
         profile.setId(null);
+        String path = profileBusiness.uploadImage(profile);
+        profile.setPhoto(path);
         profile = profileRepository.save(profile);
         athlete.setId(profile.getId());
         return athleteRepository.save(athlete).getId();

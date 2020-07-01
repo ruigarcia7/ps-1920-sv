@@ -7,7 +7,7 @@ export class Event {
     public description?: string,
     public date?: Date,
     public local?: string,
-    public profiles?: Profile[]
+    public profiles?: any
   ) {
     this.id = id ? id : 0;
     this.description = description ? description : '';

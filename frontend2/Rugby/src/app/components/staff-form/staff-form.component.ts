@@ -72,6 +72,10 @@ export class StaffFormComponent implements OnInit {
   processStaff() {
     debugger;
     this.staff.staffType = this.enumService.getStaffByName(this.stafftype, this.staff.staffType.toString());
+    this.route.snapshot.paramMap.get('id') ?
+      this.staffService.updateStaff(this.staff).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.staffService.postStaff(this.staff)
       .subscribe( (res) => {
         this.presentToast();
@@ -98,5 +102,15 @@ export class StaffFormComponent implements OnInit {
       duration: 5000
     });
     await toast.present().then(this.navigate.bind(this));
+  }
+
+  onFileChanged(event) {
+    debugger;
+    const file = event.target.files[0];
+    const reader: FileReader = new FileReader();
+    reader.onloadend = (e) => {
+      this.profile.file = reader.result.toString();
+    };
+    reader.readAsDataURL(file);
   }
 }

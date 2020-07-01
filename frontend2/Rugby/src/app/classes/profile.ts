@@ -9,6 +9,7 @@ export class Profile {
     public mail?: string,
     public phone?: string,
     public photo?: string,
+    public file?: string,
     public events?: Event[],
     public isAthlete?: boolean
   ) {

@@ -60,9 +60,11 @@ export class PracticeFormComponent implements OnInit {
   }
 
   processPractice() {
-    debugger;
+    this.route.snapshot.paramMap.get('id') ?
+      this.httppracticeService.updatePractice(this.practice).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.httppracticeService.postPractice(this.practice).subscribe( (res) => {
-      console.log(res);
       this.presentToast();
     });
   }

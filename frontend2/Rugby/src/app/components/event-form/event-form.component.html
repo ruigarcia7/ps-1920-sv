@@ -43,13 +43,13 @@
 
       <ion-item>
         <mat-label> Attendances </mat-label>
-          <ion-select [(ngModel)]="event.profiles" name="profiles"
-              multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
-                      [interfaceOptions]="this.selectOptions">
-              <tr *ngFor="let profile of profiles">
-                <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
-              </tr>
-          </ion-select>
+        <ion-select [(ngModel)]="event.profiles" name="profiles"
+            multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+                    [interfaceOptions]="this.selectOptions">
+            <tr *ngFor="let profile of profiles">
+              <ion-select-option [value]="profile"> {{profile.name}}</ion-select-option>
+            </tr>
+        </ion-select>
         <ion-item slot="end">
           <ion-label> All </ion-label>
           <ion-checkbox slot="start" [(ngModel)]="all" name="all" (ionChange)="toggleAll()"></ion-checkbox>

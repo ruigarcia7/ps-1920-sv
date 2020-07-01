@@ -48,6 +48,7 @@ export class AthleteFormComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.httpathleteService.getAthleteById(this.route.snapshot.paramMap.get('id'))
         .subscribe( item => {
+          debugger;
           this.athlete = item;
           this.athlete.positions = this.athlete.positions.split(',');
         } );
@@ -62,13 +63,16 @@ export class AthleteFormComponent implements OnInit {
   }
 
   processAthlete() {
+    debugger;
     this.athlete.positions = this.athlete.positions.toString();
     this.athlete.profile.isAthlete = true;
-    debugger;
-    this.httpathleteService.postAthlete(this.athlete).subscribe((res) => {
-      console.log(res);
-      this.presentToast();
-    });
+    this.route.snapshot.paramMap.get('id') ?
+      this.httpathleteService.updateAthlete(this.athlete).subscribe((res) => {
+        this.presentToast();
+      }) :
+      this.httpathleteService.postAthlete(this.athlete).subscribe((res) => {
+        this.presentToast();
+      }) ;
   }
 
   navigate() {
@@ -84,5 +88,16 @@ export class AthleteFormComponent implements OnInit {
       duration: 5000
     });
     await toast.present().then(this.navigate.bind(this));
+  }
+
+  onFileChanged(event) {
+    /**/
+    debugger;
+    const file = event.target.files[0];
+    const reader: FileReader = new FileReader();
+    reader.onloadend = (e) => {
+      this.profile.file = reader.result.toString();
+    };
+    reader.readAsDataURL(file);
   }
 }

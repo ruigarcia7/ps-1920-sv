@@ -20,67 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b74d9191-7774-42a6-aae4-1ada8c9125a2" name="Default Changelist" comment="Merge branch 'master' of https://github.com/ruigarcia7/ps-1920-sv&#10;&#10;# Conflicts:&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/AthleteController.java&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/StaffController.java">
-      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png.autosave" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/event.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/practice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/practice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete/athlete.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event/event.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event/event.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/assets/data/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/assets/data/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/theme/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/theme/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/game-form/game-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/game-form/game-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tournament-form/tournament-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tournament-form/tournament-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/training-schedule-form/training-schedule-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/training-schedule-form/training-schedule-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/calendar/calendar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/calendar/calendar.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../populate commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../populate commands.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="test@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="test@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="test@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="test: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="test@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="test: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="athlete: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-    </expand>
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,6 +91,9 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rui\Desktop\Fac\PS\Repository\ps-1920-sv\backend" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="pt.isel.rugby" />
     </key>
@@ -133,7 +101,21 @@
       <recent name="pt.isel.rugby.business" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.RugbyApplication">
+    <configuration name="pt.isel.rugby in rugby" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rugby" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.isel.rugby.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pt.isel.rugby" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RugbyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="rugby" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="pt.isel.rugby.RugbyApplication" />
@@ -141,6 +123,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.pt.isel.rugby in rugby" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES" />
@@ -178,7 +165,20 @@
       <workItem from="1588870873466" duration="8978000" />
       <workItem from="1589032490890" duration="10309000" />
       <workItem from="1589214077826" duration="8027000" />
-      <workItem from="1589467231935" duration="2288000" />
+      <workItem from="1589467231935" duration="47747000" />
+      <workItem from="1590149244048" duration="2190000" />
+      <workItem from="1590167252455" duration="4428000" />
+      <workItem from="1590178957945" duration="26854000" />
+      <workItem from="1591124708826" duration="1976000" />
+      <workItem from="1591446857617" duration="4292000" />
+      <workItem from="1591704691883" duration="1576000" />
+      <workItem from="1591875886158" duration="1668000" />
+      <workItem from="1591893649185" duration="844000" />
+      <workItem from="1591967596312" duration="7123000" />
+      <workItem from="1592488013644" duration="5809000" />
+      <workItem from="1592922454551" duration="2018000" />
+      <workItem from="1593090740374" duration="48000" />
+      <workItem from="1593092847416" duration="18145000" />
     </task>
     <servers />
   </component>
@@ -214,23 +214,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="960" y="91" width="816" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254347673" />
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1588332336454">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="544" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1590066589262">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588332336454" />
+    <state x="544" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1590066589262" />
     <state x="524" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589216874249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="524" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589216874249" />
+    <state x="466" y="232" width="433" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590524378141">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="466" y="232" width="433" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1590524378140" />
     <state x="756" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1588257365733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="756" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588257365733" />
-    <state x="-1198" y="132" width="782" height="674" key="#xdebugger.evaluate" timestamp="1589232494965">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="514" y="92" width="782" height="674" key="#xdebugger.evaluate" timestamp="1590581365600">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="-1198" y="132" width="782" height="674" key="#xdebugger.evaluate/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232494965" />
     <state x="858" y="200" width="1062" height="674" key="#xdebugger.evaluate/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588337193933" />
+    <state x="514" y="92" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1590581365600" />
     <state x="265" y="64" width="1417" height="911" key="CommitChangelistDialog2" timestamp="1588279806826">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -249,90 +255,126 @@
     <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588787997800" />
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588955847491" />
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588261491437" />
-    <state width="1322" height="77" key="GridCell.Tab.0.bottom" timestamp="1589463933051">
+    <state width="1322" height="230" key="GridCell.Tab.-1.bottom" timestamp="1590246277174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="230" key="GridCell.Tab.-1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
+    <state width="1322" height="230" key="GridCell.Tab.-1.center" timestamp="1590246277174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="230" key="GridCell.Tab.-1.center/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
+    <state width="1322" height="230" key="GridCell.Tab.-1.left" timestamp="1590246277174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="230" key="GridCell.Tab.-1.left/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
+    <state width="1322" height="230" key="GridCell.Tab.-1.right" timestamp="1590246277174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="230" key="GridCell.Tab.-1.right/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
+    <state width="1322" height="182" key="GridCell.Tab.0.bottom" timestamp="1593525183701">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="178" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
     <state width="1877" height="178" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386094" />
     <state width="1877" height="603" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
-    <state width="1322" height="77" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589463933051" />
-    <state width="1322" height="77" key="GridCell.Tab.0.center" timestamp="1589463933050">
+    <state width="1322" height="182" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593525183701" />
+    <state width="1322" height="182" key="GridCell.Tab.0.center" timestamp="1593525183700">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="178" key="GridCell.Tab.0.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
     <state width="1877" height="178" key="GridCell.Tab.0.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386093" />
     <state width="1877" height="603" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
     <state width="1877" height="348" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
-    <state width="1322" height="77" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589463933050" />
-    <state width="1322" height="77" key="GridCell.Tab.0.left" timestamp="1589463933050">
+    <state width="1322" height="182" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
+    <state width="1322" height="182" key="GridCell.Tab.0.left" timestamp="1593525183700">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="178" key="GridCell.Tab.0.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
     <state width="1877" height="178" key="GridCell.Tab.0.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386093" />
     <state width="1877" height="603" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584093" />
     <state width="1877" height="348" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
-    <state width="1322" height="77" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589463933050" />
-    <state width="1322" height="77" key="GridCell.Tab.0.right" timestamp="1589463933051">
+    <state width="1322" height="182" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
+    <state width="1322" height="182" key="GridCell.Tab.0.right" timestamp="1593525183700">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="178" key="GridCell.Tab.0.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
     <state width="1877" height="178" key="GridCell.Tab.0.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386094" />
     <state width="1877" height="603" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
     <state width="1877" height="348" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
-    <state width="1322" height="77" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589463933051" />
-    <state width="1322" height="77" key="GridCell.Tab.1.bottom" timestamp="1589463933052">
+    <state width="1322" height="182" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
+    <state width="1322" height="182" key="GridCell.Tab.1.bottom" timestamp="1593524937734">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="916" height="178" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
     <state width="1877" height="178" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="179" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
-    <state width="1322" height="77" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589463933052" />
-    <state width="1322" height="77" key="GridCell.Tab.1.center" timestamp="1589463933052">
+    <state width="1322" height="182" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
+    <state width="1322" height="182" key="GridCell.Tab.1.center" timestamp="1593524937734">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="916" height="178" key="GridCell.Tab.1.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
     <state width="1877" height="178" key="GridCell.Tab.1.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
     <state width="1877" height="348" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="179" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
-    <state width="1322" height="77" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1589463933052" />
-    <state width="1322" height="77" key="GridCell.Tab.1.left" timestamp="1589463933051">
+    <state width="1322" height="182" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
+    <state width="1322" height="182" key="GridCell.Tab.1.left" timestamp="1593524937734">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="916" height="178" key="GridCell.Tab.1.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
     <state width="1877" height="178" key="GridCell.Tab.1.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
     <state width="1877" height="348" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="179" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
-    <state width="1322" height="77" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1589463933051" />
-    <state width="1322" height="77" key="GridCell.Tab.1.right" timestamp="1589463933052">
+    <state width="1322" height="182" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
+    <state width="1322" height="182" key="GridCell.Tab.1.right" timestamp="1593524937734">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="916" height="178" key="GridCell.Tab.1.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
     <state width="1877" height="178" key="GridCell.Tab.1.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="179" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
-    <state width="1322" height="77" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1589463933052" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1589232549115">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1322" height="182" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
+    <state width="1322" height="182" key="GridCell.Tab.2.bottom" timestamp="1593525750264">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="348" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1589232549115">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1322" height="182" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
+    <state width="1322" height="182" key="GridCell.Tab.2.center" timestamp="1593525750264">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="348" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1589232549115">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1322" height="182" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
+    <state width="1322" height="182" key="GridCell.Tab.2.left" timestamp="1593525750263">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="348" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1589232549115">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="1322" height="182" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1593525750263" />
+    <state width="1322" height="182" key="GridCell.Tab.2.right" timestamp="1593525750264">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
     <state width="1877" height="348" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
+    <state width="1322" height="182" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
+    <state width="1264" height="106" key="GridCell.Tab.3.bottom" timestamp="1590246298687">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1264" height="106" key="GridCell.Tab.3.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590246298687" />
+    <state width="1264" height="106" key="GridCell.Tab.3.center" timestamp="1590246298686">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1264" height="106" key="GridCell.Tab.3.center/0.0.1366.728@0.0.1366.728" timestamp="1590246298686" />
+    <state width="1264" height="106" key="GridCell.Tab.3.left" timestamp="1590246323493">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1264" height="106" key="GridCell.Tab.3.left/0.0.1366.728@0.0.1366.728" timestamp="1590246323493" />
+    <state width="1264" height="106" key="GridCell.Tab.3.right" timestamp="1590246298686">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1264" height="106" key="GridCell.Tab.3.right/0.0.1366.728@0.0.1366.728" timestamp="1590246298686" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1588254261165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -353,6 +395,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588336799404" />
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1593174160093">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1593174160093" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588870901809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,6 +408,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254425347" />
+    <state x="-56" y="454" width="1280" height="144" key="dock-window-1" timestamp="1590246546990">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="-56" y="454" width="1280" height="144" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1590246546990" />
     <state x="690" y="286" key="extract.method.dialog" timestamp="1588348686266">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -387,16 +437,86 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/PracticeBusiness.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/OpponentController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java</url>
+          <line>50</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/StaffController.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
+          <line>24</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
+          <line>36</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java</url>
+          <line>28</line>
+          <properties class="pt.isel.rugby.controller.AthleteController" method="postAthlete">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backend$RugbyApplication.ic" NAME="RugbyApplication Coverage Results" MODIFIED="1590070829841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

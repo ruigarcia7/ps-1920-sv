@@ -47,9 +47,11 @@ export class TournamentFormComponent implements OnInit {
   }
 
   processTournament() {
-    debugger;
+    this.route.snapshot.paramMap.get('id') ?
+      this.tournamentService.updateTournament(this.tournament).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.tournamentService.postTournament(this.tournament).subscribe( (res) => {
-      console.log(res);
       this.presentToast();
     });
   }

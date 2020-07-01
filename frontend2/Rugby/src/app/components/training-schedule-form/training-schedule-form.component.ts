@@ -37,9 +37,11 @@ export class TrainingScheduleFormComponent implements OnInit {
   }
 
   processTrainingSchedule() {
-    debugger;
+    this.route.snapshot.paramMap.get('id') ?
+      this.trainingScheduleService.updateTrainingSchedule(this.trainingSchedule).subscribe((res) => {
+        this.presentToast();
+      }) :
     this.trainingScheduleService.postTrainingSchedule(this.trainingSchedule).subscribe( (res) => {
-      console.log(res);
       this.presentToast();
     });
   }

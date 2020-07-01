@@ -167,6 +167,11 @@
         <mat-hint align="end">{{input.value?.length || 0}}/256</mat-hint>
       </mat-form-field>
 
+     <ion-item>
+       <mat-label position="stacked"> Profile Image </mat-label>
+       <input #imageInput type="file" accept="image/*" (change)="onFileChanged($event)">
+     </ion-item>
+
       <ion-item>
         <mat-label position="stacked"> Birthday </mat-label>
         <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="athlete.profile.birth" name="birth"
