@@ -8,6 +8,7 @@ import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.ProfileRepository;
+import pt.isel.rugby.utils.AthleteAttendanceResponse;
 
 import java.util.Collections;
 
@@ -27,16 +28,44 @@ public class AthleteBusiness {
     @Autowired
     ProfileBusiness profileBusiness;
 
+    @Autowired
+    GameBusiness gameBusiness;
+
+    @Autowired
+    EventBusiness eventBusiness;
+
+    @Autowired
+    PracticeBusiness practiceBusiness;
+
+    @Autowired
+    TournamentBusiness tournamentBusiness;
+
     /**
      * Finds all Athletes
      *
      *
      */
+
     public Iterable<Athlete> findAllAthletes(){
         Iterable<Athlete> athletes = athleteRepository.findAll();
         athletes.forEach(this::setInnerObjectsToNull);
 
         return athletes;
+    }
+
+
+    public AthleteAttendanceResponse getAttendanceInfo(Long id) {
+        Athlete a = findAthleteById(id);
+        AthleteAttendanceResponse response = new AthleteAttendanceResponse();
+        response.setGames(gameBusiness.findAllByAthleteId(a));
+        response.setEvents(eventBusiness.findAllByProfile(a.getProfile()));
+        response.setPractices(practiceBusiness.findAllByAthlete(a));
+        response.setTournaments(tournamentBusiness.findAllByAthlete(a));
+        response.setAllGamesCount(gameBusiness.count());
+        response.setAllEventsCount(eventBusiness.count());
+        response.setAllPracticesCount(practiceBusiness.count());
+        response.setAllTournamentsCount(tournamentBusiness.count());
+        return response;
     }
 
 
@@ -84,7 +113,7 @@ public class AthleteBusiness {
 
     private void setInnerObjectsToNull(Athlete athlete) {
         athlete.getAthletePractices().forEach(athletePractice -> {
-            athletePractice.setAthlete(null);
+            //athletePractice.setAthlete(null);
             athletePractice.setPractice(null);
         });
         athlete.getAthleteGameStats().forEach(athleteGameStats -> {
@@ -97,7 +126,7 @@ public class AthleteBusiness {
             activeRoster.setGame(null);
         });
         athlete.getGames().forEach(game -> {
-            game.setAthletes(Collections.emptyList());
+            //game.setAthletes(Collections.emptyList());
         });
         athlete.getProfile().getEvents().forEach(event -> {
             event.setProfiles(Collections.emptyList());

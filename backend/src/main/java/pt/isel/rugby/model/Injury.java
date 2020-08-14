@@ -6,10 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table (name = "opponent")
+@Table(name = "injury")
 @Data
-public class Opponent implements Serializable {
-
+public class Injury implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,8 +17,8 @@ public class Opponent implements Serializable {
     private String name;
 
     @Column
-    private String photo;
+    private String zone;
 
-    @Transient
-    private String file;
+    @Column
+    private String severity;
 }

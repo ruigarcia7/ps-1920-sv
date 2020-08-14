@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.AthleteBusiness;
 import pt.isel.rugby.model.Athlete;
+import pt.isel.rugby.utils.AthleteAttendanceResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController()
@@ -35,6 +36,11 @@ public class AthleteController {
     public Athlete findAthleteById(@PathVariable Long id) {
         logger.info("on method GET athlete/findById/{id} with id "+ id);
         return athleteBusiness.findAthleteById(id);
+    }
+
+    @GetMapping("/{id}/attendance")
+    public AthleteAttendanceResponse getAttendanceInfo(@PathVariable Long id) {
+        return athleteBusiness.getAttendanceInfo(id);
     }
 
     @PutMapping("/update")

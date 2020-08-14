@@ -16,15 +16,15 @@
       <button mat-button *ngIf="opponent.name" matSuffix mat-icon-button aria-label="Clear"
               (click)="opponent.name=''"> <mat-icon>x</mat-icon> </button>
       <mat-error *ngIf="requiredFormControl.hasError('required')">
-        Local is <b> Required </b>
+        Name is <b> Required </b>
       </mat-error>
     </mat-form-field>
 
 
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label> Photo </mat-label>
-        <input matInput type="text"[(ngModel)]="opponent.photo" name="photo">
-    </mat-form-field>
+    <ion-item>
+      <mat-label position="stacked"> Profile Image </mat-label>
+      <input #imageInput type="file" accept="image/*" (change)="onFileChanged($event)">
+    </ion-item>
 
       <ion-item>
         <ion-button [disabled]="!loginForm.form.valid" type="submit" class="ion-no-margin">Submit</ion-button>

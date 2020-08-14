@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
+import pt.isel.rugby.business.AthleteBusiness;
 import pt.isel.rugby.business.GameBusiness;
 import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.Game;
@@ -32,6 +33,13 @@ public class GameController {
         logger.info("On method GET game/findById/{id} with id "+id);
         return gameBusiness.findGameById(id);
     }
+
+    /*@GetMapping("/findByAthlete/{id}")
+    public Iterable<Game> findAllByAthleteId(@PathVariable Long id){
+        logger.info("On method GET game/findByAthleteId/{id} with id "+id);
+        Athlete a = athleteBusiness.findAthleteById(id);
+        return gameBusiness.findAllByAthleteId(a);
+    }*/
 
     @PostMapping("/post")
     public Long postGame(@RequestBody Game game){

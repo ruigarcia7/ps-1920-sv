@@ -36,13 +36,16 @@ export class GameFormComponent implements OnInit {
 
   ngOnInit() {
     this.game = new Game();
-
-    // check if "update" or post to set current object
-    if (this.route.snapshot.paramMap.get('id')) {
-      this.gameService.getGameById(this.route.snapshot.paramMap.get('id')).subscribe(item => this.game = item);
-    }
     this.getOpponents();
     this.getAthletes();
+    // check if "update" or post to set current object
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.gameService.getGameById(this.route.snapshot.paramMap.get('id'))
+        .subscribe(item => {
+          this.game = item;
+          debugger;
+        });
+    }
   }
 
   getOpponents() {
@@ -60,6 +63,7 @@ export class GameFormComponent implements OnInit {
   }
 
   processGame() {
+    debugger;
     this.route.snapshot.paramMap.get('id') ?
       this.gameService.updateGame(this.game).subscribe((res) => {
         this.presentToast();
@@ -87,5 +91,14 @@ export class GameFormComponent implements OnInit {
 
   toggleAll() {
     return this.all ? this.game.athletes = this.athletes : this.game.athletes = [];
+  }
+
+  compareWithOpponent = (o1: Opponent, o2: Opponent) => {
+    return o1 && o2 ? o1.name === o2.name : false;
+  }
+
+  compareWithAthlete = (o1: Athlete, o2: Athlete) => {
+    debugger;
+    return o1 && o2 ? o1.id === o2.id : false;
   }
 }

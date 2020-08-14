@@ -22,7 +22,7 @@
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label position="stacked"> Team Score </mat-label>
-        <input matInput type="tel"[(ngModel)]="game.teamScore" name="height"
+        <input matInput type="tel"[(ngModel)]="game.teamScore" name="teamscore"
                pattern="[0-9]{1,3}" placeholder="Ex. 100">
         <button mat-button *ngIf="game.teamScore" matSuffix mat-icon-button aria-label="Clear"
                 (click)="game.teamScore=''"> <mat-icon>x</mat-icon>
@@ -35,7 +35,7 @@
 
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label position="stacked"> Opponent Score </mat-label>
-        <input matInput type="tel"[(ngModel)]="game.opponentScore" name="height"
+        <input matInput type="tel"[(ngModel)]="game.opponentScore" name="opponentscore"
                pattern="[0-9]{1,3}" placeholder="Ex. 100">
         <button mat-button *ngIf="game.opponentScore" matSuffix mat-icon-button aria-label="Clear"
                 (click)="game.opponentScore=''"> <mat-icon>x</mat-icon>
@@ -58,7 +58,8 @@
       <ion-item>
         <mat-label> Opponent </mat-label>
         <ion-select [(ngModel)]="game.opponent" name="opponent"
-                    cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
+                    cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+        [compareWith]="compareWithOpponent">
           <tr *ngFor="let opponent of opponents">
             <ion-select-option [value]="opponent"> {{opponent.name}}</ion-select-option>
           </tr>
@@ -79,7 +80,8 @@
       <ion-item>
         <mat-label position="stacked"> Call </mat-label>
         <ion-select [(ngModel)]="game.athletes" name="call"
-                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select">
+                    multiple="true" cancelText="Cancel" okText="Confirm" placeholder="Click to Select"
+        [compareWith]="compareWithAthlete">
           <tr *ngFor="let athlete of athletes">
             <ion-select-option [value]="athlete"> {{athlete.profile.name}}</ion-select-option>
           </tr>

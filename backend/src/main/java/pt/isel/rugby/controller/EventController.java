@@ -7,7 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.EventBusiness;
+import pt.isel.rugby.business.ProfileBusiness;
+import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.Event;
+import pt.isel.rugby.model.Game;
+import pt.isel.rugby.model.Profile;
 
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -24,6 +28,13 @@ public class EventController {
         logger.info("On method GET event/all");
         return eventBusiness.findAllEvents();
     }
+
+    /*@GetMapping("/findByProfile/{id}")
+    public Iterable<Event> findAllByProfileId(@PathVariable Long id){
+        logger.info("On method GET event/findByProfileId/{id} with id "+id);
+        Profile p = profileBusiness.findProfileByid(id);
+        return eventBusiness.findAllByProfile(p);
+    }*/
 
     @GetMapping("/findById/{id}")
     public Event findEventById(@PathVariable Long id){

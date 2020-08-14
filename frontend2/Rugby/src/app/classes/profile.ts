@@ -20,6 +20,7 @@ export class Profile {
     this.mail = mail ? mail : '';
     this.phone = phone ? phone : '';
     this.photo = photo ? photo : '';
+    this.file = file ? file : '';
     this.events = events ? events : [];
     this.isAthlete =  isAthlete ? isAthlete : false;
   }

@@ -3,6 +3,7 @@ package pt.isel.rugby.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
+import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.AthleteGameStats;
 import pt.isel.rugby.model.Game;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
@@ -28,10 +29,21 @@ public class GameBusiness {
     public Iterable<Game> findAllGames() {
         Iterable<Game> games = gameRepository.findAll();
         games.forEach(game -> {
-
             setGameInnerFieldsNull(game);
         });
         return games;
+    }
+
+    public Iterable<Game> findAllByAthleteId(Athlete a) {
+        Iterable<Game> games = gameRepository.findAllByAthletesContains(a);
+        games.forEach(game -> {
+            setGameInnerFieldsNull(game);
+        });
+        return games;
+    }
+
+    public long count(){
+        return gameRepository.count();
     }
 
     public Long postGame (Game game){
@@ -43,7 +55,6 @@ public class GameBusiness {
     }
 
     public Game findGameById(Long id){
-
         Game game = gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", id));
         setGameInnerFieldsNull(game);
         return game;

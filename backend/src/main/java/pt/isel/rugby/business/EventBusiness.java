@@ -3,7 +3,10 @@ package pt.isel.rugby.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
+import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.Event;
+import pt.isel.rugby.model.Game;
+import pt.isel.rugby.model.Profile;
 import pt.isel.rugby.repository.EventRepository;
 
 import java.util.Collections;
@@ -31,6 +34,18 @@ public class EventBusiness {
         Event event = eventRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event", "Id", id));
         event.getProfiles().forEach(profile -> profile.setEvents(null));
         return event;
+    }
+
+    public Iterable<Event> findAllByProfile(Profile p) {
+        Iterable<Event> events = eventRepository.findAllByProfilesContains(p);
+        events.forEach(event -> {
+            event.getProfiles().forEach(profile -> profile.setEvents(Collections.emptyList()));
+        });
+        return events;
+    }
+
+    public long count(){
+        return eventRepository.count();
     }
 
     public Long updateEvent(Event event){

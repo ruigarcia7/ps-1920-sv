@@ -5,8 +5,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let athletePractice of this.navParams.get('athletePractices')">
-      <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/
-{{athletePractice.athlete.id}}">
+      <ion-item detail="false" (click)="close()" routerLink="/app/athlete/athlete-profile/{{athletePractice.athlete.id}}">
         <ion-label>
           <ng-template [ngIf]="athletePractice.regular">
             <h3 style="color:green;">{{athletePractice.athlete.profile.name}}</h3>

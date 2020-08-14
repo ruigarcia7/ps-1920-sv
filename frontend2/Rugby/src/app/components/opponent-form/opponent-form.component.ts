@@ -50,6 +50,18 @@ export class OpponentFormComponent implements OnInit {
     });
     await toast.present().then(this.navigate.bind(this));
   }
+
+
+  onFileChanged(event) {
+    /**/
+    debugger;
+    const file = event.target.files[0];
+    const reader: FileReader = new FileReader();
+    reader.onloadend = (e) => {
+      this.opponent.file = reader.result.toString();
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 

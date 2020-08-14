@@ -29,6 +29,11 @@ export class HttpAthleteService {
     return this.http.get(url, this.httpOptions);
   }
 
+  getAthleteAttendanceInfo(id: any): Observable<any> {
+    const url = `${this.BASE_URL}/${id}/attendance`;
+    return this.http.get(url, this.httpOptions);
+  }
+
   postAthlete(athlete: Athlete): Observable<any> {
     const url = `${this.BASE_URL}/post`;
     return this.http.post(url, athlete, this.httpOptions);

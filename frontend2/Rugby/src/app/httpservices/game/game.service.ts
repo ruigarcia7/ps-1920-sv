@@ -43,4 +43,9 @@ export class GameService {
     const url = `${this.BASE_URL}/delete/${id}`;
     return this.http.delete(url, this.httpOptions);
   }
+
+  getGamesByAthleteId(id: any): Observable<Game[]> {
+    const url = `${this.BASE_URL}/findByAthlete/${id}`;
+    return this.http.get<Game[]>(url, this.httpOptions);
+  }
 }

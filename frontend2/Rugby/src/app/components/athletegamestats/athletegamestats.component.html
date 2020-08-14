@@ -11,8 +11,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/athlete"></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="end" size="large" fill="solid" (click)="openSubMenu()">
-      <ion-icon name="key-outline"></ion-icon>
+    <ion-buttons slot="end">
+      <ion-button size="large" fill="solid" (click)="openSubMenu()">
+        <ion-icon name="key-outline"></ion-icon>
+      </ion-button>
+      <ion-button size="large" fill="solid" (click)="openFilterMenu()">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -90,6 +95,36 @@
       </ion-list>
     </ion-content>
   </ion-menu>
+
+  <ion-content fullscreen="true">
+    <ion-menu side="end" contentId="main" menuId="filter">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title> Filter </ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeFilterMenu()">
+              <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item>
+          <mat-label position="stacked"> Pick a Game </mat-label>
+          <ion-select name="games" multiple="true" cancelText="Cancel" okText="Confirm"
+                      placeholder="Click to Select" [(ngModel)]="filtered">
+            <tr *ngFor="let athleteGameStats of athleteGameStats">
+              <ion-select-option value="{{athleteGameStats.game.id}}">
+                {{athleteGameStats.game.opponent.name}} {{athleteGameStats.game.date | date:"small"}}
+              </ion-select-option>
+            </tr>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-button type="submit" class="ion-no-margin" (click)="filterGame()">Filter</ion-button>
+        </ion-item>
+      </ion-content>
+    </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
 
 <ng-template [ngIf]="segment === 'stats' && hasData">
@@ -287,137 +322,22 @@
     </table>
 
   </ion-content>
-  </ng-template>
+</ng-template>
 
-  <div [hidden]="!chart">
-    <canvas id="canvas"> {{chart}}</canvas>
+  <div [hidden]="segment!='graph'">
+    <canvas id="canvas"> {{chart}} </canvas>
+    <ion-grid>
+      <ion-row>
+        <ion-item *ngFor = "let item of checkBoxList">
+          <ion-label> {{item.name}} </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="item.isChecked" (ionChange)="pushTest($event,item.property)"> </ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label> All </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="all" (click)="onAll($event)"></ion-checkbox>
+        </ion-item>
+      </ion-row>
+        
+    </ion-grid>
   </div>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label> Fouls </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'fouls')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Errors </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'errors')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Yellow Cards </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'yellowCards')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Red Cards </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'redCards')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> TurnOvers </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'turnOvers')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Tries </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'tries')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Mauls </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'mauls')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> PlayingTime </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'playingTime')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label> Tackles H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'tacklesHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Tackles M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'tacklesMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Conversion Kicks H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'conversionkicksHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Conversion Kicks M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'conversionkicksMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Goal Kicks H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'goalkicksHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Goal Kicks M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'goalkicksMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Drop Kicks H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'dropkicksHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Drop Kicks M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'dropkicksMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label> Line Outs H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'lineoutsHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Line Outs M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'lineoutsMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Offside Kicks H </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'offsidekicksHit')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label> Offside Kicks M </ion-label>
-          <ion-checkbox slot="start" (click)="pushTest($event,'offsidekicksMiss')"> </ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>

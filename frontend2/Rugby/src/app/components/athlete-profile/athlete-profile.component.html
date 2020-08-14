@@ -22,64 +22,293 @@
     <h2>{{athlete?.profile.name}}</h2>
   </div>
 
-  <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile [colspan]="1" [rowspan]="3">
+  <ng-template [ngIf]="segment === 'personal'">
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
         <img [src]="athlete?.profile.photo">
-    </mat-grid-tile>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Nome </b> </div>
-        <div class="ion-text-center">  {{athlete?.profile.name}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Nome </b> </div>
+          <div class="ion-text-center">  {{athlete?.profile.name}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Posições </b> </div>
-        <div class="ion-text-center"> {{athlete?.positions}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Posições </b> </div>
+          <div class="ion-text-center"> {{athlete?.positions}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Altura [cm] </b> </div>
-        <div class="ion-text-center"> {{athlete?.height}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Altura [cm] </b> </div>
+          <div class="ion-text-center"> {{athlete?.height}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Peso [kg] </b> </div>
-        <div class="ion-text-center"> {{athlete?.weight}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Peso [kg] </b> </div>
+          <div class="ion-text-center"> {{athlete?.weight}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Data de Nascimento </b> </div>
-        <ion-datetime disabled displayFormat="MMM DD, YYYY" value="{{athlete?.profile.birth}}"> </ion-datetime>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Data de Nascimento </b> </div>
+          <ion-datetime readonly displayFormat="MMM DD, YYYY" value="{{athlete?.profile.birth}}"> </ion-datetime>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Morada </b> </div>
-        <div class="ion-text-center"> {{athlete?.profile.address}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Morada </b> </div>
+          <div class="ion-text-center"> {{athlete?.profile.address}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <ion-label>
-        <div class="ion-text-center"> <b> Número de Atleta </b> </div>
-        <div class="ion-text-center"> {{athlete?.athleteNumber}} </div>
-      </ion-label>
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <ion-label>
+          <div class="ion-text-center"> <b> Número de Atleta </b> </div>
+          <div class="ion-text-center"> {{athlete?.athleteNumber}} </div>
+        </ion-label>
+      </mat-grid-tile>
 
-  </mat-grid-list>
+    </mat-grid-list>
+  </ng-template>
+
+  <ng-template [ngIf]="segment === 'attendance'">
+    <ion-list>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col>
+            <div class="ion-text-center"> <b> Games </b> </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-center"> <b> Total : {{this.info.allGamesCount}} </b> </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-center"> <b> Attended : {{this.info.games.length}} </b> </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-center" > <b> Attendance % :
+              {{(this.info.games.length / this.info.allGamesCount)*100}} %</b> </div>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-button fill=clear [disabled]="this.info.games.length === 0" (click)="toggleShowGames()"> Show more </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div [hidden]="!showGames">
+        <table mat-table [dataSource]="this.gamesDS" matSort class="mat-elevation-z8">
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="local">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Local </th>
+            <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opponent">
+            <th mat-header-cell *matHeaderCellDef> Opponent </th>
+            <td mat-cell *matCellDef="let element">
+              <ion-item>
+                <!--<ion-thumbnail slot="start"> <img [src]="element.opponent.photo"> </ion-thumbnail>-->
+                <ion-label> {{element.opponent.name}} </ion-label>
+              </ion-item>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef> Score </th>
+            <td mat-cell *matCellDef="let element"> {{element.teamScore}} - {{element.opponentScore}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="gamesColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: gamesColumns;"> </tr>
+        </table>
+      </div>
+
+        <ion-grid>
+          <ion-row class="ion-justify-content-center ion-align-items-center">
+            <ion-col class="ion-text-center">
+              <div class="ion-text-center"> <b> Events </b> </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="ion-text-center"> <b> Total : {{this.info.allEventsCount}} </b> </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="ion-text-center"> <b> Attended : {{this.info.events.length}} </b> </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <div class="ion-text-center"> <b> Attendance % :
+              {{(this.info.events.length / this.info.allEventsCount)*100}} %</b> </div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <ion-button fill=clear [disabled]="this.info.events.length === 0" (click)="toggleShowEvents()"> Show more </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      <div [hidden]="!showEvents">
+        <table mat-table [dataSource]="this.eventsDS" matSort class="mat-elevation-z8">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="local">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Local </th>
+            <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="eventsColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: eventsColumns;"> </tr>
+        </table>
+      </div>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <div class="ion-text-center"> <b> Practices </b> </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <div class="ion-text-center"> <b> Total : {{this.info.allPracticesCount}} </b> </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <div class="ion-text-center"> <b> Attended : {{this.info.practices.length}} </b> </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <div class="ion-text-center"> <b> Attendance % :
+          {{(this.info.practices.length / this.info.allPracticesCount)*100}} %</b> </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button fill=clear [disabled]="this.info.practices.length === 0" (click)="toggleShowPractices()"> Show more </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div [hidden]="!showPractices">
+      <table mat-table [dataSource]="this.practicesDS" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="local">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Local </th>
+          <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="practicesColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: practicesColumns;"> </tr>
+      </table>
+    </div>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <div class="ion-text-center"> <b> Tournaments </b> </div>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <div class="ion-text-center"> <b> Total : {{this.info.allTournamentsCount}} </b> </div>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <div class="ion-text-center"> <b> Attended : {{this.info.tournaments.length}} </b> </div>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <div class="ion-text-center"> <b> Attendance % :
+        {{(this.info.tournaments.length / this.info.allTournamentsCount)*100}} %</b> </div>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button fill=clear [disabled]="this.info.tournaments.length === 0" (click)="toggleShowTournaments()"> Show more </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div [hidden]="!showTournaments">
+    <table mat-table [dataSource]="this.tournamentsDS" matSort class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date | date:"medium"}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="local">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Local </th>
+        <td mat-cell *matCellDef="let element"> {{element.local}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="classification">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Classification </th>
+        <td mat-cell *matCellDef="let element"> {{element.classification}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="tournamentsColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: tournamentsColumns;"> </tr>
+    </table>
+  </div>
+    </ion-list>
+  </ng-template>
 
 
-  <div class="ion-padding athlete-profile">
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="segment">
+        <ion-segment-button value="personal">
+          Personal Data
+        </ion-segment-button>
+        <ion-segment-button value="attendance">
+          Attendance
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--<div class="ion-padding athlete-profile">
     <p> Say hello to {{athlete?.profile.name}} on social media!</p>
 
     <hr>
@@ -98,5 +327,5 @@
       <ion-icon name="logo-instagram"></ion-icon>
       <ion-label>Instagram</ion-label>
     </ion-chip>
-  </div>
-</ion-content>
+  </div>-->
+
