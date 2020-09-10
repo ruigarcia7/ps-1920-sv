@@ -49,7 +49,7 @@ public class AthleteBusiness {
     public Iterable<Athlete> findAllAthletes(){
         Iterable<Athlete> athletes = athleteRepository.findAll();
         athletes.forEach(this::setInnerObjectsToNull);
-
+        System.out.println();
         return athletes;
     }
 
@@ -113,7 +113,7 @@ public class AthleteBusiness {
 
     private void setInnerObjectsToNull(Athlete athlete) {
         athlete.getAthletePractices().forEach(athletePractice -> {
-            //athletePractice.setAthlete(null);
+            athletePractice.setAthlete(null);
             athletePractice.setPractice(null);
         });
         athlete.getAthleteGameStats().forEach(athleteGameStats -> {
@@ -126,12 +126,15 @@ public class AthleteBusiness {
             activeRoster.setGame(null);
         });
         athlete.getGames().forEach(game -> {
-            //game.setAthletes(Collections.emptyList());
+            game.setAthletes(Collections.emptyList());
+            game.setActiveRoster(Collections.emptyList());
+            game.setAthleteGameStats(Collections.emptyList());
+
         });
         athlete.getProfile().getEvents().forEach(event -> {
             event.setProfiles(Collections.emptyList());
         });
         athlete.setTrainingSchedules(Collections.emptyList());
-        athlete.setGames(Collections.emptyList());
+        //athlete.setGames(Collections.emptyList());
     }
 }

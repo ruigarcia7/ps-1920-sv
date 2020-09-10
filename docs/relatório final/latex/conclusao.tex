@@ -1,0 +1,17 @@
+% !TeX spellcheck = pt_PT
+%
+% Capítulo 6
+%
+\chapter{Conclusões (até agora)} \label{conclusao}
+Este capítulo descreve as conclusões que foram adquiridas do trabalho feito até ao momento.
+
+\section{Recapitulação}\label{sec61}
+Como referido na secção 2.1, foi possível, através de reuniões com clubes deste desporto, definir as propriedades principais e secundárias da nossa aplicação. Após estas propriedades estarem definidas e estruturadas, foi gerado o modelo de entidades onde assenta a nossa aplicação (demonstrado no Apêndice A).
+
+No que toca à aplicação servidora, como referido no capítulo 3, foram definidas todas as estruturas, tanto em termos de entidades e informação persistente, como em termos do formato em que a aplicação no geral irá ter acesso a esta informação. Distribuindo os focos principais nas camadas de Modelo, Repositório, Negócio e Controlador, podemos de uma forma organizada separar todo o processo que envolve o caminho desde o \emph{browser} até à base de dados. Com o auxílio das ferramentas apresentadas na secção 2.3, conseguimos organizar toda esta partição e mantê-la consistente. 
+
+Do lado da aplicação cliente, como apresentado no capítulo 4, foram geradas as classes que correspondem às classes de Entidades da aplicação servidora, e criados as diversas páginas para cada informação de cada entidade relevante. A estrutura da aplicação cliente está organizada entre componentes e serviços, onde os componentes têm todo o código necessário à sua representação visual, e os serviços tratam da algoritmia completementar para garantir o funcionamento dos componentes.
+
+Todos os testes feitos ao lado da aplicação servidora permitem observar o comportamento dos \emph{endpoints} e a persistência dos dados na base de dados.
+
+Todos os testes feitos ao lado da aplicação cliente foram feitos com base nos dados persistidos na aplicação servidora.

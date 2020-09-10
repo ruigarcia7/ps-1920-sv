@@ -18,7 +18,4 @@ public class Injury implements Serializable {
 
     @Column
     private String zone;
-
-    @Column
-    private String severity;
 }

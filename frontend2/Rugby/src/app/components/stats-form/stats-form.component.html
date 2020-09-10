@@ -4,18 +4,16 @@
       <ion-segment-button value="form">
         Form
       </ion-segment-button>
-      <ion-segment-button value="preview">
+      <ion-segment-button value="preview" [disabled]="disabledPreview">
         Preview
       </ion-segment-button>
     </ion-segment>
+    <app-timer class="test"></app-timer>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/stats"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button size="large" fill="solid" (click)="openSubMenu()">
-        <ion-icon name="key-outline"></ion-icon>
-      </ion-button>
-      <ion-button size="large" fill="solid" (click)="openFilterMenu()">
+      <ion-button size="large" fill="clear" (click)="openFilterMenu()">
         <ion-icon slot="icon-only" name="options"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -23,77 +21,7 @@
 </ion-header>
 
 <ion-content fullscreen="true">
-  <ion-menu side="end" contentId="main" menuId="subtitle">
-    <ion-header>
-      <ion-toolbar translucent>
-        <ion-title> Subtitles </ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="closeSubMenu()">
-            <ion-icon name="close-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>
-          <ion-label> E - Errors </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> F - Fouls </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> RC - Red Cards</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> YC - Yellow Cards</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> TO - TurnOvers</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> Tr - Tries </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> M - Mauls </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> PT - Playing Time </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> Ta - Tackles </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> CK - Conversion Kicks </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> GK - Goal Kicks </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> DK - Drop Kicks </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> LO - Line Outs </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> OK - Offside Kicks </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> <b> XX </b> H - Hits </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> <b> XX </b> M - Misses </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label> <b> XX </b> % - Percentage </ion-label>
-        </ion-item>
-        <ion-item>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-    <ion-menu side="end" contentId="main" menuId="filter">
+   <ion-menu side="end" contentId="main" menuId="filter">
       <ion-header>
         <ion-toolbar translucent>
           <ion-title> Filter </ion-title>
@@ -117,26 +45,53 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-button type="submit" class="ion-no-margin" (click)="filterAthlete()">Filter</ion-button>
+          <ion-button type="submit" class="ion-no-margin" [disabled]="disabledPreview" (click)="filterAthlete()">Filter</ion-button>
         </ion-item>
       </ion-content>
     </ion-menu>
   <ion-router-outlet id="main"></ion-router-outlet>
 
+
+
+
 <ng-template [ngIf]="segment === 'form' && hasData">
-    <ion-grid>
+  <div class="test" *ngIf="game.activeRoster.length == 0; else elseBlock">
+    <ion-item class="test">
+      <h6>No Active Roster Found for Current Game.</h6>
+      <ion-button fill="clear" routerLink="/app/game/{{game.id}}/roster">Create Roster</ion-button>
+    </ion-item>
+  </div>
+
+  <ng-template #elseBlock>
+  <ion-grid>
       <ion-row>
-        <ion-col size="2" *ngFor="let ags of athleteGameStats">
-          <ion-item button (click)="onClick(ags)">
-            <ion-avatar slot="start"> <img [src]="ags.athlete.profile.photo"> </ion-avatar>
-            <ion-label> {{ags.athlete.profile.name.split(' ',1)}} </ion-label>
+        <ion-col size="3" *ngFor="let ar of activeRoster">
+          <ion-item button
+                    (click)="onClick(this.athleteGameStatsService.getAthleteStats(ar.athlete,
+                    this.athleteGameStats))">
+            <ion-avatar slot="start"> <img [src]="ar.athlete.profile.photo"> </ion-avatar>
+            <ion-label [style.color]="getCardColor(ar.athlete.id)"> {{ar.athlete.profile.name.split(' ',1)}}
+              [{{this.athleteGameStatsService.getPositionName(this.positions,ar)}}]</ion-label>
+
+            <div [hidden]="!statsService.hasYellow(yellowCards, ar.athlete.id)">
+              <ion-button fill="clear" size="large" [style.color]="'gold'" (click)="removeYellowCard(ar.athlete.id)">
+                {{statsService.getYellowTime(yellowCards, ar.athlete.id)}}
+              </ion-button>
+            </div>
+
+            <div [hidden]="!statsService.hasRed(redCards, ar.athlete.id)">
+              <ion-button fill="clear" size="large" [style.color]="'red'" (click)="removeRedCard(ar.athlete.id)">
+                {{statsService.getRedTime(redCards, ar.athlete.id)}}
+              </ion-button>
+            </div>
+
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
-          <ion-col size="4" offset="4">
-              <ion-item>
+          <ion-col size="4" offset="2">
+              <ion-item (click)="openPicker()">
                 <ion-label> Selected </ion-label>
                 <ng-template [ngIf]="currentAthlete != undefined || currentAthlete.id != 0">
                   <ion-avatar slot="end"> <img [src]="currentAthlete.profile.photo"> </ion-avatar>
@@ -144,6 +99,8 @@
                 </ng-template>
               </ion-item>
           </ion-col>
+        <ion-col size="2" offset="4">
+        </ion-col>
       </ion-row>
 
       <ion-row>
@@ -159,11 +116,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'errors')">
+                          (click)="statsService.increment(currentStats,'errors')"
+              [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
                 <ion-button color="secondary" slot="icon-only"
-                            (click)="statsService.decrement(currentStats,'errors')">
+                            (click)="statsService.decrement(currentStats,'errors')"
+              [disabled]="selectedHasCard">
                   <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -181,11 +140,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="danger" slot="icon-only" size="large"
-                          (click)="statsService.increment(currentStats,'fouls')">
+                          (click)="statsService.increment(currentStats,'fouls')"
+              [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
                 <ion-button color="secondary" slot="icon-only"
-                            (click)="statsService.decrement(currentStats,'fouls')">
+                            (click)="statsService.decrement(currentStats,'fouls')"
+                            [disabled]="selectedHasCard">
                   <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -203,11 +164,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'redCards')">
+                          (click)="incrementRed()"
+                          [disabled]="selectedHasCard" >
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'redCards')">
+                          (click)="statsService.decrement(currentStats,'redCards')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -226,11 +189,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'yellowCards')">
+                          (click)="incrementYellow()"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'yellowCards')">
+                          (click)="statsService.decrement(currentStats,'yellowCards')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -251,11 +216,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'turnOvers')">
+                          (click)="statsService.increment(currentStats,'turnOvers')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'turnOvers')">
+                          (click)="statsService.decrement(currentStats,'turnOvers')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -273,11 +240,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'tries')">
+                          (click)="statsService.increment(currentStats,'tries')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'tries')">
+                          (click)="statsService.decrement(currentStats,'tries')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -296,11 +265,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'mauls')">
+                          (click)="statsService.increment(currentStats,'mauls')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'mauls')">
+                          (click)="statsService.decrement(currentStats,'mauls')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -319,11 +290,13 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'playingTime')">
+                          (click)="statsService.increment(currentStats,'playingTime')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'playingTime')">
+                          (click)="statsService.decrement(currentStats,'playingTime')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -349,19 +322,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'tacklesHit')">
+                          (click)="statsService.increment(currentStats,'tacklesHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'tacklesHit')">
+                          (click)="statsService.decrement(currentStats,'tacklesHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'tacklesMiss')">
+                          (click)="statsService.increment(currentStats,'tacklesMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'tacklesMiss')">
+                          (click)="statsService.decrement(currentStats,'tacklesMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -385,19 +362,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'conversionkicksHit')">
+                          (click)="statsService.increment(currentStats,'conversionkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'conversionkicksHit')">
+                          (click)="statsService.decrement(currentStats,'conversionkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'conversionkicksMiss')">
+                          (click)="statsService.increment(currentStats,'conversionkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'conversionkicksMiss')">
+                          (click)="statsService.decrement(currentStats,'conversionkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -423,19 +404,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'goalkicksHit')">
+                          (click)="statsService.increment(currentStats,'goalkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'goalkicksHit')">
+                          (click)="statsService.decrement(currentStats,'goalkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'goalkicksMiss')">
+                          (click)="statsService.increment(currentStats,'goalkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'goalkicksMiss')">
+                          (click)="statsService.decrement(currentStats,'goalkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -459,19 +444,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'dropkicksHit')">
+                          (click)="statsService.increment(currentStats,'dropkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'dropkicksHit')">
+                          (click)="statsService.decrement(currentStats,'dropkicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'dropkicksMiss')">
+                          (click)="statsService.increment(currentStats,'dropkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'dropkicksMiss')">
+                          (click)="statsService.decrement(currentStats,'dropkicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -497,19 +486,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'lineoutsHit')">
+                          (click)="statsService.increment(currentStats,'lineoutsHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'lineoutsHit')">
+                          (click)="statsService.decrement(currentStats,'lineoutsHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'lineoutsMiss')">
+                          (click)="statsService.increment(currentStats,'lineoutsMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'lineoutsMiss')">
+                          (click)="statsService.decrement(currentStats,'lineoutsMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -533,19 +526,23 @@
             </ion-label>
             <ion-buttons slot="end">
               <ion-button color="success" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.increment(currentStats,'offsidekicksHit')">
+                          (click)="statsService.increment(currentStats,'offsidekicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only" class="ion-no-padding"
-                          (click)="statsService.decrement(currentStats,'offsidekicksHit')">
+                          (click)="statsService.decrement(currentStats,'offsidekicksHit')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
               <ion-button color="danger" slot="icon-only"
-                          (click)="statsService.increment(currentStats,'offsidekicksMiss')">
+                          (click)="statsService.increment(currentStats,'offsidekicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </ion-button>
               <ion-button color="secondary" slot="icon-only"
-                          (click)="statsService.decrement(currentStats,'offsidekicksMiss')">
+                          (click)="statsService.decrement(currentStats,'offsidekicksMiss')"
+                          [disabled]="selectedHasCard">
                 <ion-icon name="arrow-undo-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -557,6 +554,7 @@
         <ion-button type="submit" class="ion-no-margin">Submit</ion-button>
       </ion-item>
     </ion-grid>
+  </ng-template>
 </ng-template>
 
   <div [hidden]="segment!='preview'">
@@ -574,3 +572,4 @@
       </ion-row>
     </ion-grid>
   </div>
+</ion-content>

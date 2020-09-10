@@ -50,11 +50,11 @@ public class GameController {
 
     @PutMapping("/update")
     public Long putGame(@RequestBody Game game){
-        logger.info("On method PUT athlete/update");
-        /*game.getActiveRoster().forEach( ar -> {
+        logger.info("On method PUT game/update");
+        game.getActiveRoster().forEach( ar -> {
            ar.setGame(new Game());
            ar.getGame().setId(game.getId());
-        });*/
+        });
         return gameBusiness.updateGame(game);
     }
 

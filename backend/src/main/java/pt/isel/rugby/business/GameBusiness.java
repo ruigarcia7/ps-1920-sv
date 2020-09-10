@@ -7,6 +7,7 @@ import pt.isel.rugby.model.Athlete;
 import pt.isel.rugby.model.AthleteGameStats;
 import pt.isel.rugby.model.Game;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
+import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.GameRepository;
 import pt.isel.rugby.repository.StatsRepository;
 
@@ -18,6 +19,9 @@ public class GameBusiness {
 
     @Autowired
     GameRepository gameRepository;
+
+    @Autowired
+    AthleteRepository athleteRepository;
 
     @Autowired
     AthleteGameStatsRepository athleteGameStatsRepository;
@@ -67,6 +71,13 @@ public class GameBusiness {
         /*List<AthleteGameStats> ags = game.getAthleteGameStats();
         ags.forEach(item -> item.setId(statsRepository.save(item.getStats()).getId()));
         athleteGameStatsRepository.saveAll(ags);*/
+        game.getAthletes().forEach( athlete -> {
+           /*athlete.setActiveRosters(Collections.emptyList());
+           athlete.setAthletePractices(Collections.emptyList());
+           athlete.setAthleteGameStats(Collections.emptyList());
+           athlete.setTrainingSchedules(Collections.emptyList());
+           athlete.setGames(Collections.emptyList());*/
+        });
         return gameRepository.save(game).getId();
     }
 
@@ -92,6 +103,10 @@ public class GameBusiness {
             athlete.setTrainingSchedules(Collections.emptyList());
             athlete.setAthletePractices(Collections.emptyList());
             athlete.getProfile().setEvents(Collections.emptyList());
+            athlete.setActiveRosters(Collections.emptyList());
+            athlete.getAthleteGameStats().forEach(ags -> {
+                ags.setAthlete(null);
+            });
         });
         game.getAthleteGameStats().forEach(athleteGameStats ->{
             athleteGameStats.setGame(null);
@@ -99,7 +114,7 @@ public class GameBusiness {
             athleteGameStats.setAthlete(null);
         });
 
-        game.setActiveRoster(Collections.emptyList());
+        //game.setActiveRoster(Collections.emptyList());
         game.setTournament(null);
     }
 }

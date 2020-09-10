@@ -58,12 +58,14 @@ export class GameFormComponent implements OnInit {
   getAthletes() {
     this.athleteService.getAthletes()
       .subscribe( athletes => {
+        debugger;
         this.athletes = athletes;
       });
   }
 
   processGame() {
     debugger;
+
     this.route.snapshot.paramMap.get('id') ?
       this.gameService.updateGame(this.game).subscribe((res) => {
         this.presentToast();

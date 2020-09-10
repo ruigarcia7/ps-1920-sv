@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CommonModule} from '@angular/common';
 import { MaterialModule } from './material-modules';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {TimerComponent} from "./components/timer/timer.component";
 /*---*/
 
 @NgModule({
@@ -36,7 +37,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     })
   ],
 declarations: [AppComponent],
-providers: [InAppBrowser, SplashScreen, StatusBar,
+providers: [InAppBrowser, SplashScreen, StatusBar, TimerComponent,
   { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: 'fill'}],
 bootstrap: [ AppComponent ]
 })

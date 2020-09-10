@@ -1,0 +1,15 @@
+
+  <ion-item>
+    <h3>{{time | async}}</h3>
+    <ion-buttons slot="start">
+      <ion-button (click)="resetTimer()">
+        <ion-icon name="play-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="startTimer()" [disabled]="state === 'playing'">
+        <ion-icon name="play-forward-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="pauseTimer()" [disabled]="state === 'pause'">
+        <ion-icon name="pause-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>

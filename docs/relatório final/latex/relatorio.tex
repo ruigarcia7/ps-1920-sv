@@ -1,0 +1,188 @@
+% !TeX spellcheck = pt_PT
+%
+% Classe do documento e parâmetros gerais.
+\documentclass[a4paper,openright,11pt]{report} %,twoside
+
+% Packages utilizadas e respetivos parâmetros.
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{appendix}
+\addto{\captionsportuguese}{\renewcommand{\bibname}{Refer\^{e}ncias}}
+\addto{\captionsportuguese}{\renewcommand{\contentsname}{\'{I}ndice}}
+%\addto{\captionsportuguese}{\renewcommand{\appendixname}{Ap\^{e}ndice}}
+
+\usepackage{lipsum} % gerador de texto
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[Algoritmo]{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+%\usepackage{verbatim}
+\renewcommand{\algorithmicrequire}{\textbf{Dados: }}
+\renewcommand{\algorithmicensure}{\textbf{Resultado: }}
+
+% Definições das dimensões das páginas
+\setlength{\textheight}{24.00cm}
+\setlength{\textwidth}{15.50cm}
+\setlength{\topmargin}{0.35cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\oddsidemargin}{0.25cm}
+\setlength{\evensidemargin}{0.25cm}
+
+%\renewcommand{\baselinestretch}{1}
+
+%code style
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegrey}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.58}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+	language=Java,
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{green},
+	morecomment=[s][\color{codegreen}]{@}{\ },
+	%keywordsprefix={@},
+	keywordstyle=\color{blue},
+	numberstyle=\tiny\color{codegrey},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+% Página inicial (capa)
+\title{
+   \vspace{-50mm}
+   \begin{minipage}[l]{\textwidth}
+      \hspace{-20mm}\resizebox{75mm}{!}{\includegraphics{./figures/logoISEL.png}}\\
+   \end{minipage}\\[20mm]
+   {\bf RugbyApp}
+}
+
+% Nome dos autores (um por linha)
+\author{
+\begin{tabular}{ll}
+             & Rui Garcia  \\
+             & João Ferreira \\[50mm]
+\end{tabular}}
+
+\date{
+\begin{tabular}{ll}
+  	{Orientador:} & Jorge Martins \\
+\end{tabular}\\[10mm]
+% Deixar o indicador respetivo em função da versão do relatório.
+Relatório final realizado no âmbito de Projeto e Seminário\\
+Licenciatura em Engenharia Informática e de Computadores\\[20mm]
+setembro de 2020}
+
+
+\begin{document}
+\pagenumbering{roman}
+\thispagestyle{empty}
+\maketitle
+
+\baselineskip 18pt 
+
+\newpage
+\thispagestyle{empty}
+\cleardoublepage
+\setcounter{page}{1}
+\begin{center}
+\textsc{\LARGE Instituto Superior de Engenharia de Lisboa}\\[50mm]
+
+{\large \bf  RugbyApp}\\[20mm]
+
+\begin{tabular}{rl}
+  40539  & Rui Miguel Marques Garcia\\[10mm]
+           & \rule{75mm}{0.5pt}\\[5mm]
+  40913  & João Carlos Máximo Ferreira\\[10mm]
+           & \rule{75mm}{0.5pt}\\
+\end{tabular}\\[10mm]
+
+\begin{tabular}{rl}
+  Orientador & Jorge Manuel Rodrigues Martins Pião\\[10mm]
+              & \rule{75mm}{0.5pt}\\[5mm]
+\end{tabular}\\[10mm]
+
+Relatório final realizado no âmbito de Projeto e Seminário\\
+Licenciatura em Engenharia Informática e de Computadores\\[20mm]
+setembro de 2020\\
+\end{center}
+
+\cleardoublepage
+\chapter*{Resumo}
+O Rugby é um desporto que representa uma grande presença no quotidiano dos membros do nosso grupo, por sermos ou conhecermos praticantes ativos, e experienciarmos a maioria das vertentes deste desporto há um longo período de tempo. A falta de presença deste desporto no conceito geral da nossa cultura não o expõe a tanto apoio e auxílio como noutros desportos de grande renome, o que se constata de forma clara, sem a necessidade de uma busca intensiva. 
+
+A ideia deste projeto nasceu da nossa própria necessidade de criar uma aplicação que preencha essa lacuna. Com o foco primário em trazer às equipas deste desporto uma aplicação virada para a organização e gestão de informação dentro das equipas, esperamos no fim apresentar uma ferramenta que consiga aglomerar os aspetos principais da gestão de equipas de rugby num único sitio, e que proporcione um apoio extra à maioria das suas necessidades funcionais.
+
+%{\bf Palavras-chave:} lista de palavras-chave separadas por ;.
+
+%% Página de agradecimentos
+\cleardoublepage
+\chapter*{Agradecimentos}
+Agradecemos às equipas técnicas do Belas Rugby Clube e do Sporting Clube de Portugal pela disposição para partilha de ideias e comentários, afim de enriquecer e melhorar o nosso projeto. Agradecemos também ao engenheiro Jorge Martins por se disponibilizar para ser o orientador do nosso projeto.
+%Texto dos agradecimentos. É opcional.\\
+
+% Geração do índice de conteúdos
+\cleardoublepage
+\tableofcontents \cleardoublepage
+
+% Geração do índice de figuras e de tabelas
+\listoffigures \cleardoublepage
+%\listoftables \cleardoublepage
+
+% Reiniciar a numeração de páginas
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% Capitulo 1
+\include{introducao2}
+
+% Capitulo 2
+\include{formulacao}
+
+% Capitulo 3
+\include{servidor}
+
+% Capitulo 4
+\include{cliente}
+
+% Capitulo 5
+\include{testes}
+
+% Capitulo 6
+\include{conclusao}
+
+% Referências
+\bibliographystyle{unsrt}
+\bibliography{referencias}
+\addcontentsline{toc}{chapter}{Refer\^{e}ncias}
+
+% Apêndices (opcional)
+\appendix
+\include{apendice}
+\include{apendice2}
+\include{annex}
+
+\end{document} 

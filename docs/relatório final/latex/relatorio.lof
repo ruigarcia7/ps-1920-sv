@@ -1,0 +1,22 @@
+\babel@toc {portuguese}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Arquitetura da nossa solução.}}{5}{figure.2.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Vista inicial da aplicação. Observa-se o \textit {ion-split-pane} a azul, o \textit {ion-tabs} a vermelho e o \textit {ion-header} a verde.}}{15}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \textit {Modal} da página do formulário de \textit {Practice}.}}{16}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \textit {Popover} da página \textit {Event}.}}{17}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \textit {Select} da página do formulário de \textit {Event}.}}{17}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Tabela da página de \textit {Games}, ordenada decrescentemente por nome.}}{20}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \textit {Profile} de um \textit {Staff}, com as linhas da grelha \textit {highlighted} para fins de visualização. }}{21}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Aba \textit {Graph}, com as estatísticas \textit {Fouls}, \textit {Errors}, \textit {YellowCards}, \textit {RedCards}, \textit {turnOvers}, \textit {tries} e \textit {mauls} selecionados.}}{23}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Aba \textit {Graph}, com as estatísticas todas selecionadas. Quando o utilizador filtra os gráficos para apenas um atleta, a aplicação gera um gráfico de barras.}}{23}{figure.4.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Demonstração de todos os testes da aplicação servidora a concluirem com sucesso.}}{26}{figure.5.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Diagrama de Entidades}}{29}{figure.A.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Árvore de Navegação}}{30}{figure.B.1}%
+\addvspace {10\p@ }

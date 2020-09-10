@@ -21,6 +21,9 @@ public class AthleteInjury implements Serializable {
     private Athlete athlete;
 
     @Column
+    private String severity;
+
+    @Column
     private String state;
 
     @Column

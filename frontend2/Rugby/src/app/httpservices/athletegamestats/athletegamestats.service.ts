@@ -30,7 +30,7 @@ export class HttpAthleteGameStatsService {
     return this.http.get(url, this.httpOptions);
   }
 
-  getAthleteGameStatsByGameId(id: any): Observable<AthleteGameStats[]> {
+  getAthleteGameStatsByGameId(id: any): Observable<any> {
     const url = `${this.BASE_URL}/findByGameId/${id}`;
     return this.http.get<AthleteGameStats[]>(url, this.httpOptions);
   }

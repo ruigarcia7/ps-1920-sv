@@ -9,17 +9,21 @@
 
 <ion-content fullscreen>
   <form (ngSubmit)="processRoster()">
-      <div *ngFor="let position of positions">
+      <div *ngFor="let select of selected">
         <ion-item>
-          <ion-label position="stacked"> {{position.name}} </ion-label>
-          <ion-select [(ngModel)]="selected" name="selected"
-                      cancelText="Cancel" okText="Confirm" (ionChange)="onChange(position.id)">
+          <ion-label position="stacked"> {{select.position.name}} </ion-label>
+          <ion-select [(ngModel)]="select.value" name="value"
+                      cancelText="Cancel" okText="Confirm"
+                      [selectedText]="select.value != '' ? select.value.profile.name : ''">
+
+            <!--[compareWith]="compareAthletes"-->
             <ng-template [ngIf]="athletes != undefined">
                 <ion-select-option
-                  *ngFor="let athlete of athleteService.getAthletesByPosition(athletes,position.name)"
+                  *ngFor="let athlete of athleteService.getAthletesByPosition(athletes,select.position.name)"
                 [value]="athlete">
                   {{athlete.profile.name}}
                 </ion-select-option>
+                <ion-select-option [value]=null>None</ion-select-option>
             </ng-template>
           </ion-select>
         </ion-item>

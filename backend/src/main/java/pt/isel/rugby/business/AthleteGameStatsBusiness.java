@@ -3,15 +3,17 @@ package pt.isel.rugby.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pt.isel.rugby.exception.ResourceNotFoundException;
-import pt.isel.rugby.model.Athlete;
+import pt.isel.rugby.model.ActiveRoster;
 import pt.isel.rugby.model.AthleteGameStats;
-import pt.isel.rugby.model.Profile;
+import pt.isel.rugby.model.Game;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
 import pt.isel.rugby.repository.AthleteRepository;
 import pt.isel.rugby.repository.GameRepository;
 import pt.isel.rugby.repository.StatsRepository;
+import pt.isel.rugby.repository.PositionRepository;
+import pt.isel.rugby.utils.GameStatsResponse;
 
-import java.util.Collections;
+import java.util.*;
 
 @Component
 public class AthleteGameStatsBusiness {
@@ -22,10 +24,16 @@ public class AthleteGameStatsBusiness {
     GameRepository gameRepository;
 
     @Autowired
+    GameBusiness gameBusiness;
+
+    @Autowired
     AthleteRepository athleteRepository;
 
     @Autowired
     StatsRepository statsRepository;
+
+    @Autowired
+    PositionRepository positionRepository;
 
     public Iterable<AthleteGameStats> findAll(){
         Iterable<AthleteGameStats> all = athleteGameStatsRepository.findAll();
@@ -66,28 +74,34 @@ public class AthleteGameStatsBusiness {
         athleteGameStatsRepository.deleteById(id);
     }
 
-    public AthleteGameStats[] findAthleteGameStatsByGameId(Long id) {
-        AthleteGameStats[] ags = athleteGameStatsRepository.findAllByGameId(id);
+    public GameStatsResponse findAthleteGameStatsByGameId(Long id) {
+        GameStatsResponse gsr = new GameStatsResponse();
+        gsr.setPositions(positionRepository.findAll());
+        gsr.setGame(gameRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "Id", id)));
+        Iterable<AthleteGameStats> ags = athleteGameStatsRepository.findAll();
+        List<AthleteGameStats> ag = new ArrayList();
         for (AthleteGameStats a : ags) {
             a.getGame().setAthleteGameStats(Collections.emptyList());
-            a.getGame().setAthletes(Collections.emptyList());
-            a.getGame().setActiveRoster(Collections.emptyList());
+            //a.getGame().setAthletes(Collections.emptyList());
+            //a.getGame().setActiveRoster(Collections.emptyList());
             a.getGame().setTournament(null);
             a.getStats().setAthleteGameStats(Collections.emptyList());
             a.getAthlete().getProfile().setEvents(Collections.emptyList());
-            a.getAthlete().getProfile().setEvents(Collections.emptyList());
             a.getAthlete().setGames(Collections.emptyList());
+            a.getAthlete().setActiveRosters(Collections.emptyList());
             a.getAthlete().setAthletePractices(Collections.emptyList());
             a.getAthlete().setAthleteGameStats(Collections.emptyList());
             a.getAthlete().setTrainingSchedules(Collections.emptyList());
-
+            if ( a.getGame().getId() == id) ag.add(a);
         }
-
-        return ags;
+        for (ActiveRoster ar: gsr.getGame().getActiveRoster()) {
+            ar.getAthlete().getProfile().setEvents(Collections.emptyList());
+        }
+        gsr.setAgs(ag);
+        return gsr;
     }
 
     public AthleteGameStats[] findAthleteGameStatsByAthleteId(Long id) {
-
         AthleteGameStats[] allByAthleteId = athleteGameStatsRepository.findAllByAthleteId(id);
         for (AthleteGameStats athleteGameStats: allByAthleteId) {
             athleteGameStats.getAthlete().getProfile().setEvents(Collections.emptyList());

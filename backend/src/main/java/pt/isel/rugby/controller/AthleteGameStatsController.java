@@ -7,8 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pt.isel.rugby.RugbyApplication;
 import pt.isel.rugby.business.AthleteGameStatsBusiness;
+import pt.isel.rugby.business.GameBusiness;
 import pt.isel.rugby.model.AthleteGameStats;
 import pt.isel.rugby.repository.AthleteGameStatsRepository;
+import pt.isel.rugby.utils.GameStatsResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -18,6 +20,9 @@ public class AthleteGameStatsController {
 
     @Autowired
     AthleteGameStatsBusiness athleteGameStatsBusiness;
+
+    @Autowired
+    GameBusiness gameBusiness;
 
     @GetMapping("/all")
     public Iterable<AthleteGameStats> findAllAthleteGameStats(){
@@ -38,7 +43,7 @@ public class AthleteGameStatsController {
     }
 
     @GetMapping("/findByGameId/{id}")
-    public AthleteGameStats[] findAthleteGameStatsByGameId(@PathVariable Long id){
+    public GameStatsResponse findAthleteGameStatsByGameId(@PathVariable Long id){
         logger.info("On method GET athleteGameStats/findByGameId/{id} with id "+ id);
         return athleteGameStatsBusiness.findAthleteGameStatsByGameId(id);
     }

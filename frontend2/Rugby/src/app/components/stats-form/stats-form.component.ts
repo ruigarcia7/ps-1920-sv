@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Game} from '../../classes/game';
 import {AthleteGameStats} from '../../classes/associations/AthleteGameStats';
 import {Athlete} from '../../classes/athlete';
 import {Stats} from '../../classes/stats';
 import {GameService} from '../../httpservices/game/game.service';
-import {HttpAthleteService} from '../../httpservices/athlete/athlete.service';
 import {HttpAthleteGameStatsService} from '../../httpservices/athletegamestats/athletegamestats.service';
 import {AthleteGameStatsService} from '../../componentservices/athletegamestats/athletegamestats.service';
 import {StatsService} from '../../componentservices/stats/stats.service';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 import {DataSetInfo} from '../../interfaces/datasetinfo';
-import {MenuController} from "@ionic/angular";
-import {MatTableDataSource} from "@angular/material/table";
+import {YellowCard} from '../../interfaces/yellowcard';
+import {RedCard} from '../../interfaces/redcard';
+import {MenuController, PickerController} from '@ionic/angular';
+import {MatTableDataSource} from '@angular/material/table';
+import {ActiveRoster} from '../../classes/associations/ActiveRoster';
+import {TimerComponent} from '../timer/timer.component';
+import {forEach} from "@angular-devkit/schematics";
 
 @Component({
   selector: 'app-stats-form',
@@ -20,29 +24,43 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./stats-form.component.scss'],
 })
 
-export class StatsFormComponent implements OnInit {
+export class StatsFormComponent implements OnInit/*, AfterViewInit*/ {
+  /*@ViewChildren(TimerComponent) ql: QueryList<TimerComponent>;
+  public ql: QueryList<TimerComponent>;
+  private timer: TimerComponent;*/
+  @ViewChild(TimerComponent) timer;
+
   game: Game;
+  positions: Position[];
   athleteGameStats: AthleteGameStats[];
   filtered: AthleteGameStats[];
   currentStats: Stats;
   currentAthlete: Athlete;
+  activeRoster: ActiveRoster[];
   segment = 'form';
   chart: any;
   datasetinfo: DataSetInfo[];
   checkBoxList: any;
   hasData = false;
   all = false;
+  disabledPreview = true;
+  yellowCards: any;
+  redCards: any;
+  selectedHasCard = false;
+  currentTimerMinutes = 0;
 
-  constructor(private gameService: GameService, private athleteService: HttpAthleteService,
+  constructor(private gameService: GameService,
               private httpathletegamestatsService: HttpAthleteGameStatsService,
               private statsService: StatsService, private route: ActivatedRoute,
               private athleteGameStatsService: AthleteGameStatsService,
-              private menuController: MenuController, ) { }
+              private menuController: MenuController, private pickerController: PickerController) { }
 
   ngOnInit() {
     this.athleteGameStats = [];
     this.currentStats = new Stats();
     this.currentAthlete = new Athlete();
+    this.yellowCards = [];
+    this.redCards = [];
     this.checkBoxList = [
       { name: 'Fouls', isChecked: false, property: 'fouls'},
       { name: 'Errors', isChecked: false, property: 'errors'},
@@ -69,13 +87,16 @@ export class StatsFormComponent implements OnInit {
 
   getAthleteGameStats(id: any) {
     this.httpathletegamestatsService.getAthleteGameStatsByGameId(id)
-      .subscribe( ags => {
-        this.filtered = ags;
-        this.athleteGameStats = ags;
-        this.currentStats = this.athleteGameStats[0].stats;
-        this.currentAthlete = this.athleteGameStats[0].athlete;
+      .subscribe( gsr => {
+        debugger;
+        this.game = gsr.game;
+        this.athleteGameStats = gsr.ags;
+        this.activeRoster = gsr.game.activeRoster;
+        this.positions = gsr.positions;
+        this.generateStats();
         this.createChart();
         this.hasData = true;
+        this.startTimerFetch();
       });
   }
 
@@ -85,15 +106,6 @@ export class StatsFormComponent implements OnInit {
 
   ionViewDidLeave() {
     this.menuController.enable(true, 'main-menu');
-  }
-
-  async openSubMenu() {
-    this.menuController.enable(true, 'subtitle');
-    await this.menuController.open('subtitle');
-  }
-
-  async closeSubMenu() {
-    await this.menuController.close('subtitle');
   }
 
   async openFilterMenu() {
@@ -117,12 +129,79 @@ export class StatsFormComponent implements OnInit {
     return this.statsService.getColorByValue(10 - Math.round(value / 10));
   }
 
-  onClick(ags: AthleteGameStats) {
-    this.currentStats = ags.stats;
-    this.currentAthlete = ags.athlete;
+  getCardColor(value: any) {
+    if (this.statsService.hasYellow(this.yellowCards, value)) return 'gold';
+    return this.statsService.hasRed(this.redCards, value) ? 'red' : 'black';
   }
 
-  undo() {
+  removeRedCard(id: any) {
+    this.redCards = this.statsService.removeRedCard(this.redCards, id);
+  }
+
+  removeYellowCard(id: any) {
+    this.yellowCards = this.statsService.removeYellowCard(this.yellowCards, id);
+  }
+
+  onClick(ags: AthleteGameStats) {
+    debugger;
+    this.currentStats = ags.stats;
+    this.currentAthlete = ags.athlete;
+    this.selectedHasCard = this.statsService.hasCard(this.yellowCards, this.redCards, this.currentAthlete.id);
+  }
+
+  generateStats() {
+    debugger;
+    this.athleteGameStats = this.athleteGameStatsService.generateStats(this.athleteGameStats, this.game);
+    this.filtered = this.athleteGameStats;
+    if (this.athleteGameStats.length > 0) {
+      this.currentStats = this.athleteGameStats[0].stats;
+      this.currentAthlete = this.athleteGameStats[0].athlete;
+      this.disabledPreview = false;
+    }
+  }
+
+  incrementYellow() {
+    this.statsService.increment(this.currentStats, 'yellowCards');
+    debugger;
+    const newCard = {
+      athlete: this.currentAthlete,
+      time: this.timer.getTimerTime(),
+    };
+    this.yellowCards.push(newCard);
+    this.selectedHasCard = true;
+  }
+
+  incrementRed() {
+    this.statsService.increment(this.currentStats, 'redCards');
+    const newCard = {
+      athlete: this.currentAthlete,
+      time: this.timer.getTimerTime(),
+    };
+    this.redCards.push(newCard);
+    this.selectedHasCard = true;
+  }
+
+  startTimerFetch() {
+    setInterval( () => {
+      this.processTimer();
+    }, 30000);
+  }
+
+  processTimer() {
+    debugger;
+    const currMinutes = this.timer.getTimerMinutes();
+    if (currMinutes === 0) {
+      this.currentTimerMinutes = 0;
+      return;
+    }
+    if ( currMinutes > this.currentTimerMinutes ) {
+      this.activeRoster.forEach(item => {
+        this.statsService.increment(
+          this.athleteGameStatsService.getAthleteStats(item.athlete, this.athleteGameStats).stats,
+          'playingTime');
+      });
+      this.currentTimerMinutes = currMinutes;
+    }
   }
 
   createChart() {
@@ -151,9 +230,9 @@ export class StatsFormComponent implements OnInit {
 
   pushTest(e, property) {
     debugger;
-    let newState = e.currentTarget.checked;
+    const newState = e.currentTarget.checked;
     if ( newState) {
-      let newData = {
+      const newData = {
         name: property,
         data: this.filtered.map(res => res.stats[property]),
         borderColor: this.athleteGameStatsService.getColor(this.datasetinfo.length)
@@ -176,11 +255,11 @@ export class StatsFormComponent implements OnInit {
         });
       this.chart.update();
     } else {
-      let oldData = this.datasetinfo.filter( value => value.name === property) as any;
-      let index = this.datasetinfo.map( data => data.name ).indexOf(property);
+      const oldData = this.datasetinfo.filter( value => value.name === property) as any;
+      const index = this.datasetinfo.map( data => data.name ).indexOf(property);
       if (index >= 0) {
         this.chart.data.datasets.splice(index, 1);
-        this.datasetinfo.splice(index,1);
+        this.datasetinfo.splice(index, 1);
         this.chart.update();
       }
     }
@@ -198,7 +277,7 @@ export class StatsFormComponent implements OnInit {
   }
 
   onAll(e) {
-    let newState = !e.currentTarget.checked;
+    const newState = !e.currentTarget.checked;
     newState ? this.checkAll() : this.uncheckAll();
   }
 
@@ -208,5 +287,55 @@ export class StatsFormComponent implements OnInit {
 
   uncheckAll() {
     this.checkBoxList.forEach(cb => cb.isChecked = false);
+  }
+
+  async openPicker() {
+    debugger;
+    const picker = await this.pickerController.create({
+      columns : this.getColumns(),
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Confirm',
+          handler : (value) => {
+            this.swapPlayer(this.currentAthlete, value);
+          }
+        }
+      ]
+    });
+    await picker.present();
+  }
+
+  getColumns() {
+    let columns = [];
+    columns.push({
+      name: 'column',
+      options: this.getOptions()
+    });
+    return columns;
+  }
+
+  getOptions() {
+    let options = [];
+    this.game.athletes.forEach( athlete => {
+      options.push({
+        text: athlete.profile.name,
+        value: athlete
+      });
+    });
+    return options;
+  }
+
+  swapPlayer(current: any, value: any) {
+    debugger;
+    this.activeRoster.forEach(athlete => {
+      if (athlete.athlete.id === current.id) {
+        athlete.athlete = value.column.value;
+        this.onClick(this.athleteGameStatsService.getAthleteStats(athlete.athlete, this.athleteGameStats));
+      }
+    });
   }
 }

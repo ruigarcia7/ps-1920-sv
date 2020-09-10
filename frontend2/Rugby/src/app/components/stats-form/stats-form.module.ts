@@ -6,6 +6,7 @@ import { StatsFormComponent } from './stats-form.component';
 import { StatsFormRoutingModule } from './stats-form-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { TimerComponent } from '../timer/timer.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatSortModule
   ],
   declarations: [
-    StatsFormComponent
+    StatsFormComponent,
+    TimerComponent
   ]
 })
 

@@ -41,7 +41,7 @@ public class Game {
     private List<Athlete> athletes;
 
     @OneToMany(mappedBy = "game" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ActiveRoster> activeRoster = new ArrayList<>();
+    private List<ActiveRoster> activeRoster;
 
     /*
     public void addActiveRoster(ActiveRoster ar){
