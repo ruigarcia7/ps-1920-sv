@@ -28,17 +28,13 @@ public class GameBusiness {
 
     public Iterable<Game> findAllGames() {
         Iterable<Game> games = gameRepository.findAll();
-        games.forEach(game -> {
-            setGameInnerFieldsNull(game);
-        });
+        games.forEach(this::setGameInnerFieldsNull);
         return games;
     }
 
     public Iterable<Game> findAllByAthleteId(Athlete a) {
         Iterable<Game> games = gameRepository.findAllByAthletesContains(a);
-        games.forEach(game -> {
-            setGameInnerFieldsNull(game);
-        });
+        games.forEach(this::setGameInnerFieldsNull);
         return games;
     }
 

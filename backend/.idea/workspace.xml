@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,27 +23,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b74d9191-7774-42a6-aae4-1ada8c9125a2" name="Default Changelist" comment="Merge branch 'master' of https://github.com/ruigarcia7/ps-1920-sv&#10;&#10;# Conflicts:&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/AthleteController.java&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/StaffController.java">
+      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/auth/login/login-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/auth/login/login.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/auth/register/register-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/auth/register/register.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/AthleteBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/ProfileBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/StaffBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png" beforeDir="false" afterPath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docs/others/arvoredenavegacao.png.autosave" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/event.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/event.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/profile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/athlete-form/athlete-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/event-form/event-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/game-form/game-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/game-form/game-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/practice-form/practice-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/staff-form/staff-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tournament-form/tournament-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tournament-form/tournament-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/training-schedule-form/training-schedule-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/training-schedule-form/training-schedule-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/calendar/calendar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/httpservices/calendar/calendar.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../populate commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../populate commands.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/RugbyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/RugbyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/GameBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/GameBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/webController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/webController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/ResponseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/ResponseMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/RoleName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/RoleName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/model/jwt/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtAuthEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtAuthEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtAuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtAuthTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/jwt/JwtProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/services/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/services/UserPrinciple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/isel/rugby/security/services/UserPrinciple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/auth/auth-interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/auth/auth-interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/jwt-response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/jwt-response.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/login-info.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/login-info.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/signup-info.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/classes/auth/signup-info.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend2/Rugby/src/app/components/tabs-page/tabs-page.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +75,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\desktop\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1bBimfSoJCzmSZJVdPyUDUz62q4" />
   <component name="ProjectLevelVcsManager">
@@ -84,21 +108,24 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Rui\Desktop\Fac\PS\Repository\ps-1920-sv\backend" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="pt.isel.rugby" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="pt.isel.rugby.security.jwt" />
+      <recent name="pt.isel.rugby.security.services" />
+      <recent name="pt.isel.rugby.model" />
       <recent name="pt.isel.rugby.business" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rui\Desktop\Fac\PS\Repository\ps-1920-sv\backend" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.RugbyApplication">
@@ -129,9 +156,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",SHOW_PROPERTIES,SHOW_INTERFACES" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -179,11 +204,27 @@
       <workItem from="1592922454551" duration="2018000" />
       <workItem from="1593090740374" duration="48000" />
       <workItem from="1593092847416" duration="18145000" />
+      <workItem from="1598355269004" duration="1222000" />
+      <workItem from="1598446763625" duration="7636000" />
+      <workItem from="1598537893348" duration="3428000" />
+      <workItem from="1598878753730" duration="8855000" />
+      <workItem from="1598975224823" duration="598000" />
+      <workItem from="1599051506130" duration="1641000" />
+      <workItem from="1599055014003" duration="1197000" />
+      <workItem from="1599143520543" duration="3371000" />
+      <workItem from="1599237537678" duration="43000" />
+      <workItem from="1599237595397" duration="3634000" />
+      <workItem from="1599402992578" duration="1557000" />
+      <workItem from="1599484114368" duration="10827000" />
+      <workItem from="1599571844147" duration="5289000" />
+      <workItem from="1599657348794" duration="599000" />
+      <workItem from="1599744669606" duration="3274000" />
+      <workItem from="1599846531733" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -202,258 +243,122 @@
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/ruigarcia7/ps-1920-sv&#10;&#10;# Conflicts:&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/AthleteController.java&#10;#&#9;backend/src/main/java/pt/isel/rugby/controller/StaffController.java" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Assign_Data_Sources" timestamp="1588254419333">
+    <state x="765" y="199" key="#com.intellij.ide.util.MemberChooser" timestamp="1599578516082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Assign_Data_Sources/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254419333" />
-    <state x="552" y="178" key="#Project_Structure" timestamp="1588252567924">
+    <state x="765" y="199" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599578516082" />
+    <state x="765" y="199" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1598886329211" />
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599054677859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588252567924" />
-    <state x="960" y="91" width="816" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588254347673">
+    <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599054677859" />
+    <state width="1921" height="469" key="GridCell.Tab.0.bottom" timestamp="1599755281264">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="960" y="91" width="816" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254347673" />
-    <state x="544" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1590066589262">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588332336454" />
-    <state x="544" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1590066589262" />
-    <state x="524" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589216874249">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="524" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589216874249" />
-    <state x="466" y="232" width="433" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590524378141">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="466" y="232" width="433" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1590524378140" />
-    <state x="756" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1588257365733">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="756" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588257365733" />
-    <state x="514" y="92" width="782" height="674" key="#xdebugger.evaluate" timestamp="1590581365600">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="-1198" y="132" width="782" height="674" key="#xdebugger.evaluate/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232494965" />
-    <state x="858" y="200" width="1062" height="674" key="#xdebugger.evaluate/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588337193933" />
-    <state x="514" y="92" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1590581365600" />
-    <state x="265" y="64" width="1417" height="911" key="CommitChangelistDialog2" timestamp="1588279806826">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="265" y="64" width="1417" height="911" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279806826" />
-    <state width="486" height="442" key="Diff.GoToChangePopup" timestamp="1588279489126">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="486" height="442" key="Diff.GoToChangePopup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279489126" />
-    <state x="198" y="85" key="DiffContextDialog" timestamp="1588279795506">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="198" y="85" key="DiffContextDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279795506" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588955847491">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588787997800" />
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588955847491" />
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588261491437" />
-    <state width="1322" height="230" key="GridCell.Tab.-1.bottom" timestamp="1590246277174">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="230" key="GridCell.Tab.-1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
-    <state width="1322" height="230" key="GridCell.Tab.-1.center" timestamp="1590246277174">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="230" key="GridCell.Tab.-1.center/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
-    <state width="1322" height="230" key="GridCell.Tab.-1.left" timestamp="1590246277174">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="230" key="GridCell.Tab.-1.left/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
-    <state width="1322" height="230" key="GridCell.Tab.-1.right" timestamp="1590246277174">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="230" key="GridCell.Tab.-1.right/0.0.1366.728@0.0.1366.728" timestamp="1590246277174" />
-    <state width="1322" height="182" key="GridCell.Tab.0.bottom" timestamp="1593525183701">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1877" height="178" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
-    <state width="1877" height="178" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386094" />
-    <state width="1877" height="603" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
+    <state width="1921" height="469" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579312601" />
+    <state width="1921" height="469" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593525183701" />
-    <state width="1322" height="182" key="GridCell.Tab.0.center" timestamp="1593525183700">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.0.center" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="178" key="GridCell.Tab.0.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
-    <state width="1877" height="178" key="GridCell.Tab.0.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386093" />
-    <state width="1877" height="603" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
+    <state width="1921" height="469" key="GridCell.Tab.0.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579312600" />
+    <state width="1921" height="469" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
-    <state width="1322" height="182" key="GridCell.Tab.0.left" timestamp="1593525183700">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.0.left" timestamp="1599755281263">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="178" key="GridCell.Tab.0.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
-    <state width="1877" height="178" key="GridCell.Tab.0.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386093" />
-    <state width="1877" height="603" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584093" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
+    <state width="1921" height="469" key="GridCell.Tab.0.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579312600" />
+    <state width="1921" height="469" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281263" />
     <state width="1322" height="182" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
-    <state width="1322" height="182" key="GridCell.Tab.0.right" timestamp="1593525183700">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.0.right" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="178" key="GridCell.Tab.0.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083830" />
-    <state width="1877" height="178" key="GridCell.Tab.0.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386094" />
-    <state width="1877" height="603" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232584094" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446677" />
+    <state width="1921" height="469" key="GridCell.Tab.0.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579312601" />
+    <state width="1921" height="469" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593525183700" />
-    <state width="1322" height="182" key="GridCell.Tab.1.bottom" timestamp="1593524937734">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.1.bottom" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="178" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
-    <state width="1877" height="178" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="179" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
+    <state width="1921" height="508" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579088437" />
+    <state width="1921" height="469" key="GridCell.Tab.1.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
-    <state width="1322" height="182" key="GridCell.Tab.1.center" timestamp="1593524937734">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.1.center" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="178" key="GridCell.Tab.1.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
-    <state width="1877" height="178" key="GridCell.Tab.1.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="179" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
+    <state width="1921" height="508" key="GridCell.Tab.1.center/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579088437" />
+    <state width="1921" height="469" key="GridCell.Tab.1.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
-    <state width="1322" height="182" key="GridCell.Tab.1.left" timestamp="1593524937734">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.1.left" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="178" key="GridCell.Tab.1.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
-    <state width="1877" height="178" key="GridCell.Tab.1.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="179" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
+    <state width="1921" height="508" key="GridCell.Tab.1.left/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579088437" />
+    <state width="1921" height="469" key="GridCell.Tab.1.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
-    <state width="1322" height="182" key="GridCell.Tab.1.right" timestamp="1593524937734">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1921" height="469" key="GridCell.Tab.1.right" timestamp="1599755281264">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="916" height="178" key="GridCell.Tab.1.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588972083801" />
-    <state width="1877" height="178" key="GridCell.Tab.1.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588963386089" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="179" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446501" />
+    <state width="1921" height="508" key="GridCell.Tab.1.right/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1599579088437" />
+    <state width="1921" height="469" key="GridCell.Tab.1.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599755281264" />
     <state width="1322" height="182" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593524937734" />
     <state width="1322" height="182" key="GridCell.Tab.2.bottom" timestamp="1593525750264">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="348" key="GridCell.Tab.2.bottom/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
     <state width="1322" height="182" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
     <state width="1322" height="182" key="GridCell.Tab.2.center" timestamp="1593525750264">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="348" key="GridCell.Tab.2.center/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
     <state width="1322" height="182" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
     <state width="1322" height="182" key="GridCell.Tab.2.left" timestamp="1593525750263">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="348" key="GridCell.Tab.2.left/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
     <state width="1322" height="182" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1593525750263" />
     <state width="1322" height="182" key="GridCell.Tab.2.right" timestamp="1593525750264">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@-1920.0.1920.1040" timestamp="1589232549115" />
-    <state width="1877" height="348" key="GridCell.Tab.2.right/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1589229446469" />
     <state width="1322" height="182" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1593525750264" />
-    <state width="1264" height="106" key="GridCell.Tab.3.bottom" timestamp="1590246298687">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1264" height="106" key="GridCell.Tab.3.bottom/0.0.1366.728@0.0.1366.728" timestamp="1590246298687" />
-    <state width="1264" height="106" key="GridCell.Tab.3.center" timestamp="1590246298686">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1264" height="106" key="GridCell.Tab.3.center/0.0.1366.728@0.0.1366.728" timestamp="1590246298686" />
-    <state width="1264" height="106" key="GridCell.Tab.3.left" timestamp="1590246323493">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1264" height="106" key="GridCell.Tab.3.left/0.0.1366.728@0.0.1366.728" timestamp="1590246323493" />
-    <state width="1264" height="106" key="GridCell.Tab.3.right" timestamp="1590246298686">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1264" height="106" key="GridCell.Tab.3.right/0.0.1366.728@0.0.1366.728" timestamp="1590246298686" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1588254261165">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1599499371686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254261165" />
-    <state x="-1430" y="175" key="Maven.ArtifactSearchDialog" timestamp="1588788155460">
-      <screen x="-1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1430" y="175" key="Maven.ArtifactSearchDialog/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1588788155460" />
-    <state x="184" y="86" key="MergeDialog" timestamp="1588279967150">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="184" y="86" key="MergeDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279967150" />
-    <state x="672" y="236" key="MultipleFileMergeDialog" timestamp="1588279967163">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="672" y="236" key="MultipleFileMergeDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279967163" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588336799404">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588336799404" />
+    <state x="440" y="94" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599499371686" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1593174160093">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1593174160093" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588870901809">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1599053290489">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588870901809" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588526369609" />
-    <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588254425347">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/-1914.-1080.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1598446770521" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599053290489" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1599143722083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="731" y="238" key="com.intellij.testIntegration.createTest.CreateTestDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588254425347" />
-    <state x="-56" y="454" width="1280" height="144" key="dock-window-1" timestamp="1590246546990">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="-56" y="454" width="1280" height="144" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1590246546990" />
-    <state x="690" y="286" key="extract.method.dialog" timestamp="1588348686266">
+    <state x="616" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599143722083" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599143723890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="286" key="extract.method.dialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588348686266" />
-    <state x="703" y="311" key="git4idea.merge.GitMergeDialog" timestamp="1588279861873">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="703" y="311" key="git4idea.merge.GitMergeDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588279861873" />
-    <state x="666" y="139" key="refactoring.ChangeSignatureDialog" timestamp="1588346651656">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="666" y="139" key="refactoring.ChangeSignatureDialog/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588346651656" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1588429979724">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588429979724" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588417107183">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1588417107183" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040/-1914.-1080.1920.1040@0.0.1920.1040" timestamp="1599143723890" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java</url>
-          <line>44</line>
+          <line>52</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/GameController.java</url>
-          <line>49</line>
+          <line>57</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
-          <line>25</line>
+          <line>28</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/PracticeBusiness.java</url>
-          <line>27</line>
+          <line>56</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -476,15 +381,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
-          <line>24</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/business/EventBusiness.java</url>
-          <line>36</line>
+          <line>51</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
@@ -492,7 +389,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java</url>
-          <line>30</line>
+          <line>31</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -507,7 +404,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/pt/isel/rugby/controller/AthleteController.java</url>
-          <line>28</line>
+          <line>29</line>
           <properties class="pt.isel.rugby.controller.AthleteController" method="postAthlete">
             <option name="EMULATED" value="true" />
           </properties>

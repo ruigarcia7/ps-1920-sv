@@ -1,4 +1,4 @@
-package pt.isel.rugby.model;
+package pt.isel.rugby.model.jwt;
 
 public enum  RoleName {
     ROLE_ATHLETE,

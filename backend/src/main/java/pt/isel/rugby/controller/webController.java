@@ -30,10 +30,9 @@ public class webController {
 
     @RequestMapping("/all")
     public String findAll() {
-        System.out.println("on GET /all");
+        System.out.println("on GET /all");https://grokonez.com/spring-framework/spring-boot/angular-spring-boot-jwt-authentication-example-angular-6-spring-security-mysql-full-stack-part-2-build-backend
 
         //return repository.findAll().toString()+'\n'+
-        StringBuilder sb = new StringBuilder();
         //athleteRepository.findAll().forEach(item -> sb.append(item.toString()+'\n'));
         return athleteRepository.findAll().toString();
     }

@@ -1,6 +1,7 @@
-package pt.isel.rugby.model;
+package pt.isel.rugby.model.jwt;
 
 import lombok.Data;
+import pt.isel.rugby.model.Profile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

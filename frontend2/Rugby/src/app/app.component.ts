@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Storage } from '@ionic/storage';
 import {BehaviorSubject} from 'rxjs';
+import {TokenStorageService} from "./auth/token-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import {BehaviorSubject} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  info: any;
   appPages = [
     {
       title: 'Calendar',
@@ -77,12 +79,26 @@ export class AppComponent {
     private platform: Platform,
     private router: Router,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar/*,
+    private statusBar: StatusBar, /*
     private storage: Storage,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController*/
+    private token: TokenStorageService
   ) {
     this.initializeApp();
+  }
+
+  ngOnInit(): void {
+       this.info = {
+         token: this.token.getToken(),
+         username: this.token.getUsername(),
+         authorities: this.token.getAuthorities()
+       };
+    }
+
+  logout() {
+    this.token.signOut();
+    window.location.reload();
   }
 
   /*

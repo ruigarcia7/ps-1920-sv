@@ -4,6 +4,7 @@ import { TabsPage } from './tabs-page';
 import { CalendarComponent } from '../calendar/calendar.component';
 
 
+// @ts-ignore
 const routes: Routes = [
   {
     path: '',
@@ -203,6 +204,19 @@ const routes: Routes = [
         path: '',
         redirectTo: '/calendar',
         pathMatch: 'full'
+      },
+      {
+        path: 'user',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../auth/login/login.module').then(m => m.LoginModule)
+          },
+          {
+            path: 'signup',
+            loadChildren: () => import('../auth/register/register.module').then(m => m.RegisterModule)
+          }
+        ]
       }
     ]
   }

@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CommonModule} from '@angular/common';
 import { MaterialModule } from './material-modules';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+
 /*---*/
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
       enabled: environment.production
     })
   ],
-declarations: [AppComponent],
+declarations: [AppComponent
+  ],
 providers: [InAppBrowser, SplashScreen, StatusBar,
   { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: 'fill'}],
 bootstrap: [ AppComponent ]
